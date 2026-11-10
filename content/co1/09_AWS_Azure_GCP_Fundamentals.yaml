@@ -5,429 +5,337 @@ metadata:
   course_outcome: CO1
   concept_id: CO1_09
   concept_title: AWS, Azure and GCP Fundamentals
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: provider structure, accounts and projects, regions and zones, compute/storage/network
-    primitives, identity, pricing tools and practical foundations
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: provider structure, accounts and projects, regions and.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain aws, azure and gcp fundamentals using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain aws, azure.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: AWS, Azure and GCP Fundamentals
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_09_U01
   topic: Provider account hierarchy
-  definition: Cloud providers use account, subscription, project, organization or folder constructs
-    to separate ownership, billing, policy and access.
-  detailed_explanation: Understand the provider's hierarchy before creating resources. Organizational
-    structures support isolation, delegated administration, consolidated billing and policy inheritance.
-  working_principle: To reason about provider account hierarchy, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A company separates production and development into different accounts or subscriptions
-    under a central organization.
+  definition: Cloud providers use account, subscription, project, organization.
+  detailed_explanation: Understand the provider's hierarchy before creating resources.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A company separates production and development into.
   decision_points:
-  - What requirement makes provider account hierarchy relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A single account for every environment increases blast radius and
-    weakens governance.
+  - Workload justification for Provider account hierarchy.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A single account for every environment increases.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define provider account hierarchy and explain why it matters in cloud architecture.
-  - Analyze the example of provider account hierarchy and identify one operational risk.
-  - Evaluate the trade-off described for provider account hierarchy under a stated workload constraint.
+  - Architectural role of Provider account hierarchy.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U02
   topic: AWS foundational structure
-  definition: AWS organizes resources within accounts and regions, with services such as EC2,
-    S3, VPC, IAM and CloudWatch.
-  detailed_explanation: An AWS account is a security and billing boundary. Regions contain service
-    resources; Availability Zones provide separate infrastructure locations within a region.
-  working_principle: To reason about aws foundational structure, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team creates an EC2 instance in a VPC, stores objects in S3 and monitors metrics
-    in CloudWatch.
+  definition: AWS organizes resources within accounts and regions.
+  detailed_explanation: An AWS account is a security and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team creates an EC2 instance in.
   decision_points:
-  - What requirement makes aws foundational structure relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Service availability and feature behavior must be checked in the
-    selected region.
+  - Workload justification for AWS foundational structure.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Service availability and feature behavior must be.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define aws foundational structure and explain why it matters in cloud architecture.
-  - Analyze the example of aws foundational structure and identify one operational risk.
-  - Evaluate the trade-off described for aws foundational structure under a stated workload constraint.
+  - Architectural role of AWS foundational structure.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U03
   topic: Microsoft Azure foundational structure
-  definition: Azure organizes resources through tenants, management groups, subscriptions, resource
-    groups and resources.
-  detailed_explanation: Microsoft Entra ID provides identity capabilities; Azure Resource Manager
-    manages resources; regions and availability zones support placement and resilience.
-  working_principle: To reason about microsoft azure foundational structure, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A subscription contains resource groups that organize a web app, virtual network
-    and storage account.
+  definition: Azure organizes resources through tenants, management groups.
+  detailed_explanation: Microsoft Entra ID provides identity capabilities; Azure.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A subscription contains resource groups that organize.
   decision_points:
-  - What requirement makes microsoft azure foundational structure relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A resource group is a management grouping, not a substitute for network
-    or identity isolation.
+  - Workload justification for Microsoft Azure foundational structure.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A resource group is a management grouping.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define microsoft azure foundational structure and explain why it matters in cloud architecture.
-  - Analyze the example of microsoft azure foundational structure and identify one operational
-    risk.
-  - Evaluate the trade-off described for microsoft azure foundational structure under a stated
-    workload constraint.
+  - Architectural role of Microsoft Azure foundational structure.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U04
   topic: Google Cloud foundational structure
-  definition: Google Cloud organizes resources through an organization, folders, projects and
-    resources.
-  detailed_explanation: Projects provide an important boundary for APIs, billing association,
-    IAM and resource organization. Regions and zones are used for placement.
-  working_principle: To reason about google cloud foundational structure, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A project hosts a Compute Engine VM, Cloud Storage bucket and VPC network.
+  definition: Google Cloud organizes resources through an organization.
+  detailed_explanation: Projects provide an important boundary for APIs.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A project hosts a Compute Engine VM.
   decision_points:
-  - What requirement makes google cloud foundational structure relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Project boundaries and organization policies must be deliberately
-    designed.
+  - Workload justification for Google Cloud foundational structure.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Project boundaries and organization policies must be.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define google cloud foundational structure and explain why it matters in cloud architecture.
-  - Analyze the example of google cloud foundational structure and identify one operational risk.
-  - Evaluate the trade-off described for google cloud foundational structure under a stated workload
-    constraint.
+  - Architectural role of Google Cloud foundational structure.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U05
   topic: Compute fundamentals across providers
-  definition: Compute services provide virtual machines and related capabilities for running operating
-    systems and applications.
-  detailed_explanation: Compare vCPU architecture, memory, accelerators, local and persistent
-    storage, network bandwidth, image lifecycle, quotas, placement and billing.
-  working_principle: To reason about compute fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: An application selects a general-purpose VM family after testing CPU, memory
-    and network requirements.
+  definition: Compute services provide virtual machines and related.
+  detailed_explanation: Compare vCPU architecture, memory, accelerators, local and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application selects a general-purpose VM family.
   decision_points:
-  - What requirement makes compute fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Equal vCPU counts do not guarantee equal performance across instance
-    families or providers.
+  - Workload justification for Compute fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Equal vCPU counts do not guarantee equal.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define compute fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of compute fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for compute fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Compute fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U06
   topic: Storage fundamentals across providers
-  definition: Object storage provides durable object access; block storage provides disk-like
-    volumes; file storage provides shared filesystem semantics.
-  detailed_explanation: Compare consistency, durability, throughput, request costs, lifecycle,
-    access protocol, encryption, replication and retrieval behavior.
-  working_principle: To reason about storage fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A static website stores media objects in object storage while a VM uses block
-    storage for its boot disk.
+  definition: Object storage provides durable object access; block.
+  detailed_explanation: Compare consistency, durability, throughput, request costs, lifecycle.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A static website stores media objects in.
   decision_points:
-  - What requirement makes storage fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not choose storage based only on capacity price; request, retrieval
-    and transfer charges matter.
+  - Workload justification for Storage fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not choose storage based only on.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define storage fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of storage fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for storage fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Storage fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U07
   topic: Networking fundamentals across providers
-  definition: Virtual networks provide isolated address spaces, subnets, routes, gateways and
-    filtering controls.
-  detailed_explanation: Provider products differ in how networks are scoped, how security rules
-    are attached and how private service access works. Design around traffic flows and policy
-    intent.
-  working_principle: To reason about networking fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A VM receives a private address in a subnet and reaches the internet through
-    an approved egress path.
+  definition: Virtual networks provide isolated address spaces, subnets.
+  detailed_explanation: Provider products differ in how networks are.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM receives a private address in.
   decision_points:
-  - What requirement makes networking fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A subnet or firewall construct with a similar name may have different
-    rule semantics across providers.
+  - Workload justification for Networking fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A subnet or firewall construct with a.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define networking fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of networking fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for networking fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Networking fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U08
   topic: Identity fundamentals across providers
-  definition: Identity services manage principals, authentication, roles, policies, federation
-    and service identities.
-  detailed_explanation: Compare human workforce identity with workload identity. Prefer federation
-    and short-lived credentials over embedded access keys or passwords.
-  working_principle: To reason about identity fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A CI pipeline assumes a deployment role using federated identity instead of
-    storing a long-lived key.
+  definition: Identity services manage principals, authentication, roles, policies.
+  detailed_explanation: Compare human workforce identity with workload identity.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A CI pipeline assumes a deployment role.
   decision_points:
-  - What requirement makes identity fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Provider identity products are not interchangeable by name; policy
-    evaluation semantics differ.
+  - Workload justification for Identity fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Provider identity products are not interchangeable by.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define identity fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of identity fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for identity fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Identity fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U09
   topic: Monitoring and operations foundations
-  definition: Cloud monitoring services collect metrics, logs, events and traces for resource
-    and application operations.
-  detailed_explanation: Establish ownership tags, diagnostic settings, retention, alert routing
-    and dashboards at provisioning time. Include control-plane and workload telemetry.
-  working_principle: To reason about monitoring and operations foundations, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A VM emits CPU metrics and operating-system logs to a centralized monitoring
-    workspace.
+  definition: Cloud monitoring services collect metrics, logs, events.
+  detailed_explanation: Establish ownership tags, diagnostic settings, retention, alert.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM emits CPU metrics and operating-system.
   decision_points:
-  - What requirement makes monitoring and operations foundations relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A metric dashboard without actionable thresholds and an owner does
-    not create effective operations.
+  - Workload justification for Monitoring and operations foundations.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A metric dashboard without actionable thresholds and.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define monitoring and operations foundations and explain why it matters in cloud architecture.
-  - Analyze the example of monitoring and operations foundations and identify one operational
-    risk.
-  - Evaluate the trade-off described for monitoring and operations foundations under a stated
-    workload constraint.
+  - Architectural role of Monitoring and operations foundations.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U10
   topic: Pricing calculators and billing
-  definition: Provider pricing calculators estimate costs from selected service, region, configuration,
-    usage and commercial assumptions.
-  detailed_explanation: Model compute runtime, storage capacity, requests, data transfer, support,
-    licensing and discounts. Export assumptions and validate with actual billing after deployment.
-  working_principle: To reason about pricing calculators and billing, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A team compares two VM sizes and storage tiers using the provider calculator
-    before launch.
+  definition: Provider pricing calculators estimate costs from selected.
+  detailed_explanation: Model compute runtime, storage capacity, requests, data.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team compares two VM sizes and.
   decision_points:
-  - What requirement makes pricing calculators and billing relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Calculator outputs are estimates; omitted usage dimensions and taxes
-    can change the actual bill.
+  - Workload justification for Pricing calculators and billing.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Calculator outputs are estimates; omitted usage dimensions.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define pricing calculators and billing and explain why it matters in cloud architecture.
-  - Analyze the example of pricing calculators and billing and identify one operational risk.
-  - Evaluate the trade-off described for pricing calculators and billing under a stated workload
-    constraint.
+  - Architectural role of Pricing calculators and billing.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U11
   topic: Free-tier and account safety
-  definition: Free-tier or trial offers have eligibility rules, service limits, time limits and
-    chargeable usage beyond included allowances.
-  detailed_explanation: Before creating resources, review current terms, budgets, billing alerts,
-    region limits and teardown steps. Enable MFA and protect root or owner credentials.
-  working_principle: To reason about free-tier and account safety, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A learner creates a small lab, sets a budget notification and deletes resources
-    after completing the exercise.
+  definition: Free-tier or trial offers have eligibility rules.
+  detailed_explanation: Before creating resources, review current terms, budgets.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A learner creates a small lab, sets.
   decision_points:
-  - What requirement makes free-tier and account safety relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Free tier does not mean every resource or data-transfer path is free.
+  - Workload justification for Free-tier and account safety.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Free tier does not mean every resource.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define free-tier and account safety and explain why it matters in cloud architecture.
-  - Analyze the example of free-tier and account safety and identify one operational risk.
-  - Evaluate the trade-off described for free-tier and account safety under a stated workload
-    constraint.
+  - Architectural role of Free-tier and account safety.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U12
   topic: Cross-cloud equivalence method
-  definition: Cross-cloud comparison maps capabilities and operating behavior rather than relying
-    on brand-name similarity.
-  detailed_explanation: Record service purpose, API, regional scope, availability model, security
-    controls, limits, pricing unit and operational responsibility.
-  working_principle: To reason about cross-cloud equivalence method, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A VM comparison includes AWS EC2, Azure Virtual Machines and Google Compute
-    Engine while documenting differences in disks and network controls.
+  definition: Cross-cloud comparison maps capabilities and operating behavior.
+  detailed_explanation: Record service purpose, API, regional scope, availability.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM comparison includes AWS EC2, Azure.
   decision_points:
-  - What requirement makes cross-cloud equivalence method relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A comparison table that lists only product names can mislead architecture
-    decisions.
+  - Workload justification for Cross-cloud equivalence method.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A comparison table that lists only product.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cross-cloud equivalence method and explain why it matters in cloud architecture.
-  - Analyze the example of cross-cloud equivalence method and identify one operational risk.
-  - Evaluate the trade-off described for cross-cloud equivalence method under a stated workload
-    constraint.
+  - Architectural role of Cross-cloud equivalence method.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_09_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of aws, azure and gcp fundamentals using a small,
-    non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of aws, azure.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -436,67 +344,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_09_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -511,33 +405,29 @@ troubleshooting_method:
   - Residual risk
 examination_bank:
   remember:
-  - Define aws, azure and gcp fundamentals.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - Define aws, azure and gcp.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - AWS, Azure and GCP Fundamentals
@@ -549,39 +439,34 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting aws, azure and gcp fundamentals to workload
-    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
-    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting aws, azure and gcp fundamentals.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.

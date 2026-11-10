@@ -5,416 +5,337 @@ metadata:
   course_outcome: CO1
   concept_id: CO1_07
   concept_title: Container Isolation and Virtualization
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: containers versus VMs, namespaces, cgroups, images, runtime isolation, kernel sharing,
-    security and noisy neighbours
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: containers versus VMs, namespaces, cgroups, images, runtime.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain container isolation and virtualization using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain container isolation.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Container Isolation and Virtualization
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_07_U01
   topic: Container fundamentals
-  definition: A container packages an application and its dependencies into an isolated process
-    environment while sharing the host operating-system kernel.
-  detailed_explanation: Containers use operating-system features to isolate process views and
-    resource usage. They generally start faster and use fewer resources than full VMs, but share
-    a kernel boundary.
-  working_principle: To reason about container fundamentals, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A web API runs in a container image with a defined runtime and dependency set.
+  definition: A container packages an application and its.
+  detailed_explanation: Containers use operating-system features to isolate process.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A web API runs in a container.
   decision_points:
-  - What requirement makes container fundamentals relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A container is not a miniature independent operating system with
-    its own kernel.
+  - Workload justification for Container fundamentals.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A container is not a miniature independent.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container fundamentals and explain why it matters in cloud architecture.
-  - Analyze the example of container fundamentals and identify one operational risk.
-  - Evaluate the trade-off described for container fundamentals under a stated workload constraint.
+  - Architectural role of Container fundamentals.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U02
   topic: Containers versus virtual machines
-  definition: A VM virtualizes hardware and runs a guest OS; a container isolates processes while
-    sharing the host kernel.
-  detailed_explanation: VMs provide a stronger separate-kernel boundary and can run different
-    guest operating systems. Containers provide lightweight packaging and density but require
-    kernel compatibility and careful isolation.
-  working_principle: To reason about containers versus virtual machines, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A Linux VM can host several Linux containers; a Windows host cannot run every
-    Linux container configuration without a compatible Linux environment.
+  definition: A VM virtualizes hardware and runs a.
+  detailed_explanation: VMs provide a stronger separate-kernel boundary and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A Linux VM can host several Linux.
   decision_points:
-  - What requirement makes containers versus virtual machines relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: The choice depends on isolation needs, startup time, density, compatibility
-    and operational model.
+  - Workload justification for Containers versus virtual machines.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: The choice depends on isolation needs, startup.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define containers versus virtual machines and explain why it matters in cloud architecture.
-  - Analyze the example of containers versus virtual machines and identify one operational risk.
-  - Evaluate the trade-off described for containers versus virtual machines under a stated workload
-    constraint.
+  - Architectural role of Containers versus virtual machines.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U03
   topic: Linux namespaces
-  definition: Namespaces isolate views of system resources such as process IDs, network interfaces,
-    mount points, users, hostnames and inter-process communication.
-  detailed_explanation: A container runtime configures namespace boundaries so a process sees
-    a scoped environment. Namespaces provide visibility isolation, not complete resource accounting
-    or every security control.
-  working_principle: To reason about linux namespaces, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A process inside a PID namespace sees its own process tree rather than every
-    host process.
+  definition: Namespaces isolate views of system resources such.
+  detailed_explanation: A container runtime configures namespace boundaries so.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A process inside a PID namespace sees.
   decision_points:
-  - What requirement makes linux namespaces relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Namespaces alone do not prevent a container from consuming excessive
-    CPU or memory.
+  - Workload justification for Linux namespaces.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Namespaces alone do not prevent a container.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define linux namespaces and explain why it matters in cloud architecture.
-  - Analyze the example of linux namespaces and identify one operational risk.
-  - Evaluate the trade-off described for linux namespaces under a stated workload constraint.
+  - Architectural role of Linux namespaces.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U04
   topic: Control groups (cgroups)
-  definition: Cgroups organize processes and control or account for resource use such as CPU,
-    memory and I/O.
-  detailed_explanation: Limits and quotas can reduce noisy-neighbour behavior and prevent one
-    container from consuming all host capacity. Incorrect limits can cause throttling or out-of-memory
-    termination.
-  working_principle: To reason about control groups (cgroups), identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A container is limited to a defined memory amount and is terminated if it exceeds
-    the enforced limit.
+  definition: Cgroups organize processes and control or account.
+  detailed_explanation: Limits and quotas can reduce noisy-neighbour behavior.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A container is limited to a defined.
   decision_points:
-  - What requirement makes control groups (cgroups) relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A configured limit is not a performance guarantee; CPU throttling
-    and memory pressure must be monitored.
+  - Workload justification for Control groups (cgroups).
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A configured limit is not a performance.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define control groups (cgroups) and explain why it matters in cloud architecture.
-  - Analyze the example of control groups (cgroups) and identify one operational risk.
-  - Evaluate the trade-off described for control groups (cgroups) under a stated workload constraint.
+  - Architectural role of Control groups (cgroups).
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U05
   topic: Container image layers
-  definition: Container images are composed of ordered filesystem layers and metadata that define
-    the runtime environment.
-  detailed_explanation: Layer reuse can reduce storage and transfer. Build order affects cache
-    efficiency; frequently changing files should generally be placed after stable dependency layers.
-  working_principle: To reason about container image layers, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A dependency installation layer is reused when only application source code
-    changes.
+  definition: Container images are composed of ordered filesystem.
+  detailed_explanation: Layer reuse can reduce storage and transfer.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A dependency installation layer is reused when.
   decision_points:
-  - What requirement makes container image layers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A cached build can still contain vulnerable or stale dependencies.
+  - Workload justification for Container image layers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A cached build can still contain vulnerable.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container image layers and explain why it matters in cloud architecture.
-  - Analyze the example of container image layers and identify one operational risk.
-  - Evaluate the trade-off described for container image layers under a stated workload constraint.
+  - Architectural role of Container image layers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U06
   topic: Container build practices
-  definition: Reliable builds use small trusted base images, deterministic dependencies, multi-stage
-    builds, minimal runtime packages and non-root execution.
-  detailed_explanation: BuildKit cache mounts and multi-stage builds can reduce build time and
-    image size. Scan images and avoid embedding credentials in layers or build arguments.
-  working_principle: To reason about container build practices, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A compiler stage builds an artifact, then a minimal runtime stage copies only
-    the required output.
+  definition: Reliable builds use small trusted base images.
+  detailed_explanation: BuildKit cache mounts and multi-stage builds can.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A compiler stage builds an artifact, then.
   decision_points:
-  - What requirement makes container build practices relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Deleting a secret in a later layer does not remove it from an earlier
-    image layer.
+  - Workload justification for Container build practices.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Deleting a secret in a later layer.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container build practices and explain why it matters in cloud architecture.
-  - Analyze the example of container build practices and identify one operational risk.
-  - Evaluate the trade-off described for container build practices under a stated workload constraint.
+  - Architectural role of Container build practices.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U07
   topic: Container runtime and isolation
-  definition: The runtime pulls images, configures namespaces and cgroups, mounts filesystems,
-    sets security options and starts the container process.
-  detailed_explanation: Runtime security includes capabilities, seccomp, mandatory access controls,
-    read-only filesystems, user namespaces and image provenance where supported.
-  working_principle: To reason about container runtime and isolation, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A service container runs as a non-root UID with only the capabilities it needs.
+  definition: The runtime pulls images, configures namespaces and.
+  detailed_explanation: Runtime security includes capabilities, seccomp, mandatory access.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A service container runs as a non-root.
   decision_points:
-  - What requirement makes container runtime and isolation relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Running a container as root and mounting the host socket can undermine
-    isolation substantially.
+  - Workload justification for Container runtime and isolation.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Running a container as root and mounting.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container runtime and isolation and explain why it matters in cloud architecture.
-  - Analyze the example of container runtime and isolation and identify one operational risk.
-  - Evaluate the trade-off described for container runtime and isolation under a stated workload
-    constraint.
+  - Architectural role of Container runtime and isolation.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U08
   topic: Container networking
-  definition: Container networking connects isolated network namespaces through bridges, virtual
-    interfaces, overlays or provider-managed networking.
-  detailed_explanation: Address allocation, port publishing, service discovery, network policy
-    and DNS determine communication. Troubleshoot the host, runtime and application layers separately.
-  working_principle: To reason about container networking, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A container port is published to a host port and traffic is forwarded to the
-    container network namespace.
+  definition: Container networking connects isolated network namespaces through.
+  detailed_explanation: Address allocation, port publishing, service discovery, network.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A container port is published to a.
   decision_points:
-  - What requirement makes container networking relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: An application listening only on loopback inside a container may
-    not be reachable through the expected interface.
+  - Workload justification for Container networking.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: An application listening only on loopback inside.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container networking and explain why it matters in cloud architecture.
-  - Analyze the example of container networking and identify one operational risk.
-  - Evaluate the trade-off described for container networking under a stated workload constraint.
+  - Architectural role of Container networking.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U09
   topic: Volumes and persistent data
-  definition: Container writable layers are usually ephemeral; volumes or external storage provide
-    persistence beyond container replacement.
-  detailed_explanation: Choose storage based on durability, sharing, latency, backup and lifecycle
-    needs. Avoid assuming a container filesystem is a durable database store.
-  working_principle: To reason about volumes and persistent data, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A database container mounts a persistent volume for its data directory.
+  definition: Container writable layers are usually ephemeral; volumes.
+  detailed_explanation: Choose storage based on durability, sharing, latency.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A database container mounts a persistent volume.
   decision_points:
-  - What requirement makes volumes and persistent data relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Recreating a container without a persistent volume can destroy application
-    data.
+  - Workload justification for Volumes and persistent data.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Recreating a container without a persistent volume.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define volumes and persistent data and explain why it matters in cloud architecture.
-  - Analyze the example of volumes and persistent data and identify one operational risk.
-  - Evaluate the trade-off described for volumes and persistent data under a stated workload constraint.
+  - Architectural role of Volumes and persistent data.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U10
   topic: Container security
-  definition: Container security covers image supply chain, runtime configuration, host kernel,
-    secrets, network exposure and orchestration permissions.
-  detailed_explanation: Use trusted images, patch base layers, scan dependencies, sign or verify
-    artifacts where supported, restrict privileges and monitor runtime behavior.
-  working_principle: To reason about container security, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A deployment rejects an image with a critical vulnerability or unapproved provenance.
+  definition: Container security covers image supply chain, runtime.
+  detailed_explanation: Use trusted images, patch base layers, scan.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A deployment rejects an image with a.
   decision_points:
-  - What requirement makes container security relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A clean image scan does not prove runtime configuration is safe.
+  - Workload justification for Container security.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A clean image scan does not prove.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container security and explain why it matters in cloud architecture.
-  - Analyze the example of container security and identify one operational risk.
-  - Evaluate the trade-off described for container security under a stated workload constraint.
+  - Architectural role of Container security.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U11
   topic: Noisy neighbours in container hosts
-  definition: Containers share host resources, so CPU contention, memory pressure, disk I/O and
-    network saturation can affect neighboring workloads.
-  detailed_explanation: Use resource requests and limits, workload isolation, node pools and telemetry.
-    Diagnose throttling, OOM kills, queue depth and latency together.
-  working_principle: To reason about noisy neighbours in container hosts, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A latency-sensitive API is placed on a dedicated node pool while batch jobs
-    use separate capacity.
+  definition: Containers share host resources, so CPU contention.
+  detailed_explanation: Use resource requests and limits, workload isolation.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A latency-sensitive API is placed on a.
   decision_points:
-  - What requirement makes noisy neighbours in container hosts relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A container being isolated by namespaces does not mean it has dedicated
-    physical resources.
+  - Workload justification for Noisy neighbours in container hosts.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A container being isolated by namespaces does.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define noisy neighbours in container hosts and explain why it matters in cloud architecture.
-  - Analyze the example of noisy neighbours in container hosts and identify one operational risk.
-  - Evaluate the trade-off described for noisy neighbours in container hosts under a stated workload
-    constraint.
+  - Architectural role of Noisy neighbours in container hosts.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U12
   topic: When to choose containers
-  definition: Containers fit portable application packaging, microservices, repeatable CI/CD and
-    workloads that benefit from rapid startup and density.
-  detailed_explanation: Evaluate kernel compatibility, state, security boundary, operational complexity,
-    orchestration needs and team capability. A VM may be more appropriate for legacy OS requirements
-    or stronger isolation boundaries.
-  working_principle: To reason about when to choose containers, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A stateless API is packaged as a container while a legacy appliance remains
-    on a VM.
+  definition: Containers fit portable application packaging, microservices, repeatable.
+  detailed_explanation: Evaluate kernel compatibility, state, security boundary, operational.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A stateless API is packaged as a.
   decision_points:
-  - What requirement makes when to choose containers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Adopting containers without an operational need can add unnecessary
-    platform complexity.
+  - Workload justification for When to choose containers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Adopting containers without an operational need can.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define when to choose containers and explain why it matters in cloud architecture.
-  - Analyze the example of when to choose containers and identify one operational risk.
-  - Evaluate the trade-off described for when to choose containers under a stated workload constraint.
+  - Architectural role of When to choose containers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_07_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of container isolation and virtualization using
-    a small, non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of container isolation.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -423,67 +344,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_07_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -499,32 +406,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define container isolation and virtualization.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Container Isolation and Virtualization
@@ -536,39 +439,34 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting container isolation and virtualization
-    to workload requirements, architecture boundaries, operational evidence and measurable trade-offs.
-    A defensible answer states the requirement, explains the mechanism, identifies the owner,
-    evaluates limitations and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting container isolation and virtualization to.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.

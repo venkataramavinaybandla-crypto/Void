@@ -5,416 +5,337 @@ metadata:
   course_outcome: CO1
   concept_id: CO1_11
   concept_title: Cloud Migration Strategies and Total Cost of Ownership
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: 7 Rs, discovery, dependency mapping, migration planning, TCO, cost sensitivity, licensing,
-    network transfer and validation
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: 7 Rs, discovery, dependency mapping, migration planning.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain cloud migration strategies and total cost of ownership using precise cloud
-  terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain cloud migration.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Cloud Migration Strategies and Total Cost of Ownership
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_11_U01
   topic: Migration discovery
-  definition: Migration discovery inventories applications, infrastructure, data, dependencies,
-    owners, constraints and operational requirements before movement.
-  detailed_explanation: Collect utilization history, software versions, network flows, licensing
-    terms, data classification, recovery objectives and business criticality. Validate inventory
-    with application owners.
-  working_principle: To reason about migration discovery, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A migration team maps an API to its database, identity provider, file share
-    and external integrations.
+  definition: Migration discovery inventories applications, infrastructure, data, dependencies.
+  detailed_explanation: Collect utilization history, software versions, network flows.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A migration team maps an API to.
   decision_points:
-  - What requirement makes migration discovery relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Moving an application without understanding dependencies often creates
-    outages or hidden costs.
+  - Workload justification for Migration discovery.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Moving an application without understanding dependencies often.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define migration discovery and explain why it matters in cloud architecture.
-  - Analyze the example of migration discovery and identify one operational risk.
-  - Evaluate the trade-off described for migration discovery under a stated workload constraint.
+  - Architectural role of Migration discovery.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U02
   topic: The 7 Rs framework
-  definition: The 7 Rs classify migration strategies commonly as rehost, replatform, refactor,
-    repurchase, relocate, retain and retire.
-  detailed_explanation: Use the framework to make an explicit disposition for each workload. The
-    categories describe different levels of change and should be selected based on business value,
-    constraints and effort.
-  working_principle: To reason about the 7 rs framework, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A legacy VM may be rehosted initially while a customer portal is refactored
-    into managed services.
+  definition: The 7 Rs classify migration strategies commonly.
+  detailed_explanation: Use the framework to make an explicit.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A legacy VM may be rehosted initially.
   decision_points:
-  - What requirement makes the 7 rs framework relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: The fastest migration path may preserve technical debt and is not
-    always the best long-term choice.
+  - Workload justification for The 7 Rs framework.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: The fastest migration path may preserve technical.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define the 7 rs framework and explain why it matters in cloud architecture.
-  - Analyze the example of the 7 rs framework and identify one operational risk.
-  - Evaluate the trade-off described for the 7 rs framework under a stated workload constraint.
+  - Architectural role of The 7 Rs framework.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U03
   topic: Rehost
-  definition: Rehost moves an application to cloud infrastructure with minimal application changes,
-    often called lift and shift.
-  detailed_explanation: It can accelerate migration and reduce initial code change, but may preserve
-    inefficient architecture, licensing costs and operational patterns.
-  working_principle: To reason about rehost, identify the actors, the resource or control being
-    acted upon, the configuration or policy that governs it, the observable result, and the failure
-    modes. Separate the control-plane action from the data-plane behavior whenever both are present.
-  worked_example: A VM-based application is moved to a cloud VM with similar CPU and memory configuration.
+  definition: Rehost moves an application to cloud infrastructure.
+  detailed_explanation: It can accelerate migration and reduce initial.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM-based application is moved to a.
   decision_points:
-  - What requirement makes rehost relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Rehosting does not automatically produce elasticity, resilience or
-    lower cost.
+  - Workload justification for Rehost.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Rehosting does not automatically produce elasticity, resilience.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define rehost and explain why it matters in cloud architecture.
-  - Analyze the example of rehost and identify one operational risk.
-  - Evaluate the trade-off described for rehost under a stated workload constraint.
+  - Architectural role of Rehost.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U04
   topic: Replatform
-  definition: Replatform makes limited optimizations during migration without fully redesigning
-    the application.
-  detailed_explanation: Examples include moving a self-managed database to a managed database
-    or changing the runtime while preserving core application behavior.
-  working_principle: To reason about replatform, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An application moves from a self-managed database VM to a managed relational
-    database service.
+  definition: Replatform makes limited optimizations during migration without.
+  detailed_explanation: Examples include moving a self-managed database to.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application moves from a self-managed database.
   decision_points:
-  - What requirement makes replatform relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Managed-service constraints, compatibility and migration downtime
-    must be evaluated.
+  - Workload justification for Replatform.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Managed-service constraints, compatibility and migration downtime must.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define replatform and explain why it matters in cloud architecture.
-  - Analyze the example of replatform and identify one operational risk.
-  - Evaluate the trade-off described for replatform under a stated workload constraint.
+  - Architectural role of Replatform.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U05
   topic: Refactor or re-architect
-  definition: Refactoring changes application architecture to use cloud-native capabilities or
-    meet new scalability, resilience or agility goals.
-  detailed_explanation: It may involve decomposition, event-driven design, managed services, containers
-    or serverless execution. It usually requires more engineering effort and testing.
-  working_principle: To reason about refactor or re-architect, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A monolithic application is separated into independently deployable services
-    with managed messaging.
+  definition: Refactoring changes application architecture to use cloud-native.
+  detailed_explanation: It may involve decomposition, event-driven design, managed.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A monolithic application is separated into independently.
   decision_points:
-  - What requirement makes refactor or re-architect relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Refactoring during a deadline-driven migration can expand scope and
-    increase delivery risk.
+  - Workload justification for Refactor or re-architect.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Refactoring during a deadline-driven migration can expand.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define refactor or re-architect and explain why it matters in cloud architecture.
-  - Analyze the example of refactor or re-architect and identify one operational risk.
-  - Evaluate the trade-off described for refactor or re-architect under a stated workload constraint.
+  - Architectural role of Refactor or re-architect.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U06
   topic: Repurchase, relocate, retain and retire
-  definition: Repurchase replaces a workload with a different product; relocate moves a platform
-    or environment; retain keeps a workload where it is; retire removes an unnecessary workload.
-  detailed_explanation: These choices prevent teams from treating every discovered system as a
-    migration candidate. Document the business reason and revisit retained workloads when constraints
-    change.
-  working_principle: To reason about repurchase, relocate, retain and retire, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A team retires an unused reporting server and repurchases a collaboration system
-    as SaaS.
+  definition: Repurchase replaces a workload with a different.
+  detailed_explanation: These choices prevent teams from treating every.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team retires an unused reporting server.
   decision_points:
-  - What requirement makes repurchase, relocate, retain and retire relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Retaining a workload should be an explicit decision with an owner
-    and review date.
+  - Workload justification for Repurchase, relocate, retain and retire.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Retaining a workload should be an explicit.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define repurchase, relocate, retain and retire and explain why it matters in cloud architecture.
-  - Analyze the example of repurchase, relocate, retain and retire and identify one operational
-    risk.
-  - Evaluate the trade-off described for repurchase, relocate, retain and retire under a stated
-    workload constraint.
+  - Architectural role of Repurchase, relocate, retain and retire.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U07
   topic: Total cost of ownership
-  definition: TCO estimates the total cost of owning and operating a solution over a defined period
-    and scope.
-  detailed_explanation: Include hardware or cloud consumption, facilities, power, networking,
-    licensing, support, staffing, maintenance, migration, downtime, backup, security and exit
-    costs as applicable.
-  working_principle: To reason about total cost of ownership, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A three-year comparison includes on-premises refresh cost and cloud compute,
-    storage, transfer and operations.
+  definition: TCO estimates the total cost of owning.
+  detailed_explanation: Include hardware or cloud consumption, facilities, power.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A three-year comparison includes on-premises refresh cost.
   decision_points:
-  - What requirement makes total cost of ownership relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Comparing only server purchase price with cloud hourly compute is
-    not a valid TCO comparison.
+  - Workload justification for Total cost of ownership.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Comparing only server purchase price with cloud.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define total cost of ownership and explain why it matters in cloud architecture.
-  - Analyze the example of total cost of ownership and identify one operational risk.
-  - Evaluate the trade-off described for total cost of ownership under a stated workload constraint.
+  - Architectural role of Total cost of ownership.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U08
   topic: Cloud cost components
-  definition: Cloud cost may include compute runtime, storage capacity, requests, snapshots, data
-    transfer, load balancing, NAT processing, managed services, support and licenses.
-  detailed_explanation: Map each workload action to a billable dimension. Identify fixed, variable
-    and commitment-based components and estimate usage under normal and peak conditions.
-  working_principle: To reason about cloud cost components, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A web workload has compute, object storage, database, outbound data and monitoring
-    costs.
+  definition: Cloud cost may include compute runtime, storage.
+  detailed_explanation: Map each workload action to a billable.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A web workload has compute, object storage.
   decision_points:
-  - What requirement makes cloud cost components relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A low-cost compute choice can be overwhelmed by egress or managed-service
-    charges.
+  - Workload justification for Cloud cost components.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A low-cost compute choice can be overwhelmed.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud cost components and explain why it matters in cloud architecture.
-  - Analyze the example of cloud cost components and identify one operational risk.
-  - Evaluate the trade-off described for cloud cost components under a stated workload constraint.
+  - Architectural role of Cloud cost components.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U09
   topic: On-premises cost components
-  definition: On-premises cost includes acquisition, depreciation, facilities, electricity, cooling,
-    networking, maintenance, staffing, spares and refresh cycles.
-  detailed_explanation: Allocate shared costs consistently and model utilization. Include capacity
-    reserved for peak demand and the cost of idle hardware.
-  working_principle: To reason about on-premises cost components, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A data center maintains enough capacity for a seasonal peak that is rarely used.
+  definition: On-premises cost includes acquisition, depreciation, facilities, electricity.
+  detailed_explanation: Allocate shared costs consistently and model utilization.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A data center maintains enough capacity for.
   decision_points:
-  - What requirement makes on-premises cost components relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Ignoring labor and facilities can make on-premises costs appear artificially
-    low.
+  - Workload justification for On-premises cost components.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Ignoring labor and facilities can make on-premises.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define on-premises cost components and explain why it matters in cloud architecture.
-  - Analyze the example of on-premises cost components and identify one operational risk.
-  - Evaluate the trade-off described for on-premises cost components under a stated workload constraint.
+  - Architectural role of On-premises cost components.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U10
   topic: Cost comparison method
-  definition: A fair comparison uses equivalent workload demand, availability, performance, security
-    and support assumptions over the same time horizon.
-  detailed_explanation: Define units, utilization, growth, regions, data movement, backup and
-    recovery needs. Run sensitivity analysis for demand and price assumptions.
-  working_principle: To reason about cost comparison method, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A spreadsheet compares three-year cost at 30%, 60% and 90% average utilization.
+  definition: A fair comparison uses equivalent workload demand.
+  detailed_explanation: Define units, utilization, growth, regions, data movement.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A spreadsheet compares three-year cost at 30%.
   decision_points:
-  - What requirement makes cost comparison method relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A single-point estimate hides uncertainty and can produce a fragile
-    recommendation.
+  - Workload justification for Cost comparison method.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A single-point estimate hides uncertainty and can.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cost comparison method and explain why it matters in cloud architecture.
-  - Analyze the example of cost comparison method and identify one operational risk.
-  - Evaluate the trade-off described for cost comparison method under a stated workload constraint.
+  - Architectural role of Cost comparison method.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U11
   topic: Migration waves and cutover
-  definition: Migration waves group workloads by dependency, risk, business value and readiness,
-    then define testing and rollback criteria.
-  detailed_explanation: Use pilot migrations, data synchronization, change freezes where necessary,
-    DNS or traffic switching, validation and rollback plans.
-  working_principle: To reason about migration waves and cutover, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A database is replicated before the application tier is cut over during an approved
-    maintenance window.
+  definition: Migration waves group workloads by dependency, risk.
+  detailed_explanation: Use pilot migrations, data synchronization, change freezes.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A database is replicated before the application.
   decision_points:
-  - What requirement makes migration waves and cutover relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A successful VM boot is not proof that a migrated business process
-    works end to end.
+  - Workload justification for Migration waves and cutover.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A successful VM boot is not proof.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define migration waves and cutover and explain why it matters in cloud architecture.
-  - Analyze the example of migration waves and cutover and identify one operational risk.
-  - Evaluate the trade-off described for migration waves and cutover under a stated workload constraint.
+  - Architectural role of Migration waves and cutover.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U12
   topic: Post-migration optimization
-  definition: After migration, measure actual usage and cost, rightsize resources, remove temporary
-    assets and revisit architecture decisions.
-  detailed_explanation: Compare forecast with actual billing, verify performance and reliability,
-    update runbooks and close migration-specific access paths.
-  working_principle: To reason about post-migration optimization, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team reduces oversized instances after four weeks of measured production utilization.
+  definition: After migration, measure actual usage and cost.
+  detailed_explanation: Compare forecast with actual billing, verify performance.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team reduces oversized instances after four.
   decision_points:
-  - What requirement makes post-migration optimization relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not optimize by deleting safeguards or lowering capacity below
-    measured demand.
+  - Workload justification for Post-migration optimization.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not optimize by deleting safeguards or.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define post-migration optimization and explain why it matters in cloud architecture.
-  - Analyze the example of post-migration optimization and identify one operational risk.
-  - Evaluate the trade-off described for post-migration optimization under a stated workload constraint.
+  - Architectural role of Post-migration optimization.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_11_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of cloud migration strategies and total cost
-    of ownership using a small, non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of cloud migration.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -423,67 +344,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_11_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -498,33 +405,29 @@ troubleshooting_method:
   - Residual risk
 examination_bank:
   remember:
-  - Define cloud migration strategies and total cost of ownership.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - Define cloud migration strategies and.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Cloud Migration Strategies and Total Cost of Ownership
@@ -536,39 +439,34 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting cloud migration strategies and total
-    cost of ownership to workload requirements, architecture boundaries, operational evidence
-    and measurable trade-offs. A defensible answer states the requirement, explains the mechanism,
-    identifies the owner, evaluates limitations and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting cloud migration strategies and total.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.

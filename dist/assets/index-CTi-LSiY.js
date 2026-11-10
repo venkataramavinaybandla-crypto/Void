@@ -1,432 +1,341 @@
-var ni=Object.defineProperty;var Tt=t=>{throw TypeError(t)};var ti=(t,e,a)=>e in t?ni(t,e,{enumerable:!0,configurable:!0,writable:!0,value:a}):t[e]=a;var j=(t,e,a)=>ti(t,typeof e!="symbol"?e+"":e,a),ai=(t,e,a)=>e.has(t)||Tt("Cannot "+a);var Dt=(t,e,a)=>e.has(t)?Tt("Cannot add the same private member more than once"):e instanceof WeakSet?e.add(t):e.set(t,a);var cn=(t,e,a)=>(ai(t,e,"access private method"),a);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const s of i)if(s.type==="childList")for(const d of s.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&o(d)}).observe(document,{childList:!0,subtree:!0});function a(i){const s={};return i.integrity&&(s.integrity=i.integrity),i.referrerPolicy&&(s.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?s.credentials="include":i.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function o(i){if(i.ep)return;i.ep=!0;const s=a(i);fetch(i.href,s)}})();const ht=[{id:1,co:"CO1",code:"CO1",title:"Cloud Foundations & Virtualization",description:"Foundational cloud computing principles, service models, virtualization primitives, and hypervisor architecture.",sessions:[{number:1,title:"Cloud Computing Fundamentals & Essential Characteristics"},{number:2,title:"Cloud Service Models: IaaS, PaaS, SaaS & Shared Responsibility"},{number:3,title:"Virtualization Fundamentals, Hypervisors & VM Architecture"},{number:4,title:"Container Isolation Primitives & Global Cloud Infrastructure"}]},{id:2,co:"CO2",code:"CO2",title:"Compute, Scaling & Workload Placement",description:"Compute instance families, autoscaling policies, container orchestration, and serverless runtime placement.",sessions:[{number:5,title:"Compute Instance Families, Sizing & Lifecycle Management"},{number:6,title:"Container Packaging & Kubernetes Cluster Architecture"},{number:7,title:"Elasticity, Auto Scaling Dynamics & Policy Tuning"},{number:8,title:"Serverless Compute, Function Runtimes & Placement Optimization"}]},{id:3,co:"CO3",code:"CO3",title:"Networking, Connectivity & Content Delivery",description:"Software-defined networking, VPC topologies, transit routing, load balancing, and edge caching delivery.",sessions:[{number:9,title:"Software-Defined Networking, VPCs & Subnet Topologies"},{number:10,title:"Gateways, Peering, Transit Routing & Hybrid Connectivity"},{number:11,title:"Traffic Distribution, Layer 4 & Layer 7 Load Balancing"},{number:12,title:"Edge Infrastructure, Anycast Routing & Content Delivery Networks"}]},{id:4,co:"CO4",code:"CO4",title:"Storage, Data Services & Disaster Recovery",description:"Distributed storage tiers, relational and NoSQL engines, consistency models, and disaster recovery.",sessions:[{number:13,title:"Block Storage Volumes, Local NVMe & Performance Characteristics"},{number:14,title:"Object Storage Architecture, Data Lifecycle & Immutability"},{number:15,title:"Managed Relational & Distributed NoSQL Database Systems"},{number:16,title:"Replication Semantics, Disaster Recovery & RPO/RTO Strategies"}]},{id:5,co:"CO5",code:"CO5",title:"Identity, Security, Compliance & Observability",description:"Identity governance, encryption, zero trust network perimeters, and unified cloud observability.",sessions:[{number:17,title:"Identity & Access Management, RBAC & Least-Privilege Policies"},{number:18,title:"Cryptographic Key Management, Envelope Encryption & Secrets"},{number:19,title:"Perimeter Defense, Cloud Firewalls & Zero Trust Architecture"},{number:20,title:"Telemetry Pipelines: Metrics, Distributed Tracing & Centralized Logging"}]},{id:6,co:"CO6",code:"CO6",title:"IaC, Delivery, Operations & Cost Engineering",description:"Declarative IaC automation, deployment pipelines, FinOps unit economics, and operational reliability.",sessions:[{number:21,title:"Declarative Infrastructure as Code & State Drift Management"},{number:22,title:"CI/CD Pipelines, Immutable Releases & Canary Rollouts"},{number:23,title:"Cloud Cost Engineering, Billing Allocation & FinOps Strategies"},{number:24,title:"Site Reliability Engineering, Chaos Engineering & Incident Operations"}]}],ii=`metadata:
+var ni=Object.defineProperty;var Dt=t=>{throw TypeError(t)};var ti=(t,e,a)=>e in t?ni(t,e,{enumerable:!0,configurable:!0,writable:!0,value:a}):t[e]=a;var j=(t,e,a)=>ti(t,typeof e!="symbol"?e+"":e,a),ai=(t,e,a)=>e.has(t)||Dt("Cannot "+a);var qt=(t,e,a)=>e.has(t)?Dt("Cannot add the same private member more than once"):e instanceof WeakSet?e.add(t):e.set(t,a);var cn=(t,e,a)=>(ai(t,e,"access private method"),a);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const s of i)if(s.type==="childList")for(const d of s.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&o(d)}).observe(document,{childList:!0,subtree:!0});function a(i){const s={};return i.integrity&&(s.integrity=i.integrity),i.referrerPolicy&&(s.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?s.credentials="include":i.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function o(i){if(i.ep)return;i.ep=!0;const s=a(i);fetch(i.href,s)}})();const ht=[{id:1,co:"CO1",code:"CO1",title:"Cloud Foundations & Virtualization",description:"Foundational cloud computing principles, service models, virtualization primitives, and hypervisor architecture.",sessions:[{number:1,title:"Cloud Computing Fundamentals & Essential Characteristics"},{number:2,title:"Cloud Service Models: IaaS, PaaS, SaaS & Shared Responsibility"},{number:3,title:"Virtualization Fundamentals, Hypervisors & VM Architecture"},{number:4,title:"Container Isolation Primitives & Global Cloud Infrastructure"}]},{id:2,co:"CO2",code:"CO2",title:"Compute, Scaling & Workload Placement",description:"Compute instance families, autoscaling policies, container orchestration, and serverless runtime placement.",sessions:[{number:5,title:"Compute Instance Families, Sizing & Lifecycle Management"},{number:6,title:"Container Packaging & Kubernetes Cluster Architecture"},{number:7,title:"Elasticity, Auto Scaling Dynamics & Policy Tuning"},{number:8,title:"Serverless Compute, Function Runtimes & Placement Optimization"}]},{id:3,co:"CO3",code:"CO3",title:"Networking, Connectivity & Content Delivery",description:"Software-defined networking, VPC topologies, transit routing, load balancing, and edge caching delivery.",sessions:[{number:9,title:"Software-Defined Networking, VPCs & Subnet Topologies"},{number:10,title:"Gateways, Peering, Transit Routing & Hybrid Connectivity"},{number:11,title:"Traffic Distribution, Layer 4 & Layer 7 Load Balancing"},{number:12,title:"Edge Infrastructure, Anycast Routing & Content Delivery Networks"}]},{id:4,co:"CO4",code:"CO4",title:"Storage, Data Services & Disaster Recovery",description:"Distributed storage tiers, relational and NoSQL engines, consistency models, and disaster recovery.",sessions:[{number:13,title:"Block Storage Volumes, Local NVMe & Performance Characteristics"},{number:14,title:"Object Storage Architecture, Data Lifecycle & Immutability"},{number:15,title:"Managed Relational & Distributed NoSQL Database Systems"},{number:16,title:"Replication Semantics, Disaster Recovery & RPO/RTO Strategies"}]},{id:5,co:"CO5",code:"CO5",title:"Identity, Security, Compliance & Observability",description:"Identity governance, encryption, zero trust network perimeters, and unified cloud observability.",sessions:[{number:17,title:"Identity & Access Management, RBAC & Least-Privilege Policies"},{number:18,title:"Cryptographic Key Management, Envelope Encryption & Secrets"},{number:19,title:"Perimeter Defense, Cloud Firewalls & Zero Trust Architecture"},{number:20,title:"Telemetry Pipelines: Metrics, Distributed Tracing & Centralized Logging"}]},{id:6,co:"CO6",code:"CO6",title:"IaC, Delivery, Operations & Cost Engineering",description:"Declarative IaC automation, deployment pipelines, FinOps unit economics, and operational reliability.",sessions:[{number:21,title:"Declarative Infrastructure as Code & State Drift Management"},{number:22,title:"CI/CD Pipelines, Immutable Releases & Canary Rollouts"},{number:23,title:"Cloud Cost Engineering, Billing Allocation & FinOps Strategies"},{number:24,title:"Site Reliability Engineering, Chaos Engineering & Incident Operations"}]}],ii=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
   course_outcome: CO1
   concept_id: CO1_01
   concept_title: Fundamentals of Cloud Computing
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: cloud computing foundations, essential characteristics, resource pooling, elasticity,
-    measured service, economics, service delivery and foundational terminology
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: cloud computing foundations, essential characteristics, resource pooling.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain fundamentals of cloud computing using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain fundamentals of.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Fundamentals of Cloud Computing
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_01_U01
   topic: Cloud computing definition
-  definition: Cloud computing is a model for enabling convenient, on-demand network access to
-    a shared pool of configurable computing resources that can be rapidly provisioned and released
-    with minimal management effort or provider interaction.
-  detailed_explanation: Treat cloud as an operating and delivery model, not merely as a remote
-    server or a billing label. A cloud service combines abstraction, automation, network access,
-    resource pooling, metering and an operational contract.
-  working_principle: To reason about cloud computing definition, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team requests a database through a portal or API, receives an endpoint and
-    credentials, scales capacity through supported controls, and is billed according to the selected
-    service and consumption dimensions.
+  definition: Cloud computing is a model for enabling.
+  detailed_explanation: A cloud service combines abstraction, automation, network.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team requests a database through a.
   decision_points:
-  - What requirement makes cloud computing definition relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Calling any hosted virtual machine 'cloud' is incomplete when provisioning
-    is manual, capacity is fixed and usage is not measured.
+  - Workload justification for Cloud computing definition.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Calling any hosted virtual machine 'cloud' is.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud computing definition and explain why it matters in cloud architecture.
-  - Analyze the example of cloud computing definition and identify one operational risk.
-  - Evaluate the trade-off described for cloud computing definition under a stated workload constraint.
+  - Architectural role of Cloud computing definition.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U02
   topic: On-demand self-service
-  definition: Consumers can provision supported resources when needed without requiring a human
-    provider employee to perform each routine allocation.
-  detailed_explanation: Self-service is implemented through portals, command-line interfaces,
-    APIs, templates, policy checks and automated workflows. It reduces request queues but does
-    not remove approval, quota or security controls.
-  working_principle: To reason about on-demand self-service, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An engineer provisions a development database from an approved template and
-    receives a connection endpoint after policy validation.
+  definition: Consumers can provision supported resources when needed.
+  detailed_explanation: Self-service is implemented through portals, command-line interfaces.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An engineer provisions a development database from.
   decision_points:
-  - What requirement makes on-demand self-service relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Self-service does not mean unrestricted access; guardrails and quotas
-    still apply.
+  - Workload justification for On-demand self-service.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Self-service does not mean unrestricted access; guardrails.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define on-demand self-service and explain why it matters in cloud architecture.
-  - Analyze the example of on-demand self-service and identify one operational risk.
-  - Evaluate the trade-off described for on-demand self-service under a stated workload constraint.
+  - Architectural role of On-demand self-service.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U03
   topic: Broad network access
-  definition: Cloud capabilities are reachable over networks through standard mechanisms and client
-    platforms.
-  detailed_explanation: Network access introduces identity, endpoint, routing, DNS, TLS, latency
-    and availability considerations. The service may be reachable from browsers, mobile devices,
-    command-line tools or application SDKs.
-  working_principle: To reason about broad network access, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A deployment pipeline calls a provider API over HTTPS to create an application
-    environment.
+  definition: Cloud capabilities are reachable over networks through.
+  detailed_explanation: Network access introduces identity, endpoint, routing, DNS.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A deployment pipeline calls a provider API.
   decision_points:
-  - What requirement makes broad network access relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A resource being hosted remotely does not guarantee it is safely
-    or universally reachable.
+  - Workload justification for Broad network access.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A resource being hosted remotely does not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define broad network access and explain why it matters in cloud architecture.
-  - Analyze the example of broad network access and identify one operational risk.
-  - Evaluate the trade-off described for broad network access under a stated workload constraint.
+  - Architectural role of Broad network access.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U04
   topic: Resource pooling
-  definition: Provider resources are pooled to serve multiple consumers using a multi-tenant model,
-    with physical and logical resources dynamically assigned and reassigned.
-  detailed_explanation: Pooling improves utilization and enables provider scale. Isolation controls,
-    scheduling, quotas and tenant boundaries must prevent one consumer from accessing another
-    consumer's data or exhausting shared capacity.
-  working_principle: To reason about resource pooling, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: Multiple customer VMs may share a physical host while receiving logically isolated
-    virtual CPU, memory and storage resources.
+  definition: Provider resources are pooled to serve multiple.
+  detailed_explanation: Pooling improves utilization and enables provider scale.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: Multiple customer VMs may share a physical.
   decision_points:
-  - What requirement makes resource pooling relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Pooling is not the same as sharing application data or granting tenants
-    visibility into one another.
+  - Workload justification for Resource pooling.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Pooling is not the same as sharing.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define resource pooling and explain why it matters in cloud architecture.
-  - Analyze the example of resource pooling and identify one operational risk.
-  - Evaluate the trade-off described for resource pooling under a stated workload constraint.
+  - Architectural role of Resource pooling.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U05
   topic: Rapid elasticity
-  definition: Capabilities can be elastically provisioned and released, sometimes automatically,
-    to scale outward or inward with demand.
-  detailed_explanation: Elasticity depends on metrics, scaling policies, quotas, provisioning
-    time, application statelessness and downstream capacity. A control loop observes demand, compares
-    it with policy and changes capacity.
-  working_principle: To reason about rapid elasticity, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A web tier adds instances during a traffic surge and removes excess instances
-    after demand subsides.
+  definition: Capabilities can be elastically provisioned and released.
+  detailed_explanation: Elasticity depends on metrics, scaling policies, quotas.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A web tier adds instances during a.
   decision_points:
-  - What requirement makes rapid elasticity relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Elasticity is not instantaneous or unlimited; startup time, quotas
-    and database bottlenecks can constrain it.
+  - Workload justification for Rapid elasticity.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Elasticity is not instantaneous or unlimited; startup.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define rapid elasticity and explain why it matters in cloud architecture.
-  - Analyze the example of rapid elasticity and identify one operational risk.
-  - Evaluate the trade-off described for rapid elasticity under a stated workload constraint.
+  - Architectural role of Rapid elasticity.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U06
   topic: Measured service
-  definition: Cloud systems automatically control and optimize resource use by metering appropriate
-    dimensions.
-  detailed_explanation: Metering may include instance time, vCPU-hours, memory, requests, transactions,
-    stored GB-months, provisioned IOPS, data transfer and license units. The bill is a financial
-    view of measured consumption.
-  working_principle: To reason about measured service, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A storage service reports stored capacity, retrieval requests and outbound transfer
-    as separate charge dimensions.
+  definition: Cloud systems automatically control and optimize resource.
+  detailed_explanation: Metering may include instance time, vCPU-hours, memory.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A storage service reports stored capacity, retrieval.
   decision_points:
-  - What requirement makes measured service relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A low headline hourly rate does not represent total cost when transfer,
-    requests, support and ancillary services are omitted.
+  - Workload justification for Measured service.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A low headline hourly rate does not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define measured service and explain why it matters in cloud architecture.
-  - Analyze the example of measured service and identify one operational risk.
-  - Evaluate the trade-off described for measured service under a stated workload constraint.
+  - Architectural role of Measured service.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U07
   topic: Cloud economics
-  definition: Cloud changes capital expenditure, capacity planning and procurement into a more
-    consumption-oriented operating model.
-  detailed_explanation: The economic benefit depends on utilization, demand variability, commitment
-    discounts, operational labor, migration cost, licensing and data movement. Pay-as-you-go can
-    reduce idle capacity but can also create unpredictable bills.
-  working_principle: To reason about cloud economics, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A seasonal retailer scales down after a festival rather than owning enough hardware
-    for the annual peak.
+  definition: Cloud changes capital expenditure, capacity planning and.
+  detailed_explanation: The economic benefit depends on utilization, demand.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A seasonal retailer scales down after a.
   decision_points:
-  - What requirement makes cloud economics relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Cloud is not automatically cheaper than on-premises; compare equivalent
-    service levels and full lifecycle costs.
+  - Workload justification for Cloud economics.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Cloud is not automatically cheaper than on-premises.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud economics and explain why it matters in cloud architecture.
-  - Analyze the example of cloud economics and identify one operational risk.
-  - Evaluate the trade-off described for cloud economics under a stated workload constraint.
+  - Architectural role of Cloud economics.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U08
   topic: Scalability and elasticity
-  definition: Scalability is the ability to handle increased workload; elasticity is the ability
-    to adjust resources dynamically as workload changes.
-  detailed_explanation: Vertical scaling changes the size of a resource. Horizontal scaling changes
-    the number of resource instances. Application design, state management and partitioning determine
-    how effectively either approach works.
-  working_principle: To reason about scalability and elasticity, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A database is vertically resized while stateless API replicas are horizontally
-    scaled behind a load balancer.
+  definition: Scalability is the ability to handle increased.
+  detailed_explanation: Vertical scaling changes the size of a.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A database is vertically resized while stateless.
   decision_points:
-  - What requirement makes scalability and elasticity relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A system can be scalable without being elastic if capacity changes
-    require planned manual intervention.
+  - Workload justification for Scalability and elasticity.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A system can be scalable without being.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define scalability and elasticity and explain why it matters in cloud architecture.
-  - Analyze the example of scalability and elasticity and identify one operational risk.
-  - Evaluate the trade-off described for scalability and elasticity under a stated workload constraint.
+  - Architectural role of Scalability and elasticity.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U09
   topic: Availability and reliability
-  definition: Availability describes whether a service is usable when required; reliability concerns
-    its ability to perform correctly over time.
-  detailed_explanation: Availability is influenced by component failure rates, redundancy, dependencies,
-    health checks, failover behavior and maintenance. Reliability also includes correctness and
-    predictable behavior.
-  working_principle: To reason about availability and reliability, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A service runs across multiple failure zones and removes unhealthy instances
-    from traffic.
+  definition: Availability describes whether a service is usable.
+  detailed_explanation: Availability is influenced by component failure rates.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A service runs across multiple failure zones.
   decision_points:
-  - What requirement makes availability and reliability relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A provider's service availability does not automatically make the
-    customer's complete application highly available.
+  - Workload justification for Availability and reliability.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A provider's service availability does not automatically.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define availability and reliability and explain why it matters in cloud architecture.
-  - Analyze the example of availability and reliability and identify one operational risk.
-  - Evaluate the trade-off described for availability and reliability under a stated workload
-    constraint.
+  - Architectural role of Availability and reliability.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U10
   topic: Cloud deployment lifecycle
-  definition: A cloud resource typically moves through request, policy validation, provisioning,
-    configuration, operation, monitoring, modification and decommissioning.
-  detailed_explanation: Lifecycle automation should include ownership tags, configuration baselines,
-    backups, monitoring, cost allocation and teardown. Resources that are no longer needed should
-    be removed or archived deliberately.
-  working_principle: To reason about cloud deployment lifecycle, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An infrastructure pipeline creates a test environment, runs tests, exports results
-    and destroys temporary resources.
+  definition: A cloud resource typically moves through request.
+  detailed_explanation: Lifecycle automation should include ownership tags, configuration.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An infrastructure pipeline creates a test environment.
   decision_points:
-  - What requirement makes cloud deployment lifecycle relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Provisioning without lifecycle ownership often leaves orphaned resources
-    and recurring charges.
+  - Workload justification for Cloud deployment lifecycle.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Provisioning without lifecycle ownership often leaves orphaned.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud deployment lifecycle and explain why it matters in cloud architecture.
-  - Analyze the example of cloud deployment lifecycle and identify one operational risk.
-  - Evaluate the trade-off described for cloud deployment lifecycle under a stated workload constraint.
+  - Architectural role of Cloud deployment lifecycle.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U11
   topic: Cloud risks and constraints
-  definition: Cloud adoption introduces dependencies on network connectivity, provider APIs, identity
-    systems, service quotas, provider availability and contractual terms.
-  detailed_explanation: Risk assessment should include concentration risk, data residency, portability,
-    egress charges, service limits, shared responsibility, incident response and exit planning.
-  working_principle: To reason about cloud risks and constraints, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A workload that depends on a proprietary managed database evaluates export formats
-    and migration options before adoption.
+  definition: Cloud adoption introduces dependencies on network connectivity.
+  detailed_explanation: Risk assessment should include concentration risk, data.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A workload that depends on a proprietary.
   decision_points:
-  - What requirement makes cloud risks and constraints relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Cloud does not eliminate infrastructure risk; it changes where controls
-    and failure modes reside.
+  - Workload justification for Cloud risks and constraints.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Cloud does not eliminate infrastructure risk; it.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud risks and constraints and explain why it matters in cloud architecture.
-  - Analyze the example of cloud risks and constraints and identify one operational risk.
-  - Evaluate the trade-off described for cloud risks and constraints under a stated workload constraint.
+  - Architectural role of Cloud risks and constraints.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_01_U12
   topic: Cloud terminology
-  definition: A resource is a managed or provisioned capability; a workload is the application
-    or processing activity using resources; a tenant is a logically isolated consumer context.
-  detailed_explanation: Regions, zones, instances, images, volumes, snapshots, buckets, policies,
-    endpoints and quotas have provider-specific meanings. Use provider documentation to verify
-    exact semantics.
-  working_principle: To reason about cloud terminology, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A workload may consist of a virtual network, compute instances, a database,
-    object storage and monitoring resources.
+  definition: A resource is a managed or provisioned.
+  detailed_explanation: Regions, zones, instances, images, volumes, snapshots, buckets.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A workload may consist of a virtual.
   decision_points:
-  - What requirement makes cloud terminology relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Provider terms that sound similar are not necessarily identical in
-    behavior or scope.
+  - Workload justification for Cloud terminology.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Provider terms that sound similar are not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud terminology and explain why it matters in cloud architecture.
-  - Analyze the example of cloud terminology and identify one operational risk.
-  - Evaluate the trade-off described for cloud terminology under a stated workload constraint.
+  - Architectural role of Cloud terminology.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_01_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of fundamentals of cloud computing using a small,
-    non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of fundamentals of.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -435,67 +344,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_01_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -511,32 +406,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define fundamentals of cloud computing.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Fundamentals of Cloud Computing
@@ -548,42 +439,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting fundamentals of cloud computing to workload
-    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
-    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting fundamentals of cloud computing to.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,oi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -591,374 +477,295 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_02
   concept_title: Cloud Service Models
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: IaaS, PaaS, SaaS, FaaS, CaaS, abstraction boundaries, control allocation and service-model
-    selection
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: IaaS, PaaS, SaaS, FaaS, CaaS, abstraction boundaries.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain cloud service models using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain cloud service.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Cloud Service Models
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_02_U01
   topic: Infrastructure as a Service (IaaS)
-  definition: IaaS provides fundamental computing resources such as processing, storage and networking,
-    on which the consumer can deploy and run arbitrary software, including operating systems and
-    applications.
-  detailed_explanation: The provider operates the physical data center, host hardware and virtualization
-    layer. The consumer generally controls guest operating systems, installed software, application
-    configuration and much of the workload's data and identity configuration.
-  working_principle: To reason about infrastructure as a service (iaas), identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A team launches a Linux virtual machine, installs a runtime, configures a firewall
-    rule and deploys its own API.
+  definition: IaaS provides fundamental computing resources such as.
+  detailed_explanation: The provider operates the physical data center.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team launches a Linux virtual machine.
   decision_points:
-  - What requirement makes infrastructure as a service (iaas) relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: IaaS offers control but transfers more patching, hardening and capacity-management
-    work to the consumer.
+  - Workload justification for Infrastructure as a Service (IaaS).
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: IaaS offers control but transfers more patching.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define infrastructure as a service (iaas) and explain why it matters in cloud architecture.
-  - Analyze the example of infrastructure as a service (iaas) and identify one operational risk.
-  - Evaluate the trade-off described for infrastructure as a service (iaas) under a stated workload
-    constraint.
+  - Architectural role of Infrastructure as a Service (IaaS).
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U02
   topic: Platform as a Service (PaaS)
-  definition: PaaS provides a platform on which consumers deploy applications without managing
-    the underlying infrastructure and operating system in the same way as IaaS.
-  detailed_explanation: The provider manages more of the runtime platform, operating system maintenance
-    and infrastructure operations. The consumer focuses on application code, application configuration,
-    data and access settings exposed by the platform.
-  working_principle: To reason about platform as a service (paas), identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A developer deploys a web application to a managed application runtime and configures
-    environment variables and scaling settings.
+  definition: PaaS provides a platform on which consumers.
+  detailed_explanation: The provider manages more of the runtime.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A developer deploys a web application to.
   decision_points:
-  - What requirement makes platform as a service (paas) relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: PaaS can constrain operating-system access, runtime versions, networking
-    features or portability.
+  - Workload justification for Platform as a Service (PaaS).
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: PaaS can constrain operating-system access, runtime versions.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define platform as a service (paas) and explain why it matters in cloud architecture.
-  - Analyze the example of platform as a service (paas) and identify one operational risk.
-  - Evaluate the trade-off described for platform as a service (paas) under a stated workload
-    constraint.
+  - Architectural role of Platform as a Service (PaaS).
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U03
   topic: Software as a Service (SaaS)
-  definition: SaaS delivers a provider-operated application that consumers use through a client
-    interface or API.
-  detailed_explanation: The provider manages the application stack and infrastructure. Customers
-    still manage users, access, data classification, configuration, endpoint security and appropriate
-    use of the service.
-  working_principle: To reason about software as a service (saas), identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An organization uses a hosted collaboration suite and configures user accounts,
-    sharing rules and retention settings.
+  definition: SaaS delivers a provider-operated application that consumers.
+  detailed_explanation: The provider manages the application stack and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An organization uses a hosted collaboration suite.
   decision_points:
-  - What requirement makes software as a service (saas) relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: SaaS does not mean the customer has no security responsibilities.
+  - Workload justification for Software as a Service (SaaS).
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: SaaS does not mean the customer has.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define software as a service (saas) and explain why it matters in cloud architecture.
-  - Analyze the example of software as a service (saas) and identify one operational risk.
-  - Evaluate the trade-off described for software as a service (saas) under a stated workload
-    constraint.
+  - Architectural role of Software as a Service (SaaS).
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U04
   topic: Function as a Service (FaaS)
-  definition: FaaS runs event-triggered functions in a provider-managed execution environment,
-    commonly with automatic scaling and usage-based billing.
-  detailed_explanation: The consumer supplies function code and configuration. The platform manages
-    servers and runtime infrastructure, while the consumer remains responsible for code quality,
-    permissions, input validation, data handling and dependency risk.
-  working_principle: To reason about function as a service (faas), identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An object-created event invokes a function that validates metadata and writes
-    a record to a database.
+  definition: FaaS runs event-triggered functions in a provider-managed.
+  detailed_explanation: The consumer supplies function code and configuration.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An object-created event invokes a function that.
   decision_points:
-  - What requirement makes function as a service (faas) relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Functions have execution limits, cold-start behavior, concurrency
-    quotas and event-delivery semantics to consider.
+  - Workload justification for Function as a Service (FaaS).
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Functions have execution limits, cold-start behavior, concurrency.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define function as a service (faas) and explain why it matters in cloud architecture.
-  - Analyze the example of function as a service (faas) and identify one operational risk.
-  - Evaluate the trade-off described for function as a service (faas) under a stated workload
-    constraint.
+  - Architectural role of Function as a Service (FaaS).
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U05
   topic: Containers as a Service (CaaS)
-  definition: CaaS provides managed container execution or orchestration capabilities while abstracting
-    some or all cluster infrastructure operations.
-  detailed_explanation: The service may manage control-plane availability, node provisioning,
-    image integration, networking or scheduling. Responsibility varies by offering, so verify
-    which cluster and node components remain customer-managed.
-  working_principle: To reason about containers as a service (caas), identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A team deploys container images to a managed container platform and configures
-    services, secrets and resource limits.
+  definition: CaaS provides managed container execution or orchestration.
+  detailed_explanation: The service may manage control-plane availability, node.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team deploys container images to a.
   decision_points:
-  - What requirement makes containers as a service (caas) relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: CaaS is not one uniform contract; managed Kubernetes and simpler
-    container hosting expose different control surfaces.
+  - Workload justification for Containers as a Service (CaaS).
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: CaaS is not one uniform contract; managed.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define containers as a service (caas) and explain why it matters in cloud architecture.
-  - Analyze the example of containers as a service (caas) and identify one operational risk.
-  - Evaluate the trade-off described for containers as a service (caas) under a stated workload
-    constraint.
+  - Architectural role of Containers as a Service (CaaS).
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U06
   topic: Abstraction and control
-  definition: Service models differ mainly in the level of abstraction and the amount of operational
-    control exposed to the consumer.
-  detailed_explanation: Higher abstraction reduces infrastructure tasks but may restrict customization.
-    Lower abstraction increases control and responsibility. The right boundary depends on skills,
-    compliance, workload requirements and differentiation.
-  working_principle: To reason about abstraction and control, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A regulated legacy application may require IaaS-level operating-system control,
-    while a new stateless API may fit PaaS.
+  definition: Service models differ mainly in the level.
+  detailed_explanation: Higher abstraction reduces infrastructure tasks but may.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A regulated legacy application may require IaaS-level.
   decision_points:
-  - What requirement makes abstraction and control relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: More control is not automatically better if the team cannot operate
-    the resulting stack safely.
+  - Workload justification for Abstraction and control.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: More control is not automatically better if.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define abstraction and control and explain why it matters in cloud architecture.
-  - Analyze the example of abstraction and control and identify one operational risk.
-  - Evaluate the trade-off described for abstraction and control under a stated workload constraint.
+  - Architectural role of Abstraction and control.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U07
   topic: Service model responsibility matrix
-  definition: A responsibility matrix identifies who manages facilities, hardware, virtualization,
-    operating systems, middleware, runtime, application code, identity and data for a service.
-  detailed_explanation: The boundary shifts by model and by provider product. The matrix should
-    be recorded for each selected service, not assumed from a generic label.
-  working_principle: To reason about service model responsibility matrix, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A SaaS customer configures access and data retention while the provider patches
-    the SaaS application platform.
+  definition: A responsibility matrix identifies who manages facilities.
+  detailed_explanation: The boundary shifts by model and by.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A SaaS customer configures access and data.
   decision_points:
-  - What requirement makes service model responsibility matrix relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A generic IaaS/PaaS/SaaS diagram is a starting point, not a substitute
-    for service-specific documentation.
+  - Workload justification for Service model responsibility matrix.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A generic IaaS/PaaS/SaaS diagram is a starting.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define service model responsibility matrix and explain why it matters in cloud architecture.
-  - Analyze the example of service model responsibility matrix and identify one operational risk.
-  - Evaluate the trade-off described for service model responsibility matrix under a stated workload
-    constraint.
+  - Architectural role of Service model responsibility matrix.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U08
   topic: Selecting a service model
-  definition: Selection should weigh control requirements, operational capability, deployment
-    speed, compliance, portability, performance and total cost.
-  detailed_explanation: Start with workload constraints, then identify the minimum abstraction
-    level that satisfies them. Evaluate operational toil as well as direct infrastructure cost.
-  working_principle: To reason about selecting a service model, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A small team selects PaaS for a standard web API to avoid maintaining guest
-    operating systems.
+  definition: Selection should weigh control requirements, operational capability.
+  detailed_explanation: Start with workload constraints, then identify the.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A small team selects PaaS for a.
   decision_points:
-  - What requirement makes selecting a service model relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Choosing the most abstract service without checking network, runtime
-    and data requirements can create a poor fit.
+  - Workload justification for Selecting a service model.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Choosing the most abstract service without checking.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define selecting a service model and explain why it matters in cloud architecture.
-  - Analyze the example of selecting a service model and identify one operational risk.
-  - Evaluate the trade-off described for selecting a service model under a stated workload constraint.
+  - Architectural role of Selecting a service model.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U09
   topic: Cross-provider equivalents
-  definition: AWS, Azure and Google Cloud offer services across infrastructure, application platform,
-    software, function and container categories, but product boundaries differ.
-  detailed_explanation: 'Compare capabilities rather than matching names alone: supported runtimes,
-    networking, identity integration, scaling behavior, regional availability, limits and billing
-    dimensions matter.'
-  working_principle: To reason about cross-provider equivalents, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A VM comparison should consider instance families, disk behavior, networking,
-    images, quota and support rather than only vCPU count.
+  definition: AWS, Azure and Google Cloud offer services.
+  detailed_explanation: Compare capabilities rather than matching names alone.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM comparison should consider instance families.
   decision_points:
-  - What requirement makes cross-provider equivalents relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A one-to-one product-name mapping can conceal important differences
-    in operations and pricing.
+  - Workload justification for Cross-provider equivalents.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A one-to-one product-name mapping can conceal important.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cross-provider equivalents and explain why it matters in cloud architecture.
-  - Analyze the example of cross-provider equivalents and identify one operational risk.
-  - Evaluate the trade-off described for cross-provider equivalents under a stated workload constraint.
+  - Architectural role of Cross-provider equivalents.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_02_U10
   topic: Service model anti-patterns
-  definition: Common anti-patterns include using IaaS for workloads that need no OS control, assuming
-    SaaS removes customer governance, and selecting FaaS for long-running stateful jobs.
-  detailed_explanation: Review operational burden, execution limits, state requirements and integration
-    patterns before committing to a model.
-  working_principle: To reason about service model anti-patterns, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A batch process that runs for many hours may fit a managed batch service better
-    than a short-lived function.
+  definition: Common anti-patterns include using IaaS for workloads.
+  detailed_explanation: Review operational burden, execution limits, state requirements.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A batch process that runs for many.
   decision_points:
-  - What requirement makes service model anti-patterns relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Service-model labels alone do not determine architecture quality.
+  - Workload justification for Service model anti-patterns.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Service-model labels alone do not determine architecture.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define service model anti-patterns and explain why it matters in cloud architecture.
-  - Analyze the example of service model anti-patterns and identify one operational risk.
-  - Evaluate the trade-off described for service model anti-patterns under a stated workload constraint.
+  - Architectural role of Service model anti-patterns.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_02_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of cloud service models using a small, non-production
-    cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of cloud service.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -967,67 +774,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_02_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -1043,32 +836,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define cloud service models.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Cloud Service Models
@@ -1080,42 +869,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting cloud service models to workload requirements,
-    architecture boundaries, operational evidence and measurable trade-offs. A defensible answer
-    states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting cloud service models to workload.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,ri=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -1123,428 +907,337 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_03
   concept_title: Shared Responsibility Model
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: provider/customer security boundary, control ownership, cloud service variations,
-    incident classification, evidence and least-privilege operations
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: provider/customer security boundary, control ownership, cloud service.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain shared responsibility model using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain shared responsibility.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Shared Responsibility Model
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_03_U01
   topic: Shared responsibility principle
-  definition: Cloud security and compliance responsibilities are divided between the cloud provider
-    and the customer; the division changes with the service consumed.
-  detailed_explanation: The provider is responsible for security of the cloud, including facilities
-    and underlying infrastructure. The customer is responsible for security in the cloud, including
-    customer data, identities, configurations and workload controls as applicable.
-  working_principle: To reason about shared responsibility principle, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A provider secures the physical data center while a customer configures an object
-    bucket to prevent unintended public access.
+  definition: Cloud security and compliance responsibilities are divided.
+  detailed_explanation: The provider is responsible for security of.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A provider secures the physical data center.
   decision_points:
-  - What requirement makes shared responsibility principle relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: The phrase 'the provider handles security' is too broad and can cause
-    serious control gaps.
+  - Workload justification for Shared responsibility principle.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: The phrase 'the provider handles security' is.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define shared responsibility principle and explain why it matters in cloud architecture.
-  - Analyze the example of shared responsibility principle and identify one operational risk.
-  - Evaluate the trade-off described for shared responsibility principle under a stated workload
-    constraint.
+  - Architectural role of Shared responsibility principle.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U02
   topic: Security of the cloud
-  definition: Provider-operated controls protect facilities, physical hardware, foundational networking
-    and managed service infrastructure within the provider's scope.
-  detailed_explanation: Provider assurance may include physical access controls, hardware lifecycle
-    processes, environmental safeguards, infrastructure monitoring and service resilience. Customers
-    should review independent assurance reports and service commitments.
-  working_principle: To reason about security of the cloud, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A customer relies on provider-controlled physical access restrictions for the
-    host running its VM.
+  definition: Provider-operated controls protect facilities, physical hardware, foundational.
+  detailed_explanation: Provider assurance may include physical access controls.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A customer relies on provider-controlled physical access.
   decision_points:
-  - What requirement makes security of the cloud relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Provider controls do not automatically protect customer credentials,
-    application vulnerabilities or exposed data.
+  - Workload justification for Security of the cloud.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Provider controls do not automatically protect customer.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define security of the cloud and explain why it matters in cloud architecture.
-  - Analyze the example of security of the cloud and identify one operational risk.
-  - Evaluate the trade-off described for security of the cloud under a stated workload constraint.
+  - Architectural role of Security of the cloud.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U03
   topic: Security in the cloud
-  definition: Customer controls protect identities, data, workload configuration, applications,
-    operating systems and network rules to the extent those controls are exposed to the customer.
-  detailed_explanation: The customer must identify assets, classify data, configure access, patch
-    customer-managed components, monitor activity and respond to workload incidents.
-  working_principle: To reason about security in the cloud, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A customer patches a VM guest OS, restricts inbound ports and rotates an application
-    secret.
+  definition: Customer controls protect identities, data, workload configuration.
+  detailed_explanation: The customer must identify assets, classify data.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A customer patches a VM guest OS.
   decision_points:
-  - What requirement makes security in the cloud relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Responsibility for a control can be shared; the exact service configuration
-    determines the customer's tasks.
+  - Workload justification for Security in the cloud.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Responsibility for a control can be shared.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define security in the cloud and explain why it matters in cloud architecture.
-  - Analyze the example of security in the cloud and identify one operational risk.
-  - Evaluate the trade-off described for security in the cloud under a stated workload constraint.
+  - Architectural role of Security in the cloud.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U04
   topic: Responsibility changes by service model
-  definition: IaaS generally leaves more operating-system and network configuration responsibility
-    with the customer than PaaS or SaaS.
-  detailed_explanation: As the provider manages more of the stack, customer responsibility shifts
-    toward data, identity, configuration, access and application usage. Product-specific exceptions
-    must be documented.
-  working_principle: To reason about responsibility changes by service model, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A customer manages guest OS patching on a VM but typically does not patch the
-    underlying host OS of a fully managed SaaS product.
+  definition: IaaS generally leaves more operating-system and network.
+  detailed_explanation: As the provider manages more of the.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A customer manages guest OS patching on.
   decision_points:
-  - What requirement makes responsibility changes by service model relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not transfer a responsibility matrix from one product to another
-    without verification.
+  - Workload justification for Responsibility changes by service model.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not transfer a responsibility matrix from.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define responsibility changes by service model and explain why it matters in cloud architecture.
-  - Analyze the example of responsibility changes by service model and identify one operational
-    risk.
-  - Evaluate the trade-off described for responsibility changes by service model under a stated
-    workload constraint.
+  - Architectural role of Responsibility changes by service model.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U05
   topic: Identity and access ownership
-  definition: The provider supplies identity and access mechanisms, while the customer defines
-    users, roles, permissions, authentication strength and credential hygiene for its environment.
-  detailed_explanation: Use federated identity, MFA, role-based access, least privilege, temporary
-    credentials, separation of duties and periodic access review.
-  working_principle: To reason about identity and access ownership, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An organization enforces MFA for administrators and grants a deployment role
-    only the actions required by its pipeline.
+  definition: The provider supplies identity and access mechanisms.
+  detailed_explanation: Use federated identity, MFA, role-based access, least.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An organization enforces MFA for administrators and.
   decision_points:
-  - What requirement makes identity and access ownership relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A provider's secure identity service cannot compensate for an administrator
-    who grants wildcard permissions.
+  - Workload justification for Identity and access ownership.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A provider's secure identity service cannot compensate.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define identity and access ownership and explain why it matters in cloud architecture.
-  - Analyze the example of identity and access ownership and identify one operational risk.
-  - Evaluate the trade-off described for identity and access ownership under a stated workload
-    constraint.
+  - Architectural role of Identity and access ownership.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U06
   topic: Data protection ownership
-  definition: Customers are responsible for classifying and handling their data and selecting
-    appropriate access, encryption, retention and deletion settings.
-  detailed_explanation: Provider encryption features may protect data at rest or in transit, but
-    customers must understand key ownership, policy configuration, backups, sharing and legal
-    requirements.
-  working_principle: To reason about data protection ownership, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A customer enables encryption, limits bucket access and defines retention for
-    regulated records.
+  definition: Customers are responsible for classifying and handling.
+  detailed_explanation: Provider encryption features may protect data at.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A customer enables encryption, limits bucket access.
   decision_points:
-  - What requirement makes data protection ownership relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Encryption being available by default does not prove that the complete
-    data lifecycle meets policy.
+  - Workload justification for Data protection ownership.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Encryption being available by default does not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define data protection ownership and explain why it matters in cloud architecture.
-  - Analyze the example of data protection ownership and identify one operational risk.
-  - Evaluate the trade-off described for data protection ownership under a stated workload constraint.
+  - Architectural role of Data protection ownership.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U07
   topic: Configuration and patching
-  definition: The party responsible for configuration and patching depends on the layer and managed-service
-    contract.
-  detailed_explanation: For IaaS, customers commonly patch guest operating systems and applications.
-    For managed databases, the provider may patch engine infrastructure while customers manage
-    schemas, credentials, query behavior and maintenance settings.
-  working_principle: To reason about configuration and patching, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A VM owner applies security updates; a managed database customer schedules an
-    engine maintenance window and updates application drivers.
+  definition: The party responsible for configuration and patching.
+  detailed_explanation: For IaaS, customers commonly patch guest operating.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM owner applies security updates; a.
   decision_points:
-  - What requirement makes configuration and patching relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A managed service does not mean every customer-visible setting is
-    automatically secure.
+  - Workload justification for Configuration and patching.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A managed service does not mean every.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define configuration and patching and explain why it matters in cloud architecture.
-  - Analyze the example of configuration and patching and identify one operational risk.
-  - Evaluate the trade-off described for configuration and patching under a stated workload constraint.
+  - Architectural role of Configuration and patching.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U08
   topic: Incident ownership
-  definition: Incident response requires coordinated provider and customer actions, with clear
-    escalation paths and evidence preservation.
-  detailed_explanation: The customer investigates workload logs, IAM activity, application behavior
-    and configuration changes. The provider may investigate underlying service events and infrastructure
-    issues within its scope.
-  working_principle: To reason about incident ownership, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A customer reports a suspected host-level issue to the provider while isolating
-    compromised application credentials.
+  definition: Incident response requires coordinated provider and customer.
+  detailed_explanation: The customer investigates workload logs, IAM activity.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A customer reports a suspected host-level issue.
   decision_points:
-  - What requirement makes incident ownership relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Blaming the provider before identifying the affected layer delays
-    containment.
+  - Workload justification for Incident ownership.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Blaming the provider before identifying the affected.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define incident ownership and explain why it matters in cloud architecture.
-  - Analyze the example of incident ownership and identify one operational risk.
-  - Evaluate the trade-off described for incident ownership under a stated workload constraint.
+  - Architectural role of Incident ownership.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U09
   topic: Control ownership classification
-  definition: Classify a control by layer, service model, product contract and the actor able
-    to configure or operate it.
-  detailed_explanation: For each control, record owner, evidence source, review cadence, escalation
-    path and residual risk. Distinguish provider-operated controls from customer-configurable
-    controls.
-  working_principle: To reason about control ownership classification, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: For an exposed storage object, inspect bucket policy, access settings, identity
-    grants and audit events before assigning ownership.
+  definition: Classify a control by layer, service model.
+  detailed_explanation: For each control, record owner, evidence source.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: For an exposed storage object, inspect bucket.
   decision_points:
-  - What requirement makes control ownership classification relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A control may have shared implementation but a single accountable
-    owner in the customer's governance register.
+  - Workload justification for Control ownership classification.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A control may have shared implementation but.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define control ownership classification and explain why it matters in cloud architecture.
-  - Analyze the example of control ownership classification and identify one operational risk.
-  - Evaluate the trade-off described for control ownership classification under a stated workload
-    constraint.
+  - Architectural role of Control ownership classification.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U10
   topic: 'Break-fix: public storage exposure'
-  definition: A public storage exposure is commonly caused by customer-controlled access policy,
-    public-access settings or application-level sharing configuration.
-  detailed_explanation: Inspect the resource policy, identity permissions, public-access blocks,
-    object ACL behavior where applicable and access logs. Preserve evidence, restrict exposure,
-    rotate affected credentials if needed and assess data access.
-  working_principle: 'To reason about break-fix: public storage exposure, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.'
-  worked_example: A storage bucket becomes publicly readable after a broad resource policy is
-    applied; the customer removes the grant and reviews audit evidence.
+  definition: A public storage exposure is commonly caused.
+  detailed_explanation: Inspect the resource policy, identity permissions, public-access.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A storage bucket becomes publicly readable after.
   decision_points:
-  - 'What requirement makes break-fix: public storage exposure relevant to this workload?'
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not assume provider physical security prevents internet exposure
-    caused by customer configuration.
+  - 'Workload justification for Break-fix: public storage exposure.'
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not assume provider physical security prevents.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - 'Define break-fix: public storage exposure and explain why it matters in cloud architecture.'
-  - 'Analyze the example of break-fix: public storage exposure and identify one operational risk.'
-  - 'Evaluate the trade-off described for break-fix: public storage exposure under a stated workload
-    constraint.'
+  - 'Architectural role of Break-fix: public storage exposure.'
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U11
   topic: 'Break-fix: unpatched guest'
-  definition: An unpatched guest operating system on an IaaS VM is normally within the customer's
-    patch-management responsibility.
-  detailed_explanation: Confirm image age, patch baseline, update status, maintenance window and
-    vulnerability evidence. Patch or rebuild from a maintained image, then validate service health.
-  working_principle: 'To reason about break-fix: unpatched guest, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.'
-  worked_example: A VM remains vulnerable because the team assumed the cloud provider patched
-    guest operating systems.
+  definition: An unpatched guest operating system on an.
+  detailed_explanation: Confirm image age, patch baseline, update status.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM remains vulnerable because the team.
   decision_points:
-  - 'What requirement makes break-fix: unpatched guest relevant to this workload?'
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Provider host maintenance and customer guest maintenance are different
-    layers.
+  - 'Workload justification for Break-fix: unpatched guest.'
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Provider host maintenance and customer guest maintenance.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - 'Define break-fix: unpatched guest and explain why it matters in cloud architecture.'
-  - 'Analyze the example of break-fix: unpatched guest and identify one operational risk.'
-  - 'Evaluate the trade-off described for break-fix: unpatched guest under a stated workload constraint.'
+  - 'Architectural role of Break-fix: unpatched guest.'
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_03_U12
   topic: Evidence and assurance
-  definition: Responsibility claims should be supported by provider documentation, service terms,
-    audit evidence and customer configuration records.
-  detailed_explanation: Use service-specific responsibility documentation, compliance reports,
-    configuration snapshots, access logs, change records and incident timelines.
-  working_principle: To reason about evidence and assurance, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An auditor asks who patches a managed database engine and the team provides
-    the product responsibility documentation and maintenance configuration.
+  definition: Responsibility claims should be supported by provider.
+  detailed_explanation: Use service-specific responsibility documentation, compliance reports, configuration.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An auditor asks who patches a managed.
   decision_points:
-  - What requirement makes evidence and assurance relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A marketing statement is not sufficient evidence of a control's scope
-    or effectiveness.
+  - Workload justification for Evidence and assurance.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A marketing statement is not sufficient evidence.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define evidence and assurance and explain why it matters in cloud architecture.
-  - Analyze the example of evidence and assurance and identify one operational risk.
-  - Evaluate the trade-off described for evidence and assurance under a stated workload constraint.
+  - Architectural role of Evidence and assurance.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_03_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of shared responsibility model using a small,
-    non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of shared responsibility.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -1553,67 +1246,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_03_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -1629,32 +1308,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define shared responsibility model.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Shared Responsibility Model
@@ -1666,42 +1341,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting shared responsibility model to workload
-    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
-    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting shared responsibility model to workload.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,si=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -1709,371 +1379,295 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_04
   concept_title: Cloud Deployment Models
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: public, private, community, hybrid, multicloud, sovereign cloud, cloud bursting, placement
-    decisions and governance
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: public, private, community, hybrid, multicloud, sovereign cloud.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain cloud deployment models using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain cloud deployment.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Cloud Deployment Models
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_04_U01
   topic: Public cloud
-  definition: Public cloud infrastructure is provisioned for open use by the general public and
-    operated by a cloud provider.
-  detailed_explanation: The provider offers shared infrastructure and standardized services across
-    customers, with logical isolation and service-specific controls. Customers consume capacity
-    without owning the provider's physical facilities.
-  working_principle: To reason about public cloud, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A startup hosts its customer-facing API in a provider region and uses managed
-    storage and database services.
+  definition: Public cloud infrastructure is provisioned for open.
+  detailed_explanation: The provider offers shared infrastructure and standardized.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A startup hosts its customer-facing API in.
   decision_points:
-  - What requirement makes public cloud relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Public cloud does not imply public access to customer workloads or
-    data.
+  - Workload justification for Public cloud.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Public cloud does not imply public access.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define public cloud and explain why it matters in cloud architecture.
-  - Analyze the example of public cloud and identify one operational risk.
-  - Evaluate the trade-off described for public cloud under a stated workload constraint.
+  - Architectural role of Public cloud.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U02
   topic: Private cloud
-  definition: Private cloud infrastructure is provisioned for exclusive use by a single organization,
-    though it may be operated by the organization or a third party.
-  detailed_explanation: Private cloud can provide greater control over placement, customization
-    and governance, but the organization or operator must manage capacity, automation, security
-    and lifecycle operations.
-  working_principle: To reason about private cloud, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A bank operates a dedicated cloud environment for workloads with strict internal
-    placement requirements.
+  definition: Private cloud infrastructure is provisioned for exclusive.
+  detailed_explanation: Private cloud can provide greater control over.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A bank operates a dedicated cloud environment.
   decision_points:
-  - What requirement makes private cloud relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A virtualized data center is not automatically a mature private cloud
-    unless it offers cloud-like self-service, pooling and automation.
+  - Workload justification for Private cloud.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A virtualized data center is not automatically.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define private cloud and explain why it matters in cloud architecture.
-  - Analyze the example of private cloud and identify one operational risk.
-  - Evaluate the trade-off described for private cloud under a stated workload constraint.
+  - Architectural role of Private cloud.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U03
   topic: Community cloud
-  definition: Community cloud infrastructure is shared by organizations with common concerns such
-    as mission, security requirements, policy or compliance.
-  detailed_explanation: The community defines governance, membership, shared controls, cost allocation
-    and service responsibilities. It may be operated by one or more community organizations or
-    a third party.
-  working_principle: To reason about community cloud, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: Several public-sector agencies use a jointly governed environment designed around
-    common regulatory requirements.
+  definition: Community cloud infrastructure is shared by organizations.
+  detailed_explanation: The community defines governance, membership, shared controls.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: Several public-sector agencies use a jointly governed.
   decision_points:
-  - What requirement makes community cloud relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A community cloud is defined by shared organizational concerns, not
-    simply by multiple departments using one account.
+  - Workload justification for Community cloud.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A community cloud is defined by shared.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define community cloud and explain why it matters in cloud architecture.
-  - Analyze the example of community cloud and identify one operational risk.
-  - Evaluate the trade-off described for community cloud under a stated workload constraint.
+  - Architectural role of Community cloud.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U04
   topic: Hybrid cloud
-  definition: Hybrid cloud combines distinct cloud infrastructures, such as private and public
-    environments, that remain separate but are connected through technology and management arrangements.
-  detailed_explanation: Hybrid design requires identity integration, network connectivity, data
-    synchronization, workload placement, monitoring and consistent governance across environments.
-  working_principle: To reason about hybrid cloud, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A company keeps a legacy database on premises while a public-cloud application
-    tier accesses it over a private connection.
+  definition: Hybrid cloud combines distinct cloud infrastructures, such.
+  detailed_explanation: Hybrid design requires identity integration, network connectivity.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A company keeps a legacy database on.
   decision_points:
-  - What requirement makes hybrid cloud relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Hybrid is more than having both on-premises servers and a cloud account;
-    integration and coordinated operation are essential.
+  - Workload justification for Hybrid cloud.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Hybrid is more than having both on-premises.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define hybrid cloud and explain why it matters in cloud architecture.
-  - Analyze the example of hybrid cloud and identify one operational risk.
-  - Evaluate the trade-off described for hybrid cloud under a stated workload constraint.
+  - Architectural role of Hybrid cloud.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U05
   topic: Multicloud
-  definition: Multicloud uses services from more than one cloud provider, whether for different
-    workloads, resilience, geographic needs or organizational choice.
-  detailed_explanation: It can reduce dependence on one provider but increases identity, networking,
-    policy, skills, observability, data movement and cost complexity. Workload portability is
-    not guaranteed.
-  working_principle: To reason about multicloud, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An organization uses one provider for analytics and another for a customer-facing
-    application due to capability or commercial constraints.
+  definition: Multicloud uses services from more than one.
+  detailed_explanation: It can reduce dependence on one provider.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An organization uses one provider for analytics.
   decision_points:
-  - What requirement makes multicloud relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Using two providers does not automatically create disaster recovery
-    or avoid lock-in.
+  - Workload justification for Multicloud.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Using two providers does not automatically create.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define multicloud and explain why it matters in cloud architecture.
-  - Analyze the example of multicloud and identify one operational risk.
-  - Evaluate the trade-off described for multicloud under a stated workload constraint.
+  - Architectural role of Multicloud.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U06
   topic: Sovereign cloud and data residency
-  definition: Sovereign cloud offerings and regional controls address requirements concerning
-    data location, jurisdiction, operational control and legal authority.
-  detailed_explanation: Evaluate where data is stored, where it is processed, who can administer
-    the service, applicable laws, support access and contractual commitments. Residency and sovereignty
-    are related but not identical.
-  working_principle: To reason about sovereign cloud and data residency, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A workload stores regulated records in an approved jurisdiction and restricts
-    administrative access according to policy.
+  definition: Sovereign cloud offerings and regional controls address.
+  detailed_explanation: Evaluate where data is stored, where it.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A workload stores regulated records in an.
   decision_points:
-  - What requirement makes sovereign cloud and data residency relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Selecting a region alone may not satisfy every sovereignty or cross-border
-    access requirement.
+  - Workload justification for Sovereign cloud and data residency.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Selecting a region alone may not satisfy.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define sovereign cloud and data residency and explain why it matters in cloud architecture.
-  - Analyze the example of sovereign cloud and data residency and identify one operational risk.
-  - Evaluate the trade-off described for sovereign cloud and data residency under a stated workload
-    constraint.
+  - Architectural role of Sovereign cloud and data residency.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U07
   topic: Cloud bursting
-  definition: Cloud bursting temporarily extends a private or primary environment into public
-    cloud capacity when demand exceeds local capacity.
-  detailed_explanation: Bursting requires compatible application deployment, identity, network
-    reachability, data replication, licensing and a method to route traffic to burst capacity.
-  working_principle: To reason about cloud bursting, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A university simulation cluster sends overflow jobs to cloud compute during
-    examination periods.
+  definition: Cloud bursting temporarily extends a private or.
+  detailed_explanation: Bursting requires compatible application deployment, identity, network.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A university simulation cluster sends overflow jobs.
   decision_points:
-  - What requirement makes cloud bursting relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Cloud bursting is not synonymous with multicloud; it describes a
-    capacity-extension pattern.
+  - Workload justification for Cloud bursting.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Cloud bursting is not synonymous with multicloud.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud bursting and explain why it matters in cloud architecture.
-  - Analyze the example of cloud bursting and identify one operational risk.
-  - Evaluate the trade-off described for cloud bursting under a stated workload constraint.
+  - Architectural role of Cloud bursting.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U08
   topic: Deployment model decision factors
-  definition: Choose a deployment model by evaluating data sensitivity, residency, latency, control,
-    elasticity, skills, availability, cost and regulatory requirements.
-  detailed_explanation: Use explicit constraints and rank trade-offs. Identify which requirements
-    are mandatory and which are preferences, then validate with a representative workload.
-  working_principle: To reason about deployment model decision factors, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A low-latency edge workload may need local processing while central analytics
-    runs in a public region.
+  definition: Choose a deployment model by evaluating data.
+  detailed_explanation: Use explicit constraints and rank trade-offs.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A low-latency edge workload may need local.
   decision_points:
-  - What requirement makes deployment model decision factors relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Choosing a model based only on perceived security or prestige ignores
-    operational and economic realities.
+  - Workload justification for Deployment model decision factors.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Choosing a model based only on perceived.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define deployment model decision factors and explain why it matters in cloud architecture.
-  - Analyze the example of deployment model decision factors and identify one operational risk.
-  - Evaluate the trade-off described for deployment model decision factors under a stated workload
-    constraint.
+  - Architectural role of Deployment model decision factors.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U09
   topic: Connectivity and integration
-  definition: Hybrid and multicloud environments require reliable connectivity, consistent identity
-    and controlled data exchange.
-  detailed_explanation: Options include VPN, dedicated circuits, private service connectivity,
-    gateways, routing controls and federated identity. Design for redundancy and failure behavior.
-  working_principle: To reason about connectivity and integration, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A private circuit connects a data center to a cloud virtual network with a backup
-    VPN path.
+  definition: Hybrid and multicloud environments require reliable connectivity.
+  detailed_explanation: Options include VPN, dedicated circuits, private service.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A private circuit connects a data center.
   decision_points:
-  - What requirement makes connectivity and integration relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Private connectivity does not remove the need for encryption, routing
-    controls or identity authorization.
+  - Workload justification for Connectivity and integration.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Private connectivity does not remove the need.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define connectivity and integration and explain why it matters in cloud architecture.
-  - Analyze the example of connectivity and integration and identify one operational risk.
-  - Evaluate the trade-off described for connectivity and integration under a stated workload
-    constraint.
+  - Architectural role of Connectivity and integration.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_04_U10
   topic: Governance across environments
-  definition: Governance defines policy, ownership, inventory, tagging, audit, cost allocation
-    and baseline configuration across deployment environments.
-  detailed_explanation: Use common control objectives while allowing provider-specific implementation.
-    Track exceptions, drift, ownership and evidence in a central governance process.
-  working_principle: To reason about governance across environments, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A policy requires encryption and owner tags across accounts and on-premises
-    environments.
+  definition: Governance defines policy, ownership, inventory, tagging, audit.
+  detailed_explanation: Use common control objectives while allowing provider-specific.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A policy requires encryption and owner tags.
   decision_points:
-  - What requirement makes governance across environments relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A single dashboard does not guarantee consistent enforcement across
-    independent platforms.
+  - Workload justification for Governance across environments.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A single dashboard does not guarantee consistent.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define governance across environments and explain why it matters in cloud architecture.
-  - Analyze the example of governance across environments and identify one operational risk.
-  - Evaluate the trade-off described for governance across environments under a stated workload
-    constraint.
+  - Architectural role of Governance across environments.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_04_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of cloud deployment models using a small, non-production
-    cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of cloud deployment.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -2082,67 +1676,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_04_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -2158,32 +1738,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define cloud deployment models.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Cloud Deployment Models
@@ -2195,42 +1771,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting cloud deployment models to workload requirements,
-    architecture boundaries, operational evidence and measurable trade-offs. A defensible answer
-    states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting cloud deployment models to workload.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,ci=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -2238,420 +1809,337 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_05
   concept_title: Cloud Virtualization Fundamentals
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: abstraction, hardware virtualization, resource partitioning, isolation, virtual CPU,
-    memory, storage, networking and performance
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: abstraction, hardware virtualization, resource partitioning, isolation, virtual.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain cloud virtualization fundamentals using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain cloud virtualization.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Cloud Virtualization Fundamentals
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_05_U01
   topic: Virtualization concept
-  definition: Virtualization creates a software-defined representation of computing resources
-    so multiple isolated environments can share underlying physical infrastructure.
-  detailed_explanation: A virtualization layer maps virtual resources to physical resources and
-    enforces boundaries. It enables consolidation, flexible provisioning, snapshots and workload
-    mobility subject to compatibility and platform limits.
-  working_principle: To reason about virtualization concept, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: Several virtual machines run on one physical server while each sees its own
-    virtual hardware configuration.
+  definition: Virtualization creates a software-defined representation of computing.
+  detailed_explanation: A virtualization layer maps virtual resources to.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: Several virtual machines run on one physical.
   decision_points:
-  - What requirement makes virtualization concept relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Virtualization is a mechanism that supports cloud services; it is
-    not by itself the complete cloud operating model.
+  - Workload justification for Virtualization concept.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Virtualization is a mechanism that supports cloud.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define virtualization concept and explain why it matters in cloud architecture.
-  - Analyze the example of virtualization concept and identify one operational risk.
-  - Evaluate the trade-off described for virtualization concept under a stated workload constraint.
+  - Architectural role of Virtualization concept.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U02
   topic: Host and guest
-  definition: The host is the physical or controlling environment that provides resources; a guest
-    is a virtual machine operating system running on virtual hardware.
-  detailed_explanation: The hypervisor mediates access to CPU, memory, storage and network devices.
-    Guest operating systems use virtual devices and drivers to interact with the platform.
-  working_principle: To reason about host and guest, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A Linux guest sees virtual CPUs and a virtual network interface backed by a
-    physical host.
+  definition: The host is the physical or controlling.
+  detailed_explanation: The hypervisor mediates access to CPU, memory.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A Linux guest sees virtual CPUs and.
   decision_points:
-  - What requirement makes host and guest relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Guest-level metrics may not expose all host contention or scheduling
-    delays.
+  - Workload justification for Host and guest.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Guest-level metrics may not expose all host.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define host and guest and explain why it matters in cloud architecture.
-  - Analyze the example of host and guest and identify one operational risk.
-  - Evaluate the trade-off described for host and guest under a stated workload constraint.
+  - Architectural role of Host and guest.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U03
   topic: Hypervisor role
-  definition: A hypervisor creates, runs and manages virtual machines by allocating and isolating
-    hardware resources.
-  detailed_explanation: It handles CPU scheduling, memory mapping, device virtualization, interrupt
-    handling and VM lifecycle operations. Implementations differ in architecture and hardware
-    assistance.
-  working_principle: To reason about hypervisor role, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: The hypervisor schedules vCPU execution onto available physical CPU cores.
+  definition: A hypervisor creates, runs and manages virtual.
+  detailed_explanation: It handles CPU scheduling, memory mapping, device.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: The hypervisor schedules vCPU execution onto available.
   decision_points:
-  - What requirement makes hypervisor role relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A hypervisor does not make physical capacity infinite; overcommitment
-    can cause contention.
+  - Workload justification for Hypervisor role.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A hypervisor does not make physical capacity.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define hypervisor role and explain why it matters in cloud architecture.
-  - Analyze the example of hypervisor role and identify one operational risk.
-  - Evaluate the trade-off described for hypervisor role under a stated workload constraint.
+  - Architectural role of Hypervisor role.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U04
   topic: CPU virtualization
-  definition: CPU virtualization exposes virtual processors to guests and schedules their execution
-    on physical processor resources.
-  detailed_explanation: A vCPU is a schedulable virtual execution context, not necessarily a dedicated
-    physical core. Performance depends on host capacity, scheduling, topology, workload parallelism
-    and contention.
-  working_principle: To reason about cpu virtualization, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A VM configured with four vCPUs may share physical cores with other VMs.
+  definition: CPU virtualization exposes virtual processors to guests.
+  detailed_explanation: A vCPU is a schedulable virtual execution.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM configured with four vCPUs may.
   decision_points:
-  - What requirement makes cpu virtualization relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Increasing vCPU count can fail to improve performance when the application
-    is serial or host contention dominates.
+  - Workload justification for CPU virtualization.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Increasing vCPU count can fail to improve.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cpu virtualization and explain why it matters in cloud architecture.
-  - Analyze the example of cpu virtualization and identify one operational risk.
-  - Evaluate the trade-off described for cpu virtualization under a stated workload constraint.
+  - Architectural role of CPU virtualization.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U05
   topic: Memory virtualization
-  definition: Memory virtualization maps guest-visible memory to physical memory through translation
-    mechanisms and platform management.
-  detailed_explanation: The hypervisor may use hardware-assisted address translation, memory reservation,
-    ballooning, swapping or other mechanisms. Overcommitment can increase density but may degrade
-    latency under pressure.
-  working_principle: To reason about memory virtualization, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A guest requests memory pages while the hypervisor maps them to host physical
-    pages.
+  definition: Memory virtualization maps guest-visible memory to physical.
+  detailed_explanation: The hypervisor may use hardware-assisted address translation.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A guest requests memory pages while the.
   decision_points:
-  - What requirement makes memory virtualization relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Guest free-memory metrics do not always reveal host-level reclamation
-    or swapping.
+  - Workload justification for Memory virtualization.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Guest free-memory metrics do not always reveal.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define memory virtualization and explain why it matters in cloud architecture.
-  - Analyze the example of memory virtualization and identify one operational risk.
-  - Evaluate the trade-off described for memory virtualization under a stated workload constraint.
+  - Architectural role of Memory virtualization.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U06
   topic: Storage virtualization
-  definition: Storage virtualization presents logical disks or volumes independently of the physical
-    storage devices that back them.
-  detailed_explanation: The platform maps virtual disk blocks to storage systems and may support
-    snapshots, thin provisioning, replication and performance tiers. I/O latency depends on queues,
-    network path and storage policy.
-  working_principle: To reason about storage virtualization, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A VM attaches a virtual disk that is backed by a distributed block-storage service.
+  definition: Storage virtualization presents logical disks or volumes.
+  detailed_explanation: The platform maps virtual disk blocks to.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM attaches a virtual disk that.
   decision_points:
-  - What requirement makes storage virtualization relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A virtual disk's advertised capacity does not guarantee a particular
-    IOPS or latency level.
+  - Workload justification for Storage virtualization.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A virtual disk's advertised capacity does not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define storage virtualization and explain why it matters in cloud architecture.
-  - Analyze the example of storage virtualization and identify one operational risk.
-  - Evaluate the trade-off described for storage virtualization under a stated workload constraint.
+  - Architectural role of Storage virtualization.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U07
   topic: Network virtualization
-  definition: Network virtualization creates logical network interfaces, switches, segments and
-    routing constructs over physical network infrastructure.
-  detailed_explanation: Virtual switches, overlays, virtual NICs and software-defined policies
-    isolate and connect workloads. Troubleshooting must consider both guest configuration and
-    virtual network controls.
-  working_principle: To reason about network virtualization, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: Two VMs communicate through a virtual switch while policy rules restrict traffic
-    between their subnets.
+  definition: Network virtualization creates logical network interfaces, switches.
+  detailed_explanation: Virtual switches, overlays, virtual NICs and software-defined.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: Two VMs communicate through a virtual switch.
   decision_points:
-  - What requirement makes network virtualization relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A correct guest IP configuration does not prove that virtual network
-    policy permits the flow.
+  - Workload justification for Network virtualization.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A correct guest IP configuration does not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define network virtualization and explain why it matters in cloud architecture.
-  - Analyze the example of network virtualization and identify one operational risk.
-  - Evaluate the trade-off described for network virtualization under a stated workload constraint.
+  - Architectural role of Network virtualization.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U08
   topic: Isolation boundaries
-  definition: Isolation prevents one guest or tenant from accessing another tenant's resources
-    without authorization.
-  detailed_explanation: Isolation is implemented through hypervisor boundaries, memory protection,
-    virtual device mediation, network segmentation, storage access controls and provider security
-    processes.
-  working_principle: To reason about isolation boundaries, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A VM cannot read another VM's memory through ordinary guest permissions.
+  definition: Isolation prevents one guest or tenant from.
+  detailed_explanation: Isolation is implemented through hypervisor boundaries, memory.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM cannot read another VM's memory.
   decision_points:
-  - What requirement makes isolation boundaries relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Isolation is layered risk reduction, not a reason to ignore patching,
-    identity or secure configuration.
+  - Workload justification for Isolation boundaries.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Isolation is layered risk reduction, not a.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define isolation boundaries and explain why it matters in cloud architecture.
-  - Analyze the example of isolation boundaries and identify one operational risk.
-  - Evaluate the trade-off described for isolation boundaries under a stated workload constraint.
+  - Architectural role of Isolation boundaries.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U09
   topic: Resource overcommitment
-  definition: Overcommitment allocates more virtual capacity than the physical system can simultaneously
-    deliver, relying on workload usage patterns.
-  detailed_explanation: CPU overcommitment can be workable for bursty workloads, while memory
-    overcommitment may create severe performance risks if active demand exceeds physical capacity.
-    Monitor contention indicators.
-  working_principle: To reason about resource overcommitment, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A host assigns vCPUs to many mostly idle development VMs.
+  definition: Overcommitment allocates more virtual capacity than the.
+  detailed_explanation: CPU overcommitment can be workable for bursty.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A host assigns vCPUs to many mostly.
   decision_points:
-  - What requirement makes resource overcommitment relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Overcommit ratios are not universal safe constants; workload behavior
-    and service objectives determine acceptable levels.
+  - Workload justification for Resource overcommitment.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Overcommit ratios are not universal safe constants.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define resource overcommitment and explain why it matters in cloud architecture.
-  - Analyze the example of resource overcommitment and identify one operational risk.
-  - Evaluate the trade-off described for resource overcommitment under a stated workload constraint.
+  - Architectural role of Resource overcommitment.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U10
   topic: Noisy-neighbour effect
-  definition: A noisy neighbour is a workload that consumes shared resources and degrades the
-    performance of other workloads on the same infrastructure.
-  detailed_explanation: Symptoms can include variable CPU scheduling delay, storage queue latency,
-    network contention and inconsistent response times. Provider isolation and dedicated options
-    may reduce exposure but do not eliminate every shared dependency.
-  working_principle: To reason about noisy-neighbour effect, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An API's latency rises during a period of high host storage activity despite
-    modest guest CPU utilization.
+  definition: A noisy neighbour is a workload that.
+  detailed_explanation: Symptoms can include variable CPU scheduling delay.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An API's latency rises during a period.
   decision_points:
-  - What requirement makes noisy-neighbour effect relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Low guest CPU does not rule out infrastructure contention.
+  - Workload justification for Noisy-neighbour effect.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Low guest CPU does not rule out.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define noisy-neighbour effect and explain why it matters in cloud architecture.
-  - Analyze the example of noisy-neighbour effect and identify one operational risk.
-  - Evaluate the trade-off described for noisy-neighbour effect under a stated workload constraint.
+  - Architectural role of Noisy-neighbour effect.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U11
   topic: Snapshots and images
-  definition: A VM image is a reusable template for creating instances; a snapshot captures a
-    point-in-time representation of disk state according to platform semantics.
-  detailed_explanation: Images support repeatable provisioning. Snapshots support backup-like
-    workflows and cloning, but application consistency may require quiescing or database-aware
-    coordination.
-  working_principle: To reason about snapshots and images, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A hardened base image is used to launch new application VMs in an autoscaling
-    group.
+  definition: A VM image is a reusable template.
+  detailed_explanation: Images support repeatable provisioning.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A hardened base image is used to.
   decision_points:
-  - What requirement makes snapshots and images relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A snapshot is not automatically an application-consistent backup
-    or a complete disaster-recovery plan.
+  - Workload justification for Snapshots and images.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A snapshot is not automatically an application-consistent.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define snapshots and images and explain why it matters in cloud architecture.
-  - Analyze the example of snapshots and images and identify one operational risk.
-  - Evaluate the trade-off described for snapshots and images under a stated workload constraint.
+  - Architectural role of Snapshots and images.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_05_U12
   topic: Virtualization performance diagnosis
-  definition: Diagnose performance by comparing guest metrics, hypervisor or provider metrics,
-    application latency and resource-specific telemetry.
-  detailed_explanation: Check CPU utilization and ready/steal time, memory pressure, disk latency
-    and queue depth, network throughput and packet loss, and application dependencies. Establish
-    a baseline before resizing.
-  working_principle: To reason about virtualization performance diagnosis, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A VM reports low CPU but high response time; disk latency and CPU steal evidence
-    point away from application CPU saturation.
+  definition: Diagnose performance by comparing guest metrics, hypervisor.
+  detailed_explanation: Check CPU utilization and ready/steal time, memory.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM reports low CPU but high.
   decision_points:
-  - What requirement makes virtualization performance diagnosis relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Resizing blindly can increase cost without addressing the constrained
-    layer.
+  - Workload justification for Virtualization performance diagnosis.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Resizing blindly can increase cost without addressing.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define virtualization performance diagnosis and explain why it matters in cloud architecture.
-  - Analyze the example of virtualization performance diagnosis and identify one operational risk.
-  - Evaluate the trade-off described for virtualization performance diagnosis under a stated workload
-    constraint.
+  - Architectural role of Virtualization performance diagnosis.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_05_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of cloud virtualization fundamentals using a
-    small, non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of cloud virtualization.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -2660,67 +2148,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_05_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -2736,32 +2210,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define cloud virtualization fundamentals.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Cloud Virtualization Fundamentals
@@ -2773,42 +2243,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting cloud virtualization fundamentals to
-    workload requirements, architecture boundaries, operational evidence and measurable trade-offs.
-    A defensible answer states the requirement, explains the mechanism, identifies the owner,
-    evaluates limitations and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting cloud virtualization fundamentals to workload.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,li=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -2816,415 +2281,337 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_06
   concept_title: Hypervisors and Virtual Machines
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: hypervisor types, VM architecture, vCPU scheduling and steal, guest metrics, lifecycle,
-    images, sizing and fault diagnosis
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: hypervisor types, VM architecture, vCPU scheduling and.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain hypervisors and virtual machines using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain hypervisors and.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Hypervisors and Virtual Machines
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_06_U01
   topic: Type 1 hypervisor
-  definition: A Type 1, or bare-metal, hypervisor runs directly on server hardware and manages
-    guest virtual machines.
-  detailed_explanation: It has direct responsibility for resource scheduling and hardware virtualization.
-    It is common in data-center and cloud infrastructure because it provides a dedicated virtualization
-    layer.
-  working_principle: To reason about type 1 hypervisor, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A data-center server boots a hypervisor and hosts multiple isolated VMs.
+  definition: A Type 1, or bare-metal, hypervisor runs.
+  detailed_explanation: It has direct responsibility for resource scheduling.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A data-center server boots a hypervisor and.
   decision_points:
-  - What requirement makes type 1 hypervisor relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Type 1 does not mean zero overhead or automatic immunity from hardware
-    and configuration failures.
+  - Workload justification for Type 1 hypervisor.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Type 1 does not mean zero overhead.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define type 1 hypervisor and explain why it matters in cloud architecture.
-  - Analyze the example of type 1 hypervisor and identify one operational risk.
-  - Evaluate the trade-off described for type 1 hypervisor under a stated workload constraint.
+  - Architectural role of Type 1 hypervisor.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U02
   topic: Type 2 hypervisor
-  definition: A Type 2 hypervisor runs as an application on a conventional host operating system.
-  detailed_explanation: The host OS manages physical devices while the hypervisor application
-    provides guest virtual hardware. This model is common for desktop development, testing and
-    labs.
-  working_principle: To reason about type 2 hypervisor, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A student runs a Linux VM inside a desktop virtualization application on Windows.
+  definition: A Type 2 hypervisor runs as an.
+  detailed_explanation: The host OS manages physical devices while.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A student runs a Linux VM inside.
   decision_points:
-  - What requirement makes type 2 hypervisor relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Host OS load, drivers and desktop resource contention can affect
-    guest performance.
+  - Workload justification for Type 2 hypervisor.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Host OS load, drivers and desktop resource.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define type 2 hypervisor and explain why it matters in cloud architecture.
-  - Analyze the example of type 2 hypervisor and identify one operational risk.
-  - Evaluate the trade-off described for type 2 hypervisor under a stated workload constraint.
+  - Architectural role of Type 2 hypervisor.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U03
   topic: Virtual machine components
-  definition: A VM consists of virtual CPU, memory, firmware, virtual devices, disks, network
-    interfaces and guest operating-system state.
-  detailed_explanation: The VM configuration determines the virtual hardware presented to the
-    guest. Images and metadata influence boot behavior, drivers and identity initialization.
-  working_principle: To reason about virtual machine components, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An instance is launched from an image with two vCPUs, a configured memory size,
-    a boot disk and a network interface.
+  definition: A VM consists of virtual CPU, memory.
+  detailed_explanation: The VM configuration determines the virtual hardware.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An instance is launched from an image.
   decision_points:
-  - What requirement makes virtual machine components relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A VM's instance type is only one part of performance; storage, network,
-    image and placement also matter.
+  - Workload justification for Virtual machine components.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A VM's instance type is only one.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define virtual machine components and explain why it matters in cloud architecture.
-  - Analyze the example of virtual machine components and identify one operational risk.
-  - Evaluate the trade-off described for virtual machine components under a stated workload constraint.
+  - Architectural role of Virtual machine components.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U04
   topic: vCPU scheduling
-  definition: A hypervisor schedules virtual CPU execution onto physical processors while balancing
-    runnable guests and host workloads.
-  detailed_explanation: When a vCPU is ready but cannot run, the guest may experience scheduling
-    delay. Provider metrics such as CPU credit, host contention or steal/ready indicators vary
-    by platform.
-  working_principle: To reason about vcpu scheduling, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An application experiences latency spikes when its vCPUs wait for physical CPU
-    time.
+  definition: A hypervisor schedules virtual CPU execution onto.
+  detailed_explanation: When a vCPU is ready but cannot.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application experiences latency spikes when its.
   decision_points:
-  - What requirement makes vcpu scheduling relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A high guest CPU percentage and high scheduling delay are different
-    signals and require different diagnosis.
+  - Workload justification for vCPU scheduling.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A high guest CPU percentage and high.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define vcpu scheduling and explain why it matters in cloud architecture.
-  - Analyze the example of vcpu scheduling and identify one operational risk.
-  - Evaluate the trade-off described for vcpu scheduling under a stated workload constraint.
+  - Architectural role of vCPU scheduling.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U05
   topic: CPU steal and ready time
-  definition: CPU steal or ready time represents time when a guest wants CPU execution but the
-    virtualization layer does not schedule it immediately.
-  detailed_explanation: Interpret metric definitions carefully because operating systems and hypervisors
-    expose different measures. Correlate with host or provider metrics and application latency.
-  working_principle: To reason about cpu steal and ready time, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A Linux VM reports measurable CPU steal while application response time rises
-    during host contention.
+  definition: CPU steal or ready time represents time.
+  detailed_explanation: Interpret metric definitions carefully because operating systems.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A Linux VM reports measurable CPU steal.
   decision_points:
-  - What requirement makes cpu steal and ready time relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not treat a single metric as proof of a provider fault; validate
-    timing and competing bottlenecks.
+  - Workload justification for CPU steal and ready time.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not treat a single metric as.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cpu steal and ready time and explain why it matters in cloud architecture.
-  - Analyze the example of cpu steal and ready time and identify one operational risk.
-  - Evaluate the trade-off described for cpu steal and ready time under a stated workload constraint.
+  - Architectural role of CPU steal and ready time.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U06
   topic: VM sizing
-  definition: VM sizing selects a compute family and size based on CPU, memory, storage, network,
-    accelerator and workload characteristics.
-  detailed_explanation: Benchmark representative traffic and consider p95/p99 latency, concurrency,
-    memory working set, I/O and burst behavior. Revisit size after observing production utilization.
-  working_principle: To reason about vm sizing, identify the actors, the resource or control being
-    acted upon, the configuration or policy that governs it, the observable result, and the failure
-    modes. Separate the control-plane action from the data-plane behavior whenever both are present.
-  worked_example: A memory-intensive in-memory service selects a memory-optimized family rather
-    than simply maximizing vCPU count.
+  definition: VM sizing selects a compute family and.
+  detailed_explanation: Benchmark representative traffic and consider p95/p99 latency.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A memory-intensive in-memory service selects a memory-optimized.
   decision_points:
-  - What requirement makes vm sizing relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Sizing only from average CPU utilization can miss memory and tail-latency
-    constraints.
+  - Workload justification for VM sizing.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Sizing only from average CPU utilization can.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define vm sizing and explain why it matters in cloud architecture.
-  - Analyze the example of vm sizing and identify one operational risk.
-  - Evaluate the trade-off described for vm sizing under a stated workload constraint.
+  - Architectural role of VM sizing.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U07
   topic: Instance families
-  definition: Cloud providers offer general-purpose, compute-optimized, memory-optimized, storage-optimized
-    and accelerator-oriented instance families.
-  detailed_explanation: Family labels indicate intended balance, but exact CPU generation, memory
-    ratio, network bandwidth and storage characteristics differ by provider and region.
-  working_principle: To reason about instance families, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A numerical simulation uses compute-optimized instances; a cache uses memory-optimized
-    instances.
+  definition: Cloud providers offer general-purpose, compute-optimized, memory-optimized, storage-optimized.
+  detailed_explanation: Family labels indicate intended balance, but exact.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A numerical simulation uses compute-optimized instances; a.
   decision_points:
-  - What requirement makes instance families relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not compare family names across providers without checking actual
-    specifications and benchmarks.
+  - Workload justification for Instance families.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not compare family names across providers.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define instance families and explain why it matters in cloud architecture.
-  - Analyze the example of instance families and identify one operational risk.
-  - Evaluate the trade-off described for instance families under a stated workload constraint.
+  - Architectural role of Instance families.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U08
   topic: VM images and bootstrapping
-  definition: An image is a reusable base containing an operating system and possibly preinstalled
-    software or configuration.
-  detailed_explanation: Image pipelines should patch, scan, version, sign where supported and
-    test images. Bootstrapping should be idempotent and avoid embedding long-lived secrets.
-  working_principle: To reason about vm images and bootstrapping, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A hardened image is promoted from test to production after vulnerability and
-    startup tests pass.
+  definition: An image is a reusable base containing.
+  detailed_explanation: Image pipelines should patch, scan, version, sign.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A hardened image is promoted from test.
   decision_points:
-  - What requirement makes vm images and bootstrapping relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Mutable manual changes after launch create configuration drift and
-    make rebuilds less predictable.
+  - Workload justification for VM images and bootstrapping.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Mutable manual changes after launch create configuration.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define vm images and bootstrapping and explain why it matters in cloud architecture.
-  - Analyze the example of vm images and bootstrapping and identify one operational risk.
-  - Evaluate the trade-off described for vm images and bootstrapping under a stated workload constraint.
+  - Architectural role of VM images and bootstrapping.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U09
   topic: VM lifecycle
-  definition: A VM lifecycle includes creation, boot, configuration, operation, stop, restart,
-    resize, snapshot, replacement and termination.
-  detailed_explanation: Understand what happens to ephemeral disks, public addresses, attached
-    volumes and billing when a VM is stopped or terminated. Provider semantics vary.
-  working_principle: To reason about vm lifecycle, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A failed instance is replaced from an image while persistent data remains on
-    a separate managed volume.
+  definition: A VM lifecycle includes creation, boot, configuration.
+  detailed_explanation: Understand what happens to ephemeral disks, public.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A failed instance is replaced from an.
   decision_points:
-  - What requirement makes vm lifecycle relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Stopping and terminating are not interchangeable; termination can
-    destroy attached ephemeral resources.
+  - Workload justification for VM lifecycle.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Stopping and terminating are not interchangeable; termination.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define vm lifecycle and explain why it matters in cloud architecture.
-  - Analyze the example of vm lifecycle and identify one operational risk.
-  - Evaluate the trade-off described for vm lifecycle under a stated workload constraint.
+  - Architectural role of VM lifecycle.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U10
   topic: Guest operating-system responsibility
-  definition: In IaaS, the customer commonly manages guest OS users, patching, hardening, endpoint
-    agents and application packages.
-  detailed_explanation: Automate patch baselines, vulnerability scanning, maintenance windows
-    and rollback. Keep an inventory of images and running instances.
-  working_principle: To reason about guest operating-system responsibility, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A fleet management service applies security updates to a group of Linux VMs.
+  definition: In IaaS, the customer commonly manages guest.
+  detailed_explanation: Automate patch baselines, vulnerability scanning, maintenance windows.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A fleet management service applies security updates.
   decision_points:
-  - What requirement makes guest operating-system responsibility relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: The provider's responsibility for physical hosts does not extend
-    automatically to customer guest operating systems.
+  - Workload justification for Guest operating-system responsibility.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: The provider's responsibility for physical hosts does.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define guest operating-system responsibility and explain why it matters in cloud architecture.
-  - Analyze the example of guest operating-system responsibility and identify one operational
-    risk.
-  - Evaluate the trade-off described for guest operating-system responsibility under a stated
-    workload constraint.
+  - Architectural role of Guest operating-system responsibility.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U11
   topic: VM networking and storage attachment
-  definition: VMs use virtual network interfaces and attached storage devices that are configured
-    through provider control planes and guest operating systems.
-  detailed_explanation: Validate route tables, security rules, interface state, device names,
-    filesystem mounts, disk identifiers and permissions when connectivity or storage fails.
-  working_principle: To reason about vm networking and storage attachment, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A newly attached volume appears as a block device but must be partitioned or
-    formatted and mounted when appropriate.
+  definition: VMs use virtual network interfaces and attached.
+  detailed_explanation: Validate route tables, security rules, interface state.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A newly attached volume appears as a.
   decision_points:
-  - What requirement makes vm networking and storage attachment relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A control-plane attachment status does not prove the guest has mounted
-    or can use the disk.
+  - Workload justification for VM networking and storage attachment.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A control-plane attachment status does not prove.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define vm networking and storage attachment and explain why it matters in cloud architecture.
-  - Analyze the example of vm networking and storage attachment and identify one operational risk.
-  - Evaluate the trade-off described for vm networking and storage attachment under a stated workload
-    constraint.
+  - Architectural role of VM networking and storage attachment.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_06_U12
   topic: VM troubleshooting workflow
-  definition: 'Troubleshoot from the symptom inward: verify instance state, reachability, guest
-    health, CPU, memory, disk, network, application and dependency health.'
-  detailed_explanation: Collect timestamps, recent changes, system logs, boot diagnostics, serial
-    output and provider events. Change one variable at a time and preserve evidence.
-  working_principle: To reason about vm troubleshooting workflow, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A VM is reachable by ping but SSH fails; inspect security rules, host firewall,
-    sshd state and authentication logs.
+  definition: 'Troubleshoot from the symptom inward: verify instance.'
+  detailed_explanation: Collect timestamps, recent changes, system logs, boot.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM is reachable by ping but.
   decision_points:
-  - What requirement makes vm troubleshooting workflow relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A ping response does not prove the application port or authentication
-    path works.
+  - Workload justification for VM troubleshooting workflow.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A ping response does not prove the.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define vm troubleshooting workflow and explain why it matters in cloud architecture.
-  - Analyze the example of vm troubleshooting workflow and identify one operational risk.
-  - Evaluate the trade-off described for vm troubleshooting workflow under a stated workload constraint.
+  - Architectural role of VM troubleshooting workflow.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_06_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of hypervisors and virtual machines using a small,
-    non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of hypervisors and.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -3233,67 +2620,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_06_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -3309,32 +2682,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define hypervisors and virtual machines.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Hypervisors and Virtual Machines
@@ -3346,42 +2715,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting hypervisors and virtual machines to workload
-    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
-    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting hypervisors and virtual machines to.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,di=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -3389,416 +2753,337 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_07
   concept_title: Container Isolation and Virtualization
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: containers versus VMs, namespaces, cgroups, images, runtime isolation, kernel sharing,
-    security and noisy neighbours
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: containers versus VMs, namespaces, cgroups, images, runtime.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain container isolation and virtualization using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain container isolation.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Container Isolation and Virtualization
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_07_U01
   topic: Container fundamentals
-  definition: A container packages an application and its dependencies into an isolated process
-    environment while sharing the host operating-system kernel.
-  detailed_explanation: Containers use operating-system features to isolate process views and
-    resource usage. They generally start faster and use fewer resources than full VMs, but share
-    a kernel boundary.
-  working_principle: To reason about container fundamentals, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A web API runs in a container image with a defined runtime and dependency set.
+  definition: A container packages an application and its.
+  detailed_explanation: Containers use operating-system features to isolate process.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A web API runs in a container.
   decision_points:
-  - What requirement makes container fundamentals relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A container is not a miniature independent operating system with
-    its own kernel.
+  - Workload justification for Container fundamentals.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A container is not a miniature independent.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container fundamentals and explain why it matters in cloud architecture.
-  - Analyze the example of container fundamentals and identify one operational risk.
-  - Evaluate the trade-off described for container fundamentals under a stated workload constraint.
+  - Architectural role of Container fundamentals.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U02
   topic: Containers versus virtual machines
-  definition: A VM virtualizes hardware and runs a guest OS; a container isolates processes while
-    sharing the host kernel.
-  detailed_explanation: VMs provide a stronger separate-kernel boundary and can run different
-    guest operating systems. Containers provide lightweight packaging and density but require
-    kernel compatibility and careful isolation.
-  working_principle: To reason about containers versus virtual machines, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A Linux VM can host several Linux containers; a Windows host cannot run every
-    Linux container configuration without a compatible Linux environment.
+  definition: A VM virtualizes hardware and runs a.
+  detailed_explanation: VMs provide a stronger separate-kernel boundary and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A Linux VM can host several Linux.
   decision_points:
-  - What requirement makes containers versus virtual machines relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: The choice depends on isolation needs, startup time, density, compatibility
-    and operational model.
+  - Workload justification for Containers versus virtual machines.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: The choice depends on isolation needs, startup.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define containers versus virtual machines and explain why it matters in cloud architecture.
-  - Analyze the example of containers versus virtual machines and identify one operational risk.
-  - Evaluate the trade-off described for containers versus virtual machines under a stated workload
-    constraint.
+  - Architectural role of Containers versus virtual machines.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U03
   topic: Linux namespaces
-  definition: Namespaces isolate views of system resources such as process IDs, network interfaces,
-    mount points, users, hostnames and inter-process communication.
-  detailed_explanation: A container runtime configures namespace boundaries so a process sees
-    a scoped environment. Namespaces provide visibility isolation, not complete resource accounting
-    or every security control.
-  working_principle: To reason about linux namespaces, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A process inside a PID namespace sees its own process tree rather than every
-    host process.
+  definition: Namespaces isolate views of system resources such.
+  detailed_explanation: A container runtime configures namespace boundaries so.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A process inside a PID namespace sees.
   decision_points:
-  - What requirement makes linux namespaces relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Namespaces alone do not prevent a container from consuming excessive
-    CPU or memory.
+  - Workload justification for Linux namespaces.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Namespaces alone do not prevent a container.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define linux namespaces and explain why it matters in cloud architecture.
-  - Analyze the example of linux namespaces and identify one operational risk.
-  - Evaluate the trade-off described for linux namespaces under a stated workload constraint.
+  - Architectural role of Linux namespaces.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U04
   topic: Control groups (cgroups)
-  definition: Cgroups organize processes and control or account for resource use such as CPU,
-    memory and I/O.
-  detailed_explanation: Limits and quotas can reduce noisy-neighbour behavior and prevent one
-    container from consuming all host capacity. Incorrect limits can cause throttling or out-of-memory
-    termination.
-  working_principle: To reason about control groups (cgroups), identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A container is limited to a defined memory amount and is terminated if it exceeds
-    the enforced limit.
+  definition: Cgroups organize processes and control or account.
+  detailed_explanation: Limits and quotas can reduce noisy-neighbour behavior.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A container is limited to a defined.
   decision_points:
-  - What requirement makes control groups (cgroups) relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A configured limit is not a performance guarantee; CPU throttling
-    and memory pressure must be monitored.
+  - Workload justification for Control groups (cgroups).
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A configured limit is not a performance.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define control groups (cgroups) and explain why it matters in cloud architecture.
-  - Analyze the example of control groups (cgroups) and identify one operational risk.
-  - Evaluate the trade-off described for control groups (cgroups) under a stated workload constraint.
+  - Architectural role of Control groups (cgroups).
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U05
   topic: Container image layers
-  definition: Container images are composed of ordered filesystem layers and metadata that define
-    the runtime environment.
-  detailed_explanation: Layer reuse can reduce storage and transfer. Build order affects cache
-    efficiency; frequently changing files should generally be placed after stable dependency layers.
-  working_principle: To reason about container image layers, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A dependency installation layer is reused when only application source code
-    changes.
+  definition: Container images are composed of ordered filesystem.
+  detailed_explanation: Layer reuse can reduce storage and transfer.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A dependency installation layer is reused when.
   decision_points:
-  - What requirement makes container image layers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A cached build can still contain vulnerable or stale dependencies.
+  - Workload justification for Container image layers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A cached build can still contain vulnerable.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container image layers and explain why it matters in cloud architecture.
-  - Analyze the example of container image layers and identify one operational risk.
-  - Evaluate the trade-off described for container image layers under a stated workload constraint.
+  - Architectural role of Container image layers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U06
   topic: Container build practices
-  definition: Reliable builds use small trusted base images, deterministic dependencies, multi-stage
-    builds, minimal runtime packages and non-root execution.
-  detailed_explanation: BuildKit cache mounts and multi-stage builds can reduce build time and
-    image size. Scan images and avoid embedding credentials in layers or build arguments.
-  working_principle: To reason about container build practices, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A compiler stage builds an artifact, then a minimal runtime stage copies only
-    the required output.
+  definition: Reliable builds use small trusted base images.
+  detailed_explanation: BuildKit cache mounts and multi-stage builds can.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A compiler stage builds an artifact, then.
   decision_points:
-  - What requirement makes container build practices relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Deleting a secret in a later layer does not remove it from an earlier
-    image layer.
+  - Workload justification for Container build practices.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Deleting a secret in a later layer.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container build practices and explain why it matters in cloud architecture.
-  - Analyze the example of container build practices and identify one operational risk.
-  - Evaluate the trade-off described for container build practices under a stated workload constraint.
+  - Architectural role of Container build practices.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U07
   topic: Container runtime and isolation
-  definition: The runtime pulls images, configures namespaces and cgroups, mounts filesystems,
-    sets security options and starts the container process.
-  detailed_explanation: Runtime security includes capabilities, seccomp, mandatory access controls,
-    read-only filesystems, user namespaces and image provenance where supported.
-  working_principle: To reason about container runtime and isolation, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A service container runs as a non-root UID with only the capabilities it needs.
+  definition: The runtime pulls images, configures namespaces and.
+  detailed_explanation: Runtime security includes capabilities, seccomp, mandatory access.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A service container runs as a non-root.
   decision_points:
-  - What requirement makes container runtime and isolation relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Running a container as root and mounting the host socket can undermine
-    isolation substantially.
+  - Workload justification for Container runtime and isolation.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Running a container as root and mounting.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container runtime and isolation and explain why it matters in cloud architecture.
-  - Analyze the example of container runtime and isolation and identify one operational risk.
-  - Evaluate the trade-off described for container runtime and isolation under a stated workload
-    constraint.
+  - Architectural role of Container runtime and isolation.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U08
   topic: Container networking
-  definition: Container networking connects isolated network namespaces through bridges, virtual
-    interfaces, overlays or provider-managed networking.
-  detailed_explanation: Address allocation, port publishing, service discovery, network policy
-    and DNS determine communication. Troubleshoot the host, runtime and application layers separately.
-  working_principle: To reason about container networking, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A container port is published to a host port and traffic is forwarded to the
-    container network namespace.
+  definition: Container networking connects isolated network namespaces through.
+  detailed_explanation: Address allocation, port publishing, service discovery, network.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A container port is published to a.
   decision_points:
-  - What requirement makes container networking relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: An application listening only on loopback inside a container may
-    not be reachable through the expected interface.
+  - Workload justification for Container networking.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: An application listening only on loopback inside.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container networking and explain why it matters in cloud architecture.
-  - Analyze the example of container networking and identify one operational risk.
-  - Evaluate the trade-off described for container networking under a stated workload constraint.
+  - Architectural role of Container networking.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U09
   topic: Volumes and persistent data
-  definition: Container writable layers are usually ephemeral; volumes or external storage provide
-    persistence beyond container replacement.
-  detailed_explanation: Choose storage based on durability, sharing, latency, backup and lifecycle
-    needs. Avoid assuming a container filesystem is a durable database store.
-  working_principle: To reason about volumes and persistent data, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A database container mounts a persistent volume for its data directory.
+  definition: Container writable layers are usually ephemeral; volumes.
+  detailed_explanation: Choose storage based on durability, sharing, latency.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A database container mounts a persistent volume.
   decision_points:
-  - What requirement makes volumes and persistent data relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Recreating a container without a persistent volume can destroy application
-    data.
+  - Workload justification for Volumes and persistent data.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Recreating a container without a persistent volume.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define volumes and persistent data and explain why it matters in cloud architecture.
-  - Analyze the example of volumes and persistent data and identify one operational risk.
-  - Evaluate the trade-off described for volumes and persistent data under a stated workload constraint.
+  - Architectural role of Volumes and persistent data.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U10
   topic: Container security
-  definition: Container security covers image supply chain, runtime configuration, host kernel,
-    secrets, network exposure and orchestration permissions.
-  detailed_explanation: Use trusted images, patch base layers, scan dependencies, sign or verify
-    artifacts where supported, restrict privileges and monitor runtime behavior.
-  working_principle: To reason about container security, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A deployment rejects an image with a critical vulnerability or unapproved provenance.
+  definition: Container security covers image supply chain, runtime.
+  detailed_explanation: Use trusted images, patch base layers, scan.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A deployment rejects an image with a.
   decision_points:
-  - What requirement makes container security relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A clean image scan does not prove runtime configuration is safe.
+  - Workload justification for Container security.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A clean image scan does not prove.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define container security and explain why it matters in cloud architecture.
-  - Analyze the example of container security and identify one operational risk.
-  - Evaluate the trade-off described for container security under a stated workload constraint.
+  - Architectural role of Container security.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U11
   topic: Noisy neighbours in container hosts
-  definition: Containers share host resources, so CPU contention, memory pressure, disk I/O and
-    network saturation can affect neighboring workloads.
-  detailed_explanation: Use resource requests and limits, workload isolation, node pools and telemetry.
-    Diagnose throttling, OOM kills, queue depth and latency together.
-  working_principle: To reason about noisy neighbours in container hosts, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A latency-sensitive API is placed on a dedicated node pool while batch jobs
-    use separate capacity.
+  definition: Containers share host resources, so CPU contention.
+  detailed_explanation: Use resource requests and limits, workload isolation.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A latency-sensitive API is placed on a.
   decision_points:
-  - What requirement makes noisy neighbours in container hosts relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A container being isolated by namespaces does not mean it has dedicated
-    physical resources.
+  - Workload justification for Noisy neighbours in container hosts.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A container being isolated by namespaces does.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define noisy neighbours in container hosts and explain why it matters in cloud architecture.
-  - Analyze the example of noisy neighbours in container hosts and identify one operational risk.
-  - Evaluate the trade-off described for noisy neighbours in container hosts under a stated workload
-    constraint.
+  - Architectural role of Noisy neighbours in container hosts.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_07_U12
   topic: When to choose containers
-  definition: Containers fit portable application packaging, microservices, repeatable CI/CD and
-    workloads that benefit from rapid startup and density.
-  detailed_explanation: Evaluate kernel compatibility, state, security boundary, operational complexity,
-    orchestration needs and team capability. A VM may be more appropriate for legacy OS requirements
-    or stronger isolation boundaries.
-  working_principle: To reason about when to choose containers, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A stateless API is packaged as a container while a legacy appliance remains
-    on a VM.
+  definition: Containers fit portable application packaging, microservices, repeatable.
+  detailed_explanation: Evaluate kernel compatibility, state, security boundary, operational.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A stateless API is packaged as a.
   decision_points:
-  - What requirement makes when to choose containers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Adopting containers without an operational need can add unnecessary
-    platform complexity.
+  - Workload justification for When to choose containers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Adopting containers without an operational need can.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define when to choose containers and explain why it matters in cloud architecture.
-  - Analyze the example of when to choose containers and identify one operational risk.
-  - Evaluate the trade-off described for when to choose containers under a stated workload constraint.
+  - Architectural role of When to choose containers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_07_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of container isolation and virtualization using
-    a small, non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of container isolation.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -3807,67 +3092,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_07_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -3883,32 +3154,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define container isolation and virtualization.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Container Isolation and Virtualization
@@ -3920,438 +3187,354 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting container isolation and virtualization
-    to workload requirements, architecture boundaries, operational evidence and measurable trade-offs.
-    A defensible answer states the requirement, explains the mechanism, identifies the owner,
-    evaluates limitations and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting container isolation and virtualization to.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
-`,pi=`metadata:
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
+`,ui=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
   course_outcome: CO1
   concept_id: CO1_08
   concept_title: Global Cloud Infrastructure
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: regions, Availability Zones, region pairs, local and edge zones, residency, latency,
-    fault isolation and placement
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: regions, Availability Zones, region pairs, local and.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain global cloud infrastructure using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain global cloud.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Global Cloud Infrastructure
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_08_U01
   topic: Cloud region
-  definition: A region is a distinct geographic area containing provider infrastructure and a
-    set of cloud services.
-  detailed_explanation: Regions are independent placement choices with different service availability,
-    pricing, latency, legal and capacity characteristics. Not every service or feature is present
-    in every region.
-  working_principle: To reason about cloud region, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An application serving users in southern India evaluates nearby regions for
-    latency and data requirements.
+  definition: A region is a distinct geographic area.
+  detailed_explanation: Regions are independent placement choices with different.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application serving users in southern India.
   decision_points:
-  - What requirement makes cloud region relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A region name does not guarantee every service is available or that
-    all data stays there under every service configuration.
+  - Workload justification for Cloud region.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A region name does not guarantee every.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud region and explain why it matters in cloud architecture.
-  - Analyze the example of cloud region and identify one operational risk.
-  - Evaluate the trade-off described for cloud region under a stated workload constraint.
+  - Architectural role of Cloud region.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U02
   topic: Availability Zone
-  definition: An Availability Zone is an isolated location or group of data centers within a region,
-    designed to reduce correlated failures between zones.
-  detailed_explanation: Multi-zone architectures distribute resources across failure domains and
-    require resilient networking, load balancing, data replication and application behavior.
-  working_principle: To reason about availability zone, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An application runs replicas in two zones and routes traffic away from unhealthy
-    capacity.
+  definition: An Availability Zone is an isolated location.
+  detailed_explanation: Multi-zone architectures distribute resources across failure domains.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application runs replicas in two zones.
   decision_points:
-  - What requirement makes availability zone relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Two instances in one zone do not provide zone-level fault tolerance.
+  - Workload justification for Availability Zone.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Two instances in one zone do not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define availability zone and explain why it matters in cloud architecture.
-  - Analyze the example of availability zone and identify one operational risk.
-  - Evaluate the trade-off described for availability zone under a stated workload constraint.
+  - Architectural role of Availability Zone.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U03
   topic: Region pairs
-  definition: Some providers define region-pair relationships for selected resilience, replication
-    or recovery capabilities.
-  detailed_explanation: Pairing rules, distance, replication behavior and failover support are
-    service-specific. A region pair should not be assumed to provide automatic application disaster
-    recovery.
-  working_principle: To reason about region pairs, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A database service offers a geo-replication option between designated regions.
+  definition: Some providers define region-pair relationships for selected.
+  detailed_explanation: Pairing rules, distance, replication behavior and failover.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A database service offers a geo-replication option.
   decision_points:
-  - What requirement makes region pairs relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A region pair is not a substitute for testing application recovery
-    and data consistency.
+  - Workload justification for Region pairs.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A region pair is not a substitute.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define region pairs and explain why it matters in cloud architecture.
-  - Analyze the example of region pairs and identify one operational risk.
-  - Evaluate the trade-off described for region pairs under a stated workload constraint.
+  - Architectural role of Region pairs.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U04
   topic: Local zones and edge zones
-  definition: Local or edge zones place selected compute and services closer to users or devices
-    than a central region.
-  detailed_explanation: They can reduce latency for interactive, media, gaming or industrial workloads,
-    but may offer fewer services and different pricing or capacity constraints.
-  working_principle: To reason about local zones and edge zones, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A media processing workload uses a nearby edge location for low-latency processing
-    and a central region for durable analytics.
+  definition: Local or edge zones place selected compute.
+  detailed_explanation: They can reduce latency for interactive, media.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A media processing workload uses a nearby.
   decision_points:
-  - What requirement makes local zones and edge zones relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Proximity alone does not ensure low end-to-end latency if upstream
-    dependencies remain distant.
+  - Workload justification for Local zones and edge zones.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Proximity alone does not ensure low end-to-end.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define local zones and edge zones and explain why it matters in cloud architecture.
-  - Analyze the example of local zones and edge zones and identify one operational risk.
-  - Evaluate the trade-off described for local zones and edge zones under a stated workload constraint.
+  - Architectural role of Local zones and edge zones.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U05
   topic: Geographic placement and latency
-  definition: Network latency depends on physical distance, routing, congestion, peering and the
-    location of dependent services.
-  detailed_explanation: Measure real client-to-service latency, not only geographic distance.
-    Place tightly coupled tiers near each other and consider data gravity and cross-zone traffic.
-  working_principle: To reason about geographic placement and latency, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: An API in one region calls a database in another, adding network round-trip
-    time to every query.
+  definition: Network latency depends on physical distance, routing.
+  detailed_explanation: Measure real client-to-service latency, not only geographic.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An API in one region calls a.
   decision_points:
-  - What requirement makes geographic placement and latency relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A geographically close region can still have a slower path because
-    of network routing or congestion.
+  - Workload justification for Geographic placement and latency.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A geographically close region can still have.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define geographic placement and latency and explain why it matters in cloud architecture.
-  - Analyze the example of geographic placement and latency and identify one operational risk.
-  - Evaluate the trade-off described for geographic placement and latency under a stated workload
-    constraint.
+  - Architectural role of Geographic placement and latency.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U06
   topic: Data residency and jurisdiction
-  definition: Data residency concerns where data is stored or processed; jurisdiction concerns
-    which laws and authorities may apply.
-  detailed_explanation: Assess primary data, replicas, backups, logs, support access, metadata
-    and cross-border transfers. Review contractual and regulatory requirements.
-  working_principle: To reason about data residency and jurisdiction, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A workload restricts primary and backup storage to approved locations and documents
-    any service metadata exceptions.
+  definition: Data residency concerns where data is stored.
+  detailed_explanation: Assess primary data, replicas, backups, logs, support.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A workload restricts primary and backup storage.
   decision_points:
-  - What requirement makes data residency and jurisdiction relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Choosing a region is necessary for some residency controls but may
-    not settle every jurisdiction question.
+  - Workload justification for Data residency and jurisdiction.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Choosing a region is necessary for some.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define data residency and jurisdiction and explain why it matters in cloud architecture.
-  - Analyze the example of data residency and jurisdiction and identify one operational risk.
-  - Evaluate the trade-off described for data residency and jurisdiction under a stated workload
-    constraint.
+  - Architectural role of Data residency and jurisdiction.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U07
   topic: Failure domains
-  definition: A failure domain is a set of resources that may fail together due to a shared dependency
-    or event.
-  detailed_explanation: Identify host, rack, zone, region, network, identity, control-plane and
-    application dependencies. Redundancy is effective only when replicas do not share the same
-    critical failure domain.
-  working_principle: To reason about failure domains, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: Two web replicas on different hosts but in the same zone may still fail during
-    a zone outage.
+  definition: A failure domain is a set of.
+  detailed_explanation: Identify host, rack, zone, region, network, identity.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: Two web replicas on different hosts but.
   decision_points:
-  - What requirement makes failure domains relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Counting instances is not the same as counting independent failure
-    domains.
+  - Workload justification for Failure domains.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Counting instances is not the same as.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define failure domains and explain why it matters in cloud architecture.
-  - Analyze the example of failure domains and identify one operational risk.
-  - Evaluate the trade-off described for failure domains under a stated workload constraint.
+  - Architectural role of Failure domains.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U08
   topic: Multi-zone architecture
-  definition: Multi-zone architecture distributes workload components across zones to improve
-    resilience against localized failures.
-  detailed_explanation: Use health-aware load balancing, sufficient capacity in surviving zones,
-    resilient data replication and graceful degradation. Test loss of a zone rather than assuming
-    failover works.
-  working_principle: To reason about multi-zone architecture, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A stateless application tier spans three zones and the database uses a supported
-    multi-zone deployment mode.
+  definition: Multi-zone architecture distributes workload components across zones.
+  detailed_explanation: Use health-aware load balancing, sufficient capacity in.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A stateless application tier spans three zones.
   decision_points:
-  - What requirement makes multi-zone architecture relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A multi-zone design may increase cross-zone traffic costs and requires
-    application-level testing.
+  - Workload justification for Multi-zone architecture.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A multi-zone design may increase cross-zone traffic.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define multi-zone architecture and explain why it matters in cloud architecture.
-  - Analyze the example of multi-zone architecture and identify one operational risk.
-  - Evaluate the trade-off described for multi-zone architecture under a stated workload constraint.
+  - Architectural role of Multi-zone architecture.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U09
   topic: Regional disaster recovery
-  definition: Regional disaster recovery protects against a broad regional outage or loss of regional
-    services.
-  detailed_explanation: Options include backups, replicated data, warm standby and active-active
-    designs. Evaluate replication lag, recovery dependencies, DNS behavior, capacity reservation
-    and cost.
-  working_principle: To reason about regional disaster recovery, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A secondary region holds replicated data and a reduced application footprint
-    that can be scaled during recovery.
+  definition: Regional disaster recovery protects against a broad.
+  detailed_explanation: Options include backups, replicated data, warm standby.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A secondary region holds replicated data and.
   decision_points:
-  - What requirement makes regional disaster recovery relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A backup stored in the same failed region may not meet regional recovery
-    requirements.
+  - Workload justification for Regional disaster recovery.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A backup stored in the same failed.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define regional disaster recovery and explain why it matters in cloud architecture.
-  - Analyze the example of regional disaster recovery and identify one operational risk.
-  - Evaluate the trade-off described for regional disaster recovery under a stated workload constraint.
+  - Architectural role of Regional disaster recovery.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U10
   topic: Provider infrastructure comparison
-  definition: AWS, Azure and Google Cloud all organize services geographically, but naming, fault-domain
-    semantics and service availability differ.
-  detailed_explanation: Compare the actual service's region and zone model, replication guarantees,
-    SLA scope and configuration options. Record provider documentation dates for architecture
-    decisions.
-  working_principle: To reason about provider infrastructure comparison, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A design review compares the zone behavior of the chosen compute and database
-    services across providers.
+  definition: AWS, Azure and Google Cloud all organize.
+  detailed_explanation: Compare the actual service's region and zone.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A design review compares the zone behavior.
   decision_points:
-  - What requirement makes provider infrastructure comparison relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not assume that similarly named regions or zones have identical
-    physical or contractual properties.
+  - Workload justification for Provider infrastructure comparison.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not assume that similarly named regions.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define provider infrastructure comparison and explain why it matters in cloud architecture.
-  - Analyze the example of provider infrastructure comparison and identify one operational risk.
-  - Evaluate the trade-off described for provider infrastructure comparison under a stated workload
-    constraint.
+  - Architectural role of Provider infrastructure comparison.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_08_U11
   topic: Placement decision method
-  definition: Choose placement by combining user latency, data residency, availability, service
-    availability, cost, quota and operational support requirements.
-  detailed_explanation: Build a decision table, mark mandatory constraints, then benchmark candidate
-    locations. Revalidate when a service, regulation or user population changes.
-  working_principle: To reason about placement decision method, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A workload selects a region that satisfies residency and offers all required
-    services, then adds zone-level redundancy.
+  definition: Choose placement by combining user latency, data.
+  detailed_explanation: Build a decision table, mark mandatory constraints.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A workload selects a region that satisfies.
   decision_points:
-  - What requirement makes placement decision method relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: The cheapest region may not be viable if it violates residency or
-    latency requirements.
+  - Workload justification for Placement decision method.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: The cheapest region may not be viable.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define placement decision method and explain why it matters in cloud architecture.
-  - Analyze the example of placement decision method and identify one operational risk.
-  - Evaluate the trade-off described for placement decision method under a stated workload constraint.
+  - Architectural role of Placement decision method.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_08_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of global cloud infrastructure using a small,
-    non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of global cloud.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -4360,67 +3543,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_08_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -4436,32 +3605,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define global cloud infrastructure.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Global Cloud Infrastructure
@@ -4473,472 +3638,375 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting global cloud infrastructure to workload
-    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
-    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting global cloud infrastructure to workload.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
-`,ui=`metadata:
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
+`,pi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
   course_outcome: CO1
   concept_id: CO1_09
   concept_title: AWS, Azure and GCP Fundamentals
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: provider structure, accounts and projects, regions and zones, compute/storage/network
-    primitives, identity, pricing tools and practical foundations
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: provider structure, accounts and projects, regions and.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain aws, azure and gcp fundamentals using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain aws, azure.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: AWS, Azure and GCP Fundamentals
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_09_U01
   topic: Provider account hierarchy
-  definition: Cloud providers use account, subscription, project, organization or folder constructs
-    to separate ownership, billing, policy and access.
-  detailed_explanation: Understand the provider's hierarchy before creating resources. Organizational
-    structures support isolation, delegated administration, consolidated billing and policy inheritance.
-  working_principle: To reason about provider account hierarchy, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A company separates production and development into different accounts or subscriptions
-    under a central organization.
+  definition: Cloud providers use account, subscription, project, organization.
+  detailed_explanation: Understand the provider's hierarchy before creating resources.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A company separates production and development into.
   decision_points:
-  - What requirement makes provider account hierarchy relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A single account for every environment increases blast radius and
-    weakens governance.
+  - Workload justification for Provider account hierarchy.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A single account for every environment increases.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define provider account hierarchy and explain why it matters in cloud architecture.
-  - Analyze the example of provider account hierarchy and identify one operational risk.
-  - Evaluate the trade-off described for provider account hierarchy under a stated workload constraint.
+  - Architectural role of Provider account hierarchy.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U02
   topic: AWS foundational structure
-  definition: AWS organizes resources within accounts and regions, with services such as EC2,
-    S3, VPC, IAM and CloudWatch.
-  detailed_explanation: An AWS account is a security and billing boundary. Regions contain service
-    resources; Availability Zones provide separate infrastructure locations within a region.
-  working_principle: To reason about aws foundational structure, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team creates an EC2 instance in a VPC, stores objects in S3 and monitors metrics
-    in CloudWatch.
+  definition: AWS organizes resources within accounts and regions.
+  detailed_explanation: An AWS account is a security and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team creates an EC2 instance in.
   decision_points:
-  - What requirement makes aws foundational structure relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Service availability and feature behavior must be checked in the
-    selected region.
+  - Workload justification for AWS foundational structure.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Service availability and feature behavior must be.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define aws foundational structure and explain why it matters in cloud architecture.
-  - Analyze the example of aws foundational structure and identify one operational risk.
-  - Evaluate the trade-off described for aws foundational structure under a stated workload constraint.
+  - Architectural role of AWS foundational structure.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U03
   topic: Microsoft Azure foundational structure
-  definition: Azure organizes resources through tenants, management groups, subscriptions, resource
-    groups and resources.
-  detailed_explanation: Microsoft Entra ID provides identity capabilities; Azure Resource Manager
-    manages resources; regions and availability zones support placement and resilience.
-  working_principle: To reason about microsoft azure foundational structure, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A subscription contains resource groups that organize a web app, virtual network
-    and storage account.
+  definition: Azure organizes resources through tenants, management groups.
+  detailed_explanation: Microsoft Entra ID provides identity capabilities; Azure.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A subscription contains resource groups that organize.
   decision_points:
-  - What requirement makes microsoft azure foundational structure relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A resource group is a management grouping, not a substitute for network
-    or identity isolation.
+  - Workload justification for Microsoft Azure foundational structure.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A resource group is a management grouping.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define microsoft azure foundational structure and explain why it matters in cloud architecture.
-  - Analyze the example of microsoft azure foundational structure and identify one operational
-    risk.
-  - Evaluate the trade-off described for microsoft azure foundational structure under a stated
-    workload constraint.
+  - Architectural role of Microsoft Azure foundational structure.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U04
   topic: Google Cloud foundational structure
-  definition: Google Cloud organizes resources through an organization, folders, projects and
-    resources.
-  detailed_explanation: Projects provide an important boundary for APIs, billing association,
-    IAM and resource organization. Regions and zones are used for placement.
-  working_principle: To reason about google cloud foundational structure, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A project hosts a Compute Engine VM, Cloud Storage bucket and VPC network.
+  definition: Google Cloud organizes resources through an organization.
+  detailed_explanation: Projects provide an important boundary for APIs.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A project hosts a Compute Engine VM.
   decision_points:
-  - What requirement makes google cloud foundational structure relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Project boundaries and organization policies must be deliberately
-    designed.
+  - Workload justification for Google Cloud foundational structure.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Project boundaries and organization policies must be.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define google cloud foundational structure and explain why it matters in cloud architecture.
-  - Analyze the example of google cloud foundational structure and identify one operational risk.
-  - Evaluate the trade-off described for google cloud foundational structure under a stated workload
-    constraint.
+  - Architectural role of Google Cloud foundational structure.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U05
   topic: Compute fundamentals across providers
-  definition: Compute services provide virtual machines and related capabilities for running operating
-    systems and applications.
-  detailed_explanation: Compare vCPU architecture, memory, accelerators, local and persistent
-    storage, network bandwidth, image lifecycle, quotas, placement and billing.
-  working_principle: To reason about compute fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: An application selects a general-purpose VM family after testing CPU, memory
-    and network requirements.
+  definition: Compute services provide virtual machines and related.
+  detailed_explanation: Compare vCPU architecture, memory, accelerators, local and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application selects a general-purpose VM family.
   decision_points:
-  - What requirement makes compute fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Equal vCPU counts do not guarantee equal performance across instance
-    families or providers.
+  - Workload justification for Compute fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Equal vCPU counts do not guarantee equal.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define compute fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of compute fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for compute fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Compute fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U06
   topic: Storage fundamentals across providers
-  definition: Object storage provides durable object access; block storage provides disk-like
-    volumes; file storage provides shared filesystem semantics.
-  detailed_explanation: Compare consistency, durability, throughput, request costs, lifecycle,
-    access protocol, encryption, replication and retrieval behavior.
-  working_principle: To reason about storage fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A static website stores media objects in object storage while a VM uses block
-    storage for its boot disk.
+  definition: Object storage provides durable object access; block.
+  detailed_explanation: Compare consistency, durability, throughput, request costs, lifecycle.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A static website stores media objects in.
   decision_points:
-  - What requirement makes storage fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not choose storage based only on capacity price; request, retrieval
-    and transfer charges matter.
+  - Workload justification for Storage fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not choose storage based only on.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define storage fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of storage fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for storage fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Storage fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U07
   topic: Networking fundamentals across providers
-  definition: Virtual networks provide isolated address spaces, subnets, routes, gateways and
-    filtering controls.
-  detailed_explanation: Provider products differ in how networks are scoped, how security rules
-    are attached and how private service access works. Design around traffic flows and policy
-    intent.
-  working_principle: To reason about networking fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A VM receives a private address in a subnet and reaches the internet through
-    an approved egress path.
+  definition: Virtual networks provide isolated address spaces, subnets.
+  detailed_explanation: Provider products differ in how networks are.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM receives a private address in.
   decision_points:
-  - What requirement makes networking fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A subnet or firewall construct with a similar name may have different
-    rule semantics across providers.
+  - Workload justification for Networking fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A subnet or firewall construct with a.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define networking fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of networking fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for networking fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Networking fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U08
   topic: Identity fundamentals across providers
-  definition: Identity services manage principals, authentication, roles, policies, federation
-    and service identities.
-  detailed_explanation: Compare human workforce identity with workload identity. Prefer federation
-    and short-lived credentials over embedded access keys or passwords.
-  working_principle: To reason about identity fundamentals across providers, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A CI pipeline assumes a deployment role using federated identity instead of
-    storing a long-lived key.
+  definition: Identity services manage principals, authentication, roles, policies.
+  detailed_explanation: Compare human workforce identity with workload identity.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A CI pipeline assumes a deployment role.
   decision_points:
-  - What requirement makes identity fundamentals across providers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Provider identity products are not interchangeable by name; policy
-    evaluation semantics differ.
+  - Workload justification for Identity fundamentals across providers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Provider identity products are not interchangeable by.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define identity fundamentals across providers and explain why it matters in cloud architecture.
-  - Analyze the example of identity fundamentals across providers and identify one operational
-    risk.
-  - Evaluate the trade-off described for identity fundamentals across providers under a stated
-    workload constraint.
+  - Architectural role of Identity fundamentals across providers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U09
   topic: Monitoring and operations foundations
-  definition: Cloud monitoring services collect metrics, logs, events and traces for resource
-    and application operations.
-  detailed_explanation: Establish ownership tags, diagnostic settings, retention, alert routing
-    and dashboards at provisioning time. Include control-plane and workload telemetry.
-  working_principle: To reason about monitoring and operations foundations, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A VM emits CPU metrics and operating-system logs to a centralized monitoring
-    workspace.
+  definition: Cloud monitoring services collect metrics, logs, events.
+  detailed_explanation: Establish ownership tags, diagnostic settings, retention, alert.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM emits CPU metrics and operating-system.
   decision_points:
-  - What requirement makes monitoring and operations foundations relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A metric dashboard without actionable thresholds and an owner does
-    not create effective operations.
+  - Workload justification for Monitoring and operations foundations.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A metric dashboard without actionable thresholds and.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define monitoring and operations foundations and explain why it matters in cloud architecture.
-  - Analyze the example of monitoring and operations foundations and identify one operational
-    risk.
-  - Evaluate the trade-off described for monitoring and operations foundations under a stated
-    workload constraint.
+  - Architectural role of Monitoring and operations foundations.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U10
   topic: Pricing calculators and billing
-  definition: Provider pricing calculators estimate costs from selected service, region, configuration,
-    usage and commercial assumptions.
-  detailed_explanation: Model compute runtime, storage capacity, requests, data transfer, support,
-    licensing and discounts. Export assumptions and validate with actual billing after deployment.
-  working_principle: To reason about pricing calculators and billing, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A team compares two VM sizes and storage tiers using the provider calculator
-    before launch.
+  definition: Provider pricing calculators estimate costs from selected.
+  detailed_explanation: Model compute runtime, storage capacity, requests, data.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team compares two VM sizes and.
   decision_points:
-  - What requirement makes pricing calculators and billing relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Calculator outputs are estimates; omitted usage dimensions and taxes
-    can change the actual bill.
+  - Workload justification for Pricing calculators and billing.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Calculator outputs are estimates; omitted usage dimensions.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define pricing calculators and billing and explain why it matters in cloud architecture.
-  - Analyze the example of pricing calculators and billing and identify one operational risk.
-  - Evaluate the trade-off described for pricing calculators and billing under a stated workload
-    constraint.
+  - Architectural role of Pricing calculators and billing.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U11
   topic: Free-tier and account safety
-  definition: Free-tier or trial offers have eligibility rules, service limits, time limits and
-    chargeable usage beyond included allowances.
-  detailed_explanation: Before creating resources, review current terms, budgets, billing alerts,
-    region limits and teardown steps. Enable MFA and protect root or owner credentials.
-  working_principle: To reason about free-tier and account safety, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A learner creates a small lab, sets a budget notification and deletes resources
-    after completing the exercise.
+  definition: Free-tier or trial offers have eligibility rules.
+  detailed_explanation: Before creating resources, review current terms, budgets.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A learner creates a small lab, sets.
   decision_points:
-  - What requirement makes free-tier and account safety relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Free tier does not mean every resource or data-transfer path is free.
+  - Workload justification for Free-tier and account safety.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Free tier does not mean every resource.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define free-tier and account safety and explain why it matters in cloud architecture.
-  - Analyze the example of free-tier and account safety and identify one operational risk.
-  - Evaluate the trade-off described for free-tier and account safety under a stated workload
-    constraint.
+  - Architectural role of Free-tier and account safety.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_09_U12
   topic: Cross-cloud equivalence method
-  definition: Cross-cloud comparison maps capabilities and operating behavior rather than relying
-    on brand-name similarity.
-  detailed_explanation: Record service purpose, API, regional scope, availability model, security
-    controls, limits, pricing unit and operational responsibility.
-  working_principle: To reason about cross-cloud equivalence method, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A VM comparison includes AWS EC2, Azure Virtual Machines and Google Compute
-    Engine while documenting differences in disks and network controls.
+  definition: Cross-cloud comparison maps capabilities and operating behavior.
+  detailed_explanation: Record service purpose, API, regional scope, availability.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM comparison includes AWS EC2, Azure.
   decision_points:
-  - What requirement makes cross-cloud equivalence method relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A comparison table that lists only product names can mislead architecture
-    decisions.
+  - Workload justification for Cross-cloud equivalence method.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A comparison table that lists only product.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cross-cloud equivalence method and explain why it matters in cloud architecture.
-  - Analyze the example of cross-cloud equivalence method and identify one operational risk.
-  - Evaluate the trade-off described for cross-cloud equivalence method under a stated workload
-    constraint.
+  - Architectural role of Cross-cloud equivalence method.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_09_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of aws, azure and gcp fundamentals using a small,
-    non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of aws, azure.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -4947,67 +4015,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_09_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -5022,33 +4076,29 @@ troubleshooting_method:
   - Residual risk
 examination_bank:
   remember:
-  - Define aws, azure and gcp fundamentals.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - Define aws, azure and gcp.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - AWS, Azure and GCP Fundamentals
@@ -5060,42 +4110,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting aws, azure and gcp fundamentals to workload
-    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
-    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting aws, azure and gcp fundamentals.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,hi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -5103,387 +4148,316 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_10
   concept_title: Cloud Well-Architected Framework
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: architecture review, design principles, six pillars, trade-offs, operational evidence
-    and provider framework comparison
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: architecture review, design principles, six pillars, trade-offs.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain cloud well-architected framework using precise cloud terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain cloud well-architected.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Cloud Well-Architected Framework
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_10_U01
   topic: Well-Architected purpose
-  definition: A Well-Architected Framework provides structured principles and questions for evaluating
-    cloud workload design and operation.
-  detailed_explanation: It helps teams identify risks and trade-offs across operational excellence,
-    security, reliability, performance efficiency, cost optimization and sustainability. It is
-    a review aid, not a certification that guarantees success.
-  working_principle: To reason about well-architected purpose, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team reviews an application before production and records risks, owners and
-    remediation actions.
+  definition: A Well-Architected Framework provides structured principles and.
+  detailed_explanation: It helps teams identify risks and trade-offs.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team reviews an application before production.
   decision_points:
-  - What requirement makes well-architected purpose relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Completing a questionnaire does not make an architecture well designed
-    unless findings are acted upon.
+  - Workload justification for Well-Architected purpose.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Completing a questionnaire does not make an.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define well-architected purpose and explain why it matters in cloud architecture.
-  - Analyze the example of well-architected purpose and identify one operational risk.
-  - Evaluate the trade-off described for well-architected purpose under a stated workload constraint.
+  - Architectural role of Well-Architected purpose.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U02
   topic: Operational excellence
-  definition: Operational excellence concerns running and monitoring systems, learning from failures
-    and continually improving processes.
-  detailed_explanation: Use automation, observability, runbooks, change management, small reversible
-    changes, incident reviews and operational readiness checks.
-  working_principle: To reason about operational excellence, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A deployment pipeline performs health checks and supports rollback when error
-    rates increase.
+  definition: Operational excellence concerns running and monitoring systems.
+  detailed_explanation: Use automation, observability, runbooks, change management, small.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A deployment pipeline performs health checks and.
   decision_points:
-  - What requirement makes operational excellence relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Manual heroics and undocumented procedures are not sustainable operational
-    excellence.
+  - Workload justification for Operational excellence.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Manual heroics and undocumented procedures are not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define operational excellence and explain why it matters in cloud architecture.
-  - Analyze the example of operational excellence and identify one operational risk.
-  - Evaluate the trade-off described for operational excellence under a stated workload constraint.
+  - Architectural role of Operational excellence.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U03
   topic: Security pillar
-  definition: Security focuses on protecting information and systems through identity, detection,
-    infrastructure protection, data protection and incident response.
-  detailed_explanation: Apply least privilege, strong identity, traceable actions, layered controls,
-    encryption, vulnerability management and tested response procedures.
-  working_principle: To reason about security pillar, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A workload uses short-lived roles, encrypted storage and centralized audit logging.
+  definition: Security focuses on protecting information and systems.
+  detailed_explanation: Apply least privilege, strong identity, traceable actions.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A workload uses short-lived roles, encrypted storage.
   decision_points:
-  - What requirement makes security pillar relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Security is not a one-time perimeter configuration; it is continuous
-    risk management.
+  - Workload justification for Security pillar.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Security is not a one-time perimeter configuration.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define security pillar and explain why it matters in cloud architecture.
-  - Analyze the example of security pillar and identify one operational risk.
-  - Evaluate the trade-off described for security pillar under a stated workload constraint.
+  - Architectural role of Security pillar.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U04
   topic: Reliability pillar
-  definition: Reliability concerns a workload's ability to perform its intended function correctly
-    and consistently.
-  detailed_explanation: Design for failure, manage quotas, recover automatically where appropriate,
-    scale horizontally, back up data and test recovery paths.
-  working_principle: To reason about reliability pillar, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A service runs across multiple zones and validates database restore procedures
-    on a schedule.
+  definition: Reliability concerns a workload's ability to perform.
+  detailed_explanation: Design for failure, manage quotas, recover automatically.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A service runs across multiple zones and.
   decision_points:
-  - What requirement makes reliability pillar relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Redundancy without tested failover can create false confidence.
+  - Workload justification for Reliability pillar.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Redundancy without tested failover can create false.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define reliability pillar and explain why it matters in cloud architecture.
-  - Analyze the example of reliability pillar and identify one operational risk.
-  - Evaluate the trade-off described for reliability pillar under a stated workload constraint.
+  - Architectural role of Reliability pillar.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U05
   topic: Performance efficiency pillar
-  definition: Performance efficiency uses computing resources efficiently to meet workload requirements
-    as demand and technology change.
-  detailed_explanation: Select suitable architectures, measure actual performance, use managed
-    services where appropriate and review scaling and data access patterns.
-  working_principle: To reason about performance efficiency pillar, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team benchmarks multiple instance families and database indexes against p95
-    latency.
+  definition: Performance efficiency uses computing resources efficiently to.
+  detailed_explanation: Select suitable architectures, measure actual performance, use.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team benchmarks multiple instance families and.
   decision_points:
-  - What requirement makes performance efficiency pillar relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Buying the largest instance is not a substitute for performance analysis.
+  - Workload justification for Performance efficiency pillar.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Buying the largest instance is not a.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define performance efficiency pillar and explain why it matters in cloud architecture.
-  - Analyze the example of performance efficiency pillar and identify one operational risk.
-  - Evaluate the trade-off described for performance efficiency pillar under a stated workload
-    constraint.
+  - Architectural role of Performance efficiency pillar.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U06
   topic: Cost optimization pillar
-  definition: Cost optimization delivers business value at the lowest appropriate cost while meeting
-    service objectives.
-  detailed_explanation: Use budgets, tagging, rightsizing, commitment planning, lifecycle policies,
-    cost allocation and unit economics. Include operational effort and reliability costs.
-  working_principle: To reason about cost optimization pillar, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team removes idle development instances and moves infrequently accessed objects
-    to a suitable lower-cost class.
+  definition: Cost optimization delivers business value at the.
+  detailed_explanation: Use budgets, tagging, rightsizing, commitment planning, lifecycle.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team removes idle development instances and.
   decision_points:
-  - What requirement makes cost optimization pillar relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Reducing spend by removing required redundancy can violate the service
-    objective.
+  - Workload justification for Cost optimization pillar.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Reducing spend by removing required redundancy can.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cost optimization pillar and explain why it matters in cloud architecture.
-  - Analyze the example of cost optimization pillar and identify one operational risk.
-  - Evaluate the trade-off described for cost optimization pillar under a stated workload constraint.
+  - Architectural role of Cost optimization pillar.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U07
   topic: Sustainability pillar
-  definition: Sustainability considers environmental impact through efficient resource use, managed
-    services, workload scheduling and architectural choices.
-  detailed_explanation: Reduce idle resources, improve utilization, use efficient data retention
-    and choose appropriate regions and services while preserving workload requirements.
-  working_principle: To reason about sustainability pillar, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A batch workload runs only when needed and releases compute capacity afterward.
+  definition: Sustainability considers environmental impact through efficient resource.
+  detailed_explanation: Reduce idle resources, improve utilization, use efficient.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A batch workload runs only when needed.
   decision_points:
-  - What requirement makes sustainability pillar relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Sustainability is not simply choosing the cheapest or nearest resource.
+  - Workload justification for Sustainability pillar.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Sustainability is not simply choosing the cheapest.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define sustainability pillar and explain why it matters in cloud architecture.
-  - Analyze the example of sustainability pillar and identify one operational risk.
-  - Evaluate the trade-off described for sustainability pillar under a stated workload constraint.
+  - Architectural role of Sustainability pillar.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U08
   topic: Design principles and trade-offs
-  definition: Framework principles guide decisions but do not prescribe one universal architecture.
-  detailed_explanation: Document requirements, options, consequences, residual risk and validation
-    evidence. A trade-off may improve one pillar while affecting another.
-  working_principle: To reason about design principles and trade-offs, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: Cross-zone redundancy improves resilience but can increase data transfer and
-    infrastructure costs.
+  definition: Framework principles guide decisions but do not.
+  detailed_explanation: Document requirements, options, consequences, residual risk and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: Cross-zone redundancy improves resilience but can increase.
   decision_points:
-  - What requirement makes design principles and trade-offs relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Optimizing one pillar in isolation can weaken the overall workload.
+  - Workload justification for Design principles and trade-offs.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Optimizing one pillar in isolation can weaken.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define design principles and trade-offs and explain why it matters in cloud architecture.
-  - Analyze the example of design principles and trade-offs and identify one operational risk.
-  - Evaluate the trade-off described for design principles and trade-offs under a stated workload
-    constraint.
+  - Architectural role of Design principles and trade-offs.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U09
   topic: Architecture review workflow
-  definition: A useful review starts with business outcomes, workload boundaries, diagrams, service
-    dependencies, operational evidence and known risks.
-  detailed_explanation: Prepare architecture artifacts, interview owners, inspect configuration
-    and telemetry, prioritize findings by impact and likelihood, and track remediation.
-  working_principle: To reason about architecture review workflow, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A review identifies public exposure, single-zone dependency and missing restore
-    tests as separate findings.
+  definition: A useful review starts with business outcomes.
+  detailed_explanation: Prepare architecture artifacts, interview owners, inspect configuration.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A review identifies public exposure, single-zone dependency.
   decision_points:
-  - What requirement makes architecture review workflow relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A review based only on diagrams can miss deployed configuration and
-    operational behavior.
+  - Workload justification for Architecture review workflow.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A review based only on diagrams can.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define architecture review workflow and explain why it matters in cloud architecture.
-  - Analyze the example of architecture review workflow and identify one operational risk.
-  - Evaluate the trade-off described for architecture review workflow under a stated workload
-    constraint.
+  - Architectural role of Architecture review workflow.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U10
   topic: Provider framework comparison
-  definition: AWS, Azure and Google Cloud publish architecture guidance with overlapping goals
-    and provider-specific terminology.
-  detailed_explanation: Map equivalent principles and then use the selected provider's current
-    service guidance. The frameworks should be treated as design aids rather than identical checklists.
-  working_principle: To reason about provider framework comparison, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team maps reliability and security recommendations across providers for a
-    migration assessment.
+  definition: AWS, Azure and Google Cloud publish architecture.
+  detailed_explanation: Map equivalent principles and then use the.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team maps reliability and security recommendations.
   decision_points:
-  - What requirement makes provider framework comparison relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not claim that pillar names or assessment questions are identical
-    across providers.
+  - Workload justification for Provider framework comparison.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not claim that pillar names or.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define provider framework comparison and explain why it matters in cloud architecture.
-  - Analyze the example of provider framework comparison and identify one operational risk.
-  - Evaluate the trade-off described for provider framework comparison under a stated workload
-    constraint.
+  - Architectural role of Provider framework comparison.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_10_U11
   topic: Evidence-based architecture defence
-  definition: An architecture decision should be defended with measurable evidence such as latency,
-    availability, recovery time, cost and security test results.
-  detailed_explanation: Maintain assumptions, test results, diagrams, threat models, cost estimates
-    and decision records. Revisit choices when workload conditions change.
-  working_principle: To reason about evidence-based architecture defence, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A team justifies multi-zone deployment using tested failover time and a defined
-    availability target.
+  definition: An architecture decision should be defended with.
+  detailed_explanation: Maintain assumptions, test results, diagrams, threat models.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team justifies multi-zone deployment using tested.
   decision_points:
-  - What requirement makes evidence-based architecture defence relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A statement such as 'industry best practice' is weaker than workload-specific
-    evidence.
+  - Workload justification for Evidence-based architecture defence.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A statement such as 'industry best practice'.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define evidence-based architecture defence and explain why it matters in cloud architecture.
-  - Analyze the example of evidence-based architecture defence and identify one operational risk.
-  - Evaluate the trade-off described for evidence-based architecture defence under a stated workload
-    constraint.
+  - Architectural role of Evidence-based architecture defence.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_10_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of cloud well-architected framework using a small,
-    non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of cloud well-architected.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -5492,67 +4466,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_10_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -5568,32 +4528,28 @@ troubleshooting_method:
 examination_bank:
   remember:
   - Define cloud well-architected framework.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Cloud Well-Architected Framework
@@ -5605,42 +4561,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting cloud well-architected framework to workload
-    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
-    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
-    and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting cloud well-architected framework to workload.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,mi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -5648,416 +4599,337 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_11
   concept_title: Cloud Migration Strategies and Total Cost of Ownership
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: 7 Rs, discovery, dependency mapping, migration planning, TCO, cost sensitivity, licensing,
-    network transfer and validation
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: 7 Rs, discovery, dependency mapping, migration planning.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain cloud migration strategies and total cost of ownership using precise cloud
-  terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain cloud migration.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Cloud Migration Strategies and Total Cost of Ownership
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_11_U01
   topic: Migration discovery
-  definition: Migration discovery inventories applications, infrastructure, data, dependencies,
-    owners, constraints and operational requirements before movement.
-  detailed_explanation: Collect utilization history, software versions, network flows, licensing
-    terms, data classification, recovery objectives and business criticality. Validate inventory
-    with application owners.
-  working_principle: To reason about migration discovery, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A migration team maps an API to its database, identity provider, file share
-    and external integrations.
+  definition: Migration discovery inventories applications, infrastructure, data, dependencies.
+  detailed_explanation: Collect utilization history, software versions, network flows.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A migration team maps an API to.
   decision_points:
-  - What requirement makes migration discovery relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Moving an application without understanding dependencies often creates
-    outages or hidden costs.
+  - Workload justification for Migration discovery.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Moving an application without understanding dependencies often.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define migration discovery and explain why it matters in cloud architecture.
-  - Analyze the example of migration discovery and identify one operational risk.
-  - Evaluate the trade-off described for migration discovery under a stated workload constraint.
+  - Architectural role of Migration discovery.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U02
   topic: The 7 Rs framework
-  definition: The 7 Rs classify migration strategies commonly as rehost, replatform, refactor,
-    repurchase, relocate, retain and retire.
-  detailed_explanation: Use the framework to make an explicit disposition for each workload. The
-    categories describe different levels of change and should be selected based on business value,
-    constraints and effort.
-  working_principle: To reason about the 7 rs framework, identify the actors, the resource or
-    control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A legacy VM may be rehosted initially while a customer portal is refactored
-    into managed services.
+  definition: The 7 Rs classify migration strategies commonly.
+  detailed_explanation: Use the framework to make an explicit.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A legacy VM may be rehosted initially.
   decision_points:
-  - What requirement makes the 7 rs framework relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: The fastest migration path may preserve technical debt and is not
-    always the best long-term choice.
+  - Workload justification for The 7 Rs framework.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: The fastest migration path may preserve technical.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define the 7 rs framework and explain why it matters in cloud architecture.
-  - Analyze the example of the 7 rs framework and identify one operational risk.
-  - Evaluate the trade-off described for the 7 rs framework under a stated workload constraint.
+  - Architectural role of The 7 Rs framework.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U03
   topic: Rehost
-  definition: Rehost moves an application to cloud infrastructure with minimal application changes,
-    often called lift and shift.
-  detailed_explanation: It can accelerate migration and reduce initial code change, but may preserve
-    inefficient architecture, licensing costs and operational patterns.
-  working_principle: To reason about rehost, identify the actors, the resource or control being
-    acted upon, the configuration or policy that governs it, the observable result, and the failure
-    modes. Separate the control-plane action from the data-plane behavior whenever both are present.
-  worked_example: A VM-based application is moved to a cloud VM with similar CPU and memory configuration.
+  definition: Rehost moves an application to cloud infrastructure.
+  detailed_explanation: It can accelerate migration and reduce initial.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A VM-based application is moved to a.
   decision_points:
-  - What requirement makes rehost relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Rehosting does not automatically produce elasticity, resilience or
-    lower cost.
+  - Workload justification for Rehost.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Rehosting does not automatically produce elasticity, resilience.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define rehost and explain why it matters in cloud architecture.
-  - Analyze the example of rehost and identify one operational risk.
-  - Evaluate the trade-off described for rehost under a stated workload constraint.
+  - Architectural role of Rehost.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U04
   topic: Replatform
-  definition: Replatform makes limited optimizations during migration without fully redesigning
-    the application.
-  detailed_explanation: Examples include moving a self-managed database to a managed database
-    or changing the runtime while preserving core application behavior.
-  working_principle: To reason about replatform, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An application moves from a self-managed database VM to a managed relational
-    database service.
+  definition: Replatform makes limited optimizations during migration without.
+  detailed_explanation: Examples include moving a self-managed database to.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application moves from a self-managed database.
   decision_points:
-  - What requirement makes replatform relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Managed-service constraints, compatibility and migration downtime
-    must be evaluated.
+  - Workload justification for Replatform.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Managed-service constraints, compatibility and migration downtime must.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define replatform and explain why it matters in cloud architecture.
-  - Analyze the example of replatform and identify one operational risk.
-  - Evaluate the trade-off described for replatform under a stated workload constraint.
+  - Architectural role of Replatform.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U05
   topic: Refactor or re-architect
-  definition: Refactoring changes application architecture to use cloud-native capabilities or
-    meet new scalability, resilience or agility goals.
-  detailed_explanation: It may involve decomposition, event-driven design, managed services, containers
-    or serverless execution. It usually requires more engineering effort and testing.
-  working_principle: To reason about refactor or re-architect, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A monolithic application is separated into independently deployable services
-    with managed messaging.
+  definition: Refactoring changes application architecture to use cloud-native.
+  detailed_explanation: It may involve decomposition, event-driven design, managed.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A monolithic application is separated into independently.
   decision_points:
-  - What requirement makes refactor or re-architect relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Refactoring during a deadline-driven migration can expand scope and
-    increase delivery risk.
+  - Workload justification for Refactor or re-architect.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Refactoring during a deadline-driven migration can expand.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define refactor or re-architect and explain why it matters in cloud architecture.
-  - Analyze the example of refactor or re-architect and identify one operational risk.
-  - Evaluate the trade-off described for refactor or re-architect under a stated workload constraint.
+  - Architectural role of Refactor or re-architect.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U06
   topic: Repurchase, relocate, retain and retire
-  definition: Repurchase replaces a workload with a different product; relocate moves a platform
-    or environment; retain keeps a workload where it is; retire removes an unnecessary workload.
-  detailed_explanation: These choices prevent teams from treating every discovered system as a
-    migration candidate. Document the business reason and revisit retained workloads when constraints
-    change.
-  working_principle: To reason about repurchase, relocate, retain and retire, identify the actors,
-    the resource or control being acted upon, the configuration or policy that governs it, the
-    observable result, and the failure modes. Separate the control-plane action from the data-plane
-    behavior whenever both are present.
-  worked_example: A team retires an unused reporting server and repurchases a collaboration system
-    as SaaS.
+  definition: Repurchase replaces a workload with a different.
+  detailed_explanation: These choices prevent teams from treating every.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team retires an unused reporting server.
   decision_points:
-  - What requirement makes repurchase, relocate, retain and retire relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Retaining a workload should be an explicit decision with an owner
-    and review date.
+  - Workload justification for Repurchase, relocate, retain and retire.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Retaining a workload should be an explicit.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define repurchase, relocate, retain and retire and explain why it matters in cloud architecture.
-  - Analyze the example of repurchase, relocate, retain and retire and identify one operational
-    risk.
-  - Evaluate the trade-off described for repurchase, relocate, retain and retire under a stated
-    workload constraint.
+  - Architectural role of Repurchase, relocate, retain and retire.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U07
   topic: Total cost of ownership
-  definition: TCO estimates the total cost of owning and operating a solution over a defined period
-    and scope.
-  detailed_explanation: Include hardware or cloud consumption, facilities, power, networking,
-    licensing, support, staffing, maintenance, migration, downtime, backup, security and exit
-    costs as applicable.
-  working_principle: To reason about total cost of ownership, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A three-year comparison includes on-premises refresh cost and cloud compute,
-    storage, transfer and operations.
+  definition: TCO estimates the total cost of owning.
+  detailed_explanation: Include hardware or cloud consumption, facilities, power.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A three-year comparison includes on-premises refresh cost.
   decision_points:
-  - What requirement makes total cost of ownership relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Comparing only server purchase price with cloud hourly compute is
-    not a valid TCO comparison.
+  - Workload justification for Total cost of ownership.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Comparing only server purchase price with cloud.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define total cost of ownership and explain why it matters in cloud architecture.
-  - Analyze the example of total cost of ownership and identify one operational risk.
-  - Evaluate the trade-off described for total cost of ownership under a stated workload constraint.
+  - Architectural role of Total cost of ownership.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U08
   topic: Cloud cost components
-  definition: Cloud cost may include compute runtime, storage capacity, requests, snapshots, data
-    transfer, load balancing, NAT processing, managed services, support and licenses.
-  detailed_explanation: Map each workload action to a billable dimension. Identify fixed, variable
-    and commitment-based components and estimate usage under normal and peak conditions.
-  working_principle: To reason about cloud cost components, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A web workload has compute, object storage, database, outbound data and monitoring
-    costs.
+  definition: Cloud cost may include compute runtime, storage.
+  detailed_explanation: Map each workload action to a billable.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A web workload has compute, object storage.
   decision_points:
-  - What requirement makes cloud cost components relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A low-cost compute choice can be overwhelmed by egress or managed-service
-    charges.
+  - Workload justification for Cloud cost components.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A low-cost compute choice can be overwhelmed.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cloud cost components and explain why it matters in cloud architecture.
-  - Analyze the example of cloud cost components and identify one operational risk.
-  - Evaluate the trade-off described for cloud cost components under a stated workload constraint.
+  - Architectural role of Cloud cost components.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U09
   topic: On-premises cost components
-  definition: On-premises cost includes acquisition, depreciation, facilities, electricity, cooling,
-    networking, maintenance, staffing, spares and refresh cycles.
-  detailed_explanation: Allocate shared costs consistently and model utilization. Include capacity
-    reserved for peak demand and the cost of idle hardware.
-  working_principle: To reason about on-premises cost components, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A data center maintains enough capacity for a seasonal peak that is rarely used.
+  definition: On-premises cost includes acquisition, depreciation, facilities, electricity.
+  detailed_explanation: Allocate shared costs consistently and model utilization.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A data center maintains enough capacity for.
   decision_points:
-  - What requirement makes on-premises cost components relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Ignoring labor and facilities can make on-premises costs appear artificially
-    low.
+  - Workload justification for On-premises cost components.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Ignoring labor and facilities can make on-premises.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define on-premises cost components and explain why it matters in cloud architecture.
-  - Analyze the example of on-premises cost components and identify one operational risk.
-  - Evaluate the trade-off described for on-premises cost components under a stated workload constraint.
+  - Architectural role of On-premises cost components.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U10
   topic: Cost comparison method
-  definition: A fair comparison uses equivalent workload demand, availability, performance, security
-    and support assumptions over the same time horizon.
-  detailed_explanation: Define units, utilization, growth, regions, data movement, backup and
-    recovery needs. Run sensitivity analysis for demand and price assumptions.
-  working_principle: To reason about cost comparison method, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A spreadsheet compares three-year cost at 30%, 60% and 90% average utilization.
+  definition: A fair comparison uses equivalent workload demand.
+  detailed_explanation: Define units, utilization, growth, regions, data movement.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A spreadsheet compares three-year cost at 30%.
   decision_points:
-  - What requirement makes cost comparison method relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A single-point estimate hides uncertainty and can produce a fragile
-    recommendation.
+  - Workload justification for Cost comparison method.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A single-point estimate hides uncertainty and can.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define cost comparison method and explain why it matters in cloud architecture.
-  - Analyze the example of cost comparison method and identify one operational risk.
-  - Evaluate the trade-off described for cost comparison method under a stated workload constraint.
+  - Architectural role of Cost comparison method.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U11
   topic: Migration waves and cutover
-  definition: Migration waves group workloads by dependency, risk, business value and readiness,
-    then define testing and rollback criteria.
-  detailed_explanation: Use pilot migrations, data synchronization, change freezes where necessary,
-    DNS or traffic switching, validation and rollback plans.
-  working_principle: To reason about migration waves and cutover, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A database is replicated before the application tier is cut over during an approved
-    maintenance window.
+  definition: Migration waves group workloads by dependency, risk.
+  detailed_explanation: Use pilot migrations, data synchronization, change freezes.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A database is replicated before the application.
   decision_points:
-  - What requirement makes migration waves and cutover relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A successful VM boot is not proof that a migrated business process
-    works end to end.
+  - Workload justification for Migration waves and cutover.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A successful VM boot is not proof.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define migration waves and cutover and explain why it matters in cloud architecture.
-  - Analyze the example of migration waves and cutover and identify one operational risk.
-  - Evaluate the trade-off described for migration waves and cutover under a stated workload constraint.
+  - Architectural role of Migration waves and cutover.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_11_U12
   topic: Post-migration optimization
-  definition: After migration, measure actual usage and cost, rightsize resources, remove temporary
-    assets and revisit architecture decisions.
-  detailed_explanation: Compare forecast with actual billing, verify performance and reliability,
-    update runbooks and close migration-specific access paths.
-  working_principle: To reason about post-migration optimization, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A team reduces oversized instances after four weeks of measured production utilization.
+  definition: After migration, measure actual usage and cost.
+  detailed_explanation: Compare forecast with actual billing, verify performance.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A team reduces oversized instances after four.
   decision_points:
-  - What requirement makes post-migration optimization relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Do not optimize by deleting safeguards or lowering capacity below
-    measured demand.
+  - Workload justification for Post-migration optimization.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Do not optimize by deleting safeguards or.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define post-migration optimization and explain why it matters in cloud architecture.
-  - Analyze the example of post-migration optimization and identify one operational risk.
-  - Evaluate the trade-off described for post-migration optimization under a stated workload constraint.
+  - Architectural role of Post-migration optimization.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_11_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of cloud migration strategies and total cost
-    of ownership using a small, non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of cloud migration.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -6066,67 +4938,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_11_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -6141,33 +4999,29 @@ troubleshooting_method:
   - Residual risk
 examination_bank:
   remember:
-  - Define cloud migration strategies and total cost of ownership.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - Define cloud migration strategies and.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Cloud Migration Strategies and Total Cost of Ownership
@@ -6179,42 +5033,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting cloud migration strategies and total
-    cost of ownership to workload requirements, architecture boundaries, operational evidence
-    and measurable trade-offs. A defensible answer states the requirement, explains the mechanism,
-    identifies the owner, evaluates limitations and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting cloud migration strategies and total.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,fi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -6222,410 +5071,337 @@ study_guidance:
   course_outcome: CO1
   concept_id: CO1_12
   concept_title: Multi-Tier Cloud Architecture and HTTP Request Tracing
-  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
-    emphasis on CO1 and its lecture/session plan.
-  coverage: multi-tier design, DNS, CDN, proxy, load balancer, web/application tiers, cache, database,
-    headers, request flow and evidence-led diagnosis
-  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
-    evaluation
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services.
+  coverage: multi-tier design, DNS, CDN, proxy, load balancer.
+  intended_level: Undergraduate CSE; conceptual understanding through analysis.
   provider_scope:
   - AWS
   - Microsoft Azure
   - Google Cloud
-  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+  line_count_target: Revised compact edition for rapid technical revision.
 learning_outcomes:
-- Define and explain multi-tier cloud architecture and http request tracing using precise cloud
-  terminology.
-- Describe the architecture, actors, control boundaries and operational workflow involved.
-- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
-  identical semantics.
-- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
-- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+- Define and explain multi-tier cloud.
+- Describe the architecture, actors, control.
+- Compare relevant implementation choices across.
+- Analyze realistic workload scenarios, identify.
+- Use observable evidence to diagnose.
 prerequisites:
-- 'Basic operating-system concepts: processes, memory, storage and networking.'
-- Basic TCP/IP, DNS, HTTP and client-server application concepts.
-- Familiarity with command-line interfaces and the purpose of cloud accounts.
+- 'Basic operating-system concepts: processes.'
+- Basic TCP/IP, DNS, HTTP.
+- Familiarity with command-line interfaces.
 concept_map:
   central_concept: Multi-Tier Cloud Architecture and HTTP Request Tracing
   major_dimensions:
-  - Terminology and foundational model
-  - Architecture and component interactions
-  - Control ownership and security implications
-  - Performance, reliability and cost implications
-  - Operational evidence and troubleshooting
+  - Terminology and foundational.
+  - Architecture and component.
+  - Control ownership and.
+  - Performance, reliability and.
+  - Operational evidence and.
   relationships:
-  - Connect each concept to the workload requirement it is intended to satisfy.
-  - Distinguish logical abstraction from the physical or managed implementation beneath it.
-  - Connect design decisions to observable outcomes, costs and failure modes.
+  - Connect each concept to.
+  - Distinguish logical abstraction from.
+  - Connect design decisions to.
 core_units:
 - unit_id: CO1_12_U01
   topic: Multi-tier architecture
-  definition: A multi-tier architecture separates responsibilities such as presentation, application
-    logic, data access and persistence into logical layers.
-  detailed_explanation: Separation improves maintainability, scaling and security when boundaries
-    are well designed. Tiers may be deployed on separate resources or combined for smaller systems.
-  working_principle: To reason about multi-tier architecture, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A browser reaches a web tier, which calls an API tier that reads from a database.
+  definition: A multi-tier architecture separates responsibilities such as.
+  detailed_explanation: Separation improves maintainability, scaling and security when.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A browser reaches a web tier, which.
   decision_points:
-  - What requirement makes multi-tier architecture relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: More tiers add network hops and operational dependencies; separation
-    should serve a clear requirement.
+  - Workload justification for Multi-tier architecture.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: More tiers add network hops and operational.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define multi-tier architecture and explain why it matters in cloud architecture.
-  - Analyze the example of multi-tier architecture and identify one operational risk.
-  - Evaluate the trade-off described for multi-tier architecture under a stated workload constraint.
+  - Architectural role of Multi-tier architecture.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U02
   topic: DNS resolution
-  definition: DNS translates a domain name into records such as addresses or aliases that help
-    a client locate a service.
-  detailed_explanation: A client or recursive resolver checks caches and queries DNS infrastructure
-    as needed. TTL affects caching behavior and can influence how quickly changed records are
-    observed.
-  working_principle: To reason about dns resolution, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A browser resolves api.example.test before establishing a connection to the
-    returned endpoint.
+  definition: DNS translates a domain name into records.
+  detailed_explanation: A client or recursive resolver checks caches.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A browser resolves api.example.test before establishing a.
   decision_points:
-  - What requirement makes dns resolution relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: DNS success proves name resolution only; it does not prove that the
-    destination is reachable or healthy.
+  - Workload justification for DNS resolution.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: DNS success proves name resolution only; it.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define dns resolution and explain why it matters in cloud architecture.
-  - Analyze the example of dns resolution and identify one operational risk.
-  - Evaluate the trade-off described for dns resolution under a stated workload constraint.
+  - Architectural role of DNS resolution.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U03
   topic: Content delivery network
-  definition: A CDN caches and serves content from distributed edge locations closer to users,
-    reducing origin load and often improving latency.
-  detailed_explanation: Cache keys, TTL, origin configuration, invalidation, TLS and cache-control
-    headers determine behavior. Dynamic requests may still be forwarded to the origin.
-  working_principle: To reason about content delivery network, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A product image is served from a nearby edge cache rather than fetched from
-    the origin on every request.
+  definition: A CDN caches and serves content from.
+  detailed_explanation: Cache keys, TTL, origin configuration, invalidation, TLS.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A product image is served from a.
   decision_points:
-  - What requirement makes content delivery network relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A CDN can serve stale or incorrectly cached content if cache rules
-    and invalidation are poorly designed.
+  - Workload justification for Content delivery network.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A CDN can serve stale or incorrectly.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define content delivery network and explain why it matters in cloud architecture.
-  - Analyze the example of content delivery network and identify one operational risk.
-  - Evaluate the trade-off described for content delivery network under a stated workload constraint.
+  - Architectural role of Content delivery network.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U04
   topic: Reverse proxy
-  definition: A reverse proxy receives client requests and forwards them to one or more backend
-    services.
-  detailed_explanation: It may terminate TLS, route by host or path, enforce request limits, add
-    headers and centralize access logging.
-  working_principle: To reason about reverse proxy, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A proxy routes /api requests to an API service and /static requests to an asset
-    origin.
+  definition: A reverse proxy receives client requests and.
+  detailed_explanation: It may terminate TLS, route by host.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A proxy routes /api requests to an.
   decision_points:
-  - What requirement makes reverse proxy relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A proxy configuration error can make healthy backends appear unavailable.
+  - Workload justification for Reverse proxy.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A proxy configuration error can make healthy.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define reverse proxy and explain why it matters in cloud architecture.
-  - Analyze the example of reverse proxy and identify one operational risk.
-  - Evaluate the trade-off described for reverse proxy under a stated workload constraint.
+  - Architectural role of Reverse proxy.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U05
   topic: Load balancing
-  definition: A load balancer distributes incoming traffic across multiple targets according to
-    configured algorithms and health information.
-  detailed_explanation: Layer 4 balancing uses transport-level information; Layer 7 balancing
-    can route using HTTP host, path or headers. Health checks and connection draining affect availability.
-  working_principle: To reason about load balancing, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An application load balancer sends requests to healthy API replicas across zones.
+  definition: A load balancer distributes incoming traffic across.
+  detailed_explanation: Layer 4 balancing uses transport-level information; Layer.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An application load balancer sends requests to.
   decision_points:
-  - What requirement makes load balancing relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A target marked healthy by a shallow health check may still fail
-    real user transactions.
+  - Workload justification for Load balancing.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A target marked healthy by a shallow.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define load balancing and explain why it matters in cloud architecture.
-  - Analyze the example of load balancing and identify one operational risk.
-  - Evaluate the trade-off described for load balancing under a stated workload constraint.
+  - Architectural role of Load balancing.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U06
   topic: Web and application tiers
-  definition: The web tier handles HTTP-facing behavior while the application tier implements
-    business logic and service workflows; the exact split varies by design.
-  detailed_explanation: Use stateless services where possible, externalize session state and protect
-    internal tiers from direct public access. Scale each tier based on its own bottleneck.
-  working_principle: To reason about web and application tiers, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A web frontend calls an internal application API over a private network.
+  definition: The web tier handles HTTP-facing behavior while.
+  detailed_explanation: Use stateless services where possible, externalize session.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A web frontend calls an internal application.
   decision_points:
-  - What requirement makes web and application tiers relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Scaling the web tier does not help if the application tier or database
-    is saturated.
+  - Workload justification for Web and application tiers.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Scaling the web tier does not help.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define web and application tiers and explain why it matters in cloud architecture.
-  - Analyze the example of web and application tiers and identify one operational risk.
-  - Evaluate the trade-off described for web and application tiers under a stated workload constraint.
+  - Architectural role of Web and application tiers.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U07
   topic: Caching
-  definition: A cache stores reusable data closer to the consumer to reduce latency and load on
-    a source system.
-  detailed_explanation: Cache design includes key selection, TTL, invalidation, consistency, eviction,
-    stampede protection and security of cached data.
-  working_principle: To reason about caching, identify the actors, the resource or control being
-    acted upon, the configuration or policy that governs it, the observable result, and the failure
-    modes. Separate the control-plane action from the data-plane behavior whenever both are present.
-  worked_example: A product catalog response is cached for a short period while inventory availability
-    is checked more frequently.
+  definition: A cache stores reusable data closer to.
+  detailed_explanation: Cache design includes key selection, TTL, invalidation.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A product catalog response is cached for.
   decision_points:
-  - What requirement makes caching relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A cache can return stale or cross-user data if keys omit authorization
-    or tenant context.
+  - Workload justification for Caching.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A cache can return stale or cross-user.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define caching and explain why it matters in cloud architecture.
-  - Analyze the example of caching and identify one operational risk.
-  - Evaluate the trade-off described for caching under a stated workload constraint.
+  - Architectural role of Caching.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U08
   topic: Database tier
-  definition: The database tier persists structured or semi-structured application state and enforces
-    data integrity and query behavior.
-  detailed_explanation: Consider connection pooling, indexing, transactions, replication, backups,
-    access control and workload isolation. Database latency often dominates multi-tier response
-    time.
-  working_principle: To reason about database tier, identify the actors, the resource or control
-    being acted upon, the configuration or policy that governs it, the observable result, and
-    the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: An API retrieves an account record using a parameterized query over a private
-    connection.
+  definition: The database tier persists structured or semi-structured.
+  detailed_explanation: Consider connection pooling, indexing, transactions, replication, backups.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: An API retrieves an account record using.
   decision_points:
-  - What requirement makes database tier relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Adding application replicas can overload a database if connection
-    pools and query rates are not controlled.
+  - Workload justification for Database tier.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Adding application replicas can overload a database.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define database tier and explain why it matters in cloud architecture.
-  - Analyze the example of database tier and identify one operational risk.
-  - Evaluate the trade-off described for database tier under a stated workload constraint.
+  - Architectural role of Database tier.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U09
   topic: HTTP request and response
-  definition: An HTTP exchange includes method, target URI, headers, optional body, status code,
-    response headers and response body.
-  detailed_explanation: Trace the request with a correlation identifier across CDN, proxy, load
-    balancer, application and database logs. Interpret status codes in context.
-  working_principle: To reason about http request and response, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A browser sends GET /catalog with an authorization header and receives a 200
-    response with cache metadata.
+  definition: An HTTP exchange includes method, target URI.
+  detailed_explanation: Trace the request with a correlation identifier.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A browser sends GET /catalog with an.
   decision_points:
-  - What requirement makes http request and response relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A 200 response from an edge cache does not prove that the origin
-    was contacted.
+  - Workload justification for HTTP request and response.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A 200 response from an edge cache.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define http request and response and explain why it matters in cloud architecture.
-  - Analyze the example of http request and response and identify one operational risk.
-  - Evaluate the trade-off described for http request and response under a stated workload constraint.
+  - Architectural role of HTTP request and response.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U10
   topic: TLS termination and certificates
-  definition: TLS protects data in transit and authenticates endpoints according to certificate
-    and trust configuration.
-  detailed_explanation: TLS may terminate at a CDN, load balancer, proxy or application. Each
-    hop's encryption and trust requirements should be documented.
-  working_principle: To reason about tls termination and certificates, identify the actors, the
-    resource or control being acted upon, the configuration or policy that governs it, the observable
-    result, and the failure modes. Separate the control-plane action from the data-plane behavior
-    whenever both are present.
-  worked_example: A CDN terminates client TLS and uses a separate TLS connection to the origin.
+  definition: TLS protects data in transit and authenticates.
+  detailed_explanation: TLS may terminate at a CDN, load.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A CDN terminates client TLS and uses.
   decision_points:
-  - What requirement makes tls termination and certificates relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Encryption on the client-to-edge hop does not prove that every internal
-    hop is encrypted.
+  - Workload justification for TLS termination and certificates.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Encryption on the client-to-edge hop does not.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define tls termination and certificates and explain why it matters in cloud architecture.
-  - Analyze the example of tls termination and certificates and identify one operational risk.
-  - Evaluate the trade-off described for tls termination and certificates under a stated workload
-    constraint.
+  - Architectural role of TLS termination and certificates.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U11
   topic: End-to-end request tracing
-  definition: Request tracing follows a single user request across every component and records
-    timing, routing decisions, status and dependency calls.
-  detailed_explanation: Use trace IDs, structured logs, spans and timestamps. Distinguish queue
-    time, network time, application processing and database wait time.
-  working_principle: To reason about end-to-end request tracing, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: A trace shows 8 ms at the edge, 12 ms at the load balancer, 30 ms in the API
-    and 140 ms waiting on a database query.
+  definition: Request tracing follows a single user request.
+  detailed_explanation: Use trace IDs, structured logs, spans and.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: A trace shows 8 ms at the.
   decision_points:
-  - What requirement makes end-to-end request tracing relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: Aggregated averages can hide the slowest component and tail latency.
+  - Workload justification for End-to-end request tracing.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: Aggregated averages can hide the slowest component.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define end-to-end request tracing and explain why it matters in cloud architecture.
-  - Analyze the example of end-to-end request tracing and identify one operational risk.
-  - Evaluate the trade-off described for end-to-end request tracing under a stated workload constraint.
+  - Architectural role of End-to-end request tracing.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 - unit_id: CO1_12_U12
   topic: Layer-based troubleshooting
-  definition: 'Troubleshoot in order: resolve the name, establish the route, reach the endpoint,
-    complete transport/TLS, receive an HTTP response and validate application behavior.'
-  detailed_explanation: Use evidence from DNS tools, connection tests, TLS inspection, load-balancer
-    health, proxy logs, application logs and database metrics. Change one layer at a time.
-  working_principle: To reason about layer-based troubleshooting, identify the actors, the resource
-    or control being acted upon, the configuration or policy that governs it, the observable result,
-    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
-    both are present.
-  worked_example: DNS resolves correctly, TCP connects, TLS succeeds, but the API returns 503;
-    investigate target health and backend capacity.
+  definition: 'Troubleshoot in order: resolve the name, establish.'
+  detailed_explanation: Use evidence from DNS tools, connection tests.
+  working_principle: >-
+    Identify actors, resources, policies, outputs, and failure modes; isolate control from data
+    plane.
+  worked_example: DNS resolves correctly, TCP connects, TLS succeeds.
   decision_points:
-  - What requirement makes layer-based troubleshooting relevant to this workload?
-  - Which component owns the configuration and which component provides the evidence?
-  - What changes when demand, failure conditions or security requirements change?
-  limitations_and_tradeoffs: A browser error alone is not enough to identify the failing layer.
+  - Workload justification for Layer-based troubleshooting.
+  - Ownership versus evidence source.
+  - Behavior under load and failure.
+  limitations_and_tradeoffs: A browser error alone is not enough.
   diagnostic_clues:
-  - Record the exact timestamp, resource identifier and recent change before modifying the system.
-  - Compare expected behavior with observed metrics, logs, configuration and provider events.
-  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  - Record timestamps and resource changes.
+  - Correlate logs with baseline metrics.
+  - Test minimal hypothesis with rollback.
   review_questions:
-  - Define layer-based troubleshooting and explain why it matters in cloud architecture.
-  - Analyze the example of layer-based troubleshooting and identify one operational risk.
-  - Evaluate the trade-off described for layer-based troubleshooting under a stated workload constraint.
+  - Architectural role of Layer-based troubleshooting.
+  - Primary operational failure risk.
+  - Trade-offs under workload constraints.
 provider_comparison:
-  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
-    regional availability, operational responsibility and billing dimensions. Do not assume similarly
-    named products are equivalent.
-  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
-    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
-    Framework. Verify current service names, regional availability, limits and pricing in AWS
-    documentation.
-  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
-    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
-    the Azure Well-Architected Framework. Verify current service names, regional availability,
-    limits and pricing in Azure documentation.
-  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
-    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
-    Framework. Verify current service names, regional availability, limits and pricing in Google
-    Cloud documentation.
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions, resource.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute Engine.
   comparison_checklist:
-  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
-  - Which party manages the physical layer, host layer, guest layer, runtime and application?
-  - Which identity principal authorizes the operation?
-  - Which network path carries the request and which policy filters it?
-  - What is the service's availability and recovery model?
-  - Which usage dimensions appear on the bill?
-  - Which quotas, regional restrictions or feature limitations apply?
-  - What logs, metrics and audit records can prove the behavior?
+  - What is the resource.
+  - Which party manages the.
+  - Which identity principal authorizes.
+  - Which network path carries.
+  - What is the service's.
+  - Which usage dimensions appear.
+  - Which quotas, regional restrictions.
+  - What logs, metrics and.
 architecture_and_workflow:
   architecture_review_steps:
-  - State the business outcome and workload boundary.
-  - List components, dependencies, identities and data stores.
-  - Draw request and data flows, including trust boundaries.
-  - Mark provider-managed and customer-managed layers.
-  - Identify failure domains and recovery dependencies.
-  - Estimate normal, peak and degraded-mode capacity.
-  - Map every material resource to an owner and cost center.
-  - Define telemetry, alerts, runbooks and rollback actions.
+  - State the business outcome.
+  - List components, dependencies, identities.
+  - Draw request and data.
+  - Mark provider-managed and customer-managed.
+  - Identify failure domains and.
+  - Estimate normal, peak and.
+  - Map every material resource.
+  - Define telemetry, alerts, runbooks.
   evidence_to_collect:
-  - Resource configuration and deployment records
-  - Identity and access policy evaluation evidence
-  - Provider service events and health information
-  - Application logs, metrics and distributed traces
-  - Billing exports, usage records and budget notifications
-  - Backup, restore and failover test results
+  - Resource configuration and.
+  - Identity and access.
+  - Provider service events.
+  - Application logs, metrics.
+  - Billing exports, usage.
+  - Backup, restore and.
 practical_labs:
 - lab_id: CO1_12_LAB01
   title: Cloud architecture observation and evidence notebook
-  objective: Build an evidence-based explanation of multi-tier cloud architecture and http request
-    tracing using a small, non-production cloud environment or a documented architecture.
+  objective: Build an evidence-based explanation of multi-tier cloud.
   procedure:
-  - Create or select a clearly identified learning environment and confirm the account or project
-    boundary.
-  - List the resources and record their region, ownership tags and purpose.
-  - Draw the relevant request, resource or control flow.
-  - Capture configuration evidence and the metrics or logs that show actual behavior.
-  - Identify one failure mode and state how it would be detected.
-  - Estimate the recurring cost dimensions and define a teardown checklist.
-  - Write a short conclusion that separates observed facts from assumptions.
+  - Create or select a.
+  - List the resources and.
+  - Draw the relevant request.
+  - Capture configuration evidence and.
+  - Identify one failure mode.
+  - Estimate the recurring cost.
+  - Write a short conclusion.
   safety_controls:
-  - Enable MFA and use a least-privilege learning identity.
-  - Set a budget or billing notification before provisioning chargeable resources.
-  - Do not place secrets, personal data or production data in the lab.
-  - Delete temporary resources and verify that billable dependencies are removed.
+  - Enforce MFA and least privilege.
+  - Configure billing alerts before provisioning.
+  - Prohibit secrets and production assets.
+  - Terminate temporary resources immediately.
   deliverables:
   - Architecture sketch
   - Configuration evidence
@@ -6634,67 +5410,53 @@ practical_labs:
   - Teardown confirmation
 - lab_id: CO1_12_LAB02
   title: Scenario-based design and break-fix
-  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  objective: Diagnose a deliberately described cloud failure using.
   procedure:
-  - Read the scenario and state the expected behavior.
-  - List at least three plausible fault locations.
-  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
-  - Interpret the evidence and eliminate unsupported explanations.
-  - Recommend a safe remediation and a verification test.
-  - Record residual risk and the condition that would trigger escalation.
+  - Read the scenario and.
+  - List at least three.
+  - Choose the lowest-cost evidence.
+  - Interpret the evidence and.
+  - Recommend a safe remediation.
+  - Record residual risk and.
   assessment_rubric:
-    diagnostic_economy: Uses a small number of high-value checks in a logical order.
-    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
-      assumptions.
-    remediation_safety: Limits blast radius and includes rollback or recovery.
-    explanation: Explains why competing hypotheses were rejected.
+    diagnostic_economy: Uses a small number.
+    evidence_quality: Cites configuration, logs, metrics.
+    remediation_safety: Limits blast radius and.
+    explanation: Explains why competing hypotheses.
 scenario_bank:
-- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
-    when usage increases.
-  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
-    data movement and cost dimensions.
-  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
-    a quota constraint and a cost-model omission.
-- scenario: A team assumes that a managed cloud service removes every customer security obligation.
-  task: Classify the relevant controls by layer and identify the evidence needed to establish
-    ownership.
-  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
-    customer-controlled identity, data and configuration responsibilities.
-- scenario: A user request fails even though the primary compute resource reports healthy.
-  task: Trace the complete dependency path and identify evidence at each layer.
-  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
-    application behavior and downstream dependencies.
-- scenario: A design meets performance targets but exceeds its budget.
-  task: Identify cost drivers and propose changes without silently violating reliability or security
-    requirements.
-  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
-    lifecycle, transfer and unnecessary resources.
+- scenario: A cloud workload behaves correctly during a small.
+  task: Identify the assumptions that may.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from.
+- scenario: A team assumes that a managed cloud service.
+  task: Classify the relevant controls by.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and.
+- scenario: A user request fails even though the primary.
+  task: Trace the complete dependency path.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering.
+- scenario: A design meets performance targets but exceeds its.
+  task: Identify cost drivers and propose.
+  expected_reasoning: A strong answer quantifies the effect of utilization.
 common_misconceptions:
 - claim: Cloud means somebody else's computer.
-  correction: This description omits self-service, pooling, elasticity, metering, automation and
-    the service contract.
+  correction: This description omits self-service, pooling, elasticity, metering.
 - claim: The provider is responsible for all security.
-  correction: Responsibility varies by service and layer; customers retain important identity,
-    data and configuration duties.
+  correction: Responsibility varies by service and layer; customers.
 - claim: More virtual CPUs always make an application faster.
-  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
-    actual constraints.
+  correction: Application parallelism, memory, I/O, scheduling and dependency.
 - claim: A multi-zone deployment cannot fail.
-  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
-    failure modes.
+  correction: It reduces selected failure risks but does.
 - claim: A pricing calculator is the final bill.
-  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
-    and omitted assumptions.
+  correction: Actual cost depends on real usage, transfer.
 troubleshooting_method:
   sequence:
-  - Clarify the symptom, scope, start time and user impact.
-  - Confirm the resource identity, region, zone and recent changes.
-  - Check name resolution and network reachability when the symptom involves a request path.
-  - Inspect identity authorization and service-specific policy where access is denied.
-  - Compare application and infrastructure metrics to locate the constrained layer.
-  - Check provider events, quotas and service health before attributing a fault.
-  - Apply the smallest reversible correction.
-  - Verify the original user journey and document the evidence.
+  - Clarify symptom, scope, and impact.
+  - Verify resource identity and changes.
+  - Check DNS and network reachability.
+  - Inspect IAM and service policies.
+  - Compare application and infrastructure metrics.
+  - Check provider events and quotas.
+  - Apply smallest reversible correction.
+  - Verify end-to-end user journey.
   incident_record_fields:
   - Timestamp
   - Affected workload
@@ -6709,33 +5471,29 @@ troubleshooting_method:
   - Residual risk
 examination_bank:
   remember:
-  - Define multi-tier cloud architecture and http request tracing.
-  - List the major cloud deployment and service model terms relevant to this concept.
-  - State the purpose of architecture evidence and operational telemetry.
+  - Define multi-tier cloud architecture and.
+  - List the major cloud deployment.
+  - State the purpose of architecture.
   understand:
-  - Explain the relationship between abstraction, control and operational responsibility.
-  - Explain why a cloud architecture must be evaluated as a complete dependency path.
-  - Describe how a design decision can affect security, reliability and cost at the same time.
+  - Explain the relationship between abstraction.
+  - Explain why a cloud architecture.
+  - Describe how a design decision.
   apply:
-  - Apply the concept to a small multi-tier application and identify its main resources.
-  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
-  - Use a scenario to select a suitable architecture and justify the selected controls.
+  - Apply the concept to a.
+  - Prepare a comparison table for.
+  - Use a scenario to select.
   analyze:
-  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
-  - Distinguish provider responsibility from customer responsibility for a given incident.
-  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  - Analyze a failure using configuration.
+  - Distinguish provider responsibility from customer.
+  - Identify hidden dependencies and failure.
   evaluate:
-  - Evaluate two architecture alternatives against stated latency, availability, security and
-    cost constraints.
-  - Defend a cloud placement or service choice using measurable evidence.
-  - Critique a design that optimizes one architectural pillar while weakening another.
+  - Evaluate two architecture alternatives against.
+  - Defend a cloud placement or.
+  - Critique a design that optimizes.
   scenario_based:
-  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
-    propose a diagnostic sequence.
-  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
-    needed.
-  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
-    cost.
+  - A user receives an HTTP.
+  - A workload has low average.
+  - A monthly bill rises after.
 revision:
   key_terms:
   - Multi-Tier Cloud Architecture and HTTP Request Tracing
@@ -6747,42 +5505,37 @@ revision:
   - total cost of ownership
   - least privilege
   last_minute_checklist:
-  - Can I define the central terms precisely?
-  - Can I draw the architecture or control boundary?
-  - Can I explain the provider and customer responsibilities?
-  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
-  - Can I identify performance, reliability and cost trade-offs?
-  - Can I diagnose a scenario using evidence rather than assumptions?
-  summary: This concept is best understood by connecting multi-tier cloud architecture and http
-    request tracing to workload requirements, architecture boundaries, operational evidence and
-    measurable trade-offs. A defensible answer states the requirement, explains the mechanism,
-    identifies the owner, evaluates limitations and supports the conclusion with evidence.
+  - Can I define the.
+  - Can I draw the.
+  - Can I explain the.
+  - Can I compare the.
+  - Can I identify performance.
+  - Can I diagnose a.
+  summary: This concept is best understood by connecting multi-tier cloud architecture and http.
 glossary:
 - term: Workload
-  meaning: An application, service or processing activity that consumes cloud resources.
+  meaning: An application, service or processing.
 - term: Control plane
-  meaning: The interfaces and systems used to configure, provision and manage resources.
+  meaning: The interfaces and systems used.
 - term: Data plane
-  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+  meaning: The path or mechanisms that.
 - term: Failure domain
-  meaning: A set of components that may be affected by one shared failure.
+  meaning: A set of components that.
 - term: SLO
-  meaning: 'A service-level objective: a measurable target for a service characteristic such as
-    availability or latency.'
+  meaning: 'A service-level objective: a measurable.'
 - term: TCO
-  meaning: Total cost of ownership over a defined scope and time horizon.
+  meaning: Total cost of ownership over.
 study_guidance:
   recommended_sequence:
-  - Read the definitions and concept map.
-  - Study each core unit and explain it without looking at the notes.
-  - Draw the architecture or responsibility boundary.
-  - Complete both practical labs using a safe environment.
-  - Answer the analysis and evaluation questions in writing.
-  - Revisit misconceptions and explain why each correction matters.
-  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
-    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
-    that a provider or service guarantees behavior not established by the handout or current service
-    documentation.
+  - Review definitions and concept map.
+  - Study core units without notes.
+  - Diagram architecture and boundary lines.
+  - Execute practical labs in non-production.
+  - Solve analytical and evaluative questions.
+  - Review misconceptions and corrections.
+  answer_quality_standard: >-
+    Use exact terminology, state mechanisms, identify trade-offs, and ground conclusions in
+    evidence.
 `,gi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
@@ -13541,7 +12294,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,qi=`metadata:
+`,Ti=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -14219,7 +12972,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Ti=`metadata:
+`,Di=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -14897,7 +13650,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Di=`metadata:
+`,qi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -15601,7 +14354,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Ei=`metadata:
+`,Ri=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -16307,7 +15060,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Ri=`metadata:
+`,Pi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -16980,7 +15733,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,zi=`metadata:
+`,Ei=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -17655,7 +16408,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Pi=`metadata:
+`,Oi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -18325,7 +17078,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Oi=`metadata:
+`,Li=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -18990,7 +17743,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Wi=`metadata:
+`,zi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -19727,7 +18480,7 @@ study_guidance:
     filtering boundary, trace the return path and support diagnosis with command output or flow
     evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
     marked running.
-`,Li=`metadata:
+`,Wi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -22619,7 +21372,7 @@ study_guidance:
   answer_quality_standard: State the workload access pattern, explain the storage or data-service
     semantics, compare durability and performance, calculate relevant unit costs, and justify
     recovery using measured RTO and RPO. Keep provider-specific behavior explicit.
-`,Mi=`metadata:
+`,Bi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -23255,7 +22008,7 @@ study_guidance:
   answer_quality_standard: State the workload access pattern, explain the storage or data-service
     semantics, compare durability and performance, calculate relevant unit costs, and justify
     recovery using measured RTO and RPO. Keep provider-specific behavior explicit.
-`,Bi=`metadata:
+`,Mi=`metadata:
   course_title: Cloud Infrastructure and Services
   course_code: 25CS2206E
   semester: 2026-2027 Even Semester
@@ -31716,7 +30469,7 @@ glossary:
   definition: Maximum acceptable data-loss interval.
 - term: FinOps
   definition: Collaborative operating practice for cloud financial accountability and optimization.
-`,po=`course: Cloud Infrastructure and Services
+`,uo=`course: Cloud Infrastructure and Services
 course_code: 25CS2206E
 course_outcome: CO6
 course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
@@ -31977,7 +30730,7 @@ glossary:
   definition: Maximum acceptable data-loss interval.
 - term: FinOps
   definition: Collaborative operating practice for cloud financial accountability and optimization.
-`,uo=`course: Cloud Infrastructure and Services
+`,po=`course: Cloud Infrastructure and Services
 course_code: 25CS2206E
 course_outcome: CO6
 course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
@@ -32945,89 +31698,89 @@ additional_practical_delivery_plan:
   - Read back and verify the five items.
   - Create and verify a backup before deletion.
   - Delete the table only after confirming backup completion and lab authorization.
-`;function go(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var ne={},Dn={},Re={},Et;function fn(){if(Et)return Re;Et=1;function t(d){return typeof d>"u"||d===null}function e(d){return typeof d=="object"&&d!==null}function a(d){return Array.isArray(d)?d:t(d)?[]:[d]}function o(d,c){if(c){const u=Object.keys(c);for(let l=0,p=u.length;l<p;l+=1){const h=u[l];d[h]=c[h]}}return d}function i(d,c){let u="";for(let l=0;l<c;l+=1)u+=d;return u}function s(d){return d===0&&Number.NEGATIVE_INFINITY===1/d}return Re.isNothing=t,Re.isObject=e,Re.toArray=a,Re.repeat=i,Re.isNegativeZero=s,Re.extend=o,Re}var Gn,Rt;function gn(){if(Rt)return Gn;Rt=1;function t(a,o){let i="";const s=a.reason||"(unknown reason)";return a.mark?(a.mark.name&&(i+='in "'+a.mark.name+'" '),i+="("+(a.mark.line+1)+":"+(a.mark.column+1)+")",!o&&a.mark.snippet&&(i+=`
+`;function go(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var ne={},qn={},Pe={},Rt;function fn(){if(Rt)return Pe;Rt=1;function t(d){return typeof d>"u"||d===null}function e(d){return typeof d=="object"&&d!==null}function a(d){return Array.isArray(d)?d:t(d)?[]:[d]}function o(d,c){if(c){const p=Object.keys(c);for(let l=0,u=p.length;l<u;l+=1){const h=p[l];d[h]=c[h]}}return d}function i(d,c){let p="";for(let l=0;l<c;l+=1)p+=d;return p}function s(d){return d===0&&Number.NEGATIVE_INFINITY===1/d}return Pe.isNothing=t,Pe.isObject=e,Pe.toArray=a,Pe.repeat=i,Pe.isNegativeZero=s,Pe.extend=o,Pe}var Gn,Pt;function gn(){if(Pt)return Gn;Pt=1;function t(a,o){let i="";const s=a.reason||"(unknown reason)";return a.mark?(a.mark.name&&(i+='in "'+a.mark.name+'" '),i+="("+(a.mark.line+1)+":"+(a.mark.column+1)+")",!o&&a.mark.snippet&&(i+=`
 
-`+a.mark.snippet),s+" "+i):s}function e(a,o){Error.call(this),this.name="YAMLException",this.reason=a,this.mark=o,this.message=t(this,!1),Error.captureStackTrace?Error.captureStackTrace(this,this.constructor):this.stack=new Error().stack||""}return e.prototype=Object.create(Error.prototype),e.prototype.constructor=e,e.prototype.toString=function(o){return this.name+": "+t(this,o)},Gn=e,Gn}var Hn,zt;function yo(){if(zt)return Hn;zt=1;const t=fn();function e(i,s,d,c,u){let l="",p="";const h=Math.floor(u/2)-1;return c-s>h&&(l=" ... ",s=c-h+l.length),d-c>h&&(p=" ...",d=c+h-p.length),{str:l+i.slice(s,d).replace(/\t/g,"→")+p,pos:c-s+l.length}}function a(i,s){return t.repeat(" ",s-i.length)+i}function o(i,s){if(s=Object.create(s||null),!i.buffer)return null;s.maxLength||(s.maxLength=79),typeof s.indent!="number"&&(s.indent=1),typeof s.linesBefore!="number"&&(s.linesBefore=3),typeof s.linesAfter!="number"&&(s.linesAfter=2);const d=/\r?\n|\r|\0/g,c=[0],u=[];let l,p=-1;for(;l=d.exec(i.buffer);)u.push(l.index),c.push(l.index+l[0].length),i.position<=l.index&&p<0&&(p=c.length-2);p<0&&(p=c.length-1);let h="";const y=Math.min(i.line+s.linesAfter,u.length).toString().length,q=s.maxLength-(s.indent+y+3);for(let P=1;P<=s.linesBefore&&!(p-P<0);P++){const L=e(i.buffer,c[p-P],u[p-P],i.position-(c[p]-c[p-P]),q);h=t.repeat(" ",s.indent)+a((i.line-P+1).toString(),y)+" | "+L.str+`
-`+h}const I=e(i.buffer,c[p],u[p],i.position,q);h+=t.repeat(" ",s.indent)+a((i.line+1).toString(),y)+" | "+I.str+`
+`+a.mark.snippet),s+" "+i):s}function e(a,o){Error.call(this),this.name="YAMLException",this.reason=a,this.mark=o,this.message=t(this,!1),Error.captureStackTrace?Error.captureStackTrace(this,this.constructor):this.stack=new Error().stack||""}return e.prototype=Object.create(Error.prototype),e.prototype.constructor=e,e.prototype.toString=function(o){return this.name+": "+t(this,o)},Gn=e,Gn}var Hn,Et;function yo(){if(Et)return Hn;Et=1;const t=fn();function e(i,s,d,c,p){let l="",u="";const h=Math.floor(p/2)-1;return c-s>h&&(l=" ... ",s=c-h+l.length),d-c>h&&(u=" ...",d=c+h-u.length),{str:l+i.slice(s,d).replace(/\t/g,"→")+u,pos:c-s+l.length}}function a(i,s){return t.repeat(" ",s-i.length)+i}function o(i,s){if(s=Object.create(s||null),!i.buffer)return null;s.maxLength||(s.maxLength=79),typeof s.indent!="number"&&(s.indent=1),typeof s.linesBefore!="number"&&(s.linesBefore=3),typeof s.linesAfter!="number"&&(s.linesAfter=2);const d=/\r?\n|\r|\0/g,c=[0],p=[];let l,u=-1;for(;l=d.exec(i.buffer);)p.push(l.index),c.push(l.index+l[0].length),i.position<=l.index&&u<0&&(u=c.length-2);u<0&&(u=c.length-1);let h="";const y=Math.min(i.line+s.linesAfter,p.length).toString().length,T=s.maxLength-(s.indent+y+3);for(let O=1;O<=s.linesBefore&&!(u-O<0);O++){const W=e(i.buffer,c[u-O],p[u-O],i.position-(c[u]-c[u-O]),T);h=t.repeat(" ",s.indent)+a((i.line-O+1).toString(),y)+" | "+W.str+`
+`+h}const I=e(i.buffer,c[u],p[u],i.position,T);h+=t.repeat(" ",s.indent)+a((i.line+1).toString(),y)+" | "+I.str+`
 `,h+=t.repeat("-",s.indent+y+3+I.pos)+`^
-`;for(let P=1;P<=s.linesAfter&&!(p+P>=u.length);P++){const L=e(i.buffer,c[p+P],u[p+P],i.position-(c[p]-c[p+P]),q);h+=t.repeat(" ",s.indent)+a((i.line+P+1).toString(),y)+" | "+L.str+`
-`}return h.replace(/\n$/,"")}return Hn=o,Hn}var $n,Pt;function ie(){if(Pt)return $n;Pt=1;const t=gn(),e=["kind","multi","resolve","construct","instanceOf","predicate","represent","representName","defaultStyle","styleAliases"],a=["scalar","sequence","mapping"];function o(s){const d={};return s!==null&&Object.keys(s).forEach(function(c){s[c].forEach(function(u){d[String(u)]=c})}),d}function i(s,d){if(d=d||{},Object.keys(d).forEach(function(c){if(e.indexOf(c)===-1)throw new t('Unknown option "'+c+'" is met in definition of "'+s+'" YAML type.')}),this.options=d,this.tag=s,this.kind=d.kind||null,this.resolve=d.resolve||function(){return!0},this.construct=d.construct||function(c){return c},this.instanceOf=d.instanceOf||null,this.predicate=d.predicate||null,this.represent=d.represent||null,this.representName=d.representName||null,this.defaultStyle=d.defaultStyle||null,this.multi=d.multi||!1,this.styleAliases=o(d.styleAliases||null),a.indexOf(this.kind)===-1)throw new t('Unknown kind "'+this.kind+'" is specified for "'+s+'" YAML type.')}return $n=i,$n}var Qn,Ot;function ga(){if(Ot)return Qn;Ot=1;const t=gn(),e=ie();function a(s,d){const c=[];return s[d].forEach(function(u){let l=c.length;c.forEach(function(p,h){p.tag===u.tag&&p.kind===u.kind&&p.multi===u.multi&&(l=h)}),c[l]=u}),c}function o(){const s={scalar:{},sequence:{},mapping:{},fallback:{},multi:{scalar:[],sequence:[],mapping:[],fallback:[]}};function d(c){c.multi?(s.multi[c.kind].push(c),s.multi.fallback.push(c)):s[c.kind][c.tag]=s.fallback[c.tag]=c}for(let c=0,u=arguments.length;c<u;c+=1)arguments[c].forEach(d);return s}function i(s){return this.extend(s)}return i.prototype.extend=function(d){let c=[],u=[];if(d instanceof e)u.push(d);else if(Array.isArray(d))u=u.concat(d);else if(d&&(Array.isArray(d.implicit)||Array.isArray(d.explicit)))d.implicit&&(c=c.concat(d.implicit)),d.explicit&&(u=u.concat(d.explicit));else throw new t("Schema.extend argument should be a Type, [ Type ], or a schema definition ({ implicit: [...], explicit: [...] })");c.forEach(function(p){if(!(p instanceof e))throw new t("Specified list of YAML types (or a single Type object) contains a non-Type object.");if(p.loadKind&&p.loadKind!=="scalar")throw new t("There is a non-scalar type in the implicit list of a schema. Implicit resolving of such types is not supported.");if(p.multi)throw new t("There is a multi type in the implicit list of a schema. Multi tags can only be listed as explicit.")}),u.forEach(function(p){if(!(p instanceof e))throw new t("Specified list of YAML types (or a single Type object) contains a non-Type object.")});const l=Object.create(i.prototype);return l.implicit=(this.implicit||[]).concat(c),l.explicit=(this.explicit||[]).concat(u),l.compiledImplicit=a(l,"implicit"),l.compiledExplicit=a(l,"explicit"),l.compiledTypeMap=o(l.compiledImplicit,l.compiledExplicit),l},Qn=i,Qn}var Kn,Wt;function ya(){if(Wt)return Kn;Wt=1;const t=ie();return Kn=new t("tag:yaml.org,2002:str",{kind:"scalar",construct:function(e){return e!==null?e:""}}),Kn}var Yn,Lt;function va(){if(Lt)return Yn;Lt=1;const t=ie();return Yn=new t("tag:yaml.org,2002:seq",{kind:"sequence",construct:function(e){return e!==null?e:[]}}),Yn}var Zn,Nt;function ba(){if(Nt)return Zn;Nt=1;const t=ie();return Zn=new t("tag:yaml.org,2002:map",{kind:"mapping",construct:function(e){return e!==null?e:{}}}),Zn}var Jn,Vt;function wa(){if(Vt)return Jn;Vt=1;const t=ga();return Jn=new t({explicit:[ya(),va(),ba()]}),Jn}var Xn,Ut;function ka(){if(Ut)return Xn;Ut=1;const t=ie();function e(i){if(i===null)return!0;const s=i.length;return s===1&&i==="~"||s===4&&(i==="null"||i==="Null"||i==="NULL")}function a(){return null}function o(i){return i===null}return Xn=new t("tag:yaml.org,2002:null",{kind:"scalar",resolve:e,construct:a,predicate:o,represent:{canonical:function(){return"~"},lowercase:function(){return"null"},uppercase:function(){return"NULL"},camelcase:function(){return"Null"},empty:function(){return""}},defaultStyle:"lowercase"}),Xn}var et,Mt;function _a(){if(Mt)return et;Mt=1;const t=ie();function e(i){if(i===null)return!1;const s=i.length;return s===4&&(i==="true"||i==="True"||i==="TRUE")||s===5&&(i==="false"||i==="False"||i==="FALSE")}function a(i){return i==="true"||i==="True"||i==="TRUE"}function o(i){return Object.prototype.toString.call(i)==="[object Boolean]"}return et=new t("tag:yaml.org,2002:bool",{kind:"scalar",resolve:e,construct:a,predicate:o,represent:{lowercase:function(i){return i?"true":"false"},uppercase:function(i){return i?"TRUE":"FALSE"},camelcase:function(i){return i?"True":"False"}},defaultStyle:"lowercase"}),et}var nt,Bt;function xa(){if(Bt)return nt;Bt=1;const t=fn(),e=ie();function a(l){return l>=48&&l<=57||l>=65&&l<=70||l>=97&&l<=102}function o(l){return l>=48&&l<=55}function i(l){return l>=48&&l<=57}function s(l){if(l===null)return!1;const p=l.length;let h=0,y=!1;if(!p)return!1;let q=l[h];if((q==="-"||q==="+")&&(q=l[++h]),q==="0"){if(h+1===p)return!0;if(q=l[++h],q==="b"){for(h++;h<p;h++){if(q=l[h],q!=="0"&&q!=="1")return!1;y=!0}return y&&isFinite(d(l))}if(q==="x"){for(h++;h<p;h++){if(!a(l.charCodeAt(h)))return!1;y=!0}return y&&isFinite(d(l))}if(q==="o"){for(h++;h<p;h++){if(!o(l.charCodeAt(h)))return!1;y=!0}return y&&isFinite(d(l))}}for(;h<p;h++){if(!i(l.charCodeAt(h)))return!1;y=!0}return y?isFinite(d(l)):!1}function d(l){let p=l,h=1,y=p[0];if((y==="-"||y==="+")&&(y==="-"&&(h=-1),p=p.slice(1),y=p[0]),p==="0")return 0;if(y==="0"){if(p[1]==="b")return h*parseInt(p.slice(2),2);if(p[1]==="x")return h*parseInt(p.slice(2),16);if(p[1]==="o")return h*parseInt(p.slice(2),8)}return h*parseInt(p,10)}function c(l){return d(l)}function u(l){return Object.prototype.toString.call(l)==="[object Number]"&&l%1===0&&!t.isNegativeZero(l)}return nt=new e("tag:yaml.org,2002:int",{kind:"scalar",resolve:s,construct:c,predicate:u,represent:{binary:function(l){return l>=0?"0b"+l.toString(2):"-0b"+l.toString(2).slice(1)},octal:function(l){return l>=0?"0o"+l.toString(8):"-0o"+l.toString(8).slice(1)},decimal:function(l){return l.toString(10)},hexadecimal:function(l){return l>=0?"0x"+l.toString(16).toUpperCase():"-0x"+l.toString(16).toUpperCase().slice(1)}},defaultStyle:"decimal",styleAliases:{binary:[2,"bin"],octal:[8,"oct"],decimal:[10,"dec"],hexadecimal:[16,"hex"]}}),nt}var tt,jt;function Ca(){if(jt)return tt;jt=1;const t=fn(),e=ie(),a=new RegExp("^(?:[-+]?(?:[0-9]+)(?:\\.[0-9]*)?(?:[eE][-+]?[0-9]+)?|\\.[0-9]+(?:[eE][-+]?[0-9]+)?|[-+]?\\.(?:inf|Inf|INF)|\\.(?:nan|NaN|NAN))$"),o=new RegExp("^(?:[-+]?\\.(?:inf|Inf|INF)|\\.(?:nan|NaN|NAN))$");function i(l){return l===null||!a.test(l)?!1:isFinite(parseFloat(l,10))?!0:o.test(l)}function s(l){let p=l.toLowerCase();const h=p[0]==="-"?-1:1;return"+-".indexOf(p[0])>=0&&(p=p.slice(1)),p===".inf"?h===1?Number.POSITIVE_INFINITY:Number.NEGATIVE_INFINITY:p===".nan"?NaN:h*parseFloat(p,10)}const d=/^[-+]?[0-9]+e/;function c(l,p){if(isNaN(l))switch(p){case"lowercase":return".nan";case"uppercase":return".NAN";case"camelcase":return".NaN"}else if(Number.POSITIVE_INFINITY===l)switch(p){case"lowercase":return".inf";case"uppercase":return".INF";case"camelcase":return".Inf"}else if(Number.NEGATIVE_INFINITY===l)switch(p){case"lowercase":return"-.inf";case"uppercase":return"-.INF";case"camelcase":return"-.Inf"}else if(t.isNegativeZero(l))return"-0.0";const h=l.toString(10);return d.test(h)?h.replace("e",".e"):h}function u(l){return Object.prototype.toString.call(l)==="[object Number]"&&(l%1!==0||t.isNegativeZero(l))}return tt=new e("tag:yaml.org,2002:float",{kind:"scalar",resolve:i,construct:s,predicate:u,represent:c,defaultStyle:"lowercase"}),tt}var at,Ft;function Aa(){return Ft||(Ft=1,at=wa().extend({implicit:[ka(),_a(),xa(),Ca()]})),at}var it,Gt;function Sa(){return Gt||(Gt=1,it=Aa()),it}var ot,Ht;function Ia(){if(Ht)return ot;Ht=1;const t=ie(),e=new RegExp("^([0-9][0-9][0-9][0-9])-([0-9][0-9])-([0-9][0-9])$"),a=new RegExp("^([0-9][0-9][0-9][0-9])-([0-9][0-9]?)-([0-9][0-9]?)(?:[Tt]|[ \\t]+)([0-9][0-9]?):([0-9][0-9]):([0-9][0-9])(?:\\.([0-9]*))?(?:[ \\t]*(Z|([-+])([0-9][0-9]?)(?::([0-9][0-9]))?))?$");function o(d){return d===null?!1:e.exec(d)!==null||a.exec(d)!==null}function i(d){let c=0,u=null,l=e.exec(d);if(l===null&&(l=a.exec(d)),l===null)throw new Error("Date resolve error");const p=+l[1],h=+l[2]-1,y=+l[3];if(!l[4])return new Date(Date.UTC(p,h,y));const q=+l[4],I=+l[5],P=+l[6];if(l[7]){for(c=l[7].slice(0,3);c.length<3;)c+="0";c=+c}if(l[9]){const M=+l[10],B=+(l[11]||0);u=(M*60+B)*6e4,l[9]==="-"&&(u=-u)}const L=new Date(Date.UTC(p,h,y,q,I,P,c));return u&&L.setTime(L.getTime()-u),L}function s(d){return d.toISOString()}return ot=new t("tag:yaml.org,2002:timestamp",{kind:"scalar",resolve:o,construct:i,instanceOf:Date,represent:s}),ot}var rt,$t;function qa(){if($t)return rt;$t=1;const t=ie();function e(a){return a==="<<"||a===null}return rt=new t("tag:yaml.org,2002:merge",{kind:"scalar",resolve:e}),rt}var st,Qt;function Ta(){if(Qt)return st;Qt=1;const t=ie(),e=`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=
-\r`;function a(d){if(d===null)return!1;let c=0;const u=d.length,l=e;for(let p=0;p<u;p++){const h=l.indexOf(d.charAt(p));if(!(h>64)){if(h<0)return!1;c+=6}}return c%8===0}function o(d){const c=d.replace(/[\r\n=]/g,""),u=c.length,l=e;let p=0;const h=[];for(let q=0;q<u;q++)q%4===0&&q&&(h.push(p>>16&255),h.push(p>>8&255),h.push(p&255)),p=p<<6|l.indexOf(c.charAt(q));const y=u%4*6;return y===0?(h.push(p>>16&255),h.push(p>>8&255),h.push(p&255)):y===18?(h.push(p>>10&255),h.push(p>>2&255)):y===12&&h.push(p>>4&255),new Uint8Array(h)}function i(d){let c="",u=0;const l=d.length,p=e;for(let y=0;y<l;y++)y%3===0&&y&&(c+=p[u>>18&63],c+=p[u>>12&63],c+=p[u>>6&63],c+=p[u&63]),u=(u<<8)+d[y];const h=l%3;return h===0?(c+=p[u>>18&63],c+=p[u>>12&63],c+=p[u>>6&63],c+=p[u&63]):h===2?(c+=p[u>>10&63],c+=p[u>>4&63],c+=p[u<<2&63],c+=p[64]):h===1&&(c+=p[u>>2&63],c+=p[u<<4&63],c+=p[64],c+=p[64]),c}function s(d){return Object.prototype.toString.call(d)==="[object Uint8Array]"}return st=new t("tag:yaml.org,2002:binary",{kind:"scalar",resolve:a,construct:o,predicate:s,represent:i}),st}var ct,Kt;function Da(){if(Kt)return ct;Kt=1;const t=ie(),e=Object.prototype.hasOwnProperty,a=Object.prototype.toString;function o(s){if(s===null)return!0;const d={},c=s;for(let u=0,l=c.length;u<l;u+=1){const p=c[u];let h=!1;if(a.call(p)!=="[object Object]")return!1;let y;for(y in p)if(e.call(p,y))if(!h)h=!0;else return!1;if(!h||e.call(d,y))return!1;Object.defineProperty(d,y,{value:!0})}return!0}function i(s){return s!==null?s:[]}return ct=new t("tag:yaml.org,2002:omap",{kind:"sequence",resolve:o,construct:i}),ct}var lt,Yt;function Ea(){if(Yt)return lt;Yt=1;const t=ie(),e=Object.prototype.toString;function a(i){if(i===null)return!0;const s=i,d=new Array(s.length);for(let c=0,u=s.length;c<u;c+=1){const l=s[c];if(e.call(l)!=="[object Object]")return!1;const p=Object.keys(l);if(p.length!==1)return!1;d[c]=[p[0],l[p[0]]]}return!0}function o(i){if(i===null)return[];const s=i,d=new Array(s.length);for(let c=0,u=s.length;c<u;c+=1){const l=s[c],p=Object.keys(l);d[c]=[p[0],l[p[0]]]}return d}return lt=new t("tag:yaml.org,2002:pairs",{kind:"sequence",resolve:a,construct:o}),lt}var dt,Zt;function Ra(){if(Zt)return dt;Zt=1;const t=ie(),e=Object.prototype.hasOwnProperty;function a(i){if(i===null)return!0;const s=i;for(const d in s)if(e.call(s,d)&&s[d]!==null)return!1;return!0}function o(i){return i!==null?i:{}}return dt=new t("tag:yaml.org,2002:set",{kind:"mapping",resolve:a,construct:o}),dt}var pt,Jt;function vt(){return Jt||(Jt=1,pt=Sa().extend({implicit:[Ia(),qa()],explicit:[Ta(),Da(),Ea(),Ra()]})),pt}var Xt;function vo(){if(Xt)return Dn;Xt=1;const t=fn(),e=gn(),a=yo(),o=vt(),i=Object.prototype.hasOwnProperty,s=1,d=2,c=3,u=4,l=1,p=2,h=3,y=/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x84\x86-\x9F\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/,q=/[\x85\u2028\u2029]/,I=/[,\[\]{}]/,P=/^(?:!|!!|![0-9A-Za-z-]+!)$/,L=/^(?:!|[^,\[\]{}])(?:%[0-9a-f]{2}|[0-9a-z\-#;/?:@&=+$,_.!~*'()\[\]])*$/i;function M(n){return Object.prototype.toString.call(n)}function B(n){return n===10||n===13}function N(n){return n===9||n===32}function G(n){return n===9||n===32||n===10||n===13}function ae(n){return n===44||n===91||n===93||n===123||n===125}function Ce(n){if(n>=48&&n<=57)return n-48;const m=n|32;return m>=97&&m<=102?m-97+10:-1}function Ae(n){return n===120?2:n===117?4:n===85?8:0}function le(n){return n>=48&&n<=57?n-48:-1}function ue(n){switch(n){case 48:return"\0";case 97:return"\x07";case 98:return"\b";case 116:return"	";case 9:return"	";case 110:return`
-`;case 118:return"\v";case 102:return"\f";case 114:return"\r";case 101:return"\x1B";case 32:return" ";case 34:return'"';case 47:return"/";case 92:return"\\";case 78:return"";case 95:return" ";case 76:return"\u2028";case 80:return"\u2029";default:return""}}function Se(n){return n<=65535?String.fromCharCode(n):String.fromCharCode((n-65536>>10)+55296,(n-65536&1023)+56320)}function we(n,m,w){m==="__proto__"?Object.defineProperty(n,m,{configurable:!0,enumerable:!0,writable:!0,value:w}):n[m]=w}const Pe=new Array(256),de=new Array(256);for(let n=0;n<256;n++)Pe[n]=ue(n)?1:0,de[n]=ue(n);function H(n,m){this.input=n,this.filename=m.filename||null,this.schema=m.schema||o,this.onWarning=m.onWarning||null,this.legacy=m.legacy||!1,this.json=m.json||!1,this.listener=m.listener||null,this.maxDepth=typeof m.maxDepth=="number"?m.maxDepth:100,this.maxTotalMergeKeys=typeof m.maxTotalMergeKeys=="number"?m.maxTotalMergeKeys:1e4,this.implicitTypes=this.schema.compiledImplicit,this.typeMap=this.schema.compiledTypeMap,this.length=n.length,this.position=0,this.line=0,this.lineStart=0,this.lineIndent=0,this.depth=0,this.totalMergeKeys=0,this.firstTabInLine=-1,this.documents=[],this.anchorMapTransactions=[]}function Ie(n,m){const w={name:n.filename,buffer:n.input.slice(0,-1),position:n.position,line:n.line,column:n.position-n.lineStart};return w.snippet=a(w),new e(m,w)}function D(n,m){throw Ie(n,m)}function je(n,m){n.onWarning&&n.onWarning.call(null,Ie(n,m))}function ke(n,m,w){const k=n.anchorMapTransactions;if(k.length!==0){const v=k[k.length-1];i.call(v,m)||(v[m]={existed:i.call(n.anchorMap,m),value:n.anchorMap[m]})}n.anchorMap[m]=w}function Vn(n){n.anchorMapTransactions.push(Object.create(null))}function Oe(n){const m=n.anchorMapTransactions.pop(),w=n.anchorMapTransactions;if(w.length===0)return;const k=w[w.length-1],v=Object.keys(m);for(let r=0,f=v.length;r<f;r+=1){const g=v[r];i.call(k,g)||(k[g]=m[g])}}function Un(n){const m=n.anchorMapTransactions.pop(),w=Object.keys(m);for(let k=w.length-1;k>=0;k-=1){const v=m[w[k]];v.existed?n.anchorMap[w[k]]=v.value:delete n.anchorMap[w[k]]}}function en(n){return{position:n.position,line:n.line,lineStart:n.lineStart,lineIndent:n.lineIndent,firstTabInLine:n.firstTabInLine,tag:n.tag,anchor:n.anchor,kind:n.kind,result:n.result}}function Fe(n,m){n.position=m.position,n.line=m.line,n.lineStart=m.lineStart,n.lineIndent=m.lineIndent,n.firstTabInLine=m.firstTabInLine,n.tag=m.tag,n.anchor=m.anchor,n.kind=m.kind,n.result=m.result}const kn={YAML:function(m,w,k){m.version!==null&&D(m,"duplication of %YAML directive"),k.length!==1&&D(m,"YAML directive accepts exactly one argument");const v=/^([0-9]+)\.([0-9]+)$/.exec(k[0]);v===null&&D(m,"ill-formed argument of the YAML directive");const r=parseInt(v[1],10),f=parseInt(v[2],10);r!==1&&D(m,"unacceptable YAML version of the document"),m.version=k[0],m.checkLineBreaks=f<2,f!==1&&f!==2&&je(m,"unsupported YAML version of the document")},TAG:function(m,w,k){let v;k.length!==2&&D(m,"TAG directive accepts exactly two arguments");const r=k[0];v=k[1],P.test(r)||D(m,"ill-formed tag handle (first argument) of the TAG directive"),i.call(m.tagMap,r)&&D(m,'there is a previously declared suffix for "'+r+'" tag handle'),L.test(v)||D(m,"ill-formed tag prefix (second argument) of the TAG directive");try{v=decodeURIComponent(v)}catch{D(m,"tag prefix is malformed: "+v)}m.tagMap[r]=v}};function re(n,m,w,k){if(m<w){const v=n.input.slice(m,w);if(k)for(let r=0,f=v.length;r<f;r+=1){const g=v.charCodeAt(r);g===9||g>=32&&g<=1114111||D(n,"expected valid JSON character")}else y.test(v)&&D(n,"the stream contains non-printable characters");n.result+=v}}function qe(n){n.totalMergeKeys++,n.maxTotalMergeKeys!==-1&&n.totalMergeKeys>n.maxTotalMergeKeys&&D(n,"merge keys exceeded maxTotalMergeKeys ("+n.maxTotalMergeKeys+")")}function nn(n,m,w,k){t.isObject(w)||D(n,"cannot merge mappings; the provided source object is unacceptable"),qe(n);const v=Object.keys(w);for(let r=0,f=v.length;r<f;r+=1){const g=v[r];qe(n),i.call(m,g)||(we(m,g,w[g]),k[g]=!0)}}function _e(n,m,w,k,v,r,f,g,_){if(Array.isArray(v)){v=Array.prototype.slice.call(v);for(let x=0,C=v.length;x<C;x+=1)Array.isArray(v[x])&&D(n,"nested arrays are not supported inside keys"),typeof v=="object"&&M(v[x])==="[object Object]"&&(v[x]="[object Object]")}if(typeof v=="object"&&M(v)==="[object Object]"&&(v="[object Object]"),v=String(v),m===null&&(m={}),k==="tag:yaml.org,2002:merge")if(Array.isArray(r)){r.length>100&&D(n,"abnormal merge sequence size");for(let x=0,C=r.length;x<C;x+=1)nn(n,m,r[x],w)}else nn(n,m,r,w);else!n.json&&!i.call(w,v)&&i.call(m,v)&&(n.line=f||n.line,n.lineStart=g||n.lineStart,n.position=_||n.position,D(n,"duplicated mapping key")),we(m,v,r),delete w[v];return m}function tn(n){const m=n.input.charCodeAt(n.position);m===10?n.position++:m===13?(n.position++,n.input.charCodeAt(n.position)===10&&n.position++):D(n,"a line break is expected"),n.line+=1,n.lineStart=n.position,n.firstTabInLine=-1}function $(n,m,w){let k=0,v=n.input.charCodeAt(n.position);for(;v!==0;){for(;N(v);)v===9&&n.firstTabInLine===-1&&(n.firstTabInLine=n.position),v=n.input.charCodeAt(++n.position);if(m&&v===35)do v=n.input.charCodeAt(++n.position);while(v!==10&&v!==13&&v!==0);if(B(v))for(tn(n),v=n.input.charCodeAt(n.position),k++,n.lineIndent=0;v===32;)n.lineIndent++,v=n.input.charCodeAt(++n.position);else break}return w!==-1&&k!==0&&n.lineIndent<w&&je(n,"deficient indentation"),k}function ge(n){let m=n.position,w=n.input.charCodeAt(m);return!!((w===45||w===46)&&w===n.input.charCodeAt(m+1)&&w===n.input.charCodeAt(m+2)&&(m+=3,w=n.input.charCodeAt(m),w===0||G(w)))}function Ge(n,m){m===1?n.result+=" ":m>1&&(n.result+=t.repeat(`
-`,m-1))}function _n(n,m,w){let k,v,r,f,g,_;const x=n.kind,C=n.result;let b=n.input.charCodeAt(n.position);if(G(b)||ae(b)||b===35||b===38||b===42||b===33||b===124||b===62||b===39||b===34||b===37||b===64||b===96)return!1;if(b===63||b===45){const S=n.input.charCodeAt(n.position+1);if(G(S)||w&&ae(S))return!1}for(n.kind="scalar",n.result="",k=v=n.position,r=!1;b!==0;){if(b===58){const S=n.input.charCodeAt(n.position+1);if(G(S)||w&&ae(S))break}else if(b===35){const S=n.input.charCodeAt(n.position-1);if(G(S))break}else{if(n.position===n.lineStart&&ge(n)||w&&ae(b))break;if(B(b))if(f=n.line,g=n.lineStart,_=n.lineIndent,$(n,!1,-1),n.lineIndent>=m){r=!0,b=n.input.charCodeAt(n.position);continue}else{n.position=v,n.line=f,n.lineStart=g,n.lineIndent=_;break}}r&&(re(n,k,v,!1),Ge(n,n.line-f),k=v=n.position,r=!1),N(b)||(v=n.position+1),b=n.input.charCodeAt(++n.position)}return re(n,k,v,!1),n.result?!0:(n.kind=x,n.result=C,!1)}function an(n,m){let w,k,v=n.input.charCodeAt(n.position);if(v!==39)return!1;for(n.kind="scalar",n.result="",n.position++,w=k=n.position;(v=n.input.charCodeAt(n.position))!==0;)if(v===39)if(re(n,w,n.position,!0),v=n.input.charCodeAt(++n.position),v===39)w=n.position,n.position++,k=n.position;else return!0;else B(v)?(re(n,w,k,!0),Ge(n,$(n,!1,m)),w=k=n.position):n.position===n.lineStart&&ge(n)?D(n,"unexpected end of the document within a single quoted scalar"):(n.position++,N(v)||(k=n.position));D(n,"unexpected end of the stream within a single quoted scalar")}function xn(n,m){let w,k,v,r=n.input.charCodeAt(n.position);if(r!==34)return!1;for(n.kind="scalar",n.result="",n.position++,w=k=n.position;(r=n.input.charCodeAt(n.position))!==0;){if(r===34)return re(n,w,n.position,!0),n.position++,!0;if(r===92){if(re(n,w,n.position,!0),r=n.input.charCodeAt(++n.position),B(r))$(n,!1,m);else if(r<256&&Pe[r])n.result+=de[r],n.position++;else if((v=Ae(r))>0){let f=v,g=0;for(;f>0;f--)r=n.input.charCodeAt(++n.position),(v=Ce(r))>=0?g=(g<<4)+v:D(n,"expected hexadecimal character");n.result+=Se(g),n.position++}else D(n,"unknown escape sequence");w=k=n.position}else B(r)?(re(n,w,k,!0),Ge(n,$(n,!1,m)),w=k=n.position):n.position===n.lineStart&&ge(n)?D(n,"unexpected end of the document within a double quoted scalar"):(n.position++,N(r)||(k=n.position))}D(n,"unexpected end of the stream within a double quoted scalar")}function Cn(n,m){let w=!0,k,v,r;const f=n.tag;let g;const _=n.anchor;let x,C,b,S;const T=Object.create(null);let R,z,O,V=n.input.charCodeAt(n.position);if(V===91)x=93,S=!1,g=[];else if(V===123)x=125,S=!0,g={};else return!1;for(n.anchor!==null&&ke(n,n.anchor,g),V=n.input.charCodeAt(++n.position);V!==0;){if($(n,!0,m),V=n.input.charCodeAt(n.position),V===x)return n.position++,n.tag=f,n.anchor=_,n.kind=S?"mapping":"sequence",n.result=g,!0;if(w?V===44&&D(n,"expected the node content, but found ','"):D(n,"missed comma between flow collection entries"),z=R=O=null,C=b=!1,V===63){const Ee=n.input.charCodeAt(n.position+1);G(Ee)&&(C=b=!0,n.position++,$(n,!0,m))}k=n.line,v=n.lineStart,r=n.position,De(n,m,s,!1,!0),z=n.tag,R=n.result,$(n,!0,m),V=n.input.charCodeAt(n.position),(b||n.line===k)&&V===58&&(C=!0,V=n.input.charCodeAt(++n.position),$(n,!0,m),De(n,m,s,!1,!0),O=n.result),S?_e(n,g,T,z,R,O,k,v,r):C?g.push(_e(n,null,T,z,R,O,k,v,r)):g.push(R),$(n,!0,m),V=n.input.charCodeAt(n.position),V===44?(w=!0,V=n.input.charCodeAt(++n.position)):w=!1}D(n,"unexpected end of the stream within a flow collection")}function Te(n,m){let w,k=l,v=!1,r=!1,f=m,g=0,_=!1,x,C=n.input.charCodeAt(n.position);if(C===124)w=!1;else if(C===62)w=!0;else return!1;for(n.kind="scalar",n.result="";C!==0;)if(C=n.input.charCodeAt(++n.position),C===43||C===45)l===k?k=C===43?h:p:D(n,"repeat of a chomping mode identifier");else if((x=le(C))>=0)x===0?D(n,"bad explicit indentation width of a block scalar; it cannot be less than one"):r?D(n,"repeat of an indentation width identifier"):(f=m+x-1,r=!0);else break;if(N(C)){do C=n.input.charCodeAt(++n.position);while(N(C));if(C===35)do C=n.input.charCodeAt(++n.position);while(!B(C)&&C!==0)}for(;C!==0;){for(tn(n),n.lineIndent=0,C=n.input.charCodeAt(n.position);(!r||n.lineIndent<f)&&C===32;)n.lineIndent++,C=n.input.charCodeAt(++n.position);if(!r&&n.lineIndent>f&&(f=n.lineIndent),B(C)){g++;continue}if(!r&&f===0&&D(n,"missing indentation for block scalar"),n.lineIndent<f){k===h?n.result+=t.repeat(`
+`;for(let O=1;O<=s.linesAfter&&!(u+O>=p.length);O++){const W=e(i.buffer,c[u+O],p[u+O],i.position-(c[u]-c[u+O]),T);h+=t.repeat(" ",s.indent)+a((i.line+O+1).toString(),y)+" | "+W.str+`
+`}return h.replace(/\n$/,"")}return Hn=o,Hn}var $n,Ot;function ie(){if(Ot)return $n;Ot=1;const t=gn(),e=["kind","multi","resolve","construct","instanceOf","predicate","represent","representName","defaultStyle","styleAliases"],a=["scalar","sequence","mapping"];function o(s){const d={};return s!==null&&Object.keys(s).forEach(function(c){s[c].forEach(function(p){d[String(p)]=c})}),d}function i(s,d){if(d=d||{},Object.keys(d).forEach(function(c){if(e.indexOf(c)===-1)throw new t('Unknown option "'+c+'" is met in definition of "'+s+'" YAML type.')}),this.options=d,this.tag=s,this.kind=d.kind||null,this.resolve=d.resolve||function(){return!0},this.construct=d.construct||function(c){return c},this.instanceOf=d.instanceOf||null,this.predicate=d.predicate||null,this.represent=d.represent||null,this.representName=d.representName||null,this.defaultStyle=d.defaultStyle||null,this.multi=d.multi||!1,this.styleAliases=o(d.styleAliases||null),a.indexOf(this.kind)===-1)throw new t('Unknown kind "'+this.kind+'" is specified for "'+s+'" YAML type.')}return $n=i,$n}var Qn,Lt;function ga(){if(Lt)return Qn;Lt=1;const t=gn(),e=ie();function a(s,d){const c=[];return s[d].forEach(function(p){let l=c.length;c.forEach(function(u,h){u.tag===p.tag&&u.kind===p.kind&&u.multi===p.multi&&(l=h)}),c[l]=p}),c}function o(){const s={scalar:{},sequence:{},mapping:{},fallback:{},multi:{scalar:[],sequence:[],mapping:[],fallback:[]}};function d(c){c.multi?(s.multi[c.kind].push(c),s.multi.fallback.push(c)):s[c.kind][c.tag]=s.fallback[c.tag]=c}for(let c=0,p=arguments.length;c<p;c+=1)arguments[c].forEach(d);return s}function i(s){return this.extend(s)}return i.prototype.extend=function(d){let c=[],p=[];if(d instanceof e)p.push(d);else if(Array.isArray(d))p=p.concat(d);else if(d&&(Array.isArray(d.implicit)||Array.isArray(d.explicit)))d.implicit&&(c=c.concat(d.implicit)),d.explicit&&(p=p.concat(d.explicit));else throw new t("Schema.extend argument should be a Type, [ Type ], or a schema definition ({ implicit: [...], explicit: [...] })");c.forEach(function(u){if(!(u instanceof e))throw new t("Specified list of YAML types (or a single Type object) contains a non-Type object.");if(u.loadKind&&u.loadKind!=="scalar")throw new t("There is a non-scalar type in the implicit list of a schema. Implicit resolving of such types is not supported.");if(u.multi)throw new t("There is a multi type in the implicit list of a schema. Multi tags can only be listed as explicit.")}),p.forEach(function(u){if(!(u instanceof e))throw new t("Specified list of YAML types (or a single Type object) contains a non-Type object.")});const l=Object.create(i.prototype);return l.implicit=(this.implicit||[]).concat(c),l.explicit=(this.explicit||[]).concat(p),l.compiledImplicit=a(l,"implicit"),l.compiledExplicit=a(l,"explicit"),l.compiledTypeMap=o(l.compiledImplicit,l.compiledExplicit),l},Qn=i,Qn}var Kn,zt;function ya(){if(zt)return Kn;zt=1;const t=ie();return Kn=new t("tag:yaml.org,2002:str",{kind:"scalar",construct:function(e){return e!==null?e:""}}),Kn}var Yn,Wt;function va(){if(Wt)return Yn;Wt=1;const t=ie();return Yn=new t("tag:yaml.org,2002:seq",{kind:"sequence",construct:function(e){return e!==null?e:[]}}),Yn}var Zn,Nt;function ba(){if(Nt)return Zn;Nt=1;const t=ie();return Zn=new t("tag:yaml.org,2002:map",{kind:"mapping",construct:function(e){return e!==null?e:{}}}),Zn}var Jn,Vt;function wa(){if(Vt)return Jn;Vt=1;const t=ga();return Jn=new t({explicit:[ya(),va(),ba()]}),Jn}var Xn,Ut;function ka(){if(Ut)return Xn;Ut=1;const t=ie();function e(i){if(i===null)return!0;const s=i.length;return s===1&&i==="~"||s===4&&(i==="null"||i==="Null"||i==="NULL")}function a(){return null}function o(i){return i===null}return Xn=new t("tag:yaml.org,2002:null",{kind:"scalar",resolve:e,construct:a,predicate:o,represent:{canonical:function(){return"~"},lowercase:function(){return"null"},uppercase:function(){return"NULL"},camelcase:function(){return"Null"},empty:function(){return""}},defaultStyle:"lowercase"}),Xn}var et,Bt;function _a(){if(Bt)return et;Bt=1;const t=ie();function e(i){if(i===null)return!1;const s=i.length;return s===4&&(i==="true"||i==="True"||i==="TRUE")||s===5&&(i==="false"||i==="False"||i==="FALSE")}function a(i){return i==="true"||i==="True"||i==="TRUE"}function o(i){return Object.prototype.toString.call(i)==="[object Boolean]"}return et=new t("tag:yaml.org,2002:bool",{kind:"scalar",resolve:e,construct:a,predicate:o,represent:{lowercase:function(i){return i?"true":"false"},uppercase:function(i){return i?"TRUE":"FALSE"},camelcase:function(i){return i?"True":"False"}},defaultStyle:"lowercase"}),et}var nt,Mt;function xa(){if(Mt)return nt;Mt=1;const t=fn(),e=ie();function a(l){return l>=48&&l<=57||l>=65&&l<=70||l>=97&&l<=102}function o(l){return l>=48&&l<=55}function i(l){return l>=48&&l<=57}function s(l){if(l===null)return!1;const u=l.length;let h=0,y=!1;if(!u)return!1;let T=l[h];if((T==="-"||T==="+")&&(T=l[++h]),T==="0"){if(h+1===u)return!0;if(T=l[++h],T==="b"){for(h++;h<u;h++){if(T=l[h],T!=="0"&&T!=="1")return!1;y=!0}return y&&isFinite(d(l))}if(T==="x"){for(h++;h<u;h++){if(!a(l.charCodeAt(h)))return!1;y=!0}return y&&isFinite(d(l))}if(T==="o"){for(h++;h<u;h++){if(!o(l.charCodeAt(h)))return!1;y=!0}return y&&isFinite(d(l))}}for(;h<u;h++){if(!i(l.charCodeAt(h)))return!1;y=!0}return y?isFinite(d(l)):!1}function d(l){let u=l,h=1,y=u[0];if((y==="-"||y==="+")&&(y==="-"&&(h=-1),u=u.slice(1),y=u[0]),u==="0")return 0;if(y==="0"){if(u[1]==="b")return h*parseInt(u.slice(2),2);if(u[1]==="x")return h*parseInt(u.slice(2),16);if(u[1]==="o")return h*parseInt(u.slice(2),8)}return h*parseInt(u,10)}function c(l){return d(l)}function p(l){return Object.prototype.toString.call(l)==="[object Number]"&&l%1===0&&!t.isNegativeZero(l)}return nt=new e("tag:yaml.org,2002:int",{kind:"scalar",resolve:s,construct:c,predicate:p,represent:{binary:function(l){return l>=0?"0b"+l.toString(2):"-0b"+l.toString(2).slice(1)},octal:function(l){return l>=0?"0o"+l.toString(8):"-0o"+l.toString(8).slice(1)},decimal:function(l){return l.toString(10)},hexadecimal:function(l){return l>=0?"0x"+l.toString(16).toUpperCase():"-0x"+l.toString(16).toUpperCase().slice(1)}},defaultStyle:"decimal",styleAliases:{binary:[2,"bin"],octal:[8,"oct"],decimal:[10,"dec"],hexadecimal:[16,"hex"]}}),nt}var tt,jt;function Ca(){if(jt)return tt;jt=1;const t=fn(),e=ie(),a=new RegExp("^(?:[-+]?(?:[0-9]+)(?:\\.[0-9]*)?(?:[eE][-+]?[0-9]+)?|\\.[0-9]+(?:[eE][-+]?[0-9]+)?|[-+]?\\.(?:inf|Inf|INF)|\\.(?:nan|NaN|NAN))$"),o=new RegExp("^(?:[-+]?\\.(?:inf|Inf|INF)|\\.(?:nan|NaN|NAN))$");function i(l){return l===null||!a.test(l)?!1:isFinite(parseFloat(l,10))?!0:o.test(l)}function s(l){let u=l.toLowerCase();const h=u[0]==="-"?-1:1;return"+-".indexOf(u[0])>=0&&(u=u.slice(1)),u===".inf"?h===1?Number.POSITIVE_INFINITY:Number.NEGATIVE_INFINITY:u===".nan"?NaN:h*parseFloat(u,10)}const d=/^[-+]?[0-9]+e/;function c(l,u){if(isNaN(l))switch(u){case"lowercase":return".nan";case"uppercase":return".NAN";case"camelcase":return".NaN"}else if(Number.POSITIVE_INFINITY===l)switch(u){case"lowercase":return".inf";case"uppercase":return".INF";case"camelcase":return".Inf"}else if(Number.NEGATIVE_INFINITY===l)switch(u){case"lowercase":return"-.inf";case"uppercase":return"-.INF";case"camelcase":return"-.Inf"}else if(t.isNegativeZero(l))return"-0.0";const h=l.toString(10);return d.test(h)?h.replace("e",".e"):h}function p(l){return Object.prototype.toString.call(l)==="[object Number]"&&(l%1!==0||t.isNegativeZero(l))}return tt=new e("tag:yaml.org,2002:float",{kind:"scalar",resolve:i,construct:s,predicate:p,represent:c,defaultStyle:"lowercase"}),tt}var at,Ft;function Aa(){return Ft||(Ft=1,at=wa().extend({implicit:[ka(),_a(),xa(),Ca()]})),at}var it,Gt;function Sa(){return Gt||(Gt=1,it=Aa()),it}var ot,Ht;function Ia(){if(Ht)return ot;Ht=1;const t=ie(),e=new RegExp("^([0-9][0-9][0-9][0-9])-([0-9][0-9])-([0-9][0-9])$"),a=new RegExp("^([0-9][0-9][0-9][0-9])-([0-9][0-9]?)-([0-9][0-9]?)(?:[Tt]|[ \\t]+)([0-9][0-9]?):([0-9][0-9]):([0-9][0-9])(?:\\.([0-9]*))?(?:[ \\t]*(Z|([-+])([0-9][0-9]?)(?::([0-9][0-9]))?))?$");function o(d){return d===null?!1:e.exec(d)!==null||a.exec(d)!==null}function i(d){let c=0,p=null,l=e.exec(d);if(l===null&&(l=a.exec(d)),l===null)throw new Error("Date resolve error");const u=+l[1],h=+l[2]-1,y=+l[3];if(!l[4])return new Date(Date.UTC(u,h,y));const T=+l[4],I=+l[5],O=+l[6];if(l[7]){for(c=l[7].slice(0,3);c.length<3;)c+="0";c=+c}if(l[9]){const B=+l[10],M=+(l[11]||0);p=(B*60+M)*6e4,l[9]==="-"&&(p=-p)}const W=new Date(Date.UTC(u,h,y,T,I,O,c));return p&&W.setTime(W.getTime()-p),W}function s(d){return d.toISOString()}return ot=new t("tag:yaml.org,2002:timestamp",{kind:"scalar",resolve:o,construct:i,instanceOf:Date,represent:s}),ot}var rt,$t;function Ta(){if($t)return rt;$t=1;const t=ie();function e(a){return a==="<<"||a===null}return rt=new t("tag:yaml.org,2002:merge",{kind:"scalar",resolve:e}),rt}var st,Qt;function Da(){if(Qt)return st;Qt=1;const t=ie(),e=`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=
+\r`;function a(d){if(d===null)return!1;let c=0;const p=d.length,l=e;for(let u=0;u<p;u++){const h=l.indexOf(d.charAt(u));if(!(h>64)){if(h<0)return!1;c+=6}}return c%8===0}function o(d){const c=d.replace(/[\r\n=]/g,""),p=c.length,l=e;let u=0;const h=[];for(let T=0;T<p;T++)T%4===0&&T&&(h.push(u>>16&255),h.push(u>>8&255),h.push(u&255)),u=u<<6|l.indexOf(c.charAt(T));const y=p%4*6;return y===0?(h.push(u>>16&255),h.push(u>>8&255),h.push(u&255)):y===18?(h.push(u>>10&255),h.push(u>>2&255)):y===12&&h.push(u>>4&255),new Uint8Array(h)}function i(d){let c="",p=0;const l=d.length,u=e;for(let y=0;y<l;y++)y%3===0&&y&&(c+=u[p>>18&63],c+=u[p>>12&63],c+=u[p>>6&63],c+=u[p&63]),p=(p<<8)+d[y];const h=l%3;return h===0?(c+=u[p>>18&63],c+=u[p>>12&63],c+=u[p>>6&63],c+=u[p&63]):h===2?(c+=u[p>>10&63],c+=u[p>>4&63],c+=u[p<<2&63],c+=u[64]):h===1&&(c+=u[p>>2&63],c+=u[p<<4&63],c+=u[64],c+=u[64]),c}function s(d){return Object.prototype.toString.call(d)==="[object Uint8Array]"}return st=new t("tag:yaml.org,2002:binary",{kind:"scalar",resolve:a,construct:o,predicate:s,represent:i}),st}var ct,Kt;function qa(){if(Kt)return ct;Kt=1;const t=ie(),e=Object.prototype.hasOwnProperty,a=Object.prototype.toString;function o(s){if(s===null)return!0;const d={},c=s;for(let p=0,l=c.length;p<l;p+=1){const u=c[p];let h=!1;if(a.call(u)!=="[object Object]")return!1;let y;for(y in u)if(e.call(u,y))if(!h)h=!0;else return!1;if(!h||e.call(d,y))return!1;Object.defineProperty(d,y,{value:!0})}return!0}function i(s){return s!==null?s:[]}return ct=new t("tag:yaml.org,2002:omap",{kind:"sequence",resolve:o,construct:i}),ct}var lt,Yt;function Ra(){if(Yt)return lt;Yt=1;const t=ie(),e=Object.prototype.toString;function a(i){if(i===null)return!0;const s=i,d=new Array(s.length);for(let c=0,p=s.length;c<p;c+=1){const l=s[c];if(e.call(l)!=="[object Object]")return!1;const u=Object.keys(l);if(u.length!==1)return!1;d[c]=[u[0],l[u[0]]]}return!0}function o(i){if(i===null)return[];const s=i,d=new Array(s.length);for(let c=0,p=s.length;c<p;c+=1){const l=s[c],u=Object.keys(l);d[c]=[u[0],l[u[0]]]}return d}return lt=new t("tag:yaml.org,2002:pairs",{kind:"sequence",resolve:a,construct:o}),lt}var dt,Zt;function Pa(){if(Zt)return dt;Zt=1;const t=ie(),e=Object.prototype.hasOwnProperty;function a(i){if(i===null)return!0;const s=i;for(const d in s)if(e.call(s,d)&&s[d]!==null)return!1;return!0}function o(i){return i!==null?i:{}}return dt=new t("tag:yaml.org,2002:set",{kind:"mapping",resolve:a,construct:o}),dt}var ut,Jt;function vt(){return Jt||(Jt=1,ut=Sa().extend({implicit:[Ia(),Ta()],explicit:[Da(),qa(),Ra(),Pa()]})),ut}var Xt;function vo(){if(Xt)return qn;Xt=1;const t=fn(),e=gn(),a=yo(),o=vt(),i=Object.prototype.hasOwnProperty,s=1,d=2,c=3,p=4,l=1,u=2,h=3,y=/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x84\x86-\x9F\uFFFE\uFFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/,T=/[\x85\u2028\u2029]/,I=/[,\[\]{}]/,O=/^(?:!|!!|![0-9A-Za-z-]+!)$/,W=/^(?:!|[^,\[\]{}])(?:%[0-9a-f]{2}|[0-9a-z\-#;/?:@&=+$,_.!~*'()\[\]])*$/i;function B(n){return Object.prototype.toString.call(n)}function M(n){return n===10||n===13}function N(n){return n===9||n===32}function G(n){return n===9||n===32||n===10||n===13}function ae(n){return n===44||n===91||n===93||n===123||n===125}function Ce(n){if(n>=48&&n<=57)return n-48;const m=n|32;return m>=97&&m<=102?m-97+10:-1}function Ae(n){return n===120?2:n===117?4:n===85?8:0}function le(n){return n>=48&&n<=57?n-48:-1}function pe(n){switch(n){case 48:return"\0";case 97:return"\x07";case 98:return"\b";case 116:return"	";case 9:return"	";case 110:return`
+`;case 118:return"\v";case 102:return"\f";case 114:return"\r";case 101:return"\x1B";case 32:return" ";case 34:return'"';case 47:return"/";case 92:return"\\";case 78:return"";case 95:return" ";case 76:return"\u2028";case 80:return"\u2029";default:return""}}function Se(n){return n<=65535?String.fromCharCode(n):String.fromCharCode((n-65536>>10)+55296,(n-65536&1023)+56320)}function we(n,m,w){m==="__proto__"?Object.defineProperty(n,m,{configurable:!0,enumerable:!0,writable:!0,value:w}):n[m]=w}const Oe=new Array(256),de=new Array(256);for(let n=0;n<256;n++)Oe[n]=pe(n)?1:0,de[n]=pe(n);function H(n,m){this.input=n,this.filename=m.filename||null,this.schema=m.schema||o,this.onWarning=m.onWarning||null,this.legacy=m.legacy||!1,this.json=m.json||!1,this.listener=m.listener||null,this.maxDepth=typeof m.maxDepth=="number"?m.maxDepth:100,this.maxTotalMergeKeys=typeof m.maxTotalMergeKeys=="number"?m.maxTotalMergeKeys:1e4,this.implicitTypes=this.schema.compiledImplicit,this.typeMap=this.schema.compiledTypeMap,this.length=n.length,this.position=0,this.line=0,this.lineStart=0,this.lineIndent=0,this.depth=0,this.totalMergeKeys=0,this.firstTabInLine=-1,this.documents=[],this.anchorMapTransactions=[]}function Ie(n,m){const w={name:n.filename,buffer:n.input.slice(0,-1),position:n.position,line:n.line,column:n.position-n.lineStart};return w.snippet=a(w),new e(m,w)}function q(n,m){throw Ie(n,m)}function je(n,m){n.onWarning&&n.onWarning.call(null,Ie(n,m))}function ke(n,m,w){const k=n.anchorMapTransactions;if(k.length!==0){const v=k[k.length-1];i.call(v,m)||(v[m]={existed:i.call(n.anchorMap,m),value:n.anchorMap[m]})}n.anchorMap[m]=w}function Vn(n){n.anchorMapTransactions.push(Object.create(null))}function Le(n){const m=n.anchorMapTransactions.pop(),w=n.anchorMapTransactions;if(w.length===0)return;const k=w[w.length-1],v=Object.keys(m);for(let r=0,f=v.length;r<f;r+=1){const g=v[r];i.call(k,g)||(k[g]=m[g])}}function Un(n){const m=n.anchorMapTransactions.pop(),w=Object.keys(m);for(let k=w.length-1;k>=0;k-=1){const v=m[w[k]];v.existed?n.anchorMap[w[k]]=v.value:delete n.anchorMap[w[k]]}}function en(n){return{position:n.position,line:n.line,lineStart:n.lineStart,lineIndent:n.lineIndent,firstTabInLine:n.firstTabInLine,tag:n.tag,anchor:n.anchor,kind:n.kind,result:n.result}}function Fe(n,m){n.position=m.position,n.line=m.line,n.lineStart=m.lineStart,n.lineIndent=m.lineIndent,n.firstTabInLine=m.firstTabInLine,n.tag=m.tag,n.anchor=m.anchor,n.kind=m.kind,n.result=m.result}const kn={YAML:function(m,w,k){m.version!==null&&q(m,"duplication of %YAML directive"),k.length!==1&&q(m,"YAML directive accepts exactly one argument");const v=/^([0-9]+)\.([0-9]+)$/.exec(k[0]);v===null&&q(m,"ill-formed argument of the YAML directive");const r=parseInt(v[1],10),f=parseInt(v[2],10);r!==1&&q(m,"unacceptable YAML version of the document"),m.version=k[0],m.checkLineBreaks=f<2,f!==1&&f!==2&&je(m,"unsupported YAML version of the document")},TAG:function(m,w,k){let v;k.length!==2&&q(m,"TAG directive accepts exactly two arguments");const r=k[0];v=k[1],O.test(r)||q(m,"ill-formed tag handle (first argument) of the TAG directive"),i.call(m.tagMap,r)&&q(m,'there is a previously declared suffix for "'+r+'" tag handle'),W.test(v)||q(m,"ill-formed tag prefix (second argument) of the TAG directive");try{v=decodeURIComponent(v)}catch{q(m,"tag prefix is malformed: "+v)}m.tagMap[r]=v}};function re(n,m,w,k){if(m<w){const v=n.input.slice(m,w);if(k)for(let r=0,f=v.length;r<f;r+=1){const g=v.charCodeAt(r);g===9||g>=32&&g<=1114111||q(n,"expected valid JSON character")}else y.test(v)&&q(n,"the stream contains non-printable characters");n.result+=v}}function Te(n){n.totalMergeKeys++,n.maxTotalMergeKeys!==-1&&n.totalMergeKeys>n.maxTotalMergeKeys&&q(n,"merge keys exceeded maxTotalMergeKeys ("+n.maxTotalMergeKeys+")")}function nn(n,m,w,k){t.isObject(w)||q(n,"cannot merge mappings; the provided source object is unacceptable"),Te(n);const v=Object.keys(w);for(let r=0,f=v.length;r<f;r+=1){const g=v[r];Te(n),i.call(m,g)||(we(m,g,w[g]),k[g]=!0)}}function _e(n,m,w,k,v,r,f,g,_){if(Array.isArray(v)){v=Array.prototype.slice.call(v);for(let x=0,C=v.length;x<C;x+=1)Array.isArray(v[x])&&q(n,"nested arrays are not supported inside keys"),typeof v=="object"&&B(v[x])==="[object Object]"&&(v[x]="[object Object]")}if(typeof v=="object"&&B(v)==="[object Object]"&&(v="[object Object]"),v=String(v),m===null&&(m={}),k==="tag:yaml.org,2002:merge")if(Array.isArray(r)){r.length>100&&q(n,"abnormal merge sequence size");for(let x=0,C=r.length;x<C;x+=1)nn(n,m,r[x],w)}else nn(n,m,r,w);else!n.json&&!i.call(w,v)&&i.call(m,v)&&(n.line=f||n.line,n.lineStart=g||n.lineStart,n.position=_||n.position,q(n,"duplicated mapping key")),we(m,v,r),delete w[v];return m}function tn(n){const m=n.input.charCodeAt(n.position);m===10?n.position++:m===13?(n.position++,n.input.charCodeAt(n.position)===10&&n.position++):q(n,"a line break is expected"),n.line+=1,n.lineStart=n.position,n.firstTabInLine=-1}function $(n,m,w){let k=0,v=n.input.charCodeAt(n.position);for(;v!==0;){for(;N(v);)v===9&&n.firstTabInLine===-1&&(n.firstTabInLine=n.position),v=n.input.charCodeAt(++n.position);if(m&&v===35)do v=n.input.charCodeAt(++n.position);while(v!==10&&v!==13&&v!==0);if(M(v))for(tn(n),v=n.input.charCodeAt(n.position),k++,n.lineIndent=0;v===32;)n.lineIndent++,v=n.input.charCodeAt(++n.position);else break}return w!==-1&&k!==0&&n.lineIndent<w&&je(n,"deficient indentation"),k}function ge(n){let m=n.position,w=n.input.charCodeAt(m);return!!((w===45||w===46)&&w===n.input.charCodeAt(m+1)&&w===n.input.charCodeAt(m+2)&&(m+=3,w=n.input.charCodeAt(m),w===0||G(w)))}function Ge(n,m){m===1?n.result+=" ":m>1&&(n.result+=t.repeat(`
+`,m-1))}function _n(n,m,w){let k,v,r,f,g,_;const x=n.kind,C=n.result;let b=n.input.charCodeAt(n.position);if(G(b)||ae(b)||b===35||b===38||b===42||b===33||b===124||b===62||b===39||b===34||b===37||b===64||b===96)return!1;if(b===63||b===45){const S=n.input.charCodeAt(n.position+1);if(G(S)||w&&ae(S))return!1}for(n.kind="scalar",n.result="",k=v=n.position,r=!1;b!==0;){if(b===58){const S=n.input.charCodeAt(n.position+1);if(G(S)||w&&ae(S))break}else if(b===35){const S=n.input.charCodeAt(n.position-1);if(G(S))break}else{if(n.position===n.lineStart&&ge(n)||w&&ae(b))break;if(M(b))if(f=n.line,g=n.lineStart,_=n.lineIndent,$(n,!1,-1),n.lineIndent>=m){r=!0,b=n.input.charCodeAt(n.position);continue}else{n.position=v,n.line=f,n.lineStart=g,n.lineIndent=_;break}}r&&(re(n,k,v,!1),Ge(n,n.line-f),k=v=n.position,r=!1),N(b)||(v=n.position+1),b=n.input.charCodeAt(++n.position)}return re(n,k,v,!1),n.result?!0:(n.kind=x,n.result=C,!1)}function an(n,m){let w,k,v=n.input.charCodeAt(n.position);if(v!==39)return!1;for(n.kind="scalar",n.result="",n.position++,w=k=n.position;(v=n.input.charCodeAt(n.position))!==0;)if(v===39)if(re(n,w,n.position,!0),v=n.input.charCodeAt(++n.position),v===39)w=n.position,n.position++,k=n.position;else return!0;else M(v)?(re(n,w,k,!0),Ge(n,$(n,!1,m)),w=k=n.position):n.position===n.lineStart&&ge(n)?q(n,"unexpected end of the document within a single quoted scalar"):(n.position++,N(v)||(k=n.position));q(n,"unexpected end of the stream within a single quoted scalar")}function xn(n,m){let w,k,v,r=n.input.charCodeAt(n.position);if(r!==34)return!1;for(n.kind="scalar",n.result="",n.position++,w=k=n.position;(r=n.input.charCodeAt(n.position))!==0;){if(r===34)return re(n,w,n.position,!0),n.position++,!0;if(r===92){if(re(n,w,n.position,!0),r=n.input.charCodeAt(++n.position),M(r))$(n,!1,m);else if(r<256&&Oe[r])n.result+=de[r],n.position++;else if((v=Ae(r))>0){let f=v,g=0;for(;f>0;f--)r=n.input.charCodeAt(++n.position),(v=Ce(r))>=0?g=(g<<4)+v:q(n,"expected hexadecimal character");n.result+=Se(g),n.position++}else q(n,"unknown escape sequence");w=k=n.position}else M(r)?(re(n,w,k,!0),Ge(n,$(n,!1,m)),w=k=n.position):n.position===n.lineStart&&ge(n)?q(n,"unexpected end of the document within a double quoted scalar"):(n.position++,N(r)||(k=n.position))}q(n,"unexpected end of the stream within a double quoted scalar")}function Cn(n,m){let w=!0,k,v,r;const f=n.tag;let g;const _=n.anchor;let x,C,b,S;const D=Object.create(null);let P,E,L,V=n.input.charCodeAt(n.position);if(V===91)x=93,S=!1,g=[];else if(V===123)x=125,S=!0,g={};else return!1;for(n.anchor!==null&&ke(n,n.anchor,g),V=n.input.charCodeAt(++n.position);V!==0;){if($(n,!0,m),V=n.input.charCodeAt(n.position),V===x)return n.position++,n.tag=f,n.anchor=_,n.kind=S?"mapping":"sequence",n.result=g,!0;if(w?V===44&&q(n,"expected the node content, but found ','"):q(n,"missed comma between flow collection entries"),E=P=L=null,C=b=!1,V===63){const Re=n.input.charCodeAt(n.position+1);G(Re)&&(C=b=!0,n.position++,$(n,!0,m))}k=n.line,v=n.lineStart,r=n.position,qe(n,m,s,!1,!0),E=n.tag,P=n.result,$(n,!0,m),V=n.input.charCodeAt(n.position),(b||n.line===k)&&V===58&&(C=!0,V=n.input.charCodeAt(++n.position),$(n,!0,m),qe(n,m,s,!1,!0),L=n.result),S?_e(n,g,D,E,P,L,k,v,r):C?g.push(_e(n,null,D,E,P,L,k,v,r)):g.push(P),$(n,!0,m),V=n.input.charCodeAt(n.position),V===44?(w=!0,V=n.input.charCodeAt(++n.position)):w=!1}q(n,"unexpected end of the stream within a flow collection")}function De(n,m){let w,k=l,v=!1,r=!1,f=m,g=0,_=!1,x,C=n.input.charCodeAt(n.position);if(C===124)w=!1;else if(C===62)w=!0;else return!1;for(n.kind="scalar",n.result="";C!==0;)if(C=n.input.charCodeAt(++n.position),C===43||C===45)l===k?k=C===43?h:u:q(n,"repeat of a chomping mode identifier");else if((x=le(C))>=0)x===0?q(n,"bad explicit indentation width of a block scalar; it cannot be less than one"):r?q(n,"repeat of an indentation width identifier"):(f=m+x-1,r=!0);else break;if(N(C)){do C=n.input.charCodeAt(++n.position);while(N(C));if(C===35)do C=n.input.charCodeAt(++n.position);while(!M(C)&&C!==0)}for(;C!==0;){for(tn(n),n.lineIndent=0,C=n.input.charCodeAt(n.position);(!r||n.lineIndent<f)&&C===32;)n.lineIndent++,C=n.input.charCodeAt(++n.position);if(!r&&n.lineIndent>f&&(f=n.lineIndent),M(C)){g++;continue}if(!r&&f===0&&q(n,"missing indentation for block scalar"),n.lineIndent<f){k===h?n.result+=t.repeat(`
 `,v?1+g:g):k===l&&v&&(n.result+=`
 `);break}w?N(C)?(_=!0,n.result+=t.repeat(`
 `,v?1+g:g)):_?(_=!1,n.result+=t.repeat(`
 `,g+1)):g===0?v&&(n.result+=" "):n.result+=t.repeat(`
 `,g):n.result+=t.repeat(`
-`,v?1+g:g),v=!0,r=!0,g=0;const b=n.position;for(;!B(C)&&C!==0;)C=n.input.charCodeAt(++n.position);re(n,b,n.position,!1)}return!0}function An(n,m){const w=n.tag,k=n.anchor,v=[];let r=!1;if(n.firstTabInLine!==-1)return!1;n.anchor!==null&&ke(n,n.anchor,v);let f=n.input.charCodeAt(n.position);for(;f!==0&&(n.firstTabInLine!==-1&&(n.position=n.firstTabInLine,D(n,"tab characters must not be used in indentation")),f===45);){const g=n.input.charCodeAt(n.position+1);if(!G(g))break;if(r=!0,n.position++,$(n,!0,-1)&&n.lineIndent<=m){v.push(null),f=n.input.charCodeAt(n.position);continue}const _=n.line;if(De(n,m,c,!1,!0),v.push(n.result),$(n,!0,-1),f=n.input.charCodeAt(n.position),(n.line===_||n.lineIndent>m)&&f!==0)D(n,"bad indentation of a sequence entry");else if(n.lineIndent<m)break}return r?(n.tag=w,n.anchor=k,n.kind="sequence",n.result=v,!0):!1}function Sn(n,m,w){let k,v,r,f;const g=n.tag,_=n.anchor,x={},C=Object.create(null);let b=null,S=null,T=null,R=!1,z=!1;if(n.firstTabInLine!==-1)return!1;n.anchor!==null&&ke(n,n.anchor,x);let O=n.input.charCodeAt(n.position);for(;O!==0;){!R&&n.firstTabInLine!==-1&&(n.position=n.firstTabInLine,D(n,"tab characters must not be used in indentation"));const V=n.input.charCodeAt(n.position+1),Ee=n.line;if((O===63||O===58)&&G(V))O===63?(R&&(_e(n,x,C,b,S,null,v,r,f),b=S=T=null),z=!0,R=!0,k=!0):R?(R=!1,k=!0):D(n,"incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line"),n.position+=1,O=V;else{if(v=n.line,r=n.lineStart,f=n.position,!De(n,w,d,!1,!0))break;if(n.line===Ee){for(O=n.input.charCodeAt(n.position);N(O);)O=n.input.charCodeAt(++n.position);if(O===58)O=n.input.charCodeAt(++n.position),G(O)||D(n,"a whitespace character is expected after the key-value separator within a block mapping"),R&&(_e(n,x,C,b,S,null,v,r,f),b=S=T=null),z=!0,R=!1,k=!1,b=n.tag,S=n.result;else if(z)D(n,"can not read an implicit mapping pair; a colon is missed");else return n.tag=g,n.anchor=_,!0}else if(z)D(n,"can not read a block mapping entry; a multiline key may not be an implicit key");else return n.tag=g,n.anchor=_,!0}if((n.line===Ee||n.lineIndent>m)&&(R&&(v=n.line,r=n.lineStart,f=n.position),De(n,m,u,!0,k)&&(R?S=n.result:T=n.result),R||(_e(n,x,C,b,S,T,v,r,f),b=S=T=null),$(n,!0,-1),O=n.input.charCodeAt(n.position)),(n.line===Ee||n.lineIndent>m)&&O!==0)D(n,"bad indentation of a mapping entry");else if(n.lineIndent<m)break}return R&&_e(n,x,C,b,S,null,v,r,f),z&&(n.tag=g,n.anchor=_,n.kind="mapping",n.result=x),z}function In(n){let m=!1,w=!1,k,v,r=n.input.charCodeAt(n.position);if(r!==33)return!1;n.tag!==null&&D(n,"duplication of a tag property"),r=n.input.charCodeAt(++n.position),r===60?(m=!0,r=n.input.charCodeAt(++n.position)):r===33?(w=!0,k="!!",r=n.input.charCodeAt(++n.position)):k="!";let f=n.position;if(m){do r=n.input.charCodeAt(++n.position);while(r!==0&&r!==62);n.position<n.length?(v=n.input.slice(f,n.position),r=n.input.charCodeAt(++n.position)):D(n,"unexpected end of the stream within a verbatim tag")}else{for(;r!==0&&!G(r);)r===33&&(w?D(n,"tag suffix cannot contain exclamation marks"):(k=n.input.slice(f-1,n.position+1),P.test(k)||D(n,"named tag handle cannot contain such characters"),w=!0,f=n.position+1)),r=n.input.charCodeAt(++n.position);v=n.input.slice(f,n.position),I.test(v)&&D(n,"tag suffix cannot contain flow indicator characters")}v&&!L.test(v)&&D(n,"tag name cannot contain such characters: "+v);try{v=decodeURIComponent(v)}catch{D(n,"tag name is malformed: "+v)}return m?n.tag=v:i.call(n.tagMap,k)?n.tag=n.tagMap[k]+v:k==="!"?n.tag="!"+v:k==="!!"?n.tag="tag:yaml.org,2002:"+v:D(n,'undeclared tag handle "'+k+'"'),!0}function qn(n){let m=n.input.charCodeAt(n.position);if(m!==38)return!1;n.anchor!==null&&D(n,"duplication of an anchor property"),m=n.input.charCodeAt(++n.position);const w=n.position;for(;m!==0&&!G(m)&&!ae(m);)m=n.input.charCodeAt(++n.position);return n.position===w&&D(n,"name of an anchor node must contain at least one character"),n.anchor=n.input.slice(w,n.position),!0}function Mn(n){let m=n.input.charCodeAt(n.position);if(m!==42)return!1;m=n.input.charCodeAt(++n.position);const w=n.position;for(;m!==0&&!G(m)&&!ae(m);)m=n.input.charCodeAt(++n.position);n.position===w&&D(n,"name of an alias node must contain at least one character");const k=n.input.slice(w,n.position);return i.call(n.anchorMap,k)||D(n,'unidentified alias "'+k+'"'),n.result=n.anchorMap[k],$(n,!0,-1),!0}function Tn(n,m,w,k){const v=en(n);return Vn(n),Fe(n,m),n.tag=null,n.anchor=null,n.kind=null,n.result=null,Sn(n,w,k)&&n.kind==="mapping"?(Oe(n),!0):(Un(n),Fe(n,v),!1)}function De(n,m,w,k,v){let r,f,g=1,_=!1,x=!1,C=null,b,S,T;n.depth>=n.maxDepth&&D(n,"nesting exceeded maxDepth ("+n.maxDepth+")"),n.depth+=1,n.listener!==null&&n.listener("open",n),n.tag=null,n.anchor=null,n.kind=null,n.result=null;const R=r=f=u===w||c===w;if(k&&$(n,!0,-1)&&(_=!0,n.lineIndent>m?g=1:n.lineIndent===m?g=0:n.lineIndent<m&&(g=-1)),g===1)for(;;){const z=n.input.charCodeAt(n.position),O=en(n);if(_&&(z===33&&n.tag!==null||z===38&&n.anchor!==null)||!In(n)&&!qn(n))break;C===null&&(C=O),$(n,!0,-1)?(_=!0,f=R,n.lineIndent>m?g=1:n.lineIndent===m?g=0:n.lineIndent<m&&(g=-1)):f=!1}if(f&&(f=_||v),g===1||u===w)if(s===w||d===w?S=m:S=m+1,T=n.position-n.lineStart,g===1)if(f&&(An(n,T)||Sn(n,T,S))||Cn(n,S))x=!0;else{const z=n.input.charCodeAt(n.position);C!==null&&R&&!f&&z!==124&&z!==62&&Tn(n,C,C.position-C.lineStart,S)||r&&Te(n,S)||an(n,S)||xn(n,S)?x=!0:Mn(n)?(x=!0,(n.tag!==null||n.anchor!==null)&&D(n,"alias node should not have any properties")):_n(n,S,s===w)&&(x=!0,n.tag===null&&(n.tag="?")),n.anchor!==null&&ke(n,n.anchor,n.result)}else g===0&&(x=f&&An(n,T));if(n.tag===null)n.anchor!==null&&ke(n,n.anchor,n.result);else if(n.tag==="?"){n.result!==null&&n.kind!=="scalar"&&D(n,'unacceptable node kind for !<?> tag; it should be "scalar", not "'+n.kind+'"');for(let z=0,O=n.implicitTypes.length;z<O;z+=1)if(b=n.implicitTypes[z],b.resolve(n.result)){n.result=b.construct(n.result),n.tag=b.tag,n.anchor!==null&&ke(n,n.anchor,n.result);break}}else if(n.tag!=="!"){if(i.call(n.typeMap[n.kind||"fallback"],n.tag))b=n.typeMap[n.kind||"fallback"][n.tag];else{b=null;const z=n.typeMap.multi[n.kind||"fallback"];for(let O=0,V=z.length;O<V;O+=1)if(n.tag.slice(0,z[O].tag.length)===z[O].tag){b=z[O];break}}b||D(n,"unknown tag !<"+n.tag+">"),n.result!==null&&b.kind!==n.kind&&D(n,"unacceptable node kind for !<"+n.tag+'> tag; it should be "'+b.kind+'", not "'+n.kind+'"'),b.resolve(n.result,n.tag)?(n.result=b.construct(n.result,n.tag),n.anchor!==null&&ke(n,n.anchor,n.result)):D(n,"cannot resolve a node with !<"+n.tag+"> explicit tag")}return n.listener!==null&&n.listener("close",n),n.depth-=1,n.tag!==null||n.anchor!==null||x}function Bn(n){const m=n.position;let w=!1,k;for(n.version=null,n.checkLineBreaks=n.legacy,n.tagMap=Object.create(null),n.anchorMap=Object.create(null);(k=n.input.charCodeAt(n.position))!==0&&($(n,!0,-1),k=n.input.charCodeAt(n.position),!(n.lineIndent>0||k!==37));){w=!0,k=n.input.charCodeAt(++n.position);let v=n.position;for(;k!==0&&!G(k);)k=n.input.charCodeAt(++n.position);const r=n.input.slice(v,n.position),f=[];for(r.length<1&&D(n,"directive name must not be less than one character in length");k!==0;){for(;N(k);)k=n.input.charCodeAt(++n.position);if(k===35){do k=n.input.charCodeAt(++n.position);while(k!==0&&!B(k));break}if(B(k))break;for(v=n.position;k!==0&&!G(k);)k=n.input.charCodeAt(++n.position);f.push(n.input.slice(v,n.position))}k!==0&&tn(n),i.call(kn,r)?kn[r](n,r,f):je(n,'unknown document directive "'+r+'"')}if($(n,!0,-1),n.lineIndent===0&&n.input.charCodeAt(n.position)===45&&n.input.charCodeAt(n.position+1)===45&&n.input.charCodeAt(n.position+2)===45?(n.position+=3,$(n,!0,-1)):w&&D(n,"directives end mark is expected"),De(n,n.lineIndent-1,u,!1,!0),$(n,!0,-1),n.checkLineBreaks&&q.test(n.input.slice(m,n.position))&&je(n,"non-ASCII line breaks are interpreted as content"),n.documents.push(n.result),n.position===n.lineStart&&ge(n)){n.input.charCodeAt(n.position)===46&&(n.position+=3,$(n,!0,-1));return}n.position<n.length-1&&D(n,"end of the stream or a document separator is expected")}function on(n,m){n=String(n),m=m||{},n.length!==0&&(n.charCodeAt(n.length-1)!==10&&n.charCodeAt(n.length-1)!==13&&(n+=`
-`),n.charCodeAt(0)===65279&&(n=n.slice(1)));const w=new H(n,m),k=n.indexOf("\0");for(k!==-1&&(w.position=k,D(w,"null byte is not allowed in input")),w.input+="\0";w.input.charCodeAt(w.position)===32;)w.lineIndent+=1,w.position+=1;for(;w.position<w.length-1;)Bn(w);return w.documents}function jn(n,m,w){m!==null&&typeof m=="object"&&typeof w>"u"&&(w=m,m=null);const k=on(n,w);if(typeof m!="function")return k;for(let v=0,r=k.length;v<r;v+=1)m(k[v])}function Fn(n,m){const w=on(n,m);if(w.length!==0){if(w.length===1)return w[0];throw new e("expected a single document in the stream, but found more")}}return Dn.loadAll=jn,Dn.load=Fn,Dn}var ut={},ea;function bo(){if(ea)return ut;ea=1;const t=fn(),e=gn(),a=vt(),o=Object.prototype.toString,i=Object.prototype.hasOwnProperty,s=65279,d=9,c=10,u=13,l=32,p=33,h=34,y=35,q=37,I=38,P=39,L=42,M=44,B=45,N=58,G=61,ae=62,Ce=63,Ae=64,le=91,ue=93,Se=96,we=123,Pe=124,de=125,H={};H[0]="\\0",H[7]="\\a",H[8]="\\b",H[9]="\\t",H[10]="\\n",H[11]="\\v",H[12]="\\f",H[13]="\\r",H[27]="\\e",H[34]='\\"',H[92]="\\\\",H[133]="\\N",H[160]="\\_",H[8232]="\\L",H[8233]="\\P";const Ie=["y","Y","yes","Yes","YES","on","On","ON","n","N","no","No","NO","off","Off","OFF"],D=/^[-+]?[0-9_]+(?::[0-9_]+)+(?:\.[0-9_]*)?$/;function je(r,f){if(f===null)return{};const g={},_=Object.keys(f);for(let x=0,C=_.length;x<C;x+=1){let b=_[x],S=String(f[b]);b.slice(0,2)==="!!"&&(b="tag:yaml.org,2002:"+b.slice(2));const T=r.compiledTypeMap.fallback[b];T&&i.call(T.styleAliases,S)&&(S=T.styleAliases[S]),g[b]=S}return g}function ke(r){let f,g;const _=r.toString(16).toUpperCase();if(r<=255)f="x",g=2;else if(r<=65535)f="u",g=4;else if(r<=4294967295)f="U",g=8;else throw new e("code point within a string may not be greater than 0xFFFFFFFF");return"\\"+f+t.repeat("0",g-_.length)+_}const Vn=1,Oe=2;function Un(r){this.schema=r.schema||a,this.indent=Math.max(1,r.indent||2),this.noArrayIndent=r.noArrayIndent||!1,this.skipInvalid=r.skipInvalid||!1,this.flowLevel=t.isNothing(r.flowLevel)?-1:r.flowLevel,this.styleMap=je(this.schema,r.styles||null),this.sortKeys=r.sortKeys||!1,this.lineWidth=r.lineWidth||80,this.noRefs=r.noRefs||!1,this.noCompatMode=r.noCompatMode||!1,this.condenseFlow=r.condenseFlow||!1,this.quotingType=r.quotingType==='"'?Oe:Vn,this.forceQuotes=r.forceQuotes||!1,this.replacer=typeof r.replacer=="function"?r.replacer:null,this.implicitTypes=this.schema.compiledImplicit,this.explicitTypes=this.schema.compiledExplicit,this.tag=null,this.result="",this.duplicates=[],this.usedDuplicates=null}function en(r,f){const g=t.repeat(" ",f);let _=0,x="";const C=r.length;for(;_<C;){let b;const S=r.indexOf(`
+`,v?1+g:g),v=!0,r=!0,g=0;const b=n.position;for(;!M(C)&&C!==0;)C=n.input.charCodeAt(++n.position);re(n,b,n.position,!1)}return!0}function An(n,m){const w=n.tag,k=n.anchor,v=[];let r=!1;if(n.firstTabInLine!==-1)return!1;n.anchor!==null&&ke(n,n.anchor,v);let f=n.input.charCodeAt(n.position);for(;f!==0&&(n.firstTabInLine!==-1&&(n.position=n.firstTabInLine,q(n,"tab characters must not be used in indentation")),f===45);){const g=n.input.charCodeAt(n.position+1);if(!G(g))break;if(r=!0,n.position++,$(n,!0,-1)&&n.lineIndent<=m){v.push(null),f=n.input.charCodeAt(n.position);continue}const _=n.line;if(qe(n,m,c,!1,!0),v.push(n.result),$(n,!0,-1),f=n.input.charCodeAt(n.position),(n.line===_||n.lineIndent>m)&&f!==0)q(n,"bad indentation of a sequence entry");else if(n.lineIndent<m)break}return r?(n.tag=w,n.anchor=k,n.kind="sequence",n.result=v,!0):!1}function Sn(n,m,w){let k,v,r,f;const g=n.tag,_=n.anchor,x={},C=Object.create(null);let b=null,S=null,D=null,P=!1,E=!1;if(n.firstTabInLine!==-1)return!1;n.anchor!==null&&ke(n,n.anchor,x);let L=n.input.charCodeAt(n.position);for(;L!==0;){!P&&n.firstTabInLine!==-1&&(n.position=n.firstTabInLine,q(n,"tab characters must not be used in indentation"));const V=n.input.charCodeAt(n.position+1),Re=n.line;if((L===63||L===58)&&G(V))L===63?(P&&(_e(n,x,C,b,S,null,v,r,f),b=S=D=null),E=!0,P=!0,k=!0):P?(P=!1,k=!0):q(n,"incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line"),n.position+=1,L=V;else{if(v=n.line,r=n.lineStart,f=n.position,!qe(n,w,d,!1,!0))break;if(n.line===Re){for(L=n.input.charCodeAt(n.position);N(L);)L=n.input.charCodeAt(++n.position);if(L===58)L=n.input.charCodeAt(++n.position),G(L)||q(n,"a whitespace character is expected after the key-value separator within a block mapping"),P&&(_e(n,x,C,b,S,null,v,r,f),b=S=D=null),E=!0,P=!1,k=!1,b=n.tag,S=n.result;else if(E)q(n,"can not read an implicit mapping pair; a colon is missed");else return n.tag=g,n.anchor=_,!0}else if(E)q(n,"can not read a block mapping entry; a multiline key may not be an implicit key");else return n.tag=g,n.anchor=_,!0}if((n.line===Re||n.lineIndent>m)&&(P&&(v=n.line,r=n.lineStart,f=n.position),qe(n,m,p,!0,k)&&(P?S=n.result:D=n.result),P||(_e(n,x,C,b,S,D,v,r,f),b=S=D=null),$(n,!0,-1),L=n.input.charCodeAt(n.position)),(n.line===Re||n.lineIndent>m)&&L!==0)q(n,"bad indentation of a mapping entry");else if(n.lineIndent<m)break}return P&&_e(n,x,C,b,S,null,v,r,f),E&&(n.tag=g,n.anchor=_,n.kind="mapping",n.result=x),E}function In(n){let m=!1,w=!1,k,v,r=n.input.charCodeAt(n.position);if(r!==33)return!1;n.tag!==null&&q(n,"duplication of a tag property"),r=n.input.charCodeAt(++n.position),r===60?(m=!0,r=n.input.charCodeAt(++n.position)):r===33?(w=!0,k="!!",r=n.input.charCodeAt(++n.position)):k="!";let f=n.position;if(m){do r=n.input.charCodeAt(++n.position);while(r!==0&&r!==62);n.position<n.length?(v=n.input.slice(f,n.position),r=n.input.charCodeAt(++n.position)):q(n,"unexpected end of the stream within a verbatim tag")}else{for(;r!==0&&!G(r);)r===33&&(w?q(n,"tag suffix cannot contain exclamation marks"):(k=n.input.slice(f-1,n.position+1),O.test(k)||q(n,"named tag handle cannot contain such characters"),w=!0,f=n.position+1)),r=n.input.charCodeAt(++n.position);v=n.input.slice(f,n.position),I.test(v)&&q(n,"tag suffix cannot contain flow indicator characters")}v&&!W.test(v)&&q(n,"tag name cannot contain such characters: "+v);try{v=decodeURIComponent(v)}catch{q(n,"tag name is malformed: "+v)}return m?n.tag=v:i.call(n.tagMap,k)?n.tag=n.tagMap[k]+v:k==="!"?n.tag="!"+v:k==="!!"?n.tag="tag:yaml.org,2002:"+v:q(n,'undeclared tag handle "'+k+'"'),!0}function Tn(n){let m=n.input.charCodeAt(n.position);if(m!==38)return!1;n.anchor!==null&&q(n,"duplication of an anchor property"),m=n.input.charCodeAt(++n.position);const w=n.position;for(;m!==0&&!G(m)&&!ae(m);)m=n.input.charCodeAt(++n.position);return n.position===w&&q(n,"name of an anchor node must contain at least one character"),n.anchor=n.input.slice(w,n.position),!0}function Bn(n){let m=n.input.charCodeAt(n.position);if(m!==42)return!1;m=n.input.charCodeAt(++n.position);const w=n.position;for(;m!==0&&!G(m)&&!ae(m);)m=n.input.charCodeAt(++n.position);n.position===w&&q(n,"name of an alias node must contain at least one character");const k=n.input.slice(w,n.position);return i.call(n.anchorMap,k)||q(n,'unidentified alias "'+k+'"'),n.result=n.anchorMap[k],$(n,!0,-1),!0}function Dn(n,m,w,k){const v=en(n);return Vn(n),Fe(n,m),n.tag=null,n.anchor=null,n.kind=null,n.result=null,Sn(n,w,k)&&n.kind==="mapping"?(Le(n),!0):(Un(n),Fe(n,v),!1)}function qe(n,m,w,k,v){let r,f,g=1,_=!1,x=!1,C=null,b,S,D;n.depth>=n.maxDepth&&q(n,"nesting exceeded maxDepth ("+n.maxDepth+")"),n.depth+=1,n.listener!==null&&n.listener("open",n),n.tag=null,n.anchor=null,n.kind=null,n.result=null;const P=r=f=p===w||c===w;if(k&&$(n,!0,-1)&&(_=!0,n.lineIndent>m?g=1:n.lineIndent===m?g=0:n.lineIndent<m&&(g=-1)),g===1)for(;;){const E=n.input.charCodeAt(n.position),L=en(n);if(_&&(E===33&&n.tag!==null||E===38&&n.anchor!==null)||!In(n)&&!Tn(n))break;C===null&&(C=L),$(n,!0,-1)?(_=!0,f=P,n.lineIndent>m?g=1:n.lineIndent===m?g=0:n.lineIndent<m&&(g=-1)):f=!1}if(f&&(f=_||v),g===1||p===w)if(s===w||d===w?S=m:S=m+1,D=n.position-n.lineStart,g===1)if(f&&(An(n,D)||Sn(n,D,S))||Cn(n,S))x=!0;else{const E=n.input.charCodeAt(n.position);C!==null&&P&&!f&&E!==124&&E!==62&&Dn(n,C,C.position-C.lineStart,S)||r&&De(n,S)||an(n,S)||xn(n,S)?x=!0:Bn(n)?(x=!0,(n.tag!==null||n.anchor!==null)&&q(n,"alias node should not have any properties")):_n(n,S,s===w)&&(x=!0,n.tag===null&&(n.tag="?")),n.anchor!==null&&ke(n,n.anchor,n.result)}else g===0&&(x=f&&An(n,D));if(n.tag===null)n.anchor!==null&&ke(n,n.anchor,n.result);else if(n.tag==="?"){n.result!==null&&n.kind!=="scalar"&&q(n,'unacceptable node kind for !<?> tag; it should be "scalar", not "'+n.kind+'"');for(let E=0,L=n.implicitTypes.length;E<L;E+=1)if(b=n.implicitTypes[E],b.resolve(n.result)){n.result=b.construct(n.result),n.tag=b.tag,n.anchor!==null&&ke(n,n.anchor,n.result);break}}else if(n.tag!=="!"){if(i.call(n.typeMap[n.kind||"fallback"],n.tag))b=n.typeMap[n.kind||"fallback"][n.tag];else{b=null;const E=n.typeMap.multi[n.kind||"fallback"];for(let L=0,V=E.length;L<V;L+=1)if(n.tag.slice(0,E[L].tag.length)===E[L].tag){b=E[L];break}}b||q(n,"unknown tag !<"+n.tag+">"),n.result!==null&&b.kind!==n.kind&&q(n,"unacceptable node kind for !<"+n.tag+'> tag; it should be "'+b.kind+'", not "'+n.kind+'"'),b.resolve(n.result,n.tag)?(n.result=b.construct(n.result,n.tag),n.anchor!==null&&ke(n,n.anchor,n.result)):q(n,"cannot resolve a node with !<"+n.tag+"> explicit tag")}return n.listener!==null&&n.listener("close",n),n.depth-=1,n.tag!==null||n.anchor!==null||x}function Mn(n){const m=n.position;let w=!1,k;for(n.version=null,n.checkLineBreaks=n.legacy,n.tagMap=Object.create(null),n.anchorMap=Object.create(null);(k=n.input.charCodeAt(n.position))!==0&&($(n,!0,-1),k=n.input.charCodeAt(n.position),!(n.lineIndent>0||k!==37));){w=!0,k=n.input.charCodeAt(++n.position);let v=n.position;for(;k!==0&&!G(k);)k=n.input.charCodeAt(++n.position);const r=n.input.slice(v,n.position),f=[];for(r.length<1&&q(n,"directive name must not be less than one character in length");k!==0;){for(;N(k);)k=n.input.charCodeAt(++n.position);if(k===35){do k=n.input.charCodeAt(++n.position);while(k!==0&&!M(k));break}if(M(k))break;for(v=n.position;k!==0&&!G(k);)k=n.input.charCodeAt(++n.position);f.push(n.input.slice(v,n.position))}k!==0&&tn(n),i.call(kn,r)?kn[r](n,r,f):je(n,'unknown document directive "'+r+'"')}if($(n,!0,-1),n.lineIndent===0&&n.input.charCodeAt(n.position)===45&&n.input.charCodeAt(n.position+1)===45&&n.input.charCodeAt(n.position+2)===45?(n.position+=3,$(n,!0,-1)):w&&q(n,"directives end mark is expected"),qe(n,n.lineIndent-1,p,!1,!0),$(n,!0,-1),n.checkLineBreaks&&T.test(n.input.slice(m,n.position))&&je(n,"non-ASCII line breaks are interpreted as content"),n.documents.push(n.result),n.position===n.lineStart&&ge(n)){n.input.charCodeAt(n.position)===46&&(n.position+=3,$(n,!0,-1));return}n.position<n.length-1&&q(n,"end of the stream or a document separator is expected")}function on(n,m){n=String(n),m=m||{},n.length!==0&&(n.charCodeAt(n.length-1)!==10&&n.charCodeAt(n.length-1)!==13&&(n+=`
+`),n.charCodeAt(0)===65279&&(n=n.slice(1)));const w=new H(n,m),k=n.indexOf("\0");for(k!==-1&&(w.position=k,q(w,"null byte is not allowed in input")),w.input+="\0";w.input.charCodeAt(w.position)===32;)w.lineIndent+=1,w.position+=1;for(;w.position<w.length-1;)Mn(w);return w.documents}function jn(n,m,w){m!==null&&typeof m=="object"&&typeof w>"u"&&(w=m,m=null);const k=on(n,w);if(typeof m!="function")return k;for(let v=0,r=k.length;v<r;v+=1)m(k[v])}function Fn(n,m){const w=on(n,m);if(w.length!==0){if(w.length===1)return w[0];throw new e("expected a single document in the stream, but found more")}}return qn.loadAll=jn,qn.load=Fn,qn}var pt={},ea;function bo(){if(ea)return pt;ea=1;const t=fn(),e=gn(),a=vt(),o=Object.prototype.toString,i=Object.prototype.hasOwnProperty,s=65279,d=9,c=10,p=13,l=32,u=33,h=34,y=35,T=37,I=38,O=39,W=42,B=44,M=45,N=58,G=61,ae=62,Ce=63,Ae=64,le=91,pe=93,Se=96,we=123,Oe=124,de=125,H={};H[0]="\\0",H[7]="\\a",H[8]="\\b",H[9]="\\t",H[10]="\\n",H[11]="\\v",H[12]="\\f",H[13]="\\r",H[27]="\\e",H[34]='\\"',H[92]="\\\\",H[133]="\\N",H[160]="\\_",H[8232]="\\L",H[8233]="\\P";const Ie=["y","Y","yes","Yes","YES","on","On","ON","n","N","no","No","NO","off","Off","OFF"],q=/^[-+]?[0-9_]+(?::[0-9_]+)+(?:\.[0-9_]*)?$/;function je(r,f){if(f===null)return{};const g={},_=Object.keys(f);for(let x=0,C=_.length;x<C;x+=1){let b=_[x],S=String(f[b]);b.slice(0,2)==="!!"&&(b="tag:yaml.org,2002:"+b.slice(2));const D=r.compiledTypeMap.fallback[b];D&&i.call(D.styleAliases,S)&&(S=D.styleAliases[S]),g[b]=S}return g}function ke(r){let f,g;const _=r.toString(16).toUpperCase();if(r<=255)f="x",g=2;else if(r<=65535)f="u",g=4;else if(r<=4294967295)f="U",g=8;else throw new e("code point within a string may not be greater than 0xFFFFFFFF");return"\\"+f+t.repeat("0",g-_.length)+_}const Vn=1,Le=2;function Un(r){this.schema=r.schema||a,this.indent=Math.max(1,r.indent||2),this.noArrayIndent=r.noArrayIndent||!1,this.skipInvalid=r.skipInvalid||!1,this.flowLevel=t.isNothing(r.flowLevel)?-1:r.flowLevel,this.styleMap=je(this.schema,r.styles||null),this.sortKeys=r.sortKeys||!1,this.lineWidth=r.lineWidth||80,this.noRefs=r.noRefs||!1,this.noCompatMode=r.noCompatMode||!1,this.condenseFlow=r.condenseFlow||!1,this.quotingType=r.quotingType==='"'?Le:Vn,this.forceQuotes=r.forceQuotes||!1,this.replacer=typeof r.replacer=="function"?r.replacer:null,this.implicitTypes=this.schema.compiledImplicit,this.explicitTypes=this.schema.compiledExplicit,this.tag=null,this.result="",this.duplicates=[],this.usedDuplicates=null}function en(r,f){const g=t.repeat(" ",f);let _=0,x="";const C=r.length;for(;_<C;){let b;const S=r.indexOf(`
 `,_);S===-1?(b=r.slice(_),_=C):(b=r.slice(_,S+1),_=S+1),b.length&&b!==`
 `&&(x+=g),x+=b}return x}function Fe(r,f){return`
-`+t.repeat(" ",r.indent*f)}function kn(r,f){for(let g=0,_=r.implicitTypes.length;g<_;g+=1)if(r.implicitTypes[g].resolve(f))return!0;return!1}function re(r){return r===l||r===d}function qe(r){return r>=32&&r<=126||r>=161&&r<=55295&&r!==8232&&r!==8233||r>=57344&&r<=65533&&r!==s||r>=65536&&r<=1114111}function nn(r){return qe(r)&&r!==s&&r!==u&&r!==c}function _e(r,f,g){const _=nn(r),x=_&&!re(r);return(g?_:_&&r!==M&&r!==le&&r!==ue&&r!==we&&r!==de)&&r!==y&&!(f===N&&!x)||nn(f)&&!re(f)&&r===y||f===N&&x}function tn(r){return qe(r)&&r!==s&&!re(r)&&r!==B&&r!==Ce&&r!==N&&r!==M&&r!==le&&r!==ue&&r!==we&&r!==de&&r!==y&&r!==I&&r!==L&&r!==p&&r!==Pe&&r!==G&&r!==ae&&r!==P&&r!==h&&r!==q&&r!==Ae&&r!==Se}function $(r){return!re(r)&&r!==N}function ge(r,f){const g=r.charCodeAt(f);let _;return g>=55296&&g<=56319&&f+1<r.length&&(_=r.charCodeAt(f+1),_>=56320&&_<=57343)?(g-55296)*1024+_-56320+65536:g}function Ge(r){return/^\n* /.test(r)}const _n=1,an=2,xn=3,Cn=4,Te=5;function An(r,f,g,_,x,C,b,S){let T,R=0,z=null,O=!1,V=!1;const Ee=_!==-1;let rn=-1,sn=tn(ge(r,0))&&$(ge(r,r.length-1));if(f||b)for(T=0;T<r.length;R>=65536?T+=2:T++){if(R=ge(r,T),!qe(R))return Te;sn=sn&&_e(R,z,S),z=R}else{for(T=0;T<r.length;R>=65536?T+=2:T++){if(R=ge(r,T),R===c)O=!0,Ee&&(V=V||T-rn-1>_&&r[rn+1]!==" ",rn=T);else if(!qe(R))return Te;sn=sn&&_e(R,z,S),z=R}V=V||Ee&&T-rn-1>_&&r[rn+1]!==" "}return!O&&!V?sn&&!b&&!x(r)?_n:C===Oe?Te:an:g>9&&Ge(r)?Te:b?C===Oe?Te:an:V?Cn:xn}function Sn(r,f,g,_,x){r.dump=(function(){if(f.length===0)return r.quotingType===Oe?'""':"''";if(!r.noCompatMode&&(Ie.indexOf(f)!==-1||D.test(f)))return r.quotingType===Oe?'"'+f+'"':"'"+f+"'";const C=r.indent*Math.max(1,g),b=r.lineWidth===-1?-1:Math.max(Math.min(r.lineWidth,40),r.lineWidth-C),S=_||r.flowLevel>-1&&g>=r.flowLevel;function T(R){return kn(r,R)}switch(An(f,S,r.indent,b,T,r.quotingType,r.forceQuotes&&!_,x)){case _n:return f;case an:return"'"+f.replace(/'/g,"''")+"'";case xn:return"|"+In(f,r.indent)+qn(en(f,C));case Cn:return">"+In(f,r.indent)+qn(en(Mn(f,b),C));case Te:return'"'+De(f)+'"';default:throw new e("impossible error: invalid scalar style")}})()}function In(r,f){const g=Ge(r)?String(f):"",_=r[r.length-1]===`
+`+t.repeat(" ",r.indent*f)}function kn(r,f){for(let g=0,_=r.implicitTypes.length;g<_;g+=1)if(r.implicitTypes[g].resolve(f))return!0;return!1}function re(r){return r===l||r===d}function Te(r){return r>=32&&r<=126||r>=161&&r<=55295&&r!==8232&&r!==8233||r>=57344&&r<=65533&&r!==s||r>=65536&&r<=1114111}function nn(r){return Te(r)&&r!==s&&r!==p&&r!==c}function _e(r,f,g){const _=nn(r),x=_&&!re(r);return(g?_:_&&r!==B&&r!==le&&r!==pe&&r!==we&&r!==de)&&r!==y&&!(f===N&&!x)||nn(f)&&!re(f)&&r===y||f===N&&x}function tn(r){return Te(r)&&r!==s&&!re(r)&&r!==M&&r!==Ce&&r!==N&&r!==B&&r!==le&&r!==pe&&r!==we&&r!==de&&r!==y&&r!==I&&r!==W&&r!==u&&r!==Oe&&r!==G&&r!==ae&&r!==O&&r!==h&&r!==T&&r!==Ae&&r!==Se}function $(r){return!re(r)&&r!==N}function ge(r,f){const g=r.charCodeAt(f);let _;return g>=55296&&g<=56319&&f+1<r.length&&(_=r.charCodeAt(f+1),_>=56320&&_<=57343)?(g-55296)*1024+_-56320+65536:g}function Ge(r){return/^\n* /.test(r)}const _n=1,an=2,xn=3,Cn=4,De=5;function An(r,f,g,_,x,C,b,S){let D,P=0,E=null,L=!1,V=!1;const Re=_!==-1;let rn=-1,sn=tn(ge(r,0))&&$(ge(r,r.length-1));if(f||b)for(D=0;D<r.length;P>=65536?D+=2:D++){if(P=ge(r,D),!Te(P))return De;sn=sn&&_e(P,E,S),E=P}else{for(D=0;D<r.length;P>=65536?D+=2:D++){if(P=ge(r,D),P===c)L=!0,Re&&(V=V||D-rn-1>_&&r[rn+1]!==" ",rn=D);else if(!Te(P))return De;sn=sn&&_e(P,E,S),E=P}V=V||Re&&D-rn-1>_&&r[rn+1]!==" "}return!L&&!V?sn&&!b&&!x(r)?_n:C===Le?De:an:g>9&&Ge(r)?De:b?C===Le?De:an:V?Cn:xn}function Sn(r,f,g,_,x){r.dump=(function(){if(f.length===0)return r.quotingType===Le?'""':"''";if(!r.noCompatMode&&(Ie.indexOf(f)!==-1||q.test(f)))return r.quotingType===Le?'"'+f+'"':"'"+f+"'";const C=r.indent*Math.max(1,g),b=r.lineWidth===-1?-1:Math.max(Math.min(r.lineWidth,40),r.lineWidth-C),S=_||r.flowLevel>-1&&g>=r.flowLevel;function D(P){return kn(r,P)}switch(An(f,S,r.indent,b,D,r.quotingType,r.forceQuotes&&!_,x)){case _n:return f;case an:return"'"+f.replace(/'/g,"''")+"'";case xn:return"|"+In(f,r.indent)+Tn(en(f,C));case Cn:return">"+In(f,r.indent)+Tn(en(Bn(f,b),C));case De:return'"'+qe(f)+'"';default:throw new e("impossible error: invalid scalar style")}})()}function In(r,f){const g=Ge(r)?String(f):"",_=r[r.length-1]===`
 `,C=_&&(r[r.length-2]===`
 `||r===`
 `)?"+":_?"":"-";return g+C+`
-`}function qn(r){return r[r.length-1]===`
-`?r.slice(0,-1):r}function Mn(r,f){const g=/(\n+)([^\n]*)/g;let _=(function(){let S=r.indexOf(`
-`);return S=S!==-1?S:r.length,g.lastIndex=S,Tn(r.slice(0,S),f)})(),x=r[0]===`
-`||r[0]===" ",C,b;for(;b=g.exec(r);){const S=b[1],T=b[2];C=T[0]===" ",_+=S+(!x&&!C&&T!==""?`
-`:"")+Tn(T,f),x=C}return _}function Tn(r,f){if(r===""||r[0]===" ")return r;const g=/ [^ ]/g;let _,x=0,C,b=0,S=0,T="";for(;_=g.exec(r);)S=_.index,S-x>f&&(C=b>x?b:S,T+=`
-`+r.slice(x,C),x=C+1),b=S;return T+=`
-`,r.length-x>f&&b>x?T+=r.slice(x,b)+`
-`+r.slice(b+1):T+=r.slice(x),T.slice(1)}function De(r){let f="",g=0;for(let _=0;_<r.length;g>=65536?_+=2:_++){g=ge(r,_);const x=H[g];!x&&qe(g)?(f+=r[_],g>=65536&&(f+=r[_+1])):f+=x||ke(g)}return f}function Bn(r,f,g){let _="";const x=r.tag;for(let C=0,b=g.length;C<b;C+=1){let S=g[C];r.replacer&&(S=r.replacer.call(g,String(C),S)),(m(r,f,S,!1,!1)||typeof S>"u"&&m(r,f,null,!1,!1))&&(_!==""&&(_+=","+(r.condenseFlow?"":" ")),_+=r.dump)}r.tag=x,r.dump="["+_+"]"}function on(r,f,g,_){let x="";const C=r.tag;for(let b=0,S=g.length;b<S;b+=1){let T=g[b];r.replacer&&(T=r.replacer.call(g,String(b),T)),(m(r,f+1,T,!0,!0,!1,!0)||typeof T>"u"&&m(r,f+1,null,!0,!0,!1,!0))&&((!_||x!=="")&&(x+=Fe(r,f)),r.dump&&c===r.dump.charCodeAt(0)?x+="-":x+="- ",x+=r.dump)}r.tag=C,r.dump=x||"[]"}function jn(r,f,g){let _="";const x=r.tag,C=Object.keys(g);for(let b=0,S=C.length;b<S;b+=1){let T="";_!==""&&(T+=", "),r.condenseFlow&&(T+='"');const R=C[b];let z=g[R];r.replacer&&(z=r.replacer.call(g,R,z)),m(r,f,R,!1,!1)&&(r.dump.length>1024&&(T+="? "),T+=r.dump+(r.condenseFlow?'"':"")+":"+(r.condenseFlow?"":" "),m(r,f,z,!1,!1)&&(T+=r.dump,_+=T))}r.tag=x,r.dump="{"+_+"}"}function Fn(r,f,g,_){let x="";const C=r.tag,b=Object.keys(g);if(r.sortKeys===!0)b.sort();else if(typeof r.sortKeys=="function")b.sort(r.sortKeys);else if(r.sortKeys)throw new e("sortKeys must be a boolean or a function");for(let S=0,T=b.length;S<T;S+=1){let R="";(!_||x!=="")&&(R+=Fe(r,f));const z=b[S];let O=g[z];if(r.replacer&&(O=r.replacer.call(g,z,O)),!m(r,f+1,z,!0,!0,!0))continue;const V=r.tag!==null&&r.tag!=="?"||r.dump&&r.dump.length>1024;V&&(r.dump&&c===r.dump.charCodeAt(0)?R+="?":R+="? "),R+=r.dump,V&&(R+=Fe(r,f)),m(r,f+1,O,!0,V)&&(r.dump&&c===r.dump.charCodeAt(0)?R+=":":R+=": ",R+=r.dump,x+=R)}r.tag=C,r.dump=x||"{}"}function n(r,f,g){const _=g?r.explicitTypes:r.implicitTypes;for(let x=0,C=_.length;x<C;x+=1){const b=_[x];if((b.instanceOf||b.predicate)&&(!b.instanceOf||typeof f=="object"&&f instanceof b.instanceOf)&&(!b.predicate||b.predicate(f))){if(g?b.multi&&b.representName?r.tag=b.representName(f):r.tag=b.tag:r.tag="?",b.represent){const S=r.styleMap[b.tag]||b.defaultStyle;let T;if(o.call(b.represent)==="[object Function]")T=b.represent(f,S);else if(i.call(b.represent,S))T=b.represent[S](f,S);else throw new e("!<"+b.tag+'> tag resolver accepts not "'+S+'" style');r.dump=T}return!0}}return!1}function m(r,f,g,_,x,C,b){r.tag=null,r.dump=g,n(r,g,!1)||n(r,g,!0);const S=o.call(r.dump),T=_;_&&(_=r.flowLevel<0||r.flowLevel>f);const R=S==="[object Object]"||S==="[object Array]";let z,O;if(R&&(z=r.duplicates.indexOf(g),O=z!==-1),(r.tag!==null&&r.tag!=="?"||O||r.indent!==2&&f>0)&&(x=!1),O&&r.usedDuplicates[z])r.dump="*ref_"+z;else{if(R&&O&&!r.usedDuplicates[z]&&(r.usedDuplicates[z]=!0),S==="[object Object]")_&&Object.keys(r.dump).length!==0?(Fn(r,f,r.dump,x),O&&(r.dump="&ref_"+z+r.dump)):(jn(r,f,r.dump),O&&(r.dump="&ref_"+z+" "+r.dump));else if(S==="[object Array]")_&&r.dump.length!==0?(r.noArrayIndent&&!b&&f>0?on(r,f-1,r.dump,x):on(r,f,r.dump,x),O&&(r.dump="&ref_"+z+r.dump)):(Bn(r,f,r.dump),O&&(r.dump="&ref_"+z+" "+r.dump));else if(S==="[object String]")r.tag!=="?"&&Sn(r,r.dump,f,C,T);else{if(S==="[object Undefined]")return!1;if(r.skipInvalid)return!1;throw new e("unacceptable kind of an object to dump "+S)}if(r.tag!==null&&r.tag!=="?"){let V=encodeURI(r.tag[0]==="!"?r.tag.slice(1):r.tag).replace(/!/g,"%21");r.tag[0]==="!"?V="!"+V:V.slice(0,18)==="tag:yaml.org,2002:"?V="!!"+V.slice(18):V="!<"+V+">",r.dump=V+" "+r.dump}}return!0}function w(r,f){const g=[],_=[];k(r,g,_);const x=_.length;for(let C=0;C<x;C+=1)f.duplicates.push(g[_[C]]);f.usedDuplicates=new Array(x)}function k(r,f,g){if(r!==null&&typeof r=="object"){const _=f.indexOf(r);if(_!==-1)g.indexOf(_)===-1&&g.push(_);else if(f.push(r),Array.isArray(r))for(let x=0,C=r.length;x<C;x+=1)k(r[x],f,g);else{const x=Object.keys(r);for(let C=0,b=x.length;C<b;C+=1)k(r[x[C]],f,g)}}}function v(r,f){f=f||{};const g=new Un(f);g.noRefs||w(r,g);let _=r;return g.replacer&&(_=g.replacer.call({"":_},"",_)),m(g,0,_,!0,!0)?g.dump+`
-`:""}return ut.dump=v,ut}var na;function wo(){if(na)return ne;na=1;const t=vo(),e=bo();function a(o,i){return function(){throw new Error("Function yaml."+o+" is removed in js-yaml 4. Use yaml."+i+" instead, which is now safe by default.")}}return ne.Type=ie(),ne.Schema=ga(),ne.FAILSAFE_SCHEMA=wa(),ne.JSON_SCHEMA=Aa(),ne.CORE_SCHEMA=Sa(),ne.DEFAULT_SCHEMA=vt(),ne.load=t.load,ne.loadAll=t.loadAll,ne.dump=e.dump,ne.YAMLException=gn(),ne.types={binary:Ta(),float:Ca(),map:ba(),null:ka(),pairs:Ea(),set:Ra(),timestamp:Ia(),bool:_a(),int:xa(),merge:qa(),omap:Da(),seq:va(),str:ya()},ne.safeLoad=a("safeLoad","load"),ne.safeLoadAll=a("safeLoadAll","loadAll"),ne.safeDump=a("safeDump","dump"),ne}var ko=wo();const _o=go(ko),{Type:Hr,Schema:$r,FAILSAFE_SCHEMA:Qr,JSON_SCHEMA:Kr,CORE_SCHEMA:Yr,DEFAULT_SCHEMA:Zr,load:xo,loadAll:Jr,dump:Xr,YAMLException:es,types:ns,safeLoad:ts,safeLoadAll:as,safeDump:is}=_o,Ln=Object.assign({"/content/co1/01_Cloud_Computing_Fundamentals.yaml":ii,"/content/co1/02_Cloud_Service_Models.yaml":oi,"/content/co1/03_Shared_Responsibility_Model.yaml":ri,"/content/co1/04_Cloud_Deployment_Models.yaml":si,"/content/co1/05_Cloud_Virtualization_Fundamentals.yaml":ci,"/content/co1/06_Hypervisors_and_Virtual_Machines.yaml":li,"/content/co1/07_Container_Isolation_and_Virtualization.yaml":di,"/content/co1/08_Global_Cloud_Infrastructure.yaml":pi,"/content/co1/09_AWS_Azure_GCP_Fundamentals.yaml":ui,"/content/co1/10_Well_Architected_Framework.yaml":hi,"/content/co1/11_Cloud_Migration_and_TCO.yaml":mi,"/content/co1/12_Multi_Tier_Cloud_Architecture.yaml":fi,"/content/co2/01_compute_families_and_vm_sizing.yaml":gi,"/content/co2/02_virtual_machines_images_and_instance_lifecycle.yaml":yi,"/content/co2/03_container_images_and_docker_fundamentals.yaml":vi,"/content/co2/04_kubernetes_architecture_and_reconciliation.yaml":bi,"/content/co2/05_autoscaling_policies_and_scaling_dynamics.yaml":wi,"/content/co2/06_serverless_functions_and_managed_compute.yaml":ki,"/content/co2/07_compute_purchasing_and_commitment_models.yaml":_i,"/content/co2/08_workload_placement_and_performance_engineering.yaml":xi,"/content/co2/09_aws_azure_gcp_compute_equivalents.yaml":Ci,"/content/co2/10_compute_utilization_and_cost_optimization.yaml":Ai,"/content/co2/11_compute_break_fix_and_diagnostic_labs.yaml":Si,"/content/co3/01_ip_addressing_ipv4_and_cidr_fundamentals.yaml":Ii,"/content/co3/02_cidr_arithmetic_subnetting_and_address_plan_design.yaml":qi,"/content/co3/03_virtual_networks_vpcs_and_subnet_architecture.yaml":Ti,"/content/co3/04_routing_gateways_and_network_traffic_paths.yaml":Di,"/content/co3/05_security_groups_network_acls_and_traffic_filtering.yaml":Ei,"/content/co3/06_load_balancing_layer_4_layer_7_and_health_checks.yaml":Ri,"/content/co3/07_dns_routing_policies_ttl_and_failover.yaml":zi,"/content/co3/08_cdn_edge_delivery_and_content_caching.yaml":Pi,"/content/co3/09_hybrid_connectivity_vpn_and_dedicated_links.yaml":Oi,"/content/co3/10_network_fault_localization_and_troubleshooting.yaml":Wi,"/content/co3/11_end_to_end_network_design_and_break_fix_lab.yaml":Li,"/content/co4/01_storage_access_patterns_and_service_selection.yaml":Ni,"/content/co4/02_block_storage_file_systems_raid_luns_and_provisioning.yaml":Vi,"/content/co4/03_object_storage_lifecycle_versioning_and_object_lock.yaml":Ui,"/content/co4/04_file_storage_and_shared_file_services.yaml":Mi,"/content/co4/05_relational_databases_managed_sql_and_high_availability.yaml":Bi,"/content/co4/06_nosql_databases_and_data_model_selection.yaml":ji,"/content/co4/07_caching_analytics_and_data_processing_services.yaml":Fi,"/content/co4/08_backup_restore_chains_and_data_protection.yaml":Gi,"/content/co4/09_disaster_recovery_rto_rpo_and_recovery_strategy.yaml":Hi,"/content/co4/10_aws_azure_gcp_data_services_and_cost_comparison.yaml":$i,"/content/co5/01_iam_identity_fundamentals.yaml":Qi,"/content/co5/02_policy_evaluation_and_access_denials.yaml":Ki,"/content/co5/03_workload_identity_and_credentials.yaml":Yi,"/content/co5/04_multi_account_governance_and_federation.yaml":Zi,"/content/co5/05_encryption_and_key_management.yaml":Ji,"/content/co5/06_secrets_management_and_rotation.yaml":Xi,"/content/co5/07_compliance_auditing_and_hardening.yaml":eo,"/content/co5/08_edge_protection_waf_ddos_and_threat_detection.yaml":no,"/content/co5/09_observability_metrics_logs_traces_and_slos.yaml":to,"/content/co5/10_security_breakfix_provider_mapping_and_capstone.yaml":ao,"/content/co6/01_iac_fundamentals_and_cloud_native_tools.yaml":io,"/content/co6/02_terraform_state_remote_backend_and_locking.yaml":oo,"/content/co6/03_terraform_modules_version_control_and_drift.yaml":ro,"/content/co6/04_cicd_pipelines_and_infrastructure_release.yaml":so,"/content/co6/05_configuration_management_patch_and_runbooks.yaml":co,"/content/co6/06_cloud_billing_cost_engineering_and_unit_economics.yaml":lo,"/content/co6/07_budgets_finops_and_cost_optimization.yaml":po,"/content/co6/08_kubernetes_operations_service_discovery_and_breakfix.yaml":uo,"/content/co6/09_cloud_operations_private_access_and_reliability.yaml":ho,"/content/co6/10_integrated_skydeploy_architecture_cost_and_breakfix6.yaml":mo,"/content/co6/11_CO6_practical_execution_guides.yaml":fo});function za(t){if(!t||typeof t!="string")return null;const a=t.replace(/\\/g,"/").split("/");for(const o of a){const i=o.match(/^co[-_]?([1-6])(?:\b|_|$)/i);if(i)return parseInt(i[1],10)}return null}function Pa(t,e){if(typeof e!="string")return"UNREADABLE TRANSMISSION";const a=(t.split(".").pop()||"").toLowerCase();if(a==="yaml"||a==="yml")try{const o=xo(e);return o!==void 0?o:{}}catch{return"UNREADABLE TRANSMISSION"}else if(a==="json")try{return JSON.parse(e)}catch{return"UNREADABLE TRANSMISSION"}else return e}function Nn(t){let e=null;if(typeof t=="number")e=t;else if(typeof t=="string"){const s=t.match(/([1-6])/);s&&(e=parseInt(s[1],10))}if(!e||e<1||e>6)return{files:[],data:[],status:"empty"};const a=[],o=[];for(const[s,d]of Object.entries(Ln))if(za(s)===e){const c=s.split("/").pop()||s,u=Pa(c,d);a.push(c),o.push(u)}let i="empty";if(a.length===0)i="empty";else{const s=o.filter(d=>d==="UNREADABLE TRANSMISSION").length;a.length>=4&&s===0?i="ready":i="partial"}return{files:a,data:o,status:i}}function Co(){return Object.keys(Ln).length}function Ao(t){if(!t)return null;for(const[e,a]of Object.entries(Ln))if(e===t||e.endsWith("/"+t)||e.endsWith("\\"+t))return a;return null}function So(){const t=[];for(const[e,a]of Object.entries(Ln)){const o=e.split("/").pop()||e,i=za(e)||1;t.push({path:e,filename:o,coNum:i,raw:a,parsed:Pa(o,a)})}return t.sort((e,a)=>e.coNum-a.coNum||e.filename.localeCompare(a.filename)),t}function bt(){return{async:!1,breaks:!1,extensions:null,gfm:!0,hooks:null,pedantic:!1,renderer:null,silent:!1,tokenizer:null,walkTokens:null}}var Be=bt();function Oa(t){Be=t}var Le={exec:()=>null};function We(t){let e=[];return a=>{let o=Math.max(0,Math.min(3,a-1)),i=e[o];return i||(i=t(o),e[o]=i),i}}function W(t,e=""){let a=typeof t=="string"?t:t.source,o={replace:(i,s)=>{let d=typeof s=="string"?s:s.source;return d=d.replace(Z.caret,"$1"),a=a.replace(i,d),o},getRegex:()=>new RegExp(a,e)};return o}var Wa=((t="")=>{try{return!!new RegExp("(?<=1)(?<!1)"+t)}catch{return!1}})(),Z={codeRemoveIndent:/^(?: {0,3}\t| {1,4})/gm,listInterruptsParagraph:/^ {0,3}(?:[*+-]|1[.)])[ \t]+[^ \t\n]/,outputLinkReplace:/\\([\[\]])/g,indentCodeCompensation:/^(\s+)(?:```)/,beginningSpace:/^\s+/,endingHash:/#$/,startingSpaceChar:/^ /,endingSpaceChar:/ $/,endingSpaceTabChar:/[ \t]$/,nonSpaceChar:/[^ ]/,newLineCharGlobal:/\n/g,tabCharGlobal:/\t/g,leadingSpaceTab:/^[ \t]+/,multipleSpaceGlobal:/\s+/g,blankLine:/^[ \t]*$/,doubleBlankLine:/\n[ \t]*\n[ \t]*$/,blockquoteStart:/^ {0,3}>/,blockquoteSetextReplace:/\n {0,3}((?:=+|-+)[ \t]*)(?=\n|$)/g,blockquoteSetextReplace2:/^ {0,3}>[ \t]?/gm,blockquoteMarkerWhitespace:/^( {0,3}>)([ \t]+)/gm,listReplaceNesting:/^ {1,4}(?=( {4})*[^ ])/g,listIsTask:/^\[[ xX]\][ \t]+\S/,listReplaceTask:/^\[[ xX]\][ \t]+/,listTaskCheckbox:/\[[ xX]\]/,anyLine:/\n.*\n/,hrefBrackets:/^<(.*)>$/,tableDelimiter:/[:|]/,tableAlignChars:/^\||\| *$/g,tableRowBlankLine:/\n[ \t]*$/,tableAlignRight:/^ *-+: *$/,tableAlignCenter:/^ *:-+: *$/,tableAlignLeft:/^ *:-+ *$/,startATag:/^<a /i,endATag:/^<\/a>/i,startPreScriptTag:/^<(pre|code|kbd|script)(\s|>)/i,endPreScriptTag:/^<\/(pre|code|kbd|script)(\s|>)/i,startAngleBracket:/^</,endAngleBracket:/>$/,pedanticHrefTitle:/^([^'"]*[^\s])\s+(['"])(.*)\2/,unicodeAlphaNumeric:/[\p{L}\p{N}]/u,numericCharacterReference:/&#(?:(\d{1,7})|[Xx]([A-Fa-f0-9]{1,6}));/,numericCharacterReferenceOrAmpersand:/&#(?:(\d{1,7})|[Xx]([A-Fa-f0-9]{1,6}));|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,escapeTest:/[&<>"']/,escapeReplace:/[&<>"']/g,escapeTestNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/,escapeReplaceNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,caret:/(^|[^\[])\^/g,percentDecode:/%25/g,findPipe:/\|/g,splitPipe:/ \|/,slashPipe:/\\\|/g,carriageReturn:/\r\n|\r/g,spaceLine:/^ +$/gm,notSpaceStart:/^\S*/,endingNewline:/\n$/,listItemRegex:t=>new RegExp(`^( {0,3}${t})((?:[	 ][^\\n]*)?(?:\\n|$))`),nextBulletRegex:We(t=>new RegExp(`^ {0,${t}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`)),hrRegex:We(t=>new RegExp(`^ {0,${t}}((?:-[ 	]*){3,}|(?:_[ 	]*){3,}|(?:\\*[ 	]*){3,})(?:\\n+|$)`)),fencesBeginRegex:We(t=>new RegExp(`^ {0,${t}}(?:\`\`\`|~~~)`)),headingBeginRegex:We(t=>new RegExp(`^ {0,${t}}#{1,6}(?:\\s|$)`)),pedanticHeadingBeginRegex:We(t=>new RegExp(`^ {0,${t}}#`)),htmlBeginRegex:We(t=>new RegExp(`^ {0,${t}}(?:</?(?:${vn})(?: +|$|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)`,"i")),blockquoteBeginRegex:We(t=>new RegExp(`^ {0,${t}}>`)),nestedContainerMarkers:/^(?: {0,3}(?:(?:[*+-]|\d{1,9}[.)])[ \t]+|>[ \t]?))+/},Io=/^(?:[ \t]*(?:\n|$))+/,qo=/^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/,To=/^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}(?:(?=`)\1`*|(?=~)\1~*) *(?=\n|$)|$)/,yn=/^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/,Do=/^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/,wt=/ {0,3}(?:[*+-]|\d{1,9}[.)])/,La=/^(?!bull |blockCode|fences|blockquote|heading|html|table)((?:.|\n(?!\s*?\n|bull |fences|blockquote|heading|hr|html|table))+?)\n {0,3}(=+|-+)[ \t]*(?:\n+|$)/,Na=W(La).replace(/bull/g,wt).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}(?:\s|$)/).replace(/hr/g,/ {0,3}(?:(?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/\|table/g,"").getRegex(),Eo=W(La).replace(/bull/g,wt).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}(?:\s|$)/).replace(/hr/g,/ {0,3}(?:(?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/table/g,/ {0,3}\|?(?:[:\- ]*\|)+[\:\- ]*\n/).getRegex(),kt=/^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table|[ \t]+\n)[^\n]+)*)/,Ro=/^[^\n]+/,_t=/(?!\s*\])(?:\\[\s\S]|[^\[\]\\\n]|\n(?![ \t]*\n))+/,zo=W(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace("label",_t).replace("title",/(?:"(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\\n]|\n(?!\n))*'|\((?:\\[\s\S]|[^()\\])*\))/).getRegex(),Po=W(/^(bull)([ \t][^\n]*?)?(?:\n|$)/).replace(/bull/g,wt).getRegex(),vn="address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul",xt=/<!--(?:-?>|[\s\S]*?(?:-->|$))/,Oo=W("^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n*|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>[^\\n]*\\n*|$)|<![A-Z][\\s\\S]*?(?:>[^\\n]*\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>[^\\n]*\\n*|$)|</?(tag)(?:[ \\t]+|\\n|/?>|$)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!(?:script|pre|style|textarea)(?![a-z0-9-]))([a-z][a-z0-9-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</[a-z][a-z0-9-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))","i").replace("comment",xt).replace("tag",vn).replace("attribute",/ +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(),Va=t=>W(kt).replace("hr",yn).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("|lheading","").replace("|table","").replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*(?:\\n|$))|~~~)[^\\n]*(?:\\n|$)").replace("list",t).replace("html"," {0,3}(?:</?(?:tag)(?: +|\\n|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)").replace("tag",vn).getRegex(),Wo=Va(/ {0,3}(?:[*+-]|1[.)])[ \t]+[^ \t\n]/),Lo=Va(/ {0,3}(?:[*+-]|\d{1,9}[.)])(?:[ \t]|\n|$)/),No=W(/^( {0,3}> ?(?:(?![ \t]*(?:\n|$))(paragraph)|[^\n]*)(?:\n|$))+/).replace("paragraph",Lo).getRegex(),Ct={blockquote:No,code:qo,def:zo,fences:To,heading:Do,hr:yn,html:Oo,lheading:Na,list:Po,newline:Io,paragraph:Wo,table:Le,text:Ro},ta=W("^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)").replace("hr",yn).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("blockquote"," {0,3}>").replace("code","(?: {4}| {0,3}	)[^\\n]").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*(?:\\n|$))|~~~)[^\\n]*(?:\\n|$)").replace("list"," {0,3}(?:[*+-]|1[.)])[ \\t]").replace("html"," {0,3}(?:</?(?:tag)(?: +|\\n|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)").replace("tag",vn).getRegex(),Vo={...Ct,lheading:Eo,table:ta,paragraph:W(kt).replace("hr",yn).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("|lheading","").replace("table",ta).replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*(?:\\n|$))|~~~)[^\\n]*(?:\\n|$)").replace("list"," {0,3}(?:[*+-]|1[.)])[ \\t]+[^ \\t\\n]").replace("html"," {0,3}(?:</?(?:tag)(?: +|\\n|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)").replace("tag",vn).getRegex()},Uo={...Ct,html:W(`^ *(?:comment(?: *\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1>(?: *\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?>(?: *\\n{2,}|\\s*$))`).replace("comment",xt).replace(/tag/g,"(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,heading:/^(#{1,6})(.*)(?:\n+|$)/,fences:Le,lheading:/^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/,paragraph:W(kt).replace("hr",yn).replace("heading",` *#{1,6} *[^
-]`).replace("lheading",Na).replace("|table","").replace("blockquote"," {0,3}>").replace("|fences","").replace("|list","").replace("|html","").replace("|tag","").getRegex()},Mo=/^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,Bo=/^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,Ua=/^( {2,}|\\)\n(?!\s*$)[ \t]*/,jo=/^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/,be=/[\p{P}\p{S}]/u,Xe=/[\s\p{P}\p{S}]/u,bn=/[^\s\p{P}\p{S}]/u,Fo=W(/^((?![*_])punctSpace)/,"u").replace(/punctSpace/g,Xe).getRegex(),Go=/[\p{Pi}\p{Ps}"']/u,Ma=/(?!~)[\p{P}\p{S}]/u,Ho=/(?!~)[\s\p{P}\p{S}]/u,$o=/(?:[^\s\p{P}\p{S}]|~)/u,Qo=W(/link|precode-code|html/,"g").replace("link",/\[(?:[^\[\]`]|(?<a>`+)[^`]+\k<a>(?!`))*?\]\((?:\\[\s\S]|[^\\\(\)]|\((?:\\[\s\S]|[^\\\(\)])*\))*\)/).replace("precode-",Wa?"(?<!`)()":"(^^|[^`])").replace("code",/(?<b>`+)[^`]+\k<b>(?!`)/).replace("html",/<(?! )[^<>]*?>/).getRegex(),Ba=/^(?:\*+(?:((?!\*)punct)|([^\s*]))?)|^_+(?:((?!_)punct)|([^\s_]))?/,Ko=W(Ba,"u").replace(/punct/g,be).getRegex(),Yo=W(Ba,"u").replace(/punct/g,Ma).getRegex(),Zo=/^(?:\*+(?:((?!\*)(?!openQuote)punct)|([^\s*]))?)|^_+(?:((?!_)(?!openQuote)punct)|([^\s_]))?/,Jo=W(Zo,"u").replace(/openQuote/g,Go).replace(/punct/g,be).getRegex(),ja="^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)punctSpace(\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|notPunctSpace(\\*+)(?=notPunctSpace)",Xo=W(ja,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),er=W(ja,"gu").replace(/notPunctSpace/g,$o).replace(/punctSpace/g,Ho).replace(/punct/g,Ma).getRegex(),nr="^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)[\\s](\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|(?:(?!\\*)punct|notPunctSpace)(\\*+)(?!\\*)(?=notPunctSpace)",tr=W(nr,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),ar=W("^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)punctSpace(_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)","gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),ir="^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)[\\s](_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)|(?:(?!_)punct|notPunctSpace)(_+)(?!_)(?=notPunctSpace)",or=W(ir,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),rr=W(/^~~?(?:((?!~)punct)|[^\s~])/,"u").replace(/punct/g,be).getRegex(),sr="^[^~]+(?=[^~])|(?!~)punct(~~?)(?=[\\s]|$)|notPunctSpace(~~?)(?!~)(?=punctSpace|$)|(?!~)punctSpace(~~?)(?=notPunctSpace)|[\\s](~~?)(?!~)(?=punct)|(?!~)punct(~~?)(?!~)(?=punct)|notPunctSpace(~~?)(?=notPunctSpace)",cr=W(sr,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),lr=W(/\\(punct)/,"gu").replace(/punct/g,be).getRegex(),dr=W(/(`+)(?:[^`]|[^`][\s\S]*?[^`])\1(?!`)|`+|\\(punct)/,"gu").replace(/punct/g,be).getRegex(),pr=W(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace("scheme",/[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace("email",/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(),ur=W(xt).replace("(?:-->|$)","-->").getRegex(),hr=W("^comment|^</[a-zA-Z][a-zA-Z0-9-]*\\s*>|^<[a-zA-Z][a-zA-Z0-9-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>").replace("comment",ur).replace("attribute",/\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(),Fa=/\[(?:\\[\s\S]|[^\[\]\\])*\]/,Pn=W(/(?:\[(?:brackets|\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+(?!`)[^`]*?`+(?!`)|``+(?=\])|[^\[\]\\`])*?/).replace("brackets",Fa).getRegex(),mr=W(/^!?\[(label)\]\([ \t\n]*(href)(?:(?:[ \t]+(?:\n[ \t]*)?|\n[ \t]*)(title))?[ \t\n]*\)/).replace("label",Pn).replace("href",/<(?:\\.|[^\n<>\\])+>|[^ \t\n\x00-\x1f]+|(?=\))/).replace("title",/"(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\])*'|\((?:\\[\s\S]|[^)\\])*\)/).getRegex(),fr=W(/^!?\[(label)\]\[(ref)\]/).replace("label",Pn).replace("ref",_t).getRegex(),gr=W(/^!?\[(ref)\](?:\[\])?/).replace("ref",_t).getRegex(),aa=/(?!\s*\])(?:\\[\s\S]|[^\[\]\\]){1,999}/,yr=W(/(?:[^\[\]\\`]*(?:\[(?:brackets|\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+(?!`)[^`]*?`+(?!`)|``+(?=\]))){0,999}?[^\[\]\\`]*?/).replace("brackets",Fa).getRegex(),vr=W("reflink|nolink(?!\\()","g").replace("reflink",W(/^!?\[(label)\]\[(ref)\]/).replace("label",yr).replace("ref",aa).getRegex()).replace("nolink",W(/^!?\[(ref)\](?:\[\])?/).replace("ref",aa).getRegex()).getRegex(),ia=/[hH][tT][tT][pP][sS]?|[fF][tT][pP]/,br=/[A-Za-z0-9._+-]+@[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![\w-])/,wr=W(/(?:mailto:email|xmpp:email(?:\/[A-Za-z0-9@.]+)?)/).replace(/email/g,br).getRegex(),At={_backpedal:Le,anyPunctuation:lr,anyPunctuationOutsideCode:dr,autolink:pr,blockSkip:Qo,br:Ua,code:Bo,del:Le,delLDelim:Le,delRDelim:Le,emStrongLDelim:Ko,emStrongRDelimAst:Xo,emStrongRDelimUnd:ar,escape:Mo,link:mr,nolink:gr,punctuation:Fo,reflink:fr,reflinkSearch:vr,tag:hr,text:jo,url:Le},kr={...At,emStrongLDelim:Jo,emStrongRDelimAst:tr,emStrongRDelimUnd:or,link:W(/^!?\[(label)\]\((.*?)\)/).replace("label",Pn).getRegex(),reflink:W(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label",Pn).getRegex()},mt={...At,emStrongRDelimAst:er,emStrongLDelim:Yo,delLDelim:rr,delRDelim:cr,url:W(/^emailProtocol|^((?:protocol):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/).replace("emailProtocol",wr).replace("protocol",ia).replace("email",/[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![\w-])/).getRegex(),_backpedal:/(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/,del:/^(~~?)(?=[^\s~])((?:\\[\s\S]|[^\\])*?(?:\\[\s\S]|[^\s~\\]))\1(?=[^~]|$)/,text:W(/^(?:[^a-zA-Z0-9](?=emailProtocol)|(`+|~+|[^`~])(?:(?=[`~])|(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|protocol:\/\/|wwwStart|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9](?=emailProtocol)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))))/).replace("protocol",ia).replace(/emailProtocol/g,/(?:mailto|xmpp):/).replace("wwwStart",Wa?"(?<![^\\s*_~(])www\\.":"www\\.").getRegex()},_r={...mt,br:W(Ua).replace("{2,}","*").getRegex(),text:W(mt.text).replace("\\b_","\\b_| {2,}\\n").replace(/\{2,\}/g,"*").getRegex()},En={normal:Ct,gfm:Vo,pedantic:Uo},ln={normal:At,gfm:mt,breaks:_r,pedantic:kr},xr={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"},oa=t=>xr[t];function se(t,e){if(e){if(Z.escapeTest.test(t))return t.replace(Z.escapeReplace,oa)}else if(Z.escapeTestNoEncode.test(t))return t.replace(Z.escapeReplaceNoEncode,oa);return t}function Cr(t){return Z.numericCharacterReference.test(t)?t.replace(Z.numericCharacterReferenceOrAmpersand,(e,a,o)=>{if(a===void 0&&o===void 0)return"&amp;";let i=a===void 0?Number.parseInt(o,16):Number.parseInt(a,10);return i===0||i>1114111||i>=55296&&i<=57343?"�":i===38?"&amp;":String.fromCodePoint(i)}):t}function ra(t){try{t=encodeURI(t).replace(Z.percentDecode,"%")}catch{return null}return t}function sa(t,e){var s;let a=t.replace(Z.findPipe,(d,c,u)=>{let l=!1,p=c;for(;--p>=0&&u[p]==="\\";)l=!l;return l?"|":" |"}),o=a.split(Z.splitPipe),i=0;if(o[0].trim()||o.shift(),o.length>0&&!((s=o.at(-1))!=null&&s.trim())&&o.pop(),e)if(o.length>e)o.splice(e);else for(;o.length<e;)o.push("");for(;i<o.length;i++)o[i]=o[i].trim().replace(Z.slashPipe,"|");return o}function xe(t,e,a){let o=t.length;if(o===0)return"";let i=0;for(;i<o&&t.charAt(o-i-1)===e;)i++;return t.slice(0,o-i)}function ca(t){let e=t.split(`
+`}function Tn(r){return r[r.length-1]===`
+`?r.slice(0,-1):r}function Bn(r,f){const g=/(\n+)([^\n]*)/g;let _=(function(){let S=r.indexOf(`
+`);return S=S!==-1?S:r.length,g.lastIndex=S,Dn(r.slice(0,S),f)})(),x=r[0]===`
+`||r[0]===" ",C,b;for(;b=g.exec(r);){const S=b[1],D=b[2];C=D[0]===" ",_+=S+(!x&&!C&&D!==""?`
+`:"")+Dn(D,f),x=C}return _}function Dn(r,f){if(r===""||r[0]===" ")return r;const g=/ [^ ]/g;let _,x=0,C,b=0,S=0,D="";for(;_=g.exec(r);)S=_.index,S-x>f&&(C=b>x?b:S,D+=`
+`+r.slice(x,C),x=C+1),b=S;return D+=`
+`,r.length-x>f&&b>x?D+=r.slice(x,b)+`
+`+r.slice(b+1):D+=r.slice(x),D.slice(1)}function qe(r){let f="",g=0;for(let _=0;_<r.length;g>=65536?_+=2:_++){g=ge(r,_);const x=H[g];!x&&Te(g)?(f+=r[_],g>=65536&&(f+=r[_+1])):f+=x||ke(g)}return f}function Mn(r,f,g){let _="";const x=r.tag;for(let C=0,b=g.length;C<b;C+=1){let S=g[C];r.replacer&&(S=r.replacer.call(g,String(C),S)),(m(r,f,S,!1,!1)||typeof S>"u"&&m(r,f,null,!1,!1))&&(_!==""&&(_+=","+(r.condenseFlow?"":" ")),_+=r.dump)}r.tag=x,r.dump="["+_+"]"}function on(r,f,g,_){let x="";const C=r.tag;for(let b=0,S=g.length;b<S;b+=1){let D=g[b];r.replacer&&(D=r.replacer.call(g,String(b),D)),(m(r,f+1,D,!0,!0,!1,!0)||typeof D>"u"&&m(r,f+1,null,!0,!0,!1,!0))&&((!_||x!=="")&&(x+=Fe(r,f)),r.dump&&c===r.dump.charCodeAt(0)?x+="-":x+="- ",x+=r.dump)}r.tag=C,r.dump=x||"[]"}function jn(r,f,g){let _="";const x=r.tag,C=Object.keys(g);for(let b=0,S=C.length;b<S;b+=1){let D="";_!==""&&(D+=", "),r.condenseFlow&&(D+='"');const P=C[b];let E=g[P];r.replacer&&(E=r.replacer.call(g,P,E)),m(r,f,P,!1,!1)&&(r.dump.length>1024&&(D+="? "),D+=r.dump+(r.condenseFlow?'"':"")+":"+(r.condenseFlow?"":" "),m(r,f,E,!1,!1)&&(D+=r.dump,_+=D))}r.tag=x,r.dump="{"+_+"}"}function Fn(r,f,g,_){let x="";const C=r.tag,b=Object.keys(g);if(r.sortKeys===!0)b.sort();else if(typeof r.sortKeys=="function")b.sort(r.sortKeys);else if(r.sortKeys)throw new e("sortKeys must be a boolean or a function");for(let S=0,D=b.length;S<D;S+=1){let P="";(!_||x!=="")&&(P+=Fe(r,f));const E=b[S];let L=g[E];if(r.replacer&&(L=r.replacer.call(g,E,L)),!m(r,f+1,E,!0,!0,!0))continue;const V=r.tag!==null&&r.tag!=="?"||r.dump&&r.dump.length>1024;V&&(r.dump&&c===r.dump.charCodeAt(0)?P+="?":P+="? "),P+=r.dump,V&&(P+=Fe(r,f)),m(r,f+1,L,!0,V)&&(r.dump&&c===r.dump.charCodeAt(0)?P+=":":P+=": ",P+=r.dump,x+=P)}r.tag=C,r.dump=x||"{}"}function n(r,f,g){const _=g?r.explicitTypes:r.implicitTypes;for(let x=0,C=_.length;x<C;x+=1){const b=_[x];if((b.instanceOf||b.predicate)&&(!b.instanceOf||typeof f=="object"&&f instanceof b.instanceOf)&&(!b.predicate||b.predicate(f))){if(g?b.multi&&b.representName?r.tag=b.representName(f):r.tag=b.tag:r.tag="?",b.represent){const S=r.styleMap[b.tag]||b.defaultStyle;let D;if(o.call(b.represent)==="[object Function]")D=b.represent(f,S);else if(i.call(b.represent,S))D=b.represent[S](f,S);else throw new e("!<"+b.tag+'> tag resolver accepts not "'+S+'" style');r.dump=D}return!0}}return!1}function m(r,f,g,_,x,C,b){r.tag=null,r.dump=g,n(r,g,!1)||n(r,g,!0);const S=o.call(r.dump),D=_;_&&(_=r.flowLevel<0||r.flowLevel>f);const P=S==="[object Object]"||S==="[object Array]";let E,L;if(P&&(E=r.duplicates.indexOf(g),L=E!==-1),(r.tag!==null&&r.tag!=="?"||L||r.indent!==2&&f>0)&&(x=!1),L&&r.usedDuplicates[E])r.dump="*ref_"+E;else{if(P&&L&&!r.usedDuplicates[E]&&(r.usedDuplicates[E]=!0),S==="[object Object]")_&&Object.keys(r.dump).length!==0?(Fn(r,f,r.dump,x),L&&(r.dump="&ref_"+E+r.dump)):(jn(r,f,r.dump),L&&(r.dump="&ref_"+E+" "+r.dump));else if(S==="[object Array]")_&&r.dump.length!==0?(r.noArrayIndent&&!b&&f>0?on(r,f-1,r.dump,x):on(r,f,r.dump,x),L&&(r.dump="&ref_"+E+r.dump)):(Mn(r,f,r.dump),L&&(r.dump="&ref_"+E+" "+r.dump));else if(S==="[object String]")r.tag!=="?"&&Sn(r,r.dump,f,C,D);else{if(S==="[object Undefined]")return!1;if(r.skipInvalid)return!1;throw new e("unacceptable kind of an object to dump "+S)}if(r.tag!==null&&r.tag!=="?"){let V=encodeURI(r.tag[0]==="!"?r.tag.slice(1):r.tag).replace(/!/g,"%21");r.tag[0]==="!"?V="!"+V:V.slice(0,18)==="tag:yaml.org,2002:"?V="!!"+V.slice(18):V="!<"+V+">",r.dump=V+" "+r.dump}}return!0}function w(r,f){const g=[],_=[];k(r,g,_);const x=_.length;for(let C=0;C<x;C+=1)f.duplicates.push(g[_[C]]);f.usedDuplicates=new Array(x)}function k(r,f,g){if(r!==null&&typeof r=="object"){const _=f.indexOf(r);if(_!==-1)g.indexOf(_)===-1&&g.push(_);else if(f.push(r),Array.isArray(r))for(let x=0,C=r.length;x<C;x+=1)k(r[x],f,g);else{const x=Object.keys(r);for(let C=0,b=x.length;C<b;C+=1)k(r[x[C]],f,g)}}}function v(r,f){f=f||{};const g=new Un(f);g.noRefs||w(r,g);let _=r;return g.replacer&&(_=g.replacer.call({"":_},"",_)),m(g,0,_,!0,!0)?g.dump+`
+`:""}return pt.dump=v,pt}var na;function wo(){if(na)return ne;na=1;const t=vo(),e=bo();function a(o,i){return function(){throw new Error("Function yaml."+o+" is removed in js-yaml 4. Use yaml."+i+" instead, which is now safe by default.")}}return ne.Type=ie(),ne.Schema=ga(),ne.FAILSAFE_SCHEMA=wa(),ne.JSON_SCHEMA=Aa(),ne.CORE_SCHEMA=Sa(),ne.DEFAULT_SCHEMA=vt(),ne.load=t.load,ne.loadAll=t.loadAll,ne.dump=e.dump,ne.YAMLException=gn(),ne.types={binary:Da(),float:Ca(),map:ba(),null:ka(),pairs:Ra(),set:Pa(),timestamp:Ia(),bool:_a(),int:xa(),merge:Ta(),omap:qa(),seq:va(),str:ya()},ne.safeLoad=a("safeLoad","load"),ne.safeLoadAll=a("safeLoadAll","loadAll"),ne.safeDump=a("safeDump","dump"),ne}var ko=wo();const _o=go(ko),{Type:Hr,Schema:$r,FAILSAFE_SCHEMA:Qr,JSON_SCHEMA:Kr,CORE_SCHEMA:Yr,DEFAULT_SCHEMA:Zr,load:xo,loadAll:Jr,dump:Xr,YAMLException:es,types:ns,safeLoad:ts,safeLoadAll:as,safeDump:is}=_o,Wn=Object.assign({"/content/co1/01_Cloud_Computing_Fundamentals.yaml":ii,"/content/co1/02_Cloud_Service_Models.yaml":oi,"/content/co1/03_Shared_Responsibility_Model.yaml":ri,"/content/co1/04_Cloud_Deployment_Models.yaml":si,"/content/co1/05_Cloud_Virtualization_Fundamentals.yaml":ci,"/content/co1/06_Hypervisors_and_Virtual_Machines.yaml":li,"/content/co1/07_Container_Isolation_and_Virtualization.yaml":di,"/content/co1/08_Global_Cloud_Infrastructure.yaml":ui,"/content/co1/09_AWS_Azure_GCP_Fundamentals.yaml":pi,"/content/co1/10_Well_Architected_Framework.yaml":hi,"/content/co1/11_Cloud_Migration_and_TCO.yaml":mi,"/content/co1/12_Multi_Tier_Cloud_Architecture.yaml":fi,"/content/co2/01_compute_families_and_vm_sizing.yaml":gi,"/content/co2/02_virtual_machines_images_and_instance_lifecycle.yaml":yi,"/content/co2/03_container_images_and_docker_fundamentals.yaml":vi,"/content/co2/04_kubernetes_architecture_and_reconciliation.yaml":bi,"/content/co2/05_autoscaling_policies_and_scaling_dynamics.yaml":wi,"/content/co2/06_serverless_functions_and_managed_compute.yaml":ki,"/content/co2/07_compute_purchasing_and_commitment_models.yaml":_i,"/content/co2/08_workload_placement_and_performance_engineering.yaml":xi,"/content/co2/09_aws_azure_gcp_compute_equivalents.yaml":Ci,"/content/co2/10_compute_utilization_and_cost_optimization.yaml":Ai,"/content/co2/11_compute_break_fix_and_diagnostic_labs.yaml":Si,"/content/co3/01_ip_addressing_ipv4_and_cidr_fundamentals.yaml":Ii,"/content/co3/02_cidr_arithmetic_subnetting_and_address_plan_design.yaml":Ti,"/content/co3/03_virtual_networks_vpcs_and_subnet_architecture.yaml":Di,"/content/co3/04_routing_gateways_and_network_traffic_paths.yaml":qi,"/content/co3/05_security_groups_network_acls_and_traffic_filtering.yaml":Ri,"/content/co3/06_load_balancing_layer_4_layer_7_and_health_checks.yaml":Pi,"/content/co3/07_dns_routing_policies_ttl_and_failover.yaml":Ei,"/content/co3/08_cdn_edge_delivery_and_content_caching.yaml":Oi,"/content/co3/09_hybrid_connectivity_vpn_and_dedicated_links.yaml":Li,"/content/co3/10_network_fault_localization_and_troubleshooting.yaml":zi,"/content/co3/11_end_to_end_network_design_and_break_fix_lab.yaml":Wi,"/content/co4/01_storage_access_patterns_and_service_selection.yaml":Ni,"/content/co4/02_block_storage_file_systems_raid_luns_and_provisioning.yaml":Vi,"/content/co4/03_object_storage_lifecycle_versioning_and_object_lock.yaml":Ui,"/content/co4/04_file_storage_and_shared_file_services.yaml":Bi,"/content/co4/05_relational_databases_managed_sql_and_high_availability.yaml":Mi,"/content/co4/06_nosql_databases_and_data_model_selection.yaml":ji,"/content/co4/07_caching_analytics_and_data_processing_services.yaml":Fi,"/content/co4/08_backup_restore_chains_and_data_protection.yaml":Gi,"/content/co4/09_disaster_recovery_rto_rpo_and_recovery_strategy.yaml":Hi,"/content/co4/10_aws_azure_gcp_data_services_and_cost_comparison.yaml":$i,"/content/co5/01_iam_identity_fundamentals.yaml":Qi,"/content/co5/02_policy_evaluation_and_access_denials.yaml":Ki,"/content/co5/03_workload_identity_and_credentials.yaml":Yi,"/content/co5/04_multi_account_governance_and_federation.yaml":Zi,"/content/co5/05_encryption_and_key_management.yaml":Ji,"/content/co5/06_secrets_management_and_rotation.yaml":Xi,"/content/co5/07_compliance_auditing_and_hardening.yaml":eo,"/content/co5/08_edge_protection_waf_ddos_and_threat_detection.yaml":no,"/content/co5/09_observability_metrics_logs_traces_and_slos.yaml":to,"/content/co5/10_security_breakfix_provider_mapping_and_capstone.yaml":ao,"/content/co6/01_iac_fundamentals_and_cloud_native_tools.yaml":io,"/content/co6/02_terraform_state_remote_backend_and_locking.yaml":oo,"/content/co6/03_terraform_modules_version_control_and_drift.yaml":ro,"/content/co6/04_cicd_pipelines_and_infrastructure_release.yaml":so,"/content/co6/05_configuration_management_patch_and_runbooks.yaml":co,"/content/co6/06_cloud_billing_cost_engineering_and_unit_economics.yaml":lo,"/content/co6/07_budgets_finops_and_cost_optimization.yaml":uo,"/content/co6/08_kubernetes_operations_service_discovery_and_breakfix.yaml":po,"/content/co6/09_cloud_operations_private_access_and_reliability.yaml":ho,"/content/co6/10_integrated_skydeploy_architecture_cost_and_breakfix6.yaml":mo,"/content/co6/11_CO6_practical_execution_guides.yaml":fo});function Ea(t){if(!t||typeof t!="string")return null;const a=t.replace(/\\/g,"/").split("/");for(const o of a){const i=o.match(/^co[-_]?([1-6])(?:\b|_|$)/i);if(i)return parseInt(i[1],10)}return null}function Oa(t,e){if(typeof e!="string")return"UNREADABLE TRANSMISSION";const a=(t.split(".").pop()||"").toLowerCase();if(a==="yaml"||a==="yml")try{const o=xo(e);return o!==void 0?o:{}}catch{return"UNREADABLE TRANSMISSION"}else if(a==="json")try{return JSON.parse(e)}catch{return"UNREADABLE TRANSMISSION"}else return e}function Nn(t){let e=null;if(typeof t=="number")e=t;else if(typeof t=="string"){const s=t.match(/([1-6])/);s&&(e=parseInt(s[1],10))}if(!e||e<1||e>6)return{files:[],data:[],status:"empty"};const a=[],o=[];for(const[s,d]of Object.entries(Wn))if(Ea(s)===e){const c=s.split("/").pop()||s,p=Oa(c,d);a.push(c),o.push(p)}let i="empty";if(a.length===0)i="empty";else{const s=o.filter(d=>d==="UNREADABLE TRANSMISSION").length;a.length>=4&&s===0?i="ready":i="partial"}return{files:a,data:o,status:i}}function Co(){return Object.keys(Wn).length}function Ao(t){if(!t)return null;for(const[e,a]of Object.entries(Wn))if(e===t||e.endsWith("/"+t)||e.endsWith("\\"+t))return a;return null}function So(){const t=[];for(const[e,a]of Object.entries(Wn)){const o=e.split("/").pop()||e,i=Ea(e)||1;t.push({path:e,filename:o,coNum:i,raw:a,parsed:Oa(o,a)})}return t.sort((e,a)=>e.coNum-a.coNum||e.filename.localeCompare(a.filename)),t}function bt(){return{async:!1,breaks:!1,extensions:null,gfm:!0,hooks:null,pedantic:!1,renderer:null,silent:!1,tokenizer:null,walkTokens:null}}var Me=bt();function La(t){Me=t}var We={exec:()=>null};function ze(t){let e=[];return a=>{let o=Math.max(0,Math.min(3,a-1)),i=e[o];return i||(i=t(o),e[o]=i),i}}function z(t,e=""){let a=typeof t=="string"?t:t.source,o={replace:(i,s)=>{let d=typeof s=="string"?s:s.source;return d=d.replace(Z.caret,"$1"),a=a.replace(i,d),o},getRegex:()=>new RegExp(a,e)};return o}var za=((t="")=>{try{return!!new RegExp("(?<=1)(?<!1)"+t)}catch{return!1}})(),Z={codeRemoveIndent:/^(?: {0,3}\t| {1,4})/gm,listInterruptsParagraph:/^ {0,3}(?:[*+-]|1[.)])[ \t]+[^ \t\n]/,outputLinkReplace:/\\([\[\]])/g,indentCodeCompensation:/^(\s+)(?:```)/,beginningSpace:/^\s+/,endingHash:/#$/,startingSpaceChar:/^ /,endingSpaceChar:/ $/,endingSpaceTabChar:/[ \t]$/,nonSpaceChar:/[^ ]/,newLineCharGlobal:/\n/g,tabCharGlobal:/\t/g,leadingSpaceTab:/^[ \t]+/,multipleSpaceGlobal:/\s+/g,blankLine:/^[ \t]*$/,doubleBlankLine:/\n[ \t]*\n[ \t]*$/,blockquoteStart:/^ {0,3}>/,blockquoteSetextReplace:/\n {0,3}((?:=+|-+)[ \t]*)(?=\n|$)/g,blockquoteSetextReplace2:/^ {0,3}>[ \t]?/gm,blockquoteMarkerWhitespace:/^( {0,3}>)([ \t]+)/gm,listReplaceNesting:/^ {1,4}(?=( {4})*[^ ])/g,listIsTask:/^\[[ xX]\][ \t]+\S/,listReplaceTask:/^\[[ xX]\][ \t]+/,listTaskCheckbox:/\[[ xX]\]/,anyLine:/\n.*\n/,hrefBrackets:/^<(.*)>$/,tableDelimiter:/[:|]/,tableAlignChars:/^\||\| *$/g,tableRowBlankLine:/\n[ \t]*$/,tableAlignRight:/^ *-+: *$/,tableAlignCenter:/^ *:-+: *$/,tableAlignLeft:/^ *:-+ *$/,startATag:/^<a /i,endATag:/^<\/a>/i,startPreScriptTag:/^<(pre|code|kbd|script)(\s|>)/i,endPreScriptTag:/^<\/(pre|code|kbd|script)(\s|>)/i,startAngleBracket:/^</,endAngleBracket:/>$/,pedanticHrefTitle:/^([^'"]*[^\s])\s+(['"])(.*)\2/,unicodeAlphaNumeric:/[\p{L}\p{N}]/u,numericCharacterReference:/&#(?:(\d{1,7})|[Xx]([A-Fa-f0-9]{1,6}));/,numericCharacterReferenceOrAmpersand:/&#(?:(\d{1,7})|[Xx]([A-Fa-f0-9]{1,6}));|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,escapeTest:/[&<>"']/,escapeReplace:/[&<>"']/g,escapeTestNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/,escapeReplaceNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,caret:/(^|[^\[])\^/g,percentDecode:/%25/g,findPipe:/\|/g,splitPipe:/ \|/,slashPipe:/\\\|/g,carriageReturn:/\r\n|\r/g,spaceLine:/^ +$/gm,notSpaceStart:/^\S*/,endingNewline:/\n$/,listItemRegex:t=>new RegExp(`^( {0,3}${t})((?:[	 ][^\\n]*)?(?:\\n|$))`),nextBulletRegex:ze(t=>new RegExp(`^ {0,${t}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`)),hrRegex:ze(t=>new RegExp(`^ {0,${t}}((?:-[ 	]*){3,}|(?:_[ 	]*){3,}|(?:\\*[ 	]*){3,})(?:\\n+|$)`)),fencesBeginRegex:ze(t=>new RegExp(`^ {0,${t}}(?:\`\`\`|~~~)`)),headingBeginRegex:ze(t=>new RegExp(`^ {0,${t}}#{1,6}(?:\\s|$)`)),pedanticHeadingBeginRegex:ze(t=>new RegExp(`^ {0,${t}}#`)),htmlBeginRegex:ze(t=>new RegExp(`^ {0,${t}}(?:</?(?:${vn})(?: +|$|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)`,"i")),blockquoteBeginRegex:ze(t=>new RegExp(`^ {0,${t}}>`)),nestedContainerMarkers:/^(?: {0,3}(?:(?:[*+-]|\d{1,9}[.)])[ \t]+|>[ \t]?))+/},Io=/^(?:[ \t]*(?:\n|$))+/,To=/^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/,Do=/^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}(?:(?=`)\1`*|(?=~)\1~*) *(?=\n|$)|$)/,yn=/^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/,qo=/^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/,wt=/ {0,3}(?:[*+-]|\d{1,9}[.)])/,Wa=/^(?!bull |blockCode|fences|blockquote|heading|html|table)((?:.|\n(?!\s*?\n|bull |fences|blockquote|heading|hr|html|table))+?)\n {0,3}(=+|-+)[ \t]*(?:\n+|$)/,Na=z(Wa).replace(/bull/g,wt).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}(?:\s|$)/).replace(/hr/g,/ {0,3}(?:(?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/\|table/g,"").getRegex(),Ro=z(Wa).replace(/bull/g,wt).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}(?:\s|$)/).replace(/hr/g,/ {0,3}(?:(?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/table/g,/ {0,3}\|?(?:[:\- ]*\|)+[\:\- ]*\n/).getRegex(),kt=/^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table|[ \t]+\n)[^\n]+)*)/,Po=/^[^\n]+/,_t=/(?!\s*\])(?:\\[\s\S]|[^\[\]\\\n]|\n(?![ \t]*\n))+/,Eo=z(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace("label",_t).replace("title",/(?:"(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\\n]|\n(?!\n))*'|\((?:\\[\s\S]|[^()\\])*\))/).getRegex(),Oo=z(/^(bull)([ \t][^\n]*?)?(?:\n|$)/).replace(/bull/g,wt).getRegex(),vn="address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul",xt=/<!--(?:-?>|[\s\S]*?(?:-->|$))/,Lo=z("^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n*|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>[^\\n]*\\n*|$)|<![A-Z][\\s\\S]*?(?:>[^\\n]*\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>[^\\n]*\\n*|$)|</?(tag)(?:[ \\t]+|\\n|/?>|$)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!(?:script|pre|style|textarea)(?![a-z0-9-]))([a-z][a-z0-9-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</[a-z][a-z0-9-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))","i").replace("comment",xt).replace("tag",vn).replace("attribute",/ +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(),Va=t=>z(kt).replace("hr",yn).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("|lheading","").replace("|table","").replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*(?:\\n|$))|~~~)[^\\n]*(?:\\n|$)").replace("list",t).replace("html"," {0,3}(?:</?(?:tag)(?: +|\\n|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)").replace("tag",vn).getRegex(),zo=Va(/ {0,3}(?:[*+-]|1[.)])[ \t]+[^ \t\n]/),Wo=Va(/ {0,3}(?:[*+-]|\d{1,9}[.)])(?:[ \t]|\n|$)/),No=z(/^( {0,3}> ?(?:(?![ \t]*(?:\n|$))(paragraph)|[^\n]*)(?:\n|$))+/).replace("paragraph",Wo).getRegex(),Ct={blockquote:No,code:To,def:Eo,fences:Do,heading:qo,hr:yn,html:Lo,lheading:Na,list:Oo,newline:Io,paragraph:zo,table:We,text:Po},ta=z("^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)").replace("hr",yn).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("blockquote"," {0,3}>").replace("code","(?: {4}| {0,3}	)[^\\n]").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*(?:\\n|$))|~~~)[^\\n]*(?:\\n|$)").replace("list"," {0,3}(?:[*+-]|1[.)])[ \\t]").replace("html"," {0,3}(?:</?(?:tag)(?: +|\\n|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)").replace("tag",vn).getRegex(),Vo={...Ct,lheading:Ro,table:ta,paragraph:z(kt).replace("hr",yn).replace("heading"," {0,3}#{1,6}(?:\\s|$)").replace("|lheading","").replace("table",ta).replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*(?:\\n|$))|~~~)[^\\n]*(?:\\n|$)").replace("list"," {0,3}(?:[*+-]|1[.)])[ \\t]+[^ \\t\\n]").replace("html"," {0,3}(?:</?(?:tag)(?: +|\\n|/?>)|<(?:(?:script|pre|style|textarea)(?:[\\s>]|$)|!--)|<\\?|<![A-Za-z]|<!\\[CDATA\\[)").replace("tag",vn).getRegex()},Uo={...Ct,html:z(`^ *(?:comment(?: *\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1>(?: *\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?>(?: *\\n{2,}|\\s*$))`).replace("comment",xt).replace(/tag/g,"(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,heading:/^(#{1,6})(.*)(?:\n+|$)/,fences:We,lheading:/^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/,paragraph:z(kt).replace("hr",yn).replace("heading",` *#{1,6} *[^
+]`).replace("lheading",Na).replace("|table","").replace("blockquote"," {0,3}>").replace("|fences","").replace("|list","").replace("|html","").replace("|tag","").getRegex()},Bo=/^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,Mo=/^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,Ua=/^( {2,}|\\)\n(?!\s*$)[ \t]*/,jo=/^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/,be=/[\p{P}\p{S}]/u,Xe=/[\s\p{P}\p{S}]/u,bn=/[^\s\p{P}\p{S}]/u,Fo=z(/^((?![*_])punctSpace)/,"u").replace(/punctSpace/g,Xe).getRegex(),Go=/[\p{Pi}\p{Ps}"']/u,Ba=/(?!~)[\p{P}\p{S}]/u,Ho=/(?!~)[\s\p{P}\p{S}]/u,$o=/(?:[^\s\p{P}\p{S}]|~)/u,Qo=z(/link|precode-code|html/,"g").replace("link",/\[(?:[^\[\]`]|(?<a>`+)[^`]+\k<a>(?!`))*?\]\((?:\\[\s\S]|[^\\\(\)]|\((?:\\[\s\S]|[^\\\(\)])*\))*\)/).replace("precode-",za?"(?<!`)()":"(^^|[^`])").replace("code",/(?<b>`+)[^`]+\k<b>(?!`)/).replace("html",/<(?! )[^<>]*?>/).getRegex(),Ma=/^(?:\*+(?:((?!\*)punct)|([^\s*]))?)|^_+(?:((?!_)punct)|([^\s_]))?/,Ko=z(Ma,"u").replace(/punct/g,be).getRegex(),Yo=z(Ma,"u").replace(/punct/g,Ba).getRegex(),Zo=/^(?:\*+(?:((?!\*)(?!openQuote)punct)|([^\s*]))?)|^_+(?:((?!_)(?!openQuote)punct)|([^\s_]))?/,Jo=z(Zo,"u").replace(/openQuote/g,Go).replace(/punct/g,be).getRegex(),ja="^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)punctSpace(\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|notPunctSpace(\\*+)(?=notPunctSpace)",Xo=z(ja,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),er=z(ja,"gu").replace(/notPunctSpace/g,$o).replace(/punctSpace/g,Ho).replace(/punct/g,Ba).getRegex(),nr="^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)[\\s](\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|(?:(?!\\*)punct|notPunctSpace)(\\*+)(?!\\*)(?=notPunctSpace)",tr=z(nr,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),ar=z("^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)punctSpace(_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)","gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),ir="^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)[\\s](_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)|(?:(?!_)punct|notPunctSpace)(_+)(?!_)(?=notPunctSpace)",or=z(ir,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),rr=z(/^~~?(?:((?!~)punct)|[^\s~])/,"u").replace(/punct/g,be).getRegex(),sr="^[^~]+(?=[^~])|(?!~)punct(~~?)(?=[\\s]|$)|notPunctSpace(~~?)(?!~)(?=punctSpace|$)|(?!~)punctSpace(~~?)(?=notPunctSpace)|[\\s](~~?)(?!~)(?=punct)|(?!~)punct(~~?)(?!~)(?=punct)|notPunctSpace(~~?)(?=notPunctSpace)",cr=z(sr,"gu").replace(/notPunctSpace/g,bn).replace(/punctSpace/g,Xe).replace(/punct/g,be).getRegex(),lr=z(/\\(punct)/,"gu").replace(/punct/g,be).getRegex(),dr=z(/(`+)(?:[^`]|[^`][\s\S]*?[^`])\1(?!`)|`+|\\(punct)/,"gu").replace(/punct/g,be).getRegex(),ur=z(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace("scheme",/[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace("email",/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(),pr=z(xt).replace("(?:-->|$)","-->").getRegex(),hr=z("^comment|^</[a-zA-Z][a-zA-Z0-9-]*\\s*>|^<[a-zA-Z][a-zA-Z0-9-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>").replace("comment",pr).replace("attribute",/\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(),Fa=/\[(?:\\[\s\S]|[^\[\]\\])*\]/,On=z(/(?:\[(?:brackets|\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+(?!`)[^`]*?`+(?!`)|``+(?=\])|[^\[\]\\`])*?/).replace("brackets",Fa).getRegex(),mr=z(/^!?\[(label)\]\([ \t\n]*(href)(?:(?:[ \t]+(?:\n[ \t]*)?|\n[ \t]*)(title))?[ \t\n]*\)/).replace("label",On).replace("href",/<(?:\\.|[^\n<>\\])+>|[^ \t\n\x00-\x1f]+|(?=\))/).replace("title",/"(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\])*'|\((?:\\[\s\S]|[^)\\])*\)/).getRegex(),fr=z(/^!?\[(label)\]\[(ref)\]/).replace("label",On).replace("ref",_t).getRegex(),gr=z(/^!?\[(ref)\](?:\[\])?/).replace("ref",_t).getRegex(),aa=/(?!\s*\])(?:\\[\s\S]|[^\[\]\\]){1,999}/,yr=z(/(?:[^\[\]\\`]*(?:\[(?:brackets|\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+(?!`)[^`]*?`+(?!`)|``+(?=\]))){0,999}?[^\[\]\\`]*?/).replace("brackets",Fa).getRegex(),vr=z("reflink|nolink(?!\\()","g").replace("reflink",z(/^!?\[(label)\]\[(ref)\]/).replace("label",yr).replace("ref",aa).getRegex()).replace("nolink",z(/^!?\[(ref)\](?:\[\])?/).replace("ref",aa).getRegex()).getRegex(),ia=/[hH][tT][tT][pP][sS]?|[fF][tT][pP]/,br=/[A-Za-z0-9._+-]+@[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![\w-])/,wr=z(/(?:mailto:email|xmpp:email(?:\/[A-Za-z0-9@.]+)?)/).replace(/email/g,br).getRegex(),At={_backpedal:We,anyPunctuation:lr,anyPunctuationOutsideCode:dr,autolink:ur,blockSkip:Qo,br:Ua,code:Mo,del:We,delLDelim:We,delRDelim:We,emStrongLDelim:Ko,emStrongRDelimAst:Xo,emStrongRDelimUnd:ar,escape:Bo,link:mr,nolink:gr,punctuation:Fo,reflink:fr,reflinkSearch:vr,tag:hr,text:jo,url:We},kr={...At,emStrongLDelim:Jo,emStrongRDelimAst:tr,emStrongRDelimUnd:or,link:z(/^!?\[(label)\]\((.*?)\)/).replace("label",On).getRegex(),reflink:z(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label",On).getRegex()},mt={...At,emStrongRDelimAst:er,emStrongLDelim:Yo,delLDelim:rr,delRDelim:cr,url:z(/^emailProtocol|^((?:protocol):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/).replace("emailProtocol",wr).replace("protocol",ia).replace("email",/[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![\w-])/).getRegex(),_backpedal:/(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/,del:/^(~~?)(?=[^\s~])((?:\\[\s\S]|[^\\])*?(?:\\[\s\S]|[^\s~\\]))\1(?=[^~]|$)/,text:z(/^(?:[^a-zA-Z0-9](?=emailProtocol)|(`+|~+|[^`~])(?:(?=[`~])|(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|protocol:\/\/|wwwStart|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9](?=emailProtocol)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))))/).replace("protocol",ia).replace(/emailProtocol/g,/(?:mailto|xmpp):/).replace("wwwStart",za?"(?<![^\\s*_~(])www\\.":"www\\.").getRegex()},_r={...mt,br:z(Ua).replace("{2,}","*").getRegex(),text:z(mt.text).replace("\\b_","\\b_| {2,}\\n").replace(/\{2,\}/g,"*").getRegex()},Rn={normal:Ct,gfm:Vo,pedantic:Uo},ln={normal:At,gfm:mt,breaks:_r,pedantic:kr},xr={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"},oa=t=>xr[t];function se(t,e){if(e){if(Z.escapeTest.test(t))return t.replace(Z.escapeReplace,oa)}else if(Z.escapeTestNoEncode.test(t))return t.replace(Z.escapeReplaceNoEncode,oa);return t}function Cr(t){return Z.numericCharacterReference.test(t)?t.replace(Z.numericCharacterReferenceOrAmpersand,(e,a,o)=>{if(a===void 0&&o===void 0)return"&amp;";let i=a===void 0?Number.parseInt(o,16):Number.parseInt(a,10);return i===0||i>1114111||i>=55296&&i<=57343?"�":i===38?"&amp;":String.fromCodePoint(i)}):t}function ra(t){try{t=encodeURI(t).replace(Z.percentDecode,"%")}catch{return null}return t}function sa(t,e){var s;let a=t.replace(Z.findPipe,(d,c,p)=>{let l=!1,u=c;for(;--u>=0&&p[u]==="\\";)l=!l;return l?"|":" |"}),o=a.split(Z.splitPipe),i=0;if(o[0].trim()||o.shift(),o.length>0&&!((s=o.at(-1))!=null&&s.trim())&&o.pop(),e)if(o.length>e)o.splice(e);else for(;o.length<e;)o.push("");for(;i<o.length;i++)o[i]=o[i].trim().replace(Z.slashPipe,"|");return o}function xe(t,e,a){let o=t.length;if(o===0)return"";let i=0;for(;i<o&&t.charAt(o-i-1)===e;)i++;return t.slice(0,o-i)}function ca(t){let e=t.split(`
 `),a=e.length-1;for(;a>=0&&Z.blankLine.test(e[a]);)a--;return e.length-a<=2?t:e.slice(0,a+1).join(`
-`)}function On(t){return t.trim().replace(Z.multipleSpaceGlobal," ").toLowerCase().toUpperCase().toLowerCase()}function la(t,e){if(t.indexOf(e[0])===-1&&t.indexOf(e[1])===-1)return-1;let a=0;for(let o=0;o<t.length;o++)if(t[o]==="\\")o++;else if(t[o]===e[0])a++;else if(t[o]===e[1]&&(a--,a<0))return o;return a>0?-2:-1}var Ze=new WeakMap;function St(t){let e={"*":-1,_:-1},a=-1,o=t.length;for(let i=0;i<o;i++){let s=t[i];if(s!=="*"&&s!=="_"&&s!=="~")continue;let d=i===0?`
+`)}function Ln(t){return t.trim().replace(Z.multipleSpaceGlobal," ").toLowerCase().toUpperCase().toLowerCase()}function la(t,e){if(t.indexOf(e[0])===-1&&t.indexOf(e[1])===-1)return-1;let a=0;for(let o=0;o<t.length;o++)if(t[o]==="\\")o++;else if(t[o]===e[0])a++;else if(t[o]===e[1]&&(a--,a<0))return o;return a>0?-2:-1}var Ze=new WeakMap;function St(t){let e={"*":-1,_:-1},a=-1,o=t.length;for(let i=0;i<o;i++){let s=t[i];if(s!=="*"&&s!=="_"&&s!=="~")continue;let d=i===0?`
 `:t[i-1],c=i+1;for(;c<o&&t[c]===s;)c++;d!==" "&&d!=="	"&&d!==`
-`&&d!=="\r"&&d!=="\f"&&(s==="~"?a=i:e[s]=i),i=c-1}return{maskedSrc:t,lastPossibleEmStrongCloserIndex:e,lastPossibleDelCloserIndex:a}}function Ar(t,e){let a=St(e),o=Ze.get(t);o?o.push(a):Ze.set(t,[a])}function Sr(t){let e=Ze.get(t);e&&(e.pop(),e.length===0&&Ze.delete(t))}function Ir(t,e,a){var i;let o=(i=Ze.get(t))==null?void 0:i.at(-1);return o&&o.maskedSrc===e?o.lastPossibleEmStrongCloserIndex[a]:St(e).lastPossibleEmStrongCloserIndex[a]}function qr(t,e){var o;let a=(o=Ze.get(t))==null?void 0:o.at(-1);return a&&a.maskedSrc===e?a.lastPossibleDelCloserIndex:St(e).lastPossibleDelCloserIndex}function Rn(t,e=0){let a=e,o="";for(let i of t)if(i==="	"){let s=4-a%4;o+=" ".repeat(s),a+=s}else o+=i,a++;return o}function da(t,e,a,o,i){let s=e.href,d=e.title||null,c=t[1].replace(i.other.outputLinkReplace,"$1"),u=t[0].charAt(0)==="!",l=o.state.inLink,p=o.state.linkEmitted,h=o.state.inRawBlock;o.state.inLink=!0,o.state.linkEmitted=!1;let y=o.inlineTokens(c),q=o.state.linkEmitted;if(o.state.linkEmitted=p,o.state.inLink=l,!u){if(q){o.state.inRawBlock=h;return}o.state.linkEmitted=!0}return{type:u?"image":"link",raw:a,href:s,title:d,text:c,tokens:y}}function Tr(t,e,a){let o=t.match(a.other.indentCodeCompensation);if(o===null)return e;let i=o[1];return e.split(`
+`&&d!=="\r"&&d!=="\f"&&(s==="~"?a=i:e[s]=i),i=c-1}return{maskedSrc:t,lastPossibleEmStrongCloserIndex:e,lastPossibleDelCloserIndex:a}}function Ar(t,e){let a=St(e),o=Ze.get(t);o?o.push(a):Ze.set(t,[a])}function Sr(t){let e=Ze.get(t);e&&(e.pop(),e.length===0&&Ze.delete(t))}function Ir(t,e,a){var i;let o=(i=Ze.get(t))==null?void 0:i.at(-1);return o&&o.maskedSrc===e?o.lastPossibleEmStrongCloserIndex[a]:St(e).lastPossibleEmStrongCloserIndex[a]}function Tr(t,e){var o;let a=(o=Ze.get(t))==null?void 0:o.at(-1);return a&&a.maskedSrc===e?a.lastPossibleDelCloserIndex:St(e).lastPossibleDelCloserIndex}function Pn(t,e=0){let a=e,o="";for(let i of t)if(i==="	"){let s=4-a%4;o+=" ".repeat(s),a+=s}else o+=i,a++;return o}function da(t,e,a,o,i){let s=e.href,d=e.title||null,c=t[1].replace(i.other.outputLinkReplace,"$1"),p=t[0].charAt(0)==="!",l=o.state.inLink,u=o.state.linkEmitted,h=o.state.inRawBlock;o.state.inLink=!0,o.state.linkEmitted=!1;let y=o.inlineTokens(c),T=o.state.linkEmitted;if(o.state.linkEmitted=u,o.state.inLink=l,!p){if(T){o.state.inRawBlock=h;return}o.state.linkEmitted=!0}return{type:p?"image":"link",raw:a,href:s,title:d,text:c,tokens:y}}function Dr(t,e,a){let o=t.match(a.other.indentCodeCompensation);if(o===null)return e;let i=o[1];return e.split(`
 `).map(s=>{let d=s.match(a.other.beginningSpace);if(d===null)return s;let[c]=d;return s.slice(Math.min(c.length,i.length))}).join(`
-`)}function pa(t,e,a,o){if(!e.includes("<"))return!1;for(let i=0;i<e.length;i++){if(e[i]==="\\"){i++;continue}if(e[i]==="`"){let c=o.inline.code.exec(e.slice(i));if(c){i+=c[0].length-1;continue}}if(e[i]!=="<")continue;let s=t.slice(a+i),d=o.inline.tag.exec(s)||o.inline.autolink.exec(s);if(d){if(d[0].length>e.length-i)return!0;i+=d[0].length-1}}return!1}var Qe=class{constructor(t){j(this,"options");j(this,"rules");j(this,"lexer");this.options=t||Be}space(t){let e=this.rules.block.newline.exec(t);if(e&&e[0].length>0)return{type:"space",raw:e[0]}}code(t){let e=this.rules.block.code.exec(t);if(e){let a=this.options.pedantic?e[0]:ca(e[0]),o=a.replace(this.rules.other.codeRemoveIndent,"");return{type:"code",raw:a,codeBlockStyle:"indented",text:o}}}fences(t){let e=this.rules.block.fences.exec(t);if(e){let a=e[0],o=Tr(a,e[3]||"",this.rules);return{type:"code",raw:a,lang:e[2]?e[2].trim().replace(this.rules.inline.anyPunctuation,"$1"):e[2],text:o}}}heading(t){let e=this.rules.block.heading.exec(t);if(e){let a=e[2].trim();if(this.rules.other.endingHash.test(a)){let o=xe(a,"#");(this.options.pedantic||!o||this.rules.other.endingSpaceTabChar.test(o))&&(a=o.trim())}return{type:"heading",raw:xe(e[0],`
+`)}function ua(t,e,a,o){if(!e.includes("<"))return!1;for(let i=0;i<e.length;i++){if(e[i]==="\\"){i++;continue}if(e[i]==="`"){let c=o.inline.code.exec(e.slice(i));if(c){i+=c[0].length-1;continue}}if(e[i]!=="<")continue;let s=t.slice(a+i),d=o.inline.tag.exec(s)||o.inline.autolink.exec(s);if(d){if(d[0].length>e.length-i)return!0;i+=d[0].length-1}}return!1}var Qe=class{constructor(t){j(this,"options");j(this,"rules");j(this,"lexer");this.options=t||Me}space(t){let e=this.rules.block.newline.exec(t);if(e&&e[0].length>0)return{type:"space",raw:e[0]}}code(t){let e=this.rules.block.code.exec(t);if(e){let a=this.options.pedantic?e[0]:ca(e[0]),o=a.replace(this.rules.other.codeRemoveIndent,"");return{type:"code",raw:a,codeBlockStyle:"indented",text:o}}}fences(t){let e=this.rules.block.fences.exec(t);if(e){let a=e[0],o=Dr(a,e[3]||"",this.rules);return{type:"code",raw:a,lang:e[2]?e[2].trim().replace(this.rules.inline.anyPunctuation,"$1"):e[2],text:o}}}heading(t){let e=this.rules.block.heading.exec(t);if(e){let a=e[2].trim();if(this.rules.other.endingHash.test(a)){let o=xe(a,"#");(this.options.pedantic||!o||this.rules.other.endingSpaceTabChar.test(o))&&(a=o.trim())}return{type:"heading",raw:xe(e[0],`
 `),depth:e[1].length,text:a,tokens:this.lexer.inline(a)}}}hr(t){let e=this.rules.block.hr.exec(t);if(e)return{type:"hr",raw:xe(e[0],`
 `)}}blockquote(t){let e=this.rules.block.blockquote.exec(t);if(e){let a=xe(e[0],`
 `).split(`
-`),o="",i="",s=[];for(;a.length>0;){let d=!1,c=[],u;for(u=0;u<a.length;u++)if(this.rules.other.blockquoteStart.test(a[u]))c.push(a[u]),d=!0;else if(!d)c.push(a[u]);else break;a=a.slice(u);let l=c.join(`
-`),p=l.replace(this.rules.other.blockquoteMarkerWhitespace,(q,I,P)=>I+Rn(P,I.length)).replace(this.rules.other.blockquoteSetextReplace,`
+`),o="",i="",s=[];for(;a.length>0;){let d=!1,c=[],p;for(p=0;p<a.length;p++)if(this.rules.other.blockquoteStart.test(a[p]))c.push(a[p]),d=!0;else if(!d)c.push(a[p]);else break;a=a.slice(p);let l=c.join(`
+`),u=l.replace(this.rules.other.blockquoteMarkerWhitespace,(T,I,O)=>I+Pn(O,I.length)).replace(this.rules.other.blockquoteSetextReplace,`
     $1`).replace(this.rules.other.blockquoteSetextReplace2,"");o=o?`${o}
 ${l}`:l,i=i?`${i}
-${p}`:p;let h=this.lexer.state.top;if(this.lexer.state.top=!0,this.lexer.blockTokens(p,s,!0),this.lexer.state.top=h,a.length===0)break;let y=s.at(-1);if((y==null?void 0:y.type)==="code"||(y==null?void 0:y.type)==="heading"||(y==null?void 0:y.type)==="hr"||(y==null?void 0:y.type)==="html"||(y==null?void 0:y.type)==="table")break;if((y==null?void 0:y.type)==="blockquote"){let q=y,I=a.join(`
-`),P=q.raw+`
-`+I.replace(this.rules.other.blockquoteSetextReplace2,""),L=this.blockquote(P);s[s.length-1]=L;let M=P.substring(L.raw.length).replace(/^\n/,""),B=M?M.split(`
-`).length:0,N=B?a.slice(0,-B):a;if(N.length>0&&(o=`${o}
+${u}`:u;let h=this.lexer.state.top;if(this.lexer.state.top=!0,this.lexer.blockTokens(u,s,!0),this.lexer.state.top=h,a.length===0)break;let y=s.at(-1);if((y==null?void 0:y.type)==="code"||(y==null?void 0:y.type)==="heading"||(y==null?void 0:y.type)==="hr"||(y==null?void 0:y.type)==="html"||(y==null?void 0:y.type)==="table")break;if((y==null?void 0:y.type)==="blockquote"){let T=y,I=a.join(`
+`),O=T.raw+`
+`+I.replace(this.rules.other.blockquoteSetextReplace2,""),W=this.blockquote(O);s[s.length-1]=W;let B=O.substring(W.raw.length).replace(/^\n/,""),M=B?B.split(`
+`).length:0,N=M?a.slice(0,-M):a;if(N.length>0&&(o=`${o}
 ${N.join(`
-`)}`),i=i.substring(0,i.length-q.text.length)+L.text,a=a.slice(N.length),a.length>0&&this.rules.other.blockquoteStart.test(a[0]))continue;break}else if((y==null?void 0:y.type)==="list"){let q=y,I=q.raw+`
+`)}`),i=i.substring(0,i.length-T.text.length)+W.text,a=a.slice(N.length),a.length>0&&this.rules.other.blockquoteStart.test(a[0]))continue;break}else if((y==null?void 0:y.type)==="list"){let T=y,I=T.raw+`
 `+a.join(`
-`),P=this.list(I);s[s.length-1]=P;let L=P.raw.length>q.raw.length?I.slice(q.raw.length+1,P.raw.length).split(`
-`).length:0;if(L>0){let M=a.slice(0,L).join(`
+`),O=this.list(I);s[s.length-1]=O;let W=O.raw.length>T.raw.length?I.slice(T.raw.length+1,O.raw.length).split(`
+`).length:0;if(W>0){let B=a.slice(0,W).join(`
 `);o=`${o}
-${M}`,i=`${i}
-${M}`}a=a.slice(L);continue}}return{type:"blockquote",raw:o,tokens:s,text:i}}}list(t){var a;let e=this.rules.block.list.exec(t);if(e){if(!this.options.pedantic&&((a=this.lexer.state.lastToken)==null?void 0:a.type)==="text"&&!this.rules.other.listInterruptsParagraph.test(t))return;let o=t,i=()=>o.length-t.length,s=e[1].trim(),d=s.length>1,c={type:"list",raw:"",ordered:d,start:d?+s.slice(0,-1):"",loose:!1,items:[]};s=d?`\\d{1,9}\\${s.slice(-1)}`:`\\${s}`,this.options.pedantic&&(s=d?s:"[*+-]");let u=this.rules.other.listItemRegex(s),l=!1;for(;t;){let h=!1,y="";if(!(e=u.exec(t))||this.rules.block.hr.test(t))break;let q=i();t=t.substring(e[0].length);let I=e[2].split(`
-`,1)[0],P=e[1].length,L=this.options.pedantic?Rn(I,P):I.replace(this.rules.other.leadingSpaceTab,ae=>Rn(ae,P)),M=t.split(`
-`,1)[0],B=!L.trim(),N=0;if(this.options.pedantic?(N=2,y=L.trimStart()):B?N=P+1:(N=L.search(this.rules.other.nonSpaceChar),N=N>4?1:N,y=L.slice(N),N+=P),B&&this.rules.other.blankLine.test(M)&&(t=t.substring(M.length+1),h=!0),!h){let ae=this.rules.other.nextBulletRegex(N),Ce=this.rules.other.hrRegex(N),Ae=this.rules.other.fencesBeginRegex(N),le=this.options.pedantic?this.rules.other.pedanticHeadingBeginRegex(N):this.rules.other.headingBeginRegex(N),ue=this.rules.other.htmlBeginRegex(N),Se=this.rules.other.blockquoteBeginRegex(N),we=!1;for(;t;){let Pe=t.split(`
-`,1)[0],de;if(M=Pe,this.options.pedantic?(M=M.replace(this.rules.other.listReplaceNesting,"  "),de=M):de=M.replace(this.rules.other.leadingSpaceTab,H=>Rn(H)),Ae.test(M)||le.test(M)||ue.test(M)||Se.test(M)||ae.test(M)||Ce.test(M))break;if(de.search(this.rules.other.nonSpaceChar)>=N||!M.trim())y+=`
-`+de.slice(N),we=!1;else{if(B||L.replace(this.rules.other.tabCharGlobal,"    ").search(this.rules.other.nonSpaceChar)>=4||Ae.test(L)||le.test(L)||ue.test(L)||Ce.test(L))break;if(!this.options.pedantic&&!we){let Ie=L.replace(this.rules.other.nestedContainerMarkers,"");if(this.rules.block.fences.test(Ie)||this.rules.block.heading.test(Ie)||this.rules.block.hr.test(Ie))break}let H=!this.options.pedantic&&/^ {0,3}(?:=+|-+) *$/.test(M)&&this.rules.block.lheading.test(`${L}
-${M}`)?`    ${de.replace(/^ {0,3}/,"")}`:M;y+=`
-`+H,we=!0}B=!M.trim(),t=t.substring(Pe.length+1),L=de.slice(N)}}let G=o.slice(q,i());c.loose||(l?c.loose=!0:this.rules.other.doubleBlankLine.test(G)&&(l=!0)),c.items.push({type:"list_item",raw:G,task:!!this.options.gfm&&this.rules.other.listIsTask.test(y),loose:!1,text:y,tokens:[]})}let p=c.items.at(-1);if(p)p.raw=p.raw.trimEnd(),p.text=p.text.trimEnd();else return;c.raw=o.slice(0,i()).trimEnd();for(let h of c.items)if(this.lexer.state.top=!1,h.tokens=this.lexer.blockTokens(h.text,[]),!c.loose){let y=h.tokens.filter(I=>I.type==="space"),q=y.length>0&&y.some(I=>this.rules.other.anyLine.test(I.raw));c.loose=q}for(let h of c.items){let y=h.tokens[0];if(h.task&&((y==null?void 0:y.type)==="text"||(y==null?void 0:y.type)==="paragraph")){h.text=h.text.replace(this.rules.other.listReplaceTask,""),y.raw=y.raw.replace(this.rules.other.listReplaceTask,""),y.text=y.text.replace(this.rules.other.listReplaceTask,"");for(let I=this.lexer.inlineQueue.length-1;I>=0;I--)if(this.rules.other.listIsTask.test(this.lexer.inlineQueue[I].src)){this.lexer.inlineQueue[I].src=this.lexer.inlineQueue[I].src.replace(this.rules.other.listReplaceTask,"");break}let q=this.rules.other.listTaskCheckbox.exec(h.raw);if(q){let I={type:"checkbox",raw:q[0]+" ",checked:q[0]!=="[ ]"};h.checked=I.checked,c.loose?h.tokens[0]&&["paragraph","text"].includes(h.tokens[0].type)&&"tokens"in h.tokens[0]&&h.tokens[0].tokens?(h.tokens[0].raw=I.raw+h.tokens[0].raw,h.tokens[0].text=I.raw+h.tokens[0].text,h.tokens[0].tokens.unshift(I)):h.tokens.unshift({type:"paragraph",raw:I.raw,text:I.raw,tokens:[I]}):h.tokens.unshift(I)}}else h.task&&(h.task=!1)}if(c.loose)for(let h of c.items){h.loose=!0;for(let y of h.tokens)y.type==="text"&&(y.type="paragraph")}return c}}html(t){let e=this.rules.block.html.exec(t);if(e){let a=ca(e[0]);return{type:"html",block:!0,raw:a,pre:e[1]==="pre"||e[1]==="script"||e[1]==="style",text:a}}}def(t){let e=this.rules.block.def.exec(t);if(e){if(!this.rules.other.startAngleBracket.test(e[2])&&la(e[2],"()")!==-1)return;let a=On(e[1]),o=e[2]?e[2].replace(this.rules.other.hrefBrackets,"$1").replace(this.rules.inline.anyPunctuation,"$1"):"",i=e[3]?e[3].substring(1,e[3].length-1).replace(this.rules.inline.anyPunctuation,"$1"):e[3];return{type:"def",tag:a,raw:xe(e[0],`
+${B}`,i=`${i}
+${B}`}a=a.slice(W);continue}}return{type:"blockquote",raw:o,tokens:s,text:i}}}list(t){var a;let e=this.rules.block.list.exec(t);if(e){if(!this.options.pedantic&&((a=this.lexer.state.lastToken)==null?void 0:a.type)==="text"&&!this.rules.other.listInterruptsParagraph.test(t))return;let o=t,i=()=>o.length-t.length,s=e[1].trim(),d=s.length>1,c={type:"list",raw:"",ordered:d,start:d?+s.slice(0,-1):"",loose:!1,items:[]};s=d?`\\d{1,9}\\${s.slice(-1)}`:`\\${s}`,this.options.pedantic&&(s=d?s:"[*+-]");let p=this.rules.other.listItemRegex(s),l=!1;for(;t;){let h=!1,y="";if(!(e=p.exec(t))||this.rules.block.hr.test(t))break;let T=i();t=t.substring(e[0].length);let I=e[2].split(`
+`,1)[0],O=e[1].length,W=this.options.pedantic?Pn(I,O):I.replace(this.rules.other.leadingSpaceTab,ae=>Pn(ae,O)),B=t.split(`
+`,1)[0],M=!W.trim(),N=0;if(this.options.pedantic?(N=2,y=W.trimStart()):M?N=O+1:(N=W.search(this.rules.other.nonSpaceChar),N=N>4?1:N,y=W.slice(N),N+=O),M&&this.rules.other.blankLine.test(B)&&(t=t.substring(B.length+1),h=!0),!h){let ae=this.rules.other.nextBulletRegex(N),Ce=this.rules.other.hrRegex(N),Ae=this.rules.other.fencesBeginRegex(N),le=this.options.pedantic?this.rules.other.pedanticHeadingBeginRegex(N):this.rules.other.headingBeginRegex(N),pe=this.rules.other.htmlBeginRegex(N),Se=this.rules.other.blockquoteBeginRegex(N),we=!1;for(;t;){let Oe=t.split(`
+`,1)[0],de;if(B=Oe,this.options.pedantic?(B=B.replace(this.rules.other.listReplaceNesting,"  "),de=B):de=B.replace(this.rules.other.leadingSpaceTab,H=>Pn(H)),Ae.test(B)||le.test(B)||pe.test(B)||Se.test(B)||ae.test(B)||Ce.test(B))break;if(de.search(this.rules.other.nonSpaceChar)>=N||!B.trim())y+=`
+`+de.slice(N),we=!1;else{if(M||W.replace(this.rules.other.tabCharGlobal,"    ").search(this.rules.other.nonSpaceChar)>=4||Ae.test(W)||le.test(W)||pe.test(W)||Ce.test(W))break;if(!this.options.pedantic&&!we){let Ie=W.replace(this.rules.other.nestedContainerMarkers,"");if(this.rules.block.fences.test(Ie)||this.rules.block.heading.test(Ie)||this.rules.block.hr.test(Ie))break}let H=!this.options.pedantic&&/^ {0,3}(?:=+|-+) *$/.test(B)&&this.rules.block.lheading.test(`${W}
+${B}`)?`    ${de.replace(/^ {0,3}/,"")}`:B;y+=`
+`+H,we=!0}M=!B.trim(),t=t.substring(Oe.length+1),W=de.slice(N)}}let G=o.slice(T,i());c.loose||(l?c.loose=!0:this.rules.other.doubleBlankLine.test(G)&&(l=!0)),c.items.push({type:"list_item",raw:G,task:!!this.options.gfm&&this.rules.other.listIsTask.test(y),loose:!1,text:y,tokens:[]})}let u=c.items.at(-1);if(u)u.raw=u.raw.trimEnd(),u.text=u.text.trimEnd();else return;c.raw=o.slice(0,i()).trimEnd();for(let h of c.items)if(this.lexer.state.top=!1,h.tokens=this.lexer.blockTokens(h.text,[]),!c.loose){let y=h.tokens.filter(I=>I.type==="space"),T=y.length>0&&y.some(I=>this.rules.other.anyLine.test(I.raw));c.loose=T}for(let h of c.items){let y=h.tokens[0];if(h.task&&((y==null?void 0:y.type)==="text"||(y==null?void 0:y.type)==="paragraph")){h.text=h.text.replace(this.rules.other.listReplaceTask,""),y.raw=y.raw.replace(this.rules.other.listReplaceTask,""),y.text=y.text.replace(this.rules.other.listReplaceTask,"");for(let I=this.lexer.inlineQueue.length-1;I>=0;I--)if(this.rules.other.listIsTask.test(this.lexer.inlineQueue[I].src)){this.lexer.inlineQueue[I].src=this.lexer.inlineQueue[I].src.replace(this.rules.other.listReplaceTask,"");break}let T=this.rules.other.listTaskCheckbox.exec(h.raw);if(T){let I={type:"checkbox",raw:T[0]+" ",checked:T[0]!=="[ ]"};h.checked=I.checked,c.loose?h.tokens[0]&&["paragraph","text"].includes(h.tokens[0].type)&&"tokens"in h.tokens[0]&&h.tokens[0].tokens?(h.tokens[0].raw=I.raw+h.tokens[0].raw,h.tokens[0].text=I.raw+h.tokens[0].text,h.tokens[0].tokens.unshift(I)):h.tokens.unshift({type:"paragraph",raw:I.raw,text:I.raw,tokens:[I]}):h.tokens.unshift(I)}}else h.task&&(h.task=!1)}if(c.loose)for(let h of c.items){h.loose=!0;for(let y of h.tokens)y.type==="text"&&(y.type="paragraph")}return c}}html(t){let e=this.rules.block.html.exec(t);if(e){let a=ca(e[0]);return{type:"html",block:!0,raw:a,pre:e[1]==="pre"||e[1]==="script"||e[1]==="style",text:a}}}def(t){let e=this.rules.block.def.exec(t);if(e){if(!this.rules.other.startAngleBracket.test(e[2])&&la(e[2],"()")!==-1)return;let a=Ln(e[1]),o=e[2]?e[2].replace(this.rules.other.hrefBrackets,"$1").replace(this.rules.inline.anyPunctuation,"$1"):"",i=e[3]?e[3].substring(1,e[3].length-1).replace(this.rules.inline.anyPunctuation,"$1"):e[3];return{type:"def",tag:a,raw:xe(e[0],`
 `),href:o,title:i}}}table(t){var d;let e=this.rules.block.table.exec(t);if(!e||!this.rules.other.tableDelimiter.test(e[2]))return;let a=sa(e[1]),o=e[2].replace(this.rules.other.tableAlignChars,"").split("|"),i=(d=e[3])!=null&&d.trim()?e[3].replace(this.rules.other.tableRowBlankLine,"").split(`
 `):[],s={type:"table",raw:xe(e[0],`
-`),header:[],align:[],rows:[]};if(a.length===o.length){for(let c of o)this.rules.other.tableAlignRight.test(c)?s.align.push("right"):this.rules.other.tableAlignCenter.test(c)?s.align.push("center"):this.rules.other.tableAlignLeft.test(c)?s.align.push("left"):s.align.push(null);for(let c=0;c<a.length;c++)s.header.push({text:a[c],tokens:this.lexer.inline(a[c]),header:!0,align:s.align[c]});for(let c of i)s.rows.push(sa(c,s.header.length).map((u,l)=>({text:u,tokens:this.lexer.inline(u),header:!1,align:s.align[l]})));return s}}lheading(t){let e=this.rules.block.lheading.exec(t);if(e){let a=e[1].trim();return{type:"heading",raw:xe(e[0],`
+`),header:[],align:[],rows:[]};if(a.length===o.length){for(let c of o)this.rules.other.tableAlignRight.test(c)?s.align.push("right"):this.rules.other.tableAlignCenter.test(c)?s.align.push("center"):this.rules.other.tableAlignLeft.test(c)?s.align.push("left"):s.align.push(null);for(let c=0;c<a.length;c++)s.header.push({text:a[c],tokens:this.lexer.inline(a[c]),header:!0,align:s.align[c]});for(let c of i)s.rows.push(sa(c,s.header.length).map((p,l)=>({text:p,tokens:this.lexer.inline(p),header:!1,align:s.align[l]})));return s}}lheading(t){let e=this.rules.block.lheading.exec(t);if(e){let a=e[1].trim();return{type:"heading",raw:xe(e[0],`
 `),depth:e[2].charAt(0)==="="?1:2,text:a,tokens:this.lexer.inline(a)}}}paragraph(t){let e=this.rules.block.paragraph.exec(t);if(e){let a=e[1].charAt(e[1].length-1)===`
-`?e[1].slice(0,-1):e[1];return{type:"paragraph",raw:e[0],text:a,tokens:this.lexer.inline(a)}}}text(t){let e=this.rules.block.text.exec(t);if(e)return{type:"text",raw:e[0],text:e[0],tokens:this.lexer.inline(e[0])}}escape(t){let e=this.rules.inline.escape.exec(t);if(e)return{type:"escape",raw:e[0],text:e[1]}}tag(t){let e=this.rules.inline.tag.exec(t);if(e)return!this.lexer.state.inLink&&this.rules.other.startATag.test(e[0])?this.lexer.state.inLink=!0:this.lexer.state.inLink&&this.rules.other.endATag.test(e[0])&&(this.lexer.state.inLink=!1),!this.lexer.state.inRawBlock&&this.rules.other.startPreScriptTag.test(e[0])?this.lexer.state.inRawBlock=!0:this.lexer.state.inRawBlock&&this.rules.other.endPreScriptTag.test(e[0])&&(this.lexer.state.inRawBlock=!1),{type:"html",raw:e[0],inLink:this.lexer.state.inLink,inRawBlock:this.lexer.state.inRawBlock,block:!1,text:e[0]}}link(t){if(this.lexer.state.linkParenPossible===!1)return;let e=this.rules.inline.link.exec(t);if(e){let a=e[0].charAt(0)==="!"?2:1;if(!this.options.pedantic&&pa(t,e[1],a,this.rules))return;let o=e[2].trim();if(!this.options.pedantic&&this.rules.other.startAngleBracket.test(o)){if(!this.rules.other.endAngleBracket.test(o))return;let c=xe(o.slice(0,-1),"\\");if((o.length-c.length)%2===0)return}else{let c=la(e[2],"()");if(c===-2)return;if(c>-1){let u=(e[0].indexOf("!")===0?5:4)+e[1].length+c;e[2]=e[2].substring(0,c),e[0]=e[0].substring(0,u).trim(),e[3]=""}}let i=xe(e[0].slice(0,-1),"\\");if((e[0].length-i.length)%2===0)return;let s=e[2],d="";if(this.options.pedantic){let c=this.rules.other.pedanticHrefTitle.exec(s);c&&(s=c[1],d=c[3])}else d=e[3]?e[3].slice(1,-1):"";return s=s.trim(),this.rules.other.startAngleBracket.test(s)&&(this.options.pedantic&&!this.rules.other.endAngleBracket.test(o)?s=s.slice(1):s=s.slice(1,-1)),da(e,{href:s&&s.replace(this.rules.inline.anyPunctuation,"$1"),title:d&&d.replace(this.rules.inline.anyPunctuation,"$1")},e[0],this.lexer,this.rules)}}reflink(t,e){let a;if((a=this.rules.inline.reflink.exec(t))||(a=this.rules.inline.nolink.exec(t))){let o=a[0].charAt(0)==="!"?2:1;if(!this.options.pedantic&&pa(t,a[1],o,this.rules))return;let i=e[On(a[2]||a[1])];if(!i){let s=a[0].charAt(0);return{type:"text",raw:s,text:s}}return da(a,i,a[0],this.lexer,this.rules)}}emStrong(t,e,a=""){let o=this.rules.inline.emStrongLDelim.exec(t);if(!o||!o[1]&&!o[2]&&!o[3]&&!o[4])return;let i=o[0][0],s=a===i,d=e.length-t.length,c=d;for(;!this.options.pedantic&&c>0&&e[c-1]===i;)c--;let u=[...e.slice(Math.max(0,c-2),c)].at(-1)??"",l=u==="*"||u==="_"||!!this.rules.inline.punctuation.exec(u);c<d&&(a=u);let p=c<d?l:a==="*"||a==="_"||!!this.rules.inline.punctuation.exec(a);if(o[4]&&a.match(this.rules.other.unicodeAlphaNumeric))return;let h=o[1]||o[3]||"";if(!h||!a||p){let y=[...o[0]].length-1,q,I,P=y,L=0,M=d-c+y,B=!this.options.pedantic&&!!u.trim()&&(!!h||i==="*"&&!l);if(i!=="*"&&i!=="_")return;let N=i==="*"?this.rules.inline.emStrongRDelimAst:this.rules.inline.emStrongRDelimUnd,G=Ir(this,e,i),ae=e.length-t.length+y;if(G<ae)return;e=e.slice(-1*t.length+y);let Ce=G-ae;for(N.lastIndex=0;(o=N.exec(e))!==null&&!(o.index>Ce);){if(q=o[1]||o[2]||o[3]||o[4]||o[5]||o[6],!q)continue;if(I=[...q].length,o[3]||o[4]){P+=I;continue}else if(o[5]||o[6]||B){if(s&&(o[5]||o[6]))break;if(M%3&&!((M+I)%3)){L+=I;continue}}if(P-=I,P>0)continue;I=Math.min(I,I+P+L);let Ae=[...o[0]][0].length,le=t.slice(0,y+o.index+Ae+I);if(Math.min(y,I)%2){let Se=le.slice(1,-1);return{type:"em",raw:le,text:Se,tokens:this.lexer.inlineTokens(Se)}}let ue=le.slice(2,-2);return{type:"strong",raw:le,text:ue,tokens:this.lexer.inlineTokens(ue)}}}}codespan(t){let e=this.rules.inline.code.exec(t);if(e){let a=e[2].replace(this.rules.other.newLineCharGlobal," "),o=this.rules.other.nonSpaceChar.test(a),i=this.rules.other.startingSpaceChar.test(a)&&this.rules.other.endingSpaceChar.test(a);return o&&i&&(a=a.substring(1,a.length-1)),{type:"codespan",raw:e[0],text:a}}}br(t){let e=this.rules.inline.br.exec(t);if(e)return{type:"br",raw:e[0]}}del(t,e,a=""){let o=this.rules.inline.delLDelim.exec(t);if(o&&(!o[1]||!a||this.rules.inline.punctuation.exec(a))){let i=[...o[0]].length-1,s,d,c=i,u=this.rules.inline.delRDelim,l=qr(this,e),p=e.length-t.length+i;if(l<p)return;e=e.slice(-1*t.length+i);let h=l-p;for(u.lastIndex=0;(o=u.exec(e))!==null&&!(o.index>h);){if(s=o[1]||o[2]||o[3]||o[4]||o[5]||o[6],!s||(d=[...s].length,d!==i))continue;if(o[3]||o[4]){c+=d;continue}if(c-=d,c>0)continue;d=Math.min(d,d+c);let y=[...o[0]][0].length,q=t.slice(0,i+o.index+y+d),I=q.slice(i,-i);return{type:"del",raw:q,text:I,tokens:this.lexer.inlineTokens(I)}}}}autolink(t){let e=this.rules.inline.autolink.exec(t);if(e){let a,o;return e[2]==="@"?(a=e[1],o="mailto:"+a):(a=e[1],o=a),{type:"link",raw:e[0],text:a,href:o,autolink:!0,tokens:[{type:"text",raw:a,text:a}]}}}url(t){var a;let e;if(e=this.rules.inline.url.exec(t)){let o,i;if(e[2]==="@")o=e[0],i="mailto:"+o;else{let s;do s=e[0],e[0]=((a=this.rules.inline._backpedal.exec(e[0]))==null?void 0:a[0])??"";while(s!==e[0]);o=e[0],e[1]==="www."?i="http://"+e[0]:i=e[0]}return{type:"link",raw:e[0],text:o,href:i,autolink:!0,tokens:[{type:"text",raw:o,text:o}]}}}inlineText(t){let e=this.rules.inline.text.exec(t);if(e){let a=this.lexer.state.inRawBlock;return{type:"text",raw:e[0],text:a?e[0]:Cr(e[0]),escaped:a}}}},ve,Ga,Ha,$a,Qa,Ve,me=(Ve=class{constructor(e){Dt(this,ve);j(this,"tokens");j(this,"options");j(this,"state");j(this,"inlineQueue");j(this,"tokenizer");this.tokens=[],this.tokens.links=Object.create(null),this.options=e||Be,this.options.tokenizer=this.options.tokenizer||new Qe,this.tokenizer=this.options.tokenizer,this.tokenizer.options=this.options,this.tokenizer.lexer=this,this.inlineQueue=[],this.state={inLink:!1,inRawBlock:!1,linkEmitted:!1,linkParenPossible:!0,top:!0};let a={other:Z,block:En.normal,inline:ln.normal};this.options.pedantic?(a.block=En.pedantic,a.inline=ln.pedantic):this.options.gfm&&(a.block=En.gfm,this.options.breaks?a.inline=ln.breaks:a.inline=ln.gfm),this.tokenizer.rules=a}static get rules(){return{block:En,inline:ln}}static lex(e,a){return new Ve(a).lex(e)}static lexInline(e,a){return new Ve(a).inlineTokens(e)}lex(e){e=e.replace(Z.carriageReturn,`
-`),this.blockTokens(e,this.tokens);for(let a=0;a<this.inlineQueue.length;a++){let o=this.inlineQueue[a];this.state.inRawBlock=!1,this.inlineTokens(o.src,o.tokens)}return this.inlineQueue=[],this.tokens}blockTokens(e,a=[],o=!1){var d,c,u;this.tokenizer.lexer=this;let i=this.state.lastToken;this.options.pedantic&&(e=e.replace(Z.tabCharGlobal,"    ").replace(Z.spaceLine,""));let s=1/0;for(;e;){if(e.length<s)s=e.length;else{this.infiniteLoopError(e.charCodeAt(0));break}this.state.lastToken=a.at(-1);let l;if((c=(d=this.options.extensions)==null?void 0:d.block)!=null&&c.some(h=>(l=h.call({lexer:this},e,a))?(e=e.substring(l.raw.length),a.push(l),!0):!1))continue;if(l=this.tokenizer.space(e)){e=e.substring(l.raw.length);let h=a.at(-1);l.raw.length===1&&h!==void 0?h.raw+=`
+`?e[1].slice(0,-1):e[1];return{type:"paragraph",raw:e[0],text:a,tokens:this.lexer.inline(a)}}}text(t){let e=this.rules.block.text.exec(t);if(e)return{type:"text",raw:e[0],text:e[0],tokens:this.lexer.inline(e[0])}}escape(t){let e=this.rules.inline.escape.exec(t);if(e)return{type:"escape",raw:e[0],text:e[1]}}tag(t){let e=this.rules.inline.tag.exec(t);if(e)return!this.lexer.state.inLink&&this.rules.other.startATag.test(e[0])?this.lexer.state.inLink=!0:this.lexer.state.inLink&&this.rules.other.endATag.test(e[0])&&(this.lexer.state.inLink=!1),!this.lexer.state.inRawBlock&&this.rules.other.startPreScriptTag.test(e[0])?this.lexer.state.inRawBlock=!0:this.lexer.state.inRawBlock&&this.rules.other.endPreScriptTag.test(e[0])&&(this.lexer.state.inRawBlock=!1),{type:"html",raw:e[0],inLink:this.lexer.state.inLink,inRawBlock:this.lexer.state.inRawBlock,block:!1,text:e[0]}}link(t){if(this.lexer.state.linkParenPossible===!1)return;let e=this.rules.inline.link.exec(t);if(e){let a=e[0].charAt(0)==="!"?2:1;if(!this.options.pedantic&&ua(t,e[1],a,this.rules))return;let o=e[2].trim();if(!this.options.pedantic&&this.rules.other.startAngleBracket.test(o)){if(!this.rules.other.endAngleBracket.test(o))return;let c=xe(o.slice(0,-1),"\\");if((o.length-c.length)%2===0)return}else{let c=la(e[2],"()");if(c===-2)return;if(c>-1){let p=(e[0].indexOf("!")===0?5:4)+e[1].length+c;e[2]=e[2].substring(0,c),e[0]=e[0].substring(0,p).trim(),e[3]=""}}let i=xe(e[0].slice(0,-1),"\\");if((e[0].length-i.length)%2===0)return;let s=e[2],d="";if(this.options.pedantic){let c=this.rules.other.pedanticHrefTitle.exec(s);c&&(s=c[1],d=c[3])}else d=e[3]?e[3].slice(1,-1):"";return s=s.trim(),this.rules.other.startAngleBracket.test(s)&&(this.options.pedantic&&!this.rules.other.endAngleBracket.test(o)?s=s.slice(1):s=s.slice(1,-1)),da(e,{href:s&&s.replace(this.rules.inline.anyPunctuation,"$1"),title:d&&d.replace(this.rules.inline.anyPunctuation,"$1")},e[0],this.lexer,this.rules)}}reflink(t,e){let a;if((a=this.rules.inline.reflink.exec(t))||(a=this.rules.inline.nolink.exec(t))){let o=a[0].charAt(0)==="!"?2:1;if(!this.options.pedantic&&ua(t,a[1],o,this.rules))return;let i=e[Ln(a[2]||a[1])];if(!i){let s=a[0].charAt(0);return{type:"text",raw:s,text:s}}return da(a,i,a[0],this.lexer,this.rules)}}emStrong(t,e,a=""){let o=this.rules.inline.emStrongLDelim.exec(t);if(!o||!o[1]&&!o[2]&&!o[3]&&!o[4])return;let i=o[0][0],s=a===i,d=e.length-t.length,c=d;for(;!this.options.pedantic&&c>0&&e[c-1]===i;)c--;let p=[...e.slice(Math.max(0,c-2),c)].at(-1)??"",l=p==="*"||p==="_"||!!this.rules.inline.punctuation.exec(p);c<d&&(a=p);let u=c<d?l:a==="*"||a==="_"||!!this.rules.inline.punctuation.exec(a);if(o[4]&&a.match(this.rules.other.unicodeAlphaNumeric))return;let h=o[1]||o[3]||"";if(!h||!a||u){let y=[...o[0]].length-1,T,I,O=y,W=0,B=d-c+y,M=!this.options.pedantic&&!!p.trim()&&(!!h||i==="*"&&!l);if(i!=="*"&&i!=="_")return;let N=i==="*"?this.rules.inline.emStrongRDelimAst:this.rules.inline.emStrongRDelimUnd,G=Ir(this,e,i),ae=e.length-t.length+y;if(G<ae)return;e=e.slice(-1*t.length+y);let Ce=G-ae;for(N.lastIndex=0;(o=N.exec(e))!==null&&!(o.index>Ce);){if(T=o[1]||o[2]||o[3]||o[4]||o[5]||o[6],!T)continue;if(I=[...T].length,o[3]||o[4]){O+=I;continue}else if(o[5]||o[6]||M){if(s&&(o[5]||o[6]))break;if(B%3&&!((B+I)%3)){W+=I;continue}}if(O-=I,O>0)continue;I=Math.min(I,I+O+W);let Ae=[...o[0]][0].length,le=t.slice(0,y+o.index+Ae+I);if(Math.min(y,I)%2){let Se=le.slice(1,-1);return{type:"em",raw:le,text:Se,tokens:this.lexer.inlineTokens(Se)}}let pe=le.slice(2,-2);return{type:"strong",raw:le,text:pe,tokens:this.lexer.inlineTokens(pe)}}}}codespan(t){let e=this.rules.inline.code.exec(t);if(e){let a=e[2].replace(this.rules.other.newLineCharGlobal," "),o=this.rules.other.nonSpaceChar.test(a),i=this.rules.other.startingSpaceChar.test(a)&&this.rules.other.endingSpaceChar.test(a);return o&&i&&(a=a.substring(1,a.length-1)),{type:"codespan",raw:e[0],text:a}}}br(t){let e=this.rules.inline.br.exec(t);if(e)return{type:"br",raw:e[0]}}del(t,e,a=""){let o=this.rules.inline.delLDelim.exec(t);if(o&&(!o[1]||!a||this.rules.inline.punctuation.exec(a))){let i=[...o[0]].length-1,s,d,c=i,p=this.rules.inline.delRDelim,l=Tr(this,e),u=e.length-t.length+i;if(l<u)return;e=e.slice(-1*t.length+i);let h=l-u;for(p.lastIndex=0;(o=p.exec(e))!==null&&!(o.index>h);){if(s=o[1]||o[2]||o[3]||o[4]||o[5]||o[6],!s||(d=[...s].length,d!==i))continue;if(o[3]||o[4]){c+=d;continue}if(c-=d,c>0)continue;d=Math.min(d,d+c);let y=[...o[0]][0].length,T=t.slice(0,i+o.index+y+d),I=T.slice(i,-i);return{type:"del",raw:T,text:I,tokens:this.lexer.inlineTokens(I)}}}}autolink(t){let e=this.rules.inline.autolink.exec(t);if(e){let a,o;return e[2]==="@"?(a=e[1],o="mailto:"+a):(a=e[1],o=a),{type:"link",raw:e[0],text:a,href:o,autolink:!0,tokens:[{type:"text",raw:a,text:a}]}}}url(t){var a;let e;if(e=this.rules.inline.url.exec(t)){let o,i;if(e[2]==="@")o=e[0],i="mailto:"+o;else{let s;do s=e[0],e[0]=((a=this.rules.inline._backpedal.exec(e[0]))==null?void 0:a[0])??"";while(s!==e[0]);o=e[0],e[1]==="www."?i="http://"+e[0]:i=e[0]}return{type:"link",raw:e[0],text:o,href:i,autolink:!0,tokens:[{type:"text",raw:o,text:o}]}}}inlineText(t){let e=this.rules.inline.text.exec(t);if(e){let a=this.lexer.state.inRawBlock;return{type:"text",raw:e[0],text:a?e[0]:Cr(e[0]),escaped:a}}}},ve,Ga,Ha,$a,Qa,Ve,me=(Ve=class{constructor(e){qt(this,ve);j(this,"tokens");j(this,"options");j(this,"state");j(this,"inlineQueue");j(this,"tokenizer");this.tokens=[],this.tokens.links=Object.create(null),this.options=e||Me,this.options.tokenizer=this.options.tokenizer||new Qe,this.tokenizer=this.options.tokenizer,this.tokenizer.options=this.options,this.tokenizer.lexer=this,this.inlineQueue=[],this.state={inLink:!1,inRawBlock:!1,linkEmitted:!1,linkParenPossible:!0,top:!0};let a={other:Z,block:Rn.normal,inline:ln.normal};this.options.pedantic?(a.block=Rn.pedantic,a.inline=ln.pedantic):this.options.gfm&&(a.block=Rn.gfm,this.options.breaks?a.inline=ln.breaks:a.inline=ln.gfm),this.tokenizer.rules=a}static get rules(){return{block:Rn,inline:ln}}static lex(e,a){return new Ve(a).lex(e)}static lexInline(e,a){return new Ve(a).inlineTokens(e)}lex(e){e=e.replace(Z.carriageReturn,`
+`),this.blockTokens(e,this.tokens);for(let a=0;a<this.inlineQueue.length;a++){let o=this.inlineQueue[a];this.state.inRawBlock=!1,this.inlineTokens(o.src,o.tokens)}return this.inlineQueue=[],this.tokens}blockTokens(e,a=[],o=!1){var d,c,p;this.tokenizer.lexer=this;let i=this.state.lastToken;this.options.pedantic&&(e=e.replace(Z.tabCharGlobal,"    ").replace(Z.spaceLine,""));let s=1/0;for(;e;){if(e.length<s)s=e.length;else{this.infiniteLoopError(e.charCodeAt(0));break}this.state.lastToken=a.at(-1);let l;if((c=(d=this.options.extensions)==null?void 0:d.block)!=null&&c.some(h=>(l=h.call({lexer:this},e,a))?(e=e.substring(l.raw.length),a.push(l),!0):!1))continue;if(l=this.tokenizer.space(e)){e=e.substring(l.raw.length);let h=a.at(-1);l.raw.length===1&&h!==void 0?h.raw+=`
 `:a.push(l);continue}if(l=this.tokenizer.code(e)){e=e.substring(l.raw.length);let h=a.at(-1);(h==null?void 0:h.type)==="paragraph"||(h==null?void 0:h.type)==="text"?(h.raw+=(h.raw.endsWith(`
 `)?"":`
 `)+l.raw,h.text+=`
 `+l.text,this.inlineQueue.at(-1).src=h.text):a.push(l);continue}if(l=this.tokenizer.fences(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.heading(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.hr(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.blockquote(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.list(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.html(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.def(e)){e=e.substring(l.raw.length);let h=a.at(-1);(h==null?void 0:h.type)==="paragraph"||(h==null?void 0:h.type)==="text"?(h.raw+=(h.raw.endsWith(`
 `)?"":`
 `)+l.raw,h.text+=`
-`+l.raw,this.inlineQueue.at(-1).src=h.text):(this.tokens.links[l.tag]||(this.tokens.links[l.tag]={href:l.href,title:l.title}),a.push(l));continue}if(l=this.tokenizer.table(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.lheading(e)){e=e.substring(l.raw.length),a.push(l);continue}let p=e;if((u=this.options.extensions)!=null&&u.startBlock){let h=1/0,y=e.slice(1),q;this.options.extensions.startBlock.forEach(I=>{q=I.call({lexer:this},y),typeof q=="number"&&q>=0&&(h=Math.min(h,q))}),h<1/0&&h>=0&&(p=e.substring(0,h+1))}if(this.state.top&&(l=this.tokenizer.paragraph(p))){let h=a.at(-1);o&&(h==null?void 0:h.type)==="paragraph"?(h.raw+=(h.raw.endsWith(`
+`+l.raw,this.inlineQueue.at(-1).src=h.text):(this.tokens.links[l.tag]||(this.tokens.links[l.tag]={href:l.href,title:l.title}),a.push(l));continue}if(l=this.tokenizer.table(e)){e=e.substring(l.raw.length),a.push(l);continue}if(l=this.tokenizer.lheading(e)){e=e.substring(l.raw.length),a.push(l);continue}let u=e;if((p=this.options.extensions)!=null&&p.startBlock){let h=1/0,y=e.slice(1),T;this.options.extensions.startBlock.forEach(I=>{T=I.call({lexer:this},y),typeof T=="number"&&T>=0&&(h=Math.min(h,T))}),h<1/0&&h>=0&&(u=e.substring(0,h+1))}if(this.state.top&&(l=this.tokenizer.paragraph(u))){let h=a.at(-1);o&&(h==null?void 0:h.type)==="paragraph"?(h.raw+=(h.raw.endsWith(`
 `)?"":`
 `)+l.raw,h.text+=`
-`+l.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=h.text):a.push(l),o=p.length!==e.length,e=e.substring(l.raw.length);continue}if(l=this.tokenizer.text(e)){e=e.substring(l.raw.length);let h=a.at(-1);(h==null?void 0:h.type)==="text"?(h.raw+=(h.raw.endsWith(`
+`+l.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=h.text):a.push(l),o=u.length!==e.length,e=e.substring(l.raw.length);continue}if(l=this.tokenizer.text(e)){e=e.substring(l.raw.length);let h=a.at(-1);(h==null?void 0:h.type)==="text"?(h.raw+=(h.raw.endsWith(`
 `)?"":`
 `)+l.raw,h.text+=`
-`+l.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=h.text):a.push(l);continue}if(e){this.infiniteLoopError(e.charCodeAt(0));break}}return this.state.top=!0,this.state.lastToken=i,a}inline(e,a=[]){return this.inlineQueue.push({src:e,tokens:a}),a}linkInText(e){if(!e.includes("["))return!1;let a=this.tokenizer.rules.inline.link;for(let o of e.matchAll(this.tokenizer.rules.inline.blockSkip))if(a.test(o[0])&&e.charAt(o.index-1)!=="!")return!0;for(let o of e.matchAll(this.tokenizer.rules.inline.reflinkSearch)){let i=o[0],s=i.lastIndexOf("[");if(!(i.charAt(0)==="!"||!Object.hasOwn(this.tokens.links,On(i.slice(s+1,-1))))&&!(s>1&&this.linkInText(i.slice(1,s-1))))return!0}return!1}inlineTokens(e,a=[]){this.tokenizer.lexer=this;let o=this.state.linkParenPossible;this.state.linkParenPossible=o&&e.includes(")");try{return cn(this,ve,Ga).call(this,e,a)}finally{this.state.linkParenPossible=o}}infiniteLoopError(e){let a="Infinite loop on byte: "+e;if(this.options.silent)console.error(a);else throw new Error(a)}},ve=new WeakSet,Ga=function(e,a){var i;let o=e.includes("*")||e.includes("_")||e.includes("~")||(i=this.options.hooks)!=null&&i.emStrongMask||this.tokenizer.emStrong!==Qe.prototype.emStrong||this.tokenizer.del!==Qe.prototype.del?cn(this,ve,Qa).call(this,e):e;Ar(this.tokenizer,o);try{return cn(this,ve,Ha).call(this,e,o,a)}finally{Sr(this.tokenizer)}},Ha=function(e,a,o){var c,u,l;let i=!1,s="",d=1/0;for(;e;){if(e.length<d)d=e.length;else{this.infiniteLoopError(e.charCodeAt(0));break}i||(s=""),i=!1;let p;if((u=(c=this.options.extensions)==null?void 0:c.inline)!=null&&u.some(y=>(p=y.call({lexer:this},e,o))?(e=e.substring(p.raw.length),o.push(p),!0):!1))continue;if(p=this.tokenizer.escape(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.tag(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.link(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.reflink(e,this.tokens.links)){e=e.substring(p.raw.length);let y=o.at(-1);p.type==="text"&&(y==null?void 0:y.type)==="text"?(y.raw+=p.raw,y.text+=p.text):o.push(p);continue}if(p=this.tokenizer.emStrong(e,a,s)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.codespan(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.br(e)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.del(e,a,s)){e=e.substring(p.raw.length),o.push(p);continue}if(p=this.tokenizer.autolink(e)){e=e.substring(p.raw.length),o.push(p);continue}if(!this.state.inLink&&(p=this.tokenizer.url(e))){e=e.substring(p.raw.length),o.push(p);continue}let h=e;if((l=this.options.extensions)!=null&&l.startInline){let y=1/0,q=e.slice(1),I;this.options.extensions.startInline.forEach(P=>{I=P.call({lexer:this},q),typeof I=="number"&&I>=0&&(y=Math.min(y,I))}),y<1/0&&y>=0&&(h=e.substring(0,y+1))}if(p=this.tokenizer.inlineText(h)){e=e.substring(p.raw.length),p.raw.slice(-1)!=="_"&&(s=p.raw.slice(-1)),i=!0;let y=o.at(-1);(y==null?void 0:y.type)==="text"?(y.raw+=p.raw,y.text+=p.text):o.push(p);continue}if(e){this.infiniteLoopError(e.charCodeAt(0));break}}return o},$a=function(e){let{blockSkip:a,tag:o,autolink:i}=this.tokenizer.rules.inline,s="",d=0,c;for(a.lastIndex=0;c=a.exec(e);){let u=c.index+(c[2]?c[2].length:0),l=c.index+c[0].length;if(e.charAt(u)==="<"){let p=e.slice(u),h=o.exec(p)||i.exec(p);if(!h){a.lastIndex=u+1;continue}l=u+h[0].length,a.lastIndex=l}s+=e.slice(d,u)+"["+"a".repeat(l-u-2)+"]",d=l}return s+e.slice(d)},Qa=function(e){var o,i;let a=e;if(this.tokens.links&&e.includes("[")){let s=this.tokenizer.rules.inline.reflinkSearch,d=c=>{let u=c.lastIndexOf("[");if(!Object.hasOwn(this.tokens.links,On(c.slice(u+1,-1))))return c;if(u>1&&c.charAt(0)!=="!"){let l=c.slice(1,u-1);if(this.linkInText(l))return"["+l.replace(s,d)+"]["+"a".repeat(c.length-u-2)+"]"}return"["+"a".repeat(c.length-2)+"]"};a=a.replace(s,d)}return a=a.replace(this.tokenizer.rules.inline.anyPunctuationOutsideCode,(s,d,c)=>c?"+".repeat(s.length):d?d+s.slice(d.length,-d.length).replace(/`/g,"+")+d:s),a=cn(this,ve,$a).call(this,a),a=((i=(o=this.options.hooks)==null?void 0:o.emStrongMask)==null?void 0:i.call({lexer:this},a))??a,a},Ve),Wn=class{constructor(t){j(this,"options");j(this,"parser");this.options=t||Be}space(t){return""}code({text:t,lang:e,escaped:a}){var s;let o=(s=(e||"").match(Z.notSpaceStart))==null?void 0:s[0],i=t?t.replace(Z.endingNewline,"")+`
+`+l.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=h.text):a.push(l);continue}if(e){this.infiniteLoopError(e.charCodeAt(0));break}}return this.state.top=!0,this.state.lastToken=i,a}inline(e,a=[]){return this.inlineQueue.push({src:e,tokens:a}),a}linkInText(e){if(!e.includes("["))return!1;let a=this.tokenizer.rules.inline.link;for(let o of e.matchAll(this.tokenizer.rules.inline.blockSkip))if(a.test(o[0])&&e.charAt(o.index-1)!=="!")return!0;for(let o of e.matchAll(this.tokenizer.rules.inline.reflinkSearch)){let i=o[0],s=i.lastIndexOf("[");if(!(i.charAt(0)==="!"||!Object.hasOwn(this.tokens.links,Ln(i.slice(s+1,-1))))&&!(s>1&&this.linkInText(i.slice(1,s-1))))return!0}return!1}inlineTokens(e,a=[]){this.tokenizer.lexer=this;let o=this.state.linkParenPossible;this.state.linkParenPossible=o&&e.includes(")");try{return cn(this,ve,Ga).call(this,e,a)}finally{this.state.linkParenPossible=o}}infiniteLoopError(e){let a="Infinite loop on byte: "+e;if(this.options.silent)console.error(a);else throw new Error(a)}},ve=new WeakSet,Ga=function(e,a){var i;let o=e.includes("*")||e.includes("_")||e.includes("~")||(i=this.options.hooks)!=null&&i.emStrongMask||this.tokenizer.emStrong!==Qe.prototype.emStrong||this.tokenizer.del!==Qe.prototype.del?cn(this,ve,Qa).call(this,e):e;Ar(this.tokenizer,o);try{return cn(this,ve,Ha).call(this,e,o,a)}finally{Sr(this.tokenizer)}},Ha=function(e,a,o){var c,p,l;let i=!1,s="",d=1/0;for(;e;){if(e.length<d)d=e.length;else{this.infiniteLoopError(e.charCodeAt(0));break}i||(s=""),i=!1;let u;if((p=(c=this.options.extensions)==null?void 0:c.inline)!=null&&p.some(y=>(u=y.call({lexer:this},e,o))?(e=e.substring(u.raw.length),o.push(u),!0):!1))continue;if(u=this.tokenizer.escape(e)){e=e.substring(u.raw.length),o.push(u);continue}if(u=this.tokenizer.tag(e)){e=e.substring(u.raw.length),o.push(u);continue}if(u=this.tokenizer.link(e)){e=e.substring(u.raw.length),o.push(u);continue}if(u=this.tokenizer.reflink(e,this.tokens.links)){e=e.substring(u.raw.length);let y=o.at(-1);u.type==="text"&&(y==null?void 0:y.type)==="text"?(y.raw+=u.raw,y.text+=u.text):o.push(u);continue}if(u=this.tokenizer.emStrong(e,a,s)){e=e.substring(u.raw.length),o.push(u);continue}if(u=this.tokenizer.codespan(e)){e=e.substring(u.raw.length),o.push(u);continue}if(u=this.tokenizer.br(e)){e=e.substring(u.raw.length),o.push(u);continue}if(u=this.tokenizer.del(e,a,s)){e=e.substring(u.raw.length),o.push(u);continue}if(u=this.tokenizer.autolink(e)){e=e.substring(u.raw.length),o.push(u);continue}if(!this.state.inLink&&(u=this.tokenizer.url(e))){e=e.substring(u.raw.length),o.push(u);continue}let h=e;if((l=this.options.extensions)!=null&&l.startInline){let y=1/0,T=e.slice(1),I;this.options.extensions.startInline.forEach(O=>{I=O.call({lexer:this},T),typeof I=="number"&&I>=0&&(y=Math.min(y,I))}),y<1/0&&y>=0&&(h=e.substring(0,y+1))}if(u=this.tokenizer.inlineText(h)){e=e.substring(u.raw.length),u.raw.slice(-1)!=="_"&&(s=u.raw.slice(-1)),i=!0;let y=o.at(-1);(y==null?void 0:y.type)==="text"?(y.raw+=u.raw,y.text+=u.text):o.push(u);continue}if(e){this.infiniteLoopError(e.charCodeAt(0));break}}return o},$a=function(e){let{blockSkip:a,tag:o,autolink:i}=this.tokenizer.rules.inline,s="",d=0,c;for(a.lastIndex=0;c=a.exec(e);){let p=c.index+(c[2]?c[2].length:0),l=c.index+c[0].length;if(e.charAt(p)==="<"){let u=e.slice(p),h=o.exec(u)||i.exec(u);if(!h){a.lastIndex=p+1;continue}l=p+h[0].length,a.lastIndex=l}s+=e.slice(d,p)+"["+"a".repeat(l-p-2)+"]",d=l}return s+e.slice(d)},Qa=function(e){var o,i;let a=e;if(this.tokens.links&&e.includes("[")){let s=this.tokenizer.rules.inline.reflinkSearch,d=c=>{let p=c.lastIndexOf("[");if(!Object.hasOwn(this.tokens.links,Ln(c.slice(p+1,-1))))return c;if(p>1&&c.charAt(0)!=="!"){let l=c.slice(1,p-1);if(this.linkInText(l))return"["+l.replace(s,d)+"]["+"a".repeat(c.length-p-2)+"]"}return"["+"a".repeat(c.length-2)+"]"};a=a.replace(s,d)}return a=a.replace(this.tokenizer.rules.inline.anyPunctuationOutsideCode,(s,d,c)=>c?"+".repeat(s.length):d?d+s.slice(d.length,-d.length).replace(/`/g,"+")+d:s),a=cn(this,ve,$a).call(this,a),a=((i=(o=this.options.hooks)==null?void 0:o.emStrongMask)==null?void 0:i.call({lexer:this},a))??a,a},Ve),zn=class{constructor(t){j(this,"options");j(this,"parser");this.options=t||Me}space(t){return""}code({text:t,lang:e,escaped:a}){var s;let o=(s=(e||"").match(Z.notSpaceStart))==null?void 0:s[0],i=t?t.replace(Z.endingNewline,"")+`
 `:"";return o?'<pre><code class="language-'+se(o)+'">'+(a?i:se(i,!0))+`</code></pre>
 `:"<pre><code>"+(a?i:se(i,!0))+`</code></pre>
 `}blockquote({tokens:t}){return`<blockquote>
@@ -33046,8 +31799,8 @@ ${this.parser.parse(t)}</blockquote>
 ${t}</tr>
 `}tablecell(t){let e=this.parser.parseInline(t.tokens),a=t.header?"th":"td";return(t.align?`<${a} align="${t.align}">`:`<${a}>`)+e+`</${a}>
 `}strong({tokens:t}){return`<strong>${this.parser.parseInline(t)}</strong>`}em({tokens:t}){return`<em>${this.parser.parseInline(t)}</em>`}codespan({text:t}){return`<code>${se(t,!0)}</code>`}br(t){return"<br>"}del({tokens:t}){return`<del>${this.parser.parseInline(t)}</del>`}link({href:t,title:e,text:a,tokens:o,autolink:i}){let s=i?se(a,!0):this.parser.parseInline(o),d=ra(t);if(d===null)return s;t=se(d,i);let c='<a href="'+t+'"';return e&&(c+=' title="'+se(e)+'"'),c+=">"+s+"</a>",c}image({href:t,title:e,text:a,tokens:o}){o&&(a=this.parser.parseInline(o,this.parser.textRenderer));let i=ra(t);if(i===null)return se(a);t=i;let s=`<img src="${se(t)}" alt="${se(a)}"`;return e&&(s+=` title="${se(e)}"`),s+=">",s}text(t){return"tokens"in t&&t.tokens?this.parser.parseInline(t.tokens):"escaped"in t&&t.escaped?t.text:se(t.text)}},It=class{constructor(){j(this,"parser")}strong({text:t,tokens:e}){return e?this.parser.parseInline(e,this):t}em({text:t,tokens:e}){return e?this.parser.parseInline(e,this):t}codespan({text:t}){return t}del({text:t,tokens:e}){return e?this.parser.parseInline(e,this):t}html({text:t}){return t}text({text:t}){return t}link({text:t,tokens:e}){return e?this.parser.parseInline(e,this):t}image({text:t,tokens:e}){return e?this.parser.parseInline(e,this):t}br(){return`
-`}checkbox({raw:t}){return t}},fe=class ft{constructor(e){j(this,"options");j(this,"renderer");j(this,"textRenderer");this.options=e||Be,this.options.renderer=this.options.renderer||new Wn,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new It,this.textRenderer.parser=this}static parse(e,a){return new ft(a).parse(e)}static parseInline(e,a){return new ft(a).parseInline(e)}parse(e){var o,i;this.renderer.parser=this;let a="";for(let s=0;s<e.length;s++){let d=e[s];if((i=(o=this.options.extensions)==null?void 0:o.renderers)!=null&&i[d.type]){let u=d,l=this.options.extensions.renderers[u.type].call({parser:this},u);if(l!==!1||!["space","hr","heading","code","table","blockquote","list","checkbox","html","def","paragraph","text"].includes(u.type)){a+=l===!1?"":l??"";continue}}let c=d;switch(c.type){case"space":{a+=this.renderer.space(c);break}case"hr":{a+=this.renderer.hr(c);break}case"heading":{a+=this.renderer.heading(c);break}case"code":{a+=this.renderer.code(c);break}case"table":{a+=this.renderer.table(c);break}case"blockquote":{a+=this.renderer.blockquote(c);break}case"list":{a+=this.renderer.list(c);break}case"checkbox":{a+=this.renderer.checkbox(c);break}case"html":{a+=this.renderer.html(c);break}case"def":{a+=this.renderer.def(c);break}case"paragraph":{a+=this.renderer.paragraph(c);break}case"text":{a+=this.renderer.text(c);break}default:{let u='Token with "'+c.type+'" type was not found.';if(this.options.silent)return console.error(u),"";throw new Error(u)}}}return a}parseInline(e,a=this.renderer){var i,s;this.renderer.parser=this;let o="";for(let d=0;d<e.length;d++){let c=e[d];if((s=(i=this.options.extensions)==null?void 0:i.renderers)!=null&&s[c.type]){let l=this.options.extensions.renderers[c.type].call({parser:this},c);if(l!==!1||!["escape","html","link","image","checkbox","strong","em","codespan","br","del","text"].includes(c.type)){o+=l===!1?"":l??"";continue}}let u=c;switch(u.type){case"escape":{o+=a.text(u);break}case"html":{o+=a.html(u);break}case"link":{o+=a.link(u);break}case"image":{o+=a.image(u);break}case"checkbox":{o+=a.checkbox(u);break}case"strong":{o+=a.strong(u);break}case"em":{o+=a.em(u);break}case"codespan":{o+=a.codespan(u);break}case"br":{o+=a.br(u);break}case"del":{o+=a.del(u);break}case"text":{o+=a.text(u);break}default:{let l='Token with "'+u.type+'" type was not found.';if(this.options.silent)return console.error(l),"";throw new Error(l)}}}return o}},zn,dn=(zn=class{constructor(t){j(this,"options");j(this,"block");this.options=t||Be}preprocess(t){return t}postprocess(t){return t}processAllTokens(t){return t}emStrongMask(t){return t}provideLexer(t=this.block){return t?me.lex:me.lexInline}provideParser(t=this.block){return t?fe.parse:fe.parseInline}},j(zn,"passThroughHooks",new Set(["preprocess","postprocess","processAllTokens","emStrongMask"])),j(zn,"passThroughHooksRespectAsync",new Set(["preprocess","postprocess","processAllTokens"])),zn);function ze(t,e){if(Array.isArray(e))for(let a=0;a<e.length;a++)t.push(e[a]);else t.push(e)}var Dr=class{constructor(...t){j(this,"defaults",bt());j(this,"options",this.setOptions);j(this,"parse",this.parseMarkdown(!0));j(this,"parseInline",this.parseMarkdown(!1));j(this,"Parser",fe);j(this,"Renderer",Wn);j(this,"TextRenderer",It);j(this,"Lexer",me);j(this,"Tokenizer",Qe);j(this,"Hooks",dn);this.use(...t)}walkTokens(t,e){var o,i;let a=[];for(let s of t)switch(ze(a,e.call(this,s)),s.type){case"table":{let d=s;for(let c of d.header)ze(a,this.walkTokens(c.tokens,e));for(let c of d.rows)for(let u of c)ze(a,this.walkTokens(u.tokens,e));break}case"list":{let d=s;ze(a,this.walkTokens(d.items,e));break}default:{let d=s;(i=(o=this.defaults.extensions)==null?void 0:o.childTokens)!=null&&i[d.type]?this.defaults.extensions.childTokens[d.type].forEach(c=>{let u=d[c].flat(1/0);ze(a,this.walkTokens(u,e))}):d.tokens&&ze(a,this.walkTokens(d.tokens,e))}}return a}use(...t){let e=this.defaults.extensions||{renderers:Object.create(null),childTokens:Object.create(null)};return t.forEach(a=>{let o={...a};if(o.async=this.defaults.async||o.async||!1,a.extensions&&(a.extensions.forEach(i=>{if(!i.name)throw new Error("extension name required");if("renderer"in i){let s=e.renderers[i.name];s?e.renderers[i.name]=function(...d){let c=i.renderer.apply(this,d);return c===!1&&(c=s.apply(this,d)),c}:e.renderers[i.name]=i.renderer}if("tokenizer"in i){if(!i.level||i.level!=="block"&&i.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");let s=e[i.level];s?s.unshift(i.tokenizer):e[i.level]=[i.tokenizer],i.start&&(i.level==="block"?e.startBlock?e.startBlock.push(i.start):e.startBlock=[i.start]:i.level==="inline"&&(e.startInline?e.startInline.push(i.start):e.startInline=[i.start]))}"childTokens"in i&&i.childTokens&&(e.childTokens[i.name]=i.childTokens)}),o.extensions=e),a.renderer){let i=this.defaults.renderer||new Wn(this.defaults);for(let s in a.renderer){if(!(s in i))throw new Error(`renderer '${s}' does not exist`);if(["options","parser"].includes(s))continue;let d=s,c=a.renderer[d],u=i[d];i[d]=(...l)=>{let p=c.apply(i,l);return p===!1&&(p=u.apply(i,l)),p===!1?"":p??""}}o.renderer=i}if(a.tokenizer){let i=this.defaults.tokenizer||new Qe(this.defaults);for(let s in a.tokenizer){if(!(s in i))throw new Error(`tokenizer '${s}' does not exist`);if(["options","rules","lexer"].includes(s))continue;let d=s,c=a.tokenizer[d],u=i[d];i[d]=(...l)=>{let p=c.apply(i,l);return p===!1&&(p=u.apply(i,l)),p}}o.tokenizer=i}if(a.hooks){let i=this.defaults.hooks||new dn;for(let s in a.hooks){if(!(s in i))throw new Error(`hook '${s}' does not exist`);if(["options","block"].includes(s))continue;let d=s,c=a.hooks[d],u=i[d];dn.passThroughHooks.has(s)?i[d]=l=>{if(i.options.async&&dn.passThroughHooksRespectAsync.has(s))return(async()=>{let h=await c.call(i,l);return u.call(i,h)})();let p=c.call(i,l);return u.call(i,p)}:i[d]=(...l)=>{if(i.options.async)return(async()=>{let h=await c.apply(i,l);return h===!1&&(h=await u.apply(i,l)),h})();let p=c.apply(i,l);return p===!1&&(p=u.apply(i,l)),p}}o.hooks=i}if(a.walkTokens){let i=this.defaults.walkTokens,s=a.walkTokens;o.walkTokens=function(d){let c=[];return ze(c,s.call(this,d)),i&&ze(c,i.call(this,d)),c}}this.defaults={...this.defaults,...o}}),this}setOptions(t){return this.defaults={...this.defaults,...t},this}lexer(t,e){return me.lex(t,e??this.defaults)}parser(t,e){return fe.parse(t,e??this.defaults)}parseMarkdown(t){return(e,a)=>{let o={...a},i={...this.defaults,...o},s=this.onError(!!i.silent,!!i.async);if(this.defaults.async===!0&&o.async===!1)return s(new Error("marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise."));if(typeof e>"u"||e===null)return s(new Error("marked(): input parameter is undefined or null"));if(typeof e!="string")return s(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(e)+", string expected"));if(i.hooks&&(i.hooks.options=i,i.hooks.block=t),i.async)return(async()=>{let d=i.hooks?await i.hooks.preprocess(e):e,c=await(i.hooks?await i.hooks.provideLexer(t):t?me.lex:me.lexInline)(d,i),u=i.hooks?await i.hooks.processAllTokens(c):c;i.walkTokens&&await Promise.all(this.walkTokens(u,i.walkTokens));let l=await(i.hooks?await i.hooks.provideParser(t):t?fe.parse:fe.parseInline)(u,i);return i.hooks?await i.hooks.postprocess(l):l})().catch(s);try{i.hooks&&(e=i.hooks.preprocess(e));let d=(i.hooks?i.hooks.provideLexer(t):t?me.lex:me.lexInline)(e,i);i.hooks&&(d=i.hooks.processAllTokens(d)),i.walkTokens&&this.walkTokens(d,i.walkTokens);let c=(i.hooks?i.hooks.provideParser(t):t?fe.parse:fe.parseInline)(d,i);return i.hooks&&(c=i.hooks.postprocess(c)),c}catch(d){return s(d)}}}onError(t,e){return a=>{if(a.message+=`
-Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error occurred:</p><pre>"+se(a.message+"",!0)+"</pre>";return e?Promise.resolve(o):o}if(e)return Promise.reject(a);throw a}}},Ue=new Dr;function U(t,e){return Ue.parse(t,e)}U.options=U.setOptions=function(t){return Ue.setOptions(t),U.defaults=Ue.defaults,Oa(U.defaults),U};U.getDefaults=bt;U.defaults=Be;function Er(...t){return Ue.use(...t),U.defaults=Ue.defaults,Oa(U.defaults),U}U.use=Er;U.walkTokens=function(t,e){return Ue.walkTokens(t,e)};U.parseInline=Ue.parseInline;U.Parser=fe;U.parser=fe.parse;U.Renderer=Wn;U.TextRenderer=It;U.Lexer=me;U.lexer=me.lex;U.Tokenizer=Qe;U.Hooks=dn;U.parse=U;U.options;U.setOptions;U.walkTokens;U.parseInline;fe.parse;me.lex;U.setOptions({gfm:!0,breaks:!0});let Rr=0;function Y(t){return typeof t!="string"?String(t??""):t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}function pe(t){return t?String(t).replace(/[-_]/g," ").replace(/\b\w/g,e=>e.toUpperCase()):""}function Me(t){if(t==null)return!0;if(typeof t=="string"){const e=t.trim();return e===""||e==="-"||e==="—"||e==="--"}return Array.isArray(t)?t.length===0||t.every(Me):typeof t=="object"?Object.keys(t).length===0:!1}function zr(t){if(!Array.isArray(t)||t.length===0||!t.every(a=>a&&typeof a=="object"&&!Array.isArray(a)))return!1;const e=[];for(const a of t)for(const o of Object.keys(a))e.includes(o)||e.push(o);if(e.length===0||e.length>5)return!1;for(const a of t)for(const o of e){const i=a[o];if(i!=null&&(typeof i=="object"||Array.isArray(i)||typeof i!="string"&&typeof i!="number"&&typeof i!="boolean"||String(i).length>60))return!1}return!0}function Pr(t){if(!t||typeof t!="object")return null;const e=Object.keys(t);for(const a of e){const o=a.toLowerCase();if((o==="id"||o==="lab_id"||o==="code")&&!Me(t[a]))return a}for(const a of e){const o=a.toLowerCase();if((o.endsWith("_id")||o.endsWith("_code"))&&!Me(t[a]))return a}return null}function Or(t,e){if(!t||typeof t!="object")return null;const a=Object.keys(t);for(const o of a){if(o===e)continue;const i=o.toLowerCase();if((i==="title"||i==="name")&&!Me(t[o]))return o}for(const o of a){if(o===e)continue;const i=o.toLowerCase();if((i==="concept_title"||i==="topic"||i==="heading")&&!Me(t[o]))return o}return null}function ua(t,e="CODE"){const a=`code-block-${++Rr}`,o=typeof t=="string"?t:JSON.stringify(t,null,2),i=Y(o);return`
+`}checkbox({raw:t}){return t}},fe=class ft{constructor(e){j(this,"options");j(this,"renderer");j(this,"textRenderer");this.options=e||Me,this.options.renderer=this.options.renderer||new zn,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new It,this.textRenderer.parser=this}static parse(e,a){return new ft(a).parse(e)}static parseInline(e,a){return new ft(a).parseInline(e)}parse(e){var o,i;this.renderer.parser=this;let a="";for(let s=0;s<e.length;s++){let d=e[s];if((i=(o=this.options.extensions)==null?void 0:o.renderers)!=null&&i[d.type]){let p=d,l=this.options.extensions.renderers[p.type].call({parser:this},p);if(l!==!1||!["space","hr","heading","code","table","blockquote","list","checkbox","html","def","paragraph","text"].includes(p.type)){a+=l===!1?"":l??"";continue}}let c=d;switch(c.type){case"space":{a+=this.renderer.space(c);break}case"hr":{a+=this.renderer.hr(c);break}case"heading":{a+=this.renderer.heading(c);break}case"code":{a+=this.renderer.code(c);break}case"table":{a+=this.renderer.table(c);break}case"blockquote":{a+=this.renderer.blockquote(c);break}case"list":{a+=this.renderer.list(c);break}case"checkbox":{a+=this.renderer.checkbox(c);break}case"html":{a+=this.renderer.html(c);break}case"def":{a+=this.renderer.def(c);break}case"paragraph":{a+=this.renderer.paragraph(c);break}case"text":{a+=this.renderer.text(c);break}default:{let p='Token with "'+c.type+'" type was not found.';if(this.options.silent)return console.error(p),"";throw new Error(p)}}}return a}parseInline(e,a=this.renderer){var i,s;this.renderer.parser=this;let o="";for(let d=0;d<e.length;d++){let c=e[d];if((s=(i=this.options.extensions)==null?void 0:i.renderers)!=null&&s[c.type]){let l=this.options.extensions.renderers[c.type].call({parser:this},c);if(l!==!1||!["escape","html","link","image","checkbox","strong","em","codespan","br","del","text"].includes(c.type)){o+=l===!1?"":l??"";continue}}let p=c;switch(p.type){case"escape":{o+=a.text(p);break}case"html":{o+=a.html(p);break}case"link":{o+=a.link(p);break}case"image":{o+=a.image(p);break}case"checkbox":{o+=a.checkbox(p);break}case"strong":{o+=a.strong(p);break}case"em":{o+=a.em(p);break}case"codespan":{o+=a.codespan(p);break}case"br":{o+=a.br(p);break}case"del":{o+=a.del(p);break}case"text":{o+=a.text(p);break}default:{let l='Token with "'+p.type+'" type was not found.';if(this.options.silent)return console.error(l),"";throw new Error(l)}}}return o}},En,dn=(En=class{constructor(t){j(this,"options");j(this,"block");this.options=t||Me}preprocess(t){return t}postprocess(t){return t}processAllTokens(t){return t}emStrongMask(t){return t}provideLexer(t=this.block){return t?me.lex:me.lexInline}provideParser(t=this.block){return t?fe.parse:fe.parseInline}},j(En,"passThroughHooks",new Set(["preprocess","postprocess","processAllTokens","emStrongMask"])),j(En,"passThroughHooksRespectAsync",new Set(["preprocess","postprocess","processAllTokens"])),En);function Ee(t,e){if(Array.isArray(e))for(let a=0;a<e.length;a++)t.push(e[a]);else t.push(e)}var qr=class{constructor(...t){j(this,"defaults",bt());j(this,"options",this.setOptions);j(this,"parse",this.parseMarkdown(!0));j(this,"parseInline",this.parseMarkdown(!1));j(this,"Parser",fe);j(this,"Renderer",zn);j(this,"TextRenderer",It);j(this,"Lexer",me);j(this,"Tokenizer",Qe);j(this,"Hooks",dn);this.use(...t)}walkTokens(t,e){var o,i;let a=[];for(let s of t)switch(Ee(a,e.call(this,s)),s.type){case"table":{let d=s;for(let c of d.header)Ee(a,this.walkTokens(c.tokens,e));for(let c of d.rows)for(let p of c)Ee(a,this.walkTokens(p.tokens,e));break}case"list":{let d=s;Ee(a,this.walkTokens(d.items,e));break}default:{let d=s;(i=(o=this.defaults.extensions)==null?void 0:o.childTokens)!=null&&i[d.type]?this.defaults.extensions.childTokens[d.type].forEach(c=>{let p=d[c].flat(1/0);Ee(a,this.walkTokens(p,e))}):d.tokens&&Ee(a,this.walkTokens(d.tokens,e))}}return a}use(...t){let e=this.defaults.extensions||{renderers:Object.create(null),childTokens:Object.create(null)};return t.forEach(a=>{let o={...a};if(o.async=this.defaults.async||o.async||!1,a.extensions&&(a.extensions.forEach(i=>{if(!i.name)throw new Error("extension name required");if("renderer"in i){let s=e.renderers[i.name];s?e.renderers[i.name]=function(...d){let c=i.renderer.apply(this,d);return c===!1&&(c=s.apply(this,d)),c}:e.renderers[i.name]=i.renderer}if("tokenizer"in i){if(!i.level||i.level!=="block"&&i.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");let s=e[i.level];s?s.unshift(i.tokenizer):e[i.level]=[i.tokenizer],i.start&&(i.level==="block"?e.startBlock?e.startBlock.push(i.start):e.startBlock=[i.start]:i.level==="inline"&&(e.startInline?e.startInline.push(i.start):e.startInline=[i.start]))}"childTokens"in i&&i.childTokens&&(e.childTokens[i.name]=i.childTokens)}),o.extensions=e),a.renderer){let i=this.defaults.renderer||new zn(this.defaults);for(let s in a.renderer){if(!(s in i))throw new Error(`renderer '${s}' does not exist`);if(["options","parser"].includes(s))continue;let d=s,c=a.renderer[d],p=i[d];i[d]=(...l)=>{let u=c.apply(i,l);return u===!1&&(u=p.apply(i,l)),u===!1?"":u??""}}o.renderer=i}if(a.tokenizer){let i=this.defaults.tokenizer||new Qe(this.defaults);for(let s in a.tokenizer){if(!(s in i))throw new Error(`tokenizer '${s}' does not exist`);if(["options","rules","lexer"].includes(s))continue;let d=s,c=a.tokenizer[d],p=i[d];i[d]=(...l)=>{let u=c.apply(i,l);return u===!1&&(u=p.apply(i,l)),u}}o.tokenizer=i}if(a.hooks){let i=this.defaults.hooks||new dn;for(let s in a.hooks){if(!(s in i))throw new Error(`hook '${s}' does not exist`);if(["options","block"].includes(s))continue;let d=s,c=a.hooks[d],p=i[d];dn.passThroughHooks.has(s)?i[d]=l=>{if(i.options.async&&dn.passThroughHooksRespectAsync.has(s))return(async()=>{let h=await c.call(i,l);return p.call(i,h)})();let u=c.call(i,l);return p.call(i,u)}:i[d]=(...l)=>{if(i.options.async)return(async()=>{let h=await c.apply(i,l);return h===!1&&(h=await p.apply(i,l)),h})();let u=c.apply(i,l);return u===!1&&(u=p.apply(i,l)),u}}o.hooks=i}if(a.walkTokens){let i=this.defaults.walkTokens,s=a.walkTokens;o.walkTokens=function(d){let c=[];return Ee(c,s.call(this,d)),i&&Ee(c,i.call(this,d)),c}}this.defaults={...this.defaults,...o}}),this}setOptions(t){return this.defaults={...this.defaults,...t},this}lexer(t,e){return me.lex(t,e??this.defaults)}parser(t,e){return fe.parse(t,e??this.defaults)}parseMarkdown(t){return(e,a)=>{let o={...a},i={...this.defaults,...o},s=this.onError(!!i.silent,!!i.async);if(this.defaults.async===!0&&o.async===!1)return s(new Error("marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise."));if(typeof e>"u"||e===null)return s(new Error("marked(): input parameter is undefined or null"));if(typeof e!="string")return s(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(e)+", string expected"));if(i.hooks&&(i.hooks.options=i,i.hooks.block=t),i.async)return(async()=>{let d=i.hooks?await i.hooks.preprocess(e):e,c=await(i.hooks?await i.hooks.provideLexer(t):t?me.lex:me.lexInline)(d,i),p=i.hooks?await i.hooks.processAllTokens(c):c;i.walkTokens&&await Promise.all(this.walkTokens(p,i.walkTokens));let l=await(i.hooks?await i.hooks.provideParser(t):t?fe.parse:fe.parseInline)(p,i);return i.hooks?await i.hooks.postprocess(l):l})().catch(s);try{i.hooks&&(e=i.hooks.preprocess(e));let d=(i.hooks?i.hooks.provideLexer(t):t?me.lex:me.lexInline)(e,i);i.hooks&&(d=i.hooks.processAllTokens(d)),i.walkTokens&&this.walkTokens(d,i.walkTokens);let c=(i.hooks?i.hooks.provideParser(t):t?fe.parse:fe.parseInline)(d,i);return i.hooks&&(c=i.hooks.postprocess(c)),c}catch(d){return s(d)}}}onError(t,e){return a=>{if(a.message+=`
+Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error occurred:</p><pre>"+se(a.message+"",!0)+"</pre>";return e?Promise.resolve(o):o}if(e)return Promise.reject(a);throw a}}},Ue=new qr;function U(t,e){return Ue.parse(t,e)}U.options=U.setOptions=function(t){return Ue.setOptions(t),U.defaults=Ue.defaults,La(U.defaults),U};U.getDefaults=bt;U.defaults=Me;function Rr(...t){return Ue.use(...t),U.defaults=Ue.defaults,La(U.defaults),U}U.use=Rr;U.walkTokens=function(t,e){return Ue.walkTokens(t,e)};U.parseInline=Ue.parseInline;U.Parser=fe;U.parser=fe.parse;U.Renderer=zn;U.TextRenderer=It;U.Lexer=me;U.lexer=me.lex;U.Tokenizer=Qe;U.Hooks=dn;U.parse=U;U.options;U.setOptions;U.walkTokens;U.parseInline;fe.parse;me.lex;U.setOptions({gfm:!0,breaks:!0});let Pr=0;function Y(t){return typeof t!="string"?String(t??""):t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}function ue(t){return t?String(t).replace(/[-_]/g," ").replace(/\b\w/g,e=>e.toUpperCase()):""}function Be(t){if(t==null)return!0;if(typeof t=="string"){const e=t.trim();return e===""||e==="-"||e==="—"||e==="--"}return Array.isArray(t)?t.length===0||t.every(Be):typeof t=="object"?Object.keys(t).length===0:!1}function Er(t){if(!Array.isArray(t)||t.length===0||!t.every(a=>a&&typeof a=="object"&&!Array.isArray(a)))return!1;const e=[];for(const a of t)for(const o of Object.keys(a))e.includes(o)||e.push(o);if(e.length===0||e.length>5)return!1;for(const a of t)for(const o of e){const i=a[o];if(i!=null&&(typeof i=="object"||Array.isArray(i)||typeof i!="string"&&typeof i!="number"&&typeof i!="boolean"||String(i).length>60))return!1}return!0}function Or(t){if(!t||typeof t!="object")return null;const e=Object.keys(t);for(const a of e){const o=a.toLowerCase();if((o==="id"||o==="lab_id"||o==="code")&&!Be(t[a]))return a}for(const a of e){const o=a.toLowerCase();if((o.endsWith("_id")||o.endsWith("_code"))&&!Be(t[a]))return a}return null}function Lr(t,e){if(!t||typeof t!="object")return null;const a=Object.keys(t);for(const o of a){if(o===e)continue;const i=o.toLowerCase();if((i==="title"||i==="name")&&!Be(t[o]))return o}for(const o of a){if(o===e)continue;const i=o.toLowerCase();if((i==="concept_title"||i==="topic"||i==="heading")&&!Be(t[o]))return o}return null}function pa(t,e="CODE"){const a=`code-block-${++Pr}`,o=typeof t=="string"?t:JSON.stringify(t,null,2),i=Y(o);return`
     <div class="border border-outline-variant/30 bg-surface-container-lowest my-space-sm">
       <div class="flex items-center justify-between px-space-md py-1.5 bg-surface-container-low border-b border-outline-variant/30 font-label-sm text-label-sm">
         <span class="text-primary-container font-mono tracking-wider uppercase">[${Y(e)}]</span>
@@ -33061,11 +31814,11 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
       </div>
       <pre class="p-space-md overflow-x-auto font-mono text-[12px] leading-relaxed text-on-surface bg-surface-container-lowest select-all"><code id="${a}">${i}</code></pre>
     </div>
-  `}function Wr(t,e=""){if(!Array.isArray(t)||t.length===0)return"";const a=[];for(const s of t)if(s&&typeof s=="object")for(const d of Object.keys(s))a.includes(d)||a.push(d);if(a.length===0)return"";const o=a.map(s=>`
+  `}function zr(t,e=""){if(!Array.isArray(t)||t.length===0)return"";const a=[];for(const s of t)if(s&&typeof s=="object")for(const d of Object.keys(s))a.includes(d)||a.push(d);if(a.length===0)return"";const o=a.map(s=>`
     <th class="p-space-sm text-left font-mono font-bold text-outline border-r border-outline-variant/20 last:border-r-0 tracking-wider min-w-[130px]">
-      ${Y(pe(s))}
+      ${Y(ue(s))}
     </th>
-  `).join(""),i=t.map(s=>!s||typeof s!="object"?"":`<tr class="border-b border-outline-variant/20 last:border-b-0 hover:bg-surface-container-low/50">${a.map(c=>{const u=s[c];let l="";return u==null||u===""||u==="-"||u==="—"?l="—":typeof u=="string"?l=U.parseInline(u):typeof u=="number"||typeof u=="boolean"?l=`<span class="font-mono text-primary-container">${String(u)}</span>`:Array.isArray(u)?l=u.map(p=>typeof p=="string"?U.parseInline(p):JSON.stringify(p)).join(", "):l=`<pre class="text-[10px] font-mono">${Y(JSON.stringify(u))}</pre>`,`<td class="p-space-sm border-r border-outline-variant/20 last:border-r-0 text-on-surface align-top min-w-[130px]">${l}</td>`}).join("")}</tr>`).join("");return`
+  `).join(""),i=t.map(s=>!s||typeof s!="object"?"":`<tr class="border-b border-outline-variant/20 last:border-b-0 hover:bg-surface-container-low/50">${a.map(c=>{const p=s[c];let l="";return p==null||p===""||p==="-"||p==="—"?l="—":typeof p=="string"?l=U.parseInline(p):typeof p=="number"||typeof p=="boolean"?l=`<span class="font-mono text-primary-container">${String(p)}</span>`:Array.isArray(p)?l=p.map(u=>typeof u=="string"?U.parseInline(u):JSON.stringify(u)).join(", "):l=`<pre class="text-[10px] font-mono">${Y(JSON.stringify(p))}</pre>`,`<td class="p-space-sm border-r border-outline-variant/20 last:border-r-0 text-on-surface align-top min-w-[130px]">${l}</td>`}).join("")}</tr>`).join("");return`
     <div class="my-space-md border border-outline-variant/30 bg-surface-container-lowest">
       ${e?`<div class="px-space-md py-1.5 bg-surface-container-low border-b border-outline-variant/30 font-label-sm text-label-sm uppercase tracking-wider text-outline">${Y(e)}</div>`:""}
       <div class="table-scroll-wrapper">
@@ -33081,21 +31834,21 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         </table>
       </div>
     </div>
-  `}function Lr(t,e="ASSESSMENT CHECKPOINT"){if(!t)return"";const o=(Array.isArray(t)?t:[t]).map((i,s)=>{if(!i)return"";if(typeof i=="string")return`
+  `}function Wr(t,e="ASSESSMENT CHECKPOINT"){if(!t)return"";const o=(Array.isArray(t)?t:[t]).map((i,s)=>{if(!i)return"";if(typeof i=="string")return`
         <div class="border border-outline-variant/30 bg-surface-container-low p-space-md my-space-xs">
           <div class="font-headline-sm text-headline-sm text-primary mb-space-xs">QUESTION 0${s+1}</div>
           <div class="font-body-md text-on-surface mb-space-sm">${U.parse(i)}</div>
         </div>
-      `;if(typeof i!="object")return"";const d=i.question||i.q||i.prompt||i.title||`Question 0${s+1}`,c=i.answer||i.a||i.solution||i.explanation||i.correct_answer||i.result,u=i.options||i.choices||i.answers;let l="";Array.isArray(u)&&u.length>0&&(l=`
+      `;if(typeof i!="object")return"";const d=i.question||i.q||i.prompt||i.title||`Question 0${s+1}`,c=i.answer||i.a||i.solution||i.explanation||i.correct_answer||i.result,p=i.options||i.choices||i.answers;let l="";Array.isArray(p)&&p.length>0&&(l=`
         <div class="flex flex-col gap-1.5 my-space-sm">
-          ${u.map((I,P)=>`
+          ${p.map((I,O)=>`
             <div class="p-space-xs px-space-sm border border-outline-variant/20 bg-surface-container-lowest font-body-sm text-on-surface flex items-center gap-2">
-              <span class="font-mono text-outline text-[11px] font-bold">[${String.fromCharCode(65+P)}]</span>
+              <span class="font-mono text-outline text-[11px] font-bold">[${String.fromCharCode(65+O)}]</span>
               <span>${typeof I=="string"?U.parseInline(I):Y(JSON.stringify(I))}</span>
             </div>
           `).join("")}
         </div>
-      `);let p="";c&&(p=`
+      `);let u="";c&&(u=`
         <details class="group mt-space-sm border border-outline-variant/20 bg-surface-container-lowest cursor-pointer">
           <summary class="px-space-md py-space-xs font-label-sm text-label-sm text-primary-container uppercase tracking-wider select-none hover:bg-surface-container-low flex items-center justify-between">
             <span>[▶ REVEAL TELEMETRIC ANSWER]</span>
@@ -33105,9 +31858,9 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
             ${typeof c=="string"?U.parse(c):Ke("",c)}
           </div>
         </details>
-      `);const h=["question","q","prompt","title","answer","a","solution","explanation","correct_answer","result","options","choices","answers"],y=Object.entries(i).filter(([I])=>!h.includes(I.toLowerCase()));let q="";return y.length>0&&(q=`
+      `);const h=["question","q","prompt","title","answer","a","solution","explanation","correct_answer","result","options","choices","answers"],y=Object.entries(i).filter(([I])=>!h.includes(I.toLowerCase()));let T="";return y.length>0&&(T=`
         <div class="mt-space-xs pt-space-xs border-t border-outline-variant/20 flex flex-col gap-1">
-          ${y.map(([I,P])=>Ke(I,P)).join("")}
+          ${y.map(([I,O])=>Ke(I,O)).join("")}
         </div>
       `),`
       <div class="border border-outline-variant/30 bg-surface-container-low p-space-md my-space-sm">
@@ -33117,8 +31870,8 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         </div>
         <div class="font-body-md text-body-md text-primary font-medium my-space-xs">${typeof d=="string"?U.parse(d):Ke("",d)}</div>
         ${l}
-        ${p}
-        ${q}
+        ${u}
+        ${T}
       </div>
     `}).join("");return`
     <div class="my-space-md">
@@ -33137,14 +31890,14 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         ${a}
       </ul>
     </div>
-  `}function Vr(t){if(!t||typeof t!="object"||Array.isArray(t))return Ne(t,"TELEMETRY ITEM");try{const e=Pr(t),a=Or(t,e),i=e||a?`
+  `}function Vr(t){if(!t||typeof t!="object"||Array.isArray(t))return Ne(t,"TELEMETRY ITEM");try{const e=Or(t),a=Lr(t,e),i=e||a?`
       <div class="card-header">
         ${e?`<span class="card-tag font-mono">${Y(String(t[e]))}</span>`:""}
         ${a?`<h4 class="card-title font-bold">${Y(String(t[a]))}</h4>`:""}
       </div>
-    `:"",s=Object.entries(t).filter(([u,l])=>u===e||u===a?!1:!Me(l)),d=s.map(([u,l])=>{const p=Array.isArray(l),h=typeof l=="string"&&l.length>120,q=p||h||typeof l=="object"&&l!==null;let I="";if(p)if(l.some(L=>L&&typeof L=="object"))I=Ne(l,u);else{const L=/procedure|steps|step/i.test(u),M=l.filter(B=>!Me(B)).map(B=>`<li>${typeof B=="string"?U.parseInline(B):Y(String(B))}</li>`).join("");if(M){const B=L?"ol":"ul";I=`<${B} class="${L?"card-items-list card-items-list--numbered":"card-items-list card-items-list--bulleted"}">${M}</${B}>`}}else typeof l=="string"?I=U.parse(l):typeof l=="number"||typeof l=="boolean"?I=`<span class="font-mono text-on-surface">${String(l)}</span>`:I=Ne(l,u);return`
-        <div class="card-field${q?" card-field--full":""}">
-          <div class="card-label">${Y(pe(u))}</div>
+    `:"",s=Object.entries(t).filter(([p,l])=>p===e||p===a?!1:!Be(l)),d=s.map(([p,l])=>{const u=Array.isArray(l),h=typeof l=="string"&&l.length>120,T=u||h||typeof l=="object"&&l!==null;let I="";if(u)if(l.some(W=>W&&typeof W=="object"))I=Ne(l,p);else{const W=/procedure|steps|step/i.test(p),B=l.filter(M=>!Be(M)).map(M=>`<li>${typeof M=="string"?U.parseInline(M):Y(String(M))}</li>`).join("");if(B){const M=W?"ol":"ul";I=`<${M} class="${W?"card-items-list card-items-list--numbered":"card-items-list card-items-list--bulleted"}">${B}</${M}>`}}else typeof l=="string"?I=U.parse(l):typeof l=="number"||typeof l=="boolean"?I=`<span class="font-mono text-on-surface">${String(l)}</span>`:I=Ne(l,p);return`
+        <div class="card-field${T?" card-field--full":""}">
+          <div class="card-label">${Y(ue(p))}</div>
           <div class="card-value">${I}</div>
         </div>
       `}).join(""),c=s.length>0?`
@@ -33166,31 +31919,31 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
   `}function Ne(t,e="RAW TELEMETRY"){if(t==null||t==="")return"";const a=Y(JSON.stringify(t,null,2));return`
     <details class="border border-outline-variant/30 bg-surface-container-lowest my-space-xs font-label-sm">
       <summary class="px-space-sm py-1 bg-surface-container-low text-outline cursor-pointer uppercase tracking-wider hover:text-on-surface select-none flex items-center justify-between">
-        <span>[+] RAW TELEMETRY: ${Y(pe(e))}</span>
+        <span>[+] RAW TELEMETRY: ${Y(ue(e))}</span>
         <span class="text-[10px] font-mono text-outline">JSON</span>
       </summary>
       <pre class="p-space-sm overflow-x-auto text-[11px] font-mono text-on-surface-variant leading-tight bg-surface-container-lowest select-all"><code>${a}</code></pre>
     </details>
-  `}function Ke(t="",e){if(e==null||e==="")return"";const a=String(t||"").toLowerCase();if(t&&/code|snippet|command|hcl/i.test(a))return ua(e,pe(t));if(t&&/quiz|question|mcq/i.test(a))return Lr(e,pe(t));if(Array.isArray(e))return e.length===0?"":zr(e)?Wr(e,pe(t)):e.every(s=>s==null||typeof s=="string"||typeof s=="number"||typeof s=="boolean")?Nr(e.map(s=>String(s??"")),pe(t)):e.some(s=>s&&typeof s=="object")?Ur(e):Ne(e,t);if(typeof e=="string"){const o=e.trim();if(o.startsWith("```")&&o.endsWith("```")){const i=o.replace(/^```[a-z]*\n?/i,"").replace(/\n?```$/i,"");return ua(i,pe(t)||"SNIPPET")}return t&&/title|name|heading|concept_title/i.test(a)?`<h3 class="font-headline-md text-headline-md text-primary tracking-tight mt-space-sm mb-space-xs border-b border-outline-variant/20 pb-1">${Y(e)}</h3>`:t?`
+  `}function Ke(t="",e){if(e==null||e==="")return"";const a=String(t||"").toLowerCase();if(t&&/code|snippet|command|hcl/i.test(a))return pa(e,ue(t));if(t&&/quiz|question|mcq/i.test(a))return Wr(e,ue(t));if(Array.isArray(e))return e.length===0?"":Er(e)?zr(e,ue(t)):e.every(s=>s==null||typeof s=="string"||typeof s=="number"||typeof s=="boolean")?Nr(e.map(s=>String(s??"")),ue(t)):e.some(s=>s&&typeof s=="object")?Ur(e):Ne(e,t);if(typeof e=="string"){const o=e.trim();if(o.startsWith("```")&&o.endsWith("```")){const i=o.replace(/^```[a-z]*\n?/i,"").replace(/\n?```$/i,"");return pa(i,ue(t)||"SNIPPET")}return t&&/title|name|heading|concept_title/i.test(a)?`<h3 class="font-headline-md text-headline-md text-primary tracking-tight mt-space-sm mb-space-xs border-b border-outline-variant/20 pb-1">${Y(e)}</h3>`:t?`
         <div class="my-space-xs">
-          <span class="font-mono text-label-sm text-outline uppercase tracking-wider block mb-0.5">${Y(pe(t))}</span>
+          <span class="font-mono text-label-sm text-outline uppercase tracking-wider block mb-0.5">${Y(ue(t))}</span>
           <div class="font-body-md text-body-md text-on-surface-variant leading-relaxed">${U.parse(e)}</div>
         </div>
       `:`<div class="font-body-md text-body-md text-on-surface-variant leading-relaxed my-space-xs">${U.parse(e)}</div>`}if(typeof e=="number"||typeof e=="boolean")return`
       <div class="font-label-sm text-label-sm text-outline my-0.5">
-        <span class="uppercase tracking-wider">${Y(pe(t))}:</span>
+        <span class="uppercase tracking-wider">${Y(ue(t))}:</span>
         <span class="font-mono text-primary-container font-bold">${String(e)}</span>
       </div>
     `;if(typeof e=="object"){const o=Object.entries(e).filter(([s,d])=>d!=null&&d!=="");if(o.length===0)return"";const i=o.map(([s,d])=>Ke(s,d)).join("");return t?`
         <div class="border border-outline-variant/30 bg-surface-container-low/40 p-space-md my-space-sm">
           <div class="font-label-sm text-label-sm text-primary uppercase tracking-wider border-b border-outline-variant/20 pb-1 mb-space-xs font-bold">
-            ${Y(pe(t))}
+            ${Y(ue(t))}
           </div>
           <div class="flex flex-col gap-space-xs">
             ${i}
           </div>
         </div>
-      `:i}return Ne(e,t)}function Mr(t,e=1){if(!t)return"";if(t==="UNREADABLE TRANSMISSION")return`
+      `:i}return Ne(e,t)}function Br(t,e=1){if(!t)return"";if(t==="UNREADABLE TRANSMISSION")return`
       <div class="p-space-lg border border-error/50 bg-error-container/20 text-error font-mono text-label-md my-space-md">
         <div class="font-bold mb-1">[UNREADABLE TRANSMISSION]</div>
         <p class="font-body-sm text-on-surface-variant">The source manuscript contains invalid syntax and could not be parsed.</p>
@@ -33200,7 +31953,7 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         <div class="flex flex-wrap items-center justify-between pb-space-sm border-b border-outline-variant/30 mb-space-md gap-2">
           <div class="flex items-center gap-space-sm font-label-sm text-label-sm uppercase tracking-wider text-outline">
             <span class="text-primary-container font-headline-sm text-headline-sm select-none">+</span>
-            <span class="text-primary font-bold">${Y(pe(o))}</span>
+            <span class="text-primary font-bold">${Y(ue(o))}</span>
           </div>
           <label class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline hover:text-primary cursor-pointer select-none">
             <input 
@@ -33214,7 +31967,7 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         </div>
         ${c}
       </section>
-    `:""}).join("")}let un=null,A=null,X=null,E=null,Q=800,K=520,He=!1,J=1,ee=0,oe=[],Ye=[],ce=0,$e=null,hn=null;const ha={1:{id:1,title:"REQUEST TRACE & SHARED RESPONSIBILITY",subtitle:"User > DNS > CDN > ALB > App > DB with Provider vs. Customer fault attribution",metricDefaults:{latency:"28.4ms",error:"0.00%",throughput:"1.4 Gbps",cost:"$0.64/hr"},nodes:[{id:"user",label:"USER CLIENT",subLabel:"192.168.1.10",xRatio:.1,yRatio:.5,tier:"customer",fault:!1},{id:"dns",label:"ROUTE 53",subLabel:"Anycast Edge PoP",xRatio:.26,yRatio:.35,tier:"provider",fault:!1},{id:"cdn",label:"CLOUDFRONT",subLabel:"Edge Cache PoP",xRatio:.42,yRatio:.5,tier:"provider",fault:!1},{id:"alb",label:"APP LB (ALB)",subLabel:"Regional Multi-AZ",xRatio:.58,yRatio:.5,tier:"provider",fault:!1},{id:"app",label:"ECS APP TASK",subLabel:"Container Runtime",xRatio:.74,yRatio:.5,tier:"customer",fault:!1},{id:"db",label:"AURORA DB",subLabel:"Multi-AZ Primary",xRatio:.9,yRatio:.5,tier:"customer",fault:!1}],links:[{source:"user",target:"dns",label:"UDP 53 (DNS)"},{source:"user",target:"cdn",label:"HTTPS (Anycast)"},{source:"cdn",target:"alb",label:"Origin Request"},{source:"alb",target:"app",label:"L7 Target Group"},{source:"app",target:"db",label:"TCP 5432 (Pool)"}],controlsHtml:`
+    `:""}).join("")}let pn=null,A=null,X=null,R=null,Q=800,K=520,He=!1,J=1,ee=0,oe=[],Ye=[],ce=0,$e=null,hn=null;const ha={1:{id:1,title:"REQUEST TRACE & SHARED RESPONSIBILITY",subtitle:"User > DNS > CDN > ALB > App > DB with Provider vs. Customer fault attribution",metricDefaults:{latency:"28.4ms",error:"0.00%",throughput:"1.4 Gbps",cost:"$0.64/hr"},nodes:[{id:"user",label:"USER CLIENT",subLabel:"192.168.1.10",xRatio:.1,yRatio:.5,tier:"customer",fault:!1},{id:"dns",label:"ROUTE 53",subLabel:"Anycast Edge PoP",xRatio:.26,yRatio:.35,tier:"provider",fault:!1},{id:"cdn",label:"CLOUDFRONT",subLabel:"Edge Cache PoP",xRatio:.42,yRatio:.5,tier:"provider",fault:!1},{id:"alb",label:"APP LB (ALB)",subLabel:"Regional Multi-AZ",xRatio:.58,yRatio:.5,tier:"provider",fault:!1},{id:"app",label:"ECS APP TASK",subLabel:"Container Runtime",xRatio:.74,yRatio:.5,tier:"customer",fault:!1},{id:"db",label:"AURORA DB",subLabel:"Multi-AZ Primary",xRatio:.9,yRatio:.5,tier:"customer",fault:!1}],links:[{source:"user",target:"dns",label:"UDP 53 (DNS)"},{source:"user",target:"cdn",label:"HTTPS (Anycast)"},{source:"cdn",target:"alb",label:"Origin Request"},{source:"alb",target:"app",label:"L7 Target Group"},{source:"app",target:"db",label:"TCP 5432 (Pool)"}],controlsHtml:`
       <div class="flex items-center gap-space-sm text-outline font-label-sm">
         <span class="text-primary-container font-mono">[TIP]</span>
         <span>Click any node on canvas to inject/clear fault. Check log for Shared Responsibility attribution.</span>
@@ -33297,10 +32050,10 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
             [TERRAFORM APPLY (RECONCILE)]
           </button>
         </div>
-      `},onPacketTick:function(t,e){ee>ce&&(ce=ee+1/J,oe.push({id:Math.random(),steps:["git","tf","cloud","finops"],pathIndex:0,progress:0,speed:1.2*J}))},onPacketStep:function(t,e,a,o){return o.id==="finops"&&t.state.isDrifted?(F("FINOPS ANOMALY ALERT: Out-of-band console change! 8 unmanaged GPU nodes provisioned without IaC commit. Cost spiked to $32.80/hr (+6,730%).",!0),he(o.xRatio*Q,o.yRatio*K),te({error:"DRIFT DETECTED",cost:"$32.80/hr"}),!1):!0}}};function Br(t){const e=ha[t]||ha[1],a=Nn(t);if(a&&Array.isArray(a.data))for(const o of a.data){if(!o||typeof o!="object")continue;const i=o.lab||o.scenario||(o.nodes&&o.links?o:null);if(i&&typeof i=="object")return{...e,title:typeof i.title=="string"?i.title:e.title,subtitle:typeof i.subtitle=="string"?i.subtitle:e.subtitle,nodes:Array.isArray(i.nodes)&&i.nodes.length>0?i.nodes:e.nodes,links:Array.isArray(i.links)&&i.links.length>0?i.links:e.links}}return e}function F(t,e=!1){if(!$e)return;const a=document.createElement("div");a.className=`flex items-start gap-2 border-l ${e?"border-error/60 bg-error-container/10 text-error":"border-outline-variant/30 text-on-surface"} pl-2 py-0.5 select-text font-mono text-[11px] leading-tight`,a.innerHTML=`
+      `},onPacketTick:function(t,e){ee>ce&&(ce=ee+1/J,oe.push({id:Math.random(),steps:["git","tf","cloud","finops"],pathIndex:0,progress:0,speed:1.2*J}))},onPacketStep:function(t,e,a,o){return o.id==="finops"&&t.state.isDrifted?(F("FINOPS ANOMALY ALERT: Out-of-band console change! 8 unmanaged GPU nodes provisioned without IaC commit. Cost spiked to $32.80/hr (+6,730%).",!0),he(o.xRatio*Q,o.yRatio*K),te({error:"DRIFT DETECTED",cost:"$32.80/hr"}),!1):!0}}};function Mr(t){const e=ha[t]||ha[1],a=Nn(t);if(a&&Array.isArray(a.data))for(const o of a.data){if(!o||typeof o!="object")continue;const i=o.lab||o.scenario||(o.nodes&&o.links?o:null);if(i&&typeof i=="object")return{...e,title:typeof i.title=="string"?i.title:e.title,subtitle:typeof i.subtitle=="string"?i.subtitle:e.subtitle,nodes:Array.isArray(i.nodes)&&i.nodes.length>0?i.nodes:e.nodes,links:Array.isArray(i.links)&&i.links.length>0?i.links:e.links}}return e}function F(t,e=!1){if(!$e)return;const a=document.createElement("div");a.className=`flex items-start gap-2 border-l ${e?"border-error/60 bg-error-container/10 text-error":"border-outline-variant/30 text-on-surface"} pl-2 py-0.5 select-text font-mono text-[11px] leading-tight`,a.innerHTML=`
     <span class="text-outline text-label-sm shrink-0">t=${ee.toFixed(2)}s</span>
     <span class="flex-1">${t}</span>
-  `,$e.appendChild(a),$e.scrollTop=$e.scrollHeight}function te(t){if(t){if(t.latency){const e=document.getElementById("chip-latency");e&&(e.textContent=t.latency)}if(t.error){const e=document.getElementById("chip-error");e&&(e.textContent=t.error,e.className=t.error==="0.00%"?"text-primary font-bold font-mono":"text-error font-bold font-mono")}if(t.throughput){const e=document.getElementById("chip-throughput");e&&(e.textContent=t.throughput)}if(t.cost){const e=document.getElementById("chip-cost");e&&(e.textContent=t.cost)}}}function he(t,e){for(let a=0;a<5;a++){const o=Math.PI*2*a/5;Ye.push({x:t,y:e,vx:Math.cos(o)*(1.5+Math.random()),vy:Math.sin(o)*(1.5+Math.random()),life:1,color:"#ffb4ab"})}}function ma(){if(!X||!E)return;const t=X.getBoundingClientRect(),e=window.devicePixelRatio||1;X.width=Math.floor(t.width*e),X.height=Math.floor(t.height*e),E.setTransform(1,0,0,1,0,0),E.scale(e,e),Q=t.width,K=t.height}let pn=0;function Ka(t){if(!X||!E)return;pn||(pn=t);const e=Math.min((t-pn)/1e3,.1);pn=t;const a=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!He&&!document.hidden){ee+=e*J,A&&A.onPacketTick&&A.onPacketTick(A,e);for(let o=oe.length-1;o>=0;o--){const i=oe[o];if(i.progress+=e*i.speed*(a?.5:1),i.progress>=1){const s=i.steps[i.pathIndex],d=i.steps[i.pathIndex+1],c=A.nodes.find(p=>p.id===s),u=A.nodes.find(p=>p.id===d);let l=!0;if(A.onPacketStep&&c&&u&&(l=A.onPacketStep(A,i,c,u)),!l){oe.splice(o,1);continue}i.pathIndex++,i.progress=0,i.pathIndex>=i.steps.length-1&&oe.splice(o,1)}}for(let o=Ye.length-1;o>=0;o--){const i=Ye[o];i.x+=i.vx,i.y+=i.vy,i.life-=e*2,i.life<=0&&Ye.splice(o,1)}}Ya(),un=requestAnimationFrame(Ka)}function Ya(){E.fillStyle="#0e0e0e",E.fillRect(0,0,Q,K),E.strokeStyle="#1b1e22",E.lineWidth=.5,E.beginPath();for(let t=0;t<Q;t+=40)E.moveTo(t,0),E.lineTo(t,K);for(let t=0;t<K;t+=40)E.moveTo(0,t),E.lineTo(Q,t);E.stroke(),E.fillStyle="#353a42";for(let t=40;t<Q;t+=80)for(let e=40;e<K;e+=80)E.fillRect(t-1,e-1,2,2);if(A){if(Array.isArray(A.links))for(const t of A.links){const e=A.nodes.find(c=>c.id===t.source),a=A.nodes.find(c=>c.id===t.target);if(!e||!a)continue;const o=e.xRatio*Q,i=e.yRatio*K,s=a.xRatio*Q,d=a.yRatio*K;if(E.strokeStyle="#2d333b",E.lineWidth=1,E.beginPath(),E.moveTo(o,i),E.lineTo(s,d),E.stroke(),t.label){const c=(o+s)/2,u=(i+d)/2-8;E.fillStyle="#6b7280",E.font='9px "Space Mono", monospace',E.textAlign="center",E.fillText(t.label,c,u)}}for(const t of oe){const e=t.steps[t.pathIndex],a=t.steps[t.pathIndex+1],o=A.nodes.find(h=>h.id===e),i=A.nodes.find(h=>h.id===a);if(!o||!i)continue;const s=o.xRatio*Q,d=o.yRatio*K,c=i.xRatio*Q,u=i.yRatio*K,l=s+(c-s)*t.progress,p=d+(u-d)*t.progress;E.fillStyle="#cfe3ff",E.beginPath(),E.arc(l,p,3,0,Math.PI*2),E.fill()}for(const t of Ye)E.fillStyle=t.color,E.globalAlpha=Math.max(0,t.life),E.beginPath(),E.arc(t.x,t.y,2,0,Math.PI*2),E.fill(),E.globalAlpha=1;for(const t of A.nodes){const e=t.xRatio*Q,a=t.yRatio*K,o=t.radius||14;E.fillStyle="#0e0e0e",E.beginPath(),E.arc(e,a,o,0,Math.PI*2),E.fill(),E.strokeStyle=t.fault?"#ffb4ab":"#cfe3ff",E.lineWidth=t.fault?1.5:1,E.beginPath(),E.arc(e,a,o,0,Math.PI*2),E.stroke(),E.fillStyle=t.fault?"#ffb4ab":"#cfe3ff",E.beginPath(),E.arc(e,a,3,0,Math.PI*2),E.fill(),E.font='10px "Space Mono", monospace',E.textAlign="center",E.fillStyle=t.fault?"#ffb4ab":"#fffdff",E.fillText(t.label,e,a-o-8),E.font='8px "Space Mono", monospace',E.fillStyle="#8e9197",E.fillText(t.subLabel||"",e,a+o+14),t.fault&&(E.font='8px "Space Mono", monospace',E.fillStyle="#ffb4ab",E.fillText("[FAULT INJECTED]",e,a+o+26))}}}function Za(t){if(!X||!A)return;const e=X.getBoundingClientRect(),a=t.clientX-e.left,o=t.clientY-e.top;for(const i of A.nodes){const s=i.xRatio*Q,d=i.yRatio*K;if(Math.hypot(a-s,o-d)<=24){i.fault=!i.fault,F(`Node state toggled: ${i.label} -> ${i.fault?"FAULT":"HEALTHY"}`);break}}}function gt(t,e=1){wn(),A=Br(e),ee=0,oe=[],Ye=[],ce=0,He=!1,J=1;const a=[1,2,3,4,5,6].map(h=>`
+  `,$e.appendChild(a),$e.scrollTop=$e.scrollHeight}function te(t){if(t){if(t.latency){const e=document.getElementById("chip-latency");e&&(e.textContent=t.latency)}if(t.error){const e=document.getElementById("chip-error");e&&(e.textContent=t.error,e.className=t.error==="0.00%"?"text-primary font-bold font-mono":"text-error font-bold font-mono")}if(t.throughput){const e=document.getElementById("chip-throughput");e&&(e.textContent=t.throughput)}if(t.cost){const e=document.getElementById("chip-cost");e&&(e.textContent=t.cost)}}}function he(t,e){for(let a=0;a<5;a++){const o=Math.PI*2*a/5;Ye.push({x:t,y:e,vx:Math.cos(o)*(1.5+Math.random()),vy:Math.sin(o)*(1.5+Math.random()),life:1,color:"#ffb4ab"})}}function ma(){if(!X||!R)return;const t=X.getBoundingClientRect(),e=window.devicePixelRatio||1;X.width=Math.floor(t.width*e),X.height=Math.floor(t.height*e),R.setTransform(1,0,0,1,0,0),R.scale(e,e),Q=t.width,K=t.height}let un=0;function Ka(t){if(!X||!R)return;un||(un=t);const e=Math.min((t-un)/1e3,.1);un=t;const a=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!He&&!document.hidden){ee+=e*J,A&&A.onPacketTick&&A.onPacketTick(A,e);for(let o=oe.length-1;o>=0;o--){const i=oe[o];if(i.progress+=e*i.speed*(a?.5:1),i.progress>=1){const s=i.steps[i.pathIndex],d=i.steps[i.pathIndex+1],c=A.nodes.find(u=>u.id===s),p=A.nodes.find(u=>u.id===d);let l=!0;if(A.onPacketStep&&c&&p&&(l=A.onPacketStep(A,i,c,p)),!l){oe.splice(o,1);continue}i.pathIndex++,i.progress=0,i.pathIndex>=i.steps.length-1&&oe.splice(o,1)}}for(let o=Ye.length-1;o>=0;o--){const i=Ye[o];i.x+=i.vx,i.y+=i.vy,i.life-=e*2,i.life<=0&&Ye.splice(o,1)}}Ya(),pn=requestAnimationFrame(Ka)}function Ya(){R.fillStyle="#0e0e0e",R.fillRect(0,0,Q,K),R.strokeStyle="#1b1e22",R.lineWidth=.5,R.beginPath();for(let t=0;t<Q;t+=40)R.moveTo(t,0),R.lineTo(t,K);for(let t=0;t<K;t+=40)R.moveTo(0,t),R.lineTo(Q,t);R.stroke(),R.fillStyle="#353a42";for(let t=40;t<Q;t+=80)for(let e=40;e<K;e+=80)R.fillRect(t-1,e-1,2,2);if(A){if(Array.isArray(A.links))for(const t of A.links){const e=A.nodes.find(c=>c.id===t.source),a=A.nodes.find(c=>c.id===t.target);if(!e||!a)continue;const o=e.xRatio*Q,i=e.yRatio*K,s=a.xRatio*Q,d=a.yRatio*K;if(R.strokeStyle="#2d333b",R.lineWidth=1,R.beginPath(),R.moveTo(o,i),R.lineTo(s,d),R.stroke(),t.label){const c=(o+s)/2,p=(i+d)/2-8;R.fillStyle="#6b7280",R.font='9px "Space Mono", monospace',R.textAlign="center",R.fillText(t.label,c,p)}}for(const t of oe){const e=t.steps[t.pathIndex],a=t.steps[t.pathIndex+1],o=A.nodes.find(h=>h.id===e),i=A.nodes.find(h=>h.id===a);if(!o||!i)continue;const s=o.xRatio*Q,d=o.yRatio*K,c=i.xRatio*Q,p=i.yRatio*K,l=s+(c-s)*t.progress,u=d+(p-d)*t.progress;R.fillStyle="#cfe3ff",R.beginPath(),R.arc(l,u,3,0,Math.PI*2),R.fill()}for(const t of Ye)R.fillStyle=t.color,R.globalAlpha=Math.max(0,t.life),R.beginPath(),R.arc(t.x,t.y,2,0,Math.PI*2),R.fill(),R.globalAlpha=1;for(const t of A.nodes){const e=t.xRatio*Q,a=t.yRatio*K,o=t.radius||14;R.fillStyle="#0e0e0e",R.beginPath(),R.arc(e,a,o,0,Math.PI*2),R.fill(),R.strokeStyle=t.fault?"#ffb4ab":"#cfe3ff",R.lineWidth=t.fault?1.5:1,R.beginPath(),R.arc(e,a,o,0,Math.PI*2),R.stroke(),R.fillStyle=t.fault?"#ffb4ab":"#cfe3ff",R.beginPath(),R.arc(e,a,3,0,Math.PI*2),R.fill(),R.font='10px "Space Mono", monospace',R.textAlign="center",R.fillStyle=t.fault?"#ffb4ab":"#fffdff",R.fillText(t.label,e,a-o-8),R.font='8px "Space Mono", monospace',R.fillStyle="#8e9197",R.fillText(t.subLabel||"",e,a+o+14),t.fault&&(R.font='8px "Space Mono", monospace',R.fillStyle="#ffb4ab",R.fillText("[FAULT INJECTED]",e,a+o+26))}}}function Za(t){if(!X||!A)return;const e=X.getBoundingClientRect(),a=t.clientX-e.left,o=t.clientY-e.top;for(const i of A.nodes){const s=i.xRatio*Q,d=i.yRatio*K;if(Math.hypot(a-s,o-d)<=24){i.fault=!i.fault,F(`Node state toggled: ${i.label} -> ${i.fault?"FAULT":"HEALTHY"}`);break}}}function gt(t,e=1){wn(),A=Mr(e),ee=0,oe=[],Ye=[],ce=0,He=!1,J=1;const a=[1,2,3,4,5,6].map(h=>`
     <a 
       href="#/lab/co${h}" 
       class="px-space-md py-1.5 transition-none ${h===e?"bg-surface-container text-primary-container border-b-2 border-primary-container font-bold":"text-on-surface-variant hover:text-primary"} cursor-pointer"
@@ -33435,7 +32188,7 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         </div>
       </div>
     </div>
-  `,X=document.getElementById("sim-canvas"),X&&(E=X.getContext("2d"),ma(),X.addEventListener("click",Za)),$e=document.getElementById("sim-log-container"),window.ResizeObserver&&X&&(hn=new ResizeObserver(()=>{ma()}),hn.observe(X));const i=document.getElementById("btn-play-pause");i&&i.addEventListener("click",()=>{He=!He,i.textContent=He?"[PLAY ▶]":"[PAUSE]",F(He?"Simulation PAUSED.":"Simulation RUNNING.")});const s=document.getElementById("btn-step-frame");s&&s.addEventListener("click",()=>{ee+=.05*J,A&&A.onPacketTick&&A.onPacketTick(A,.05),Ya(),F(`Stepped +10ms. (t=${ee.toFixed(2)}s)`)});const d=document.getElementById("btn-reset-sim");d&&d.addEventListener("click",()=>{gt(t,e)});const c=document.getElementById("btn-spd-1"),u=document.getElementById("btn-spd-2"),l=document.getElementById("btn-spd-5"),p=(h,y)=>{J=h,[c,u,l].forEach(q=>{q&&(q.className="px-1.5 py-0.5 text-outline hover:text-primary cursor-pointer")}),y&&(y.className="px-1.5 py-0.5 bg-primary-container text-on-primary font-bold cursor-pointer"),F(`Engine speed adjusted to ${h}x.`)};c&&c.addEventListener("click",()=>p(1,c)),u&&u.addEventListener("click",()=>p(2,u)),l&&l.addEventListener("click",()=>p(5,l)),jr(e),pn=performance.now(),un=requestAnimationFrame(Ka)}function jr(t){if(t===2){const e=document.getElementById("ctrl-ramp"),a=document.getElementById("ctrl-warmup"),o=document.getElementById("lbl-ramp"),i=document.getElementById("lbl-warmup");e&&e.addEventListener("input",s=>{A.state.rampRate=parseInt(s.target.value,10),o&&(o.textContent=`${s.target.value} req/s/m`)}),a&&a.addEventListener("input",s=>{A.state.warmupDelay=parseInt(s.target.value,10),i&&(i.textContent=`${s.target.value}s`)})}else if(t===3){const e=document.getElementById("ctrl-sg-web"),a=document.getElementById("ctrl-sg-app"),o=document.getElementById("ctrl-sg-db"),i=document.getElementById("ctrl-nacl-trap");e&&e.addEventListener("click",()=>{A.state.sgWeb=!A.state.sgWeb,e.textContent=`[WEB SG: ${A.state.sgWeb?"ALLOW 443":"DROP"}]`,e.className=`px-2 py-1 border ${A.state.sgWeb?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),a&&a.addEventListener("click",()=>{A.state.sgApp=!A.state.sgApp,a.textContent=`[APP SG: ${A.state.sgApp?"ALLOW 8080":"DROP"}]`,a.className=`px-2 py-1 border ${A.state.sgApp?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),o&&o.addEventListener("click",()=>{A.state.sgDb=!A.state.sgDb,o.textContent=`[DB SG: ${A.state.sgDb?"ALLOW 5432":"DROP"}]`,o.className=`px-2 py-1 border ${A.state.sgDb?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),i&&i.addEventListener("click",()=>{A.state.naclReturnTrap=!A.state.naclReturnTrap,i.textContent=`[NACL RETURN TRAP: ${A.state.naclReturnTrap?"ACTIVE (DROP EPHEMERAL)":"DISABLED (RULE 100)"}]`,i.className=`px-2 py-1 border ${A.state.naclReturnTrap?"border-error text-error bg-error-container/20":"border-outline-variant/60 text-outline"} font-mono text-[10px]`})}else if(t===4){const e=document.getElementById("ctrl-fail-primary"),a=document.getElementById("ctrl-rto"),o=document.getElementById("ctrl-rpo"),i=document.getElementById("lbl-rto"),s=document.getElementById("lbl-rpo");e&&e.addEventListener("click",()=>{A.state.primaryAlive=!A.state.primaryAlive;const d=A.nodes.find(c=>c.id==="primary");d&&(d.fault=!A.state.primaryAlive),e.textContent=A.state.primaryAlive?"[FAIL PRIMARY DB]":"[RESTORE PRIMARY]",e.className=`px-2.5 py-1 border ${A.state.primaryAlive?"border-error text-error":"border-primary-container text-primary-container"} font-mono text-[10px]`,A.state.primaryAlive?F("Primary DB restored. Read replica re-syncing."):(F("DISASTER EVENT: Primary DB (us-east-1a) has failed! Failover Controller initiating Route53 DNS health probe check.",!0),setTimeout(()=>{F("STANDBY PROMOTION: Standby replica (us-west-2b) promoted to Primary Master in 3.4 minutes."),3.4<=A.state.rtoTarget?F(`RESTORE SUCCESS: Measured RTO 3.4m met Target RTO (${A.state.rtoTarget}m). RPO data loss: 0.05m.`):F(`RTO SLA BREACH: Recovery 3.4m exceeded strict target (${A.state.rtoTarget}m).`,!0)},1200))}),a&&a.addEventListener("input",d=>{A.state.rtoTarget=parseInt(d.target.value,10),i&&(i.textContent=`${d.target.value} min`)}),o&&o.addEventListener("input",d=>{A.state.rpoTarget=parseInt(d.target.value,10),s&&(s.textContent=`${d.target.value} min`)})}else if(t===5){const e=document.getElementById("ctrl-scp"),a=document.getElementById("ctrl-bound"),o=document.getElementById("ctrl-identity"),i=document.getElementById("ctrl-resource");e&&e.addEventListener("click",()=>{A.state.scpAllow=!A.state.scpAllow,e.textContent=`[SCP: ${A.state.scpAllow?"ALLOW":"EXPLICIT DENY"}]`,e.className=`px-2 py-0.5 border ${A.state.scpAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),a&&a.addEventListener("click",()=>{A.state.boundaryAllow=!A.state.boundaryAllow,a.textContent=`[BOUNDARY: ${A.state.boundaryAllow?"ALLOW":"RESTRICTED"}]`,a.className=`px-2 py-0.5 border ${A.state.boundaryAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),o&&o.addEventListener("click",()=>{A.state.identityAllow=!A.state.identityAllow,o.textContent=`[IDENTITY: ${A.state.identityAllow?"ALLOW":"NO POLICY"}]`,o.className=`px-2 py-0.5 border ${A.state.identityAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),i&&i.addEventListener("click",()=>{A.state.resourceAllow=!A.state.resourceAllow,i.textContent=`[RESOURCE: ${A.state.resourceAllow?"ALLOW":"DENY BUCKET"}]`,i.className=`px-2 py-0.5 border ${A.state.resourceAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`})}else if(t===6){const e=document.getElementById("ctrl-drift"),a=document.getElementById("ctrl-reconcile");e&&e.addEventListener("click",()=>{A.state.isDrifted=!0,e.textContent="[UNMANAGED DRIFT ACTIVE]",e.className="px-2.5 py-1 border border-error text-error bg-error-container/20 font-mono text-[10px]";const o=A.nodes.find(i=>i.id==="cloud");o&&(o.fault=!0),F("OUT-OF-BAND DRIFT: Operator launched 8x p4d.24xlarge GPU nodes via Console without IaC declaration!",!0),te({error:"DRIFT DETECTED",cost:"$32.80/hr"})}),a&&a.addEventListener("click",()=>{A.state.isDrifted=!1,e&&(e.textContent="[INTRODUCE ROGUE DRIFT]",e.className="px-2.5 py-1 border border-outline text-outline font-mono text-[10px]");const o=A.nodes.find(i=>i.id==="cloud");o&&(o.fault=!1),F("TERRAFORM APPLY: Reconciling state. Destroying 8 unmanaged rogue GPU instances. Drift eliminated."),te({error:"0.00%",cost:"$0.48/hr"})})}}function wn(){un&&(cancelAnimationFrame(un),un=null),hn&&X&&(hn.unobserve(X),hn=null),X&&(X.removeEventListener("click",Za),X=null,E=null),$e=null,A=null}const Je=document.getElementById("app"),ye={lessonActiveFileIndex:{},sourceActivePath:null};function mn(t){const e={ephemeris:document.getElementById("nav-ephemeris"),lesson:document.getElementById("nav-lesson"),lab:document.getElementById("nav-lab"),source:document.getElementById("nav-source")},a="text-primary-container border-b border-primary-container",o="text-on-surface-variant hover:text-primary";for(const[i,s]of Object.entries(e))s&&(i===t?(s.className=`transition-none py-1 ${a}`,s.setAttribute("aria-current","page")):(s.className=`transition-none py-1 ${o}`,s.removeAttribute("aria-current")))}function Ja(t){const e=(t||"empty").toUpperCase();return e==="READY"?'<span class="border border-primary-container/40 bg-primary-container/10 px-1.5 py-0.5 text-primary-container font-mono text-[9px] tracking-widest uppercase">READY</span>':e==="PARTIAL"?'<span class="border border-[#e0c068]/50 bg-[#e0c068]/10 px-1.5 py-0.5 text-[#e0c068] font-mono text-[9px] tracking-widest uppercase">PARTIAL</span>':'<span class="border border-outline-variant/40 bg-surface-container px-1.5 py-0.5 text-outline font-mono text-[9px] tracking-widest uppercase">EMPTY</span>'}function Fr(t){const e=`void:progress:co${t}`;let a={};try{a=JSON.parse(localStorage.getItem(e)||"{}")}catch{}document.querySelectorAll(`.section-done-checkbox[data-co="${t}"]`).forEach(i=>{const s=i.getAttribute("data-sec");i.checked=!!a[s]}),Xa(t)}function Xa(t){const e=`void:progress:co${t}`;let a={};try{a=JSON.parse(localStorage.getItem(e)||"{}")}catch{}const i=document.querySelectorAll(`.section-done-checkbox[data-co="${t}"]`).length,s=Object.keys(a).filter(l=>a[l]).length,d=i>0?Math.min(100,Math.round(s/i*100)):0,c=document.getElementById("sidebar-progress-percent"),u=document.getElementById("sidebar-progress-bar");c&&(c.innerText=`${d}% (${s}/${i})`),u&&(u.style.width=`${d}%`)}function fa(){wn(),mn("ephemeris");const t=Co(),e=ht.map(a=>{const o=Nn(a.id),i=Ja(o.status),s=a.sessions.map(d=>`S0${d.number}: ${d.title}`).join(" · ");return`
+  `,X=document.getElementById("sim-canvas"),X&&(R=X.getContext("2d"),ma(),X.addEventListener("click",Za)),$e=document.getElementById("sim-log-container"),window.ResizeObserver&&X&&(hn=new ResizeObserver(()=>{ma()}),hn.observe(X));const i=document.getElementById("btn-play-pause");i&&i.addEventListener("click",()=>{He=!He,i.textContent=He?"[PLAY ▶]":"[PAUSE]",F(He?"Simulation PAUSED.":"Simulation RUNNING.")});const s=document.getElementById("btn-step-frame");s&&s.addEventListener("click",()=>{ee+=.05*J,A&&A.onPacketTick&&A.onPacketTick(A,.05),Ya(),F(`Stepped +10ms. (t=${ee.toFixed(2)}s)`)});const d=document.getElementById("btn-reset-sim");d&&d.addEventListener("click",()=>{gt(t,e)});const c=document.getElementById("btn-spd-1"),p=document.getElementById("btn-spd-2"),l=document.getElementById("btn-spd-5"),u=(h,y)=>{J=h,[c,p,l].forEach(T=>{T&&(T.className="px-1.5 py-0.5 text-outline hover:text-primary cursor-pointer")}),y&&(y.className="px-1.5 py-0.5 bg-primary-container text-on-primary font-bold cursor-pointer"),F(`Engine speed adjusted to ${h}x.`)};c&&c.addEventListener("click",()=>u(1,c)),p&&p.addEventListener("click",()=>u(2,p)),l&&l.addEventListener("click",()=>u(5,l)),jr(e),un=performance.now(),pn=requestAnimationFrame(Ka)}function jr(t){if(t===2){const e=document.getElementById("ctrl-ramp"),a=document.getElementById("ctrl-warmup"),o=document.getElementById("lbl-ramp"),i=document.getElementById("lbl-warmup");e&&e.addEventListener("input",s=>{A.state.rampRate=parseInt(s.target.value,10),o&&(o.textContent=`${s.target.value} req/s/m`)}),a&&a.addEventListener("input",s=>{A.state.warmupDelay=parseInt(s.target.value,10),i&&(i.textContent=`${s.target.value}s`)})}else if(t===3){const e=document.getElementById("ctrl-sg-web"),a=document.getElementById("ctrl-sg-app"),o=document.getElementById("ctrl-sg-db"),i=document.getElementById("ctrl-nacl-trap");e&&e.addEventListener("click",()=>{A.state.sgWeb=!A.state.sgWeb,e.textContent=`[WEB SG: ${A.state.sgWeb?"ALLOW 443":"DROP"}]`,e.className=`px-2 py-1 border ${A.state.sgWeb?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),a&&a.addEventListener("click",()=>{A.state.sgApp=!A.state.sgApp,a.textContent=`[APP SG: ${A.state.sgApp?"ALLOW 8080":"DROP"}]`,a.className=`px-2 py-1 border ${A.state.sgApp?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),o&&o.addEventListener("click",()=>{A.state.sgDb=!A.state.sgDb,o.textContent=`[DB SG: ${A.state.sgDb?"ALLOW 5432":"DROP"}]`,o.className=`px-2 py-1 border ${A.state.sgDb?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),i&&i.addEventListener("click",()=>{A.state.naclReturnTrap=!A.state.naclReturnTrap,i.textContent=`[NACL RETURN TRAP: ${A.state.naclReturnTrap?"ACTIVE (DROP EPHEMERAL)":"DISABLED (RULE 100)"}]`,i.className=`px-2 py-1 border ${A.state.naclReturnTrap?"border-error text-error bg-error-container/20":"border-outline-variant/60 text-outline"} font-mono text-[10px]`})}else if(t===4){const e=document.getElementById("ctrl-fail-primary"),a=document.getElementById("ctrl-rto"),o=document.getElementById("ctrl-rpo"),i=document.getElementById("lbl-rto"),s=document.getElementById("lbl-rpo");e&&e.addEventListener("click",()=>{A.state.primaryAlive=!A.state.primaryAlive;const d=A.nodes.find(c=>c.id==="primary");d&&(d.fault=!A.state.primaryAlive),e.textContent=A.state.primaryAlive?"[FAIL PRIMARY DB]":"[RESTORE PRIMARY]",e.className=`px-2.5 py-1 border ${A.state.primaryAlive?"border-error text-error":"border-primary-container text-primary-container"} font-mono text-[10px]`,A.state.primaryAlive?F("Primary DB restored. Read replica re-syncing."):(F("DISASTER EVENT: Primary DB (us-east-1a) has failed! Failover Controller initiating Route53 DNS health probe check.",!0),setTimeout(()=>{F("STANDBY PROMOTION: Standby replica (us-west-2b) promoted to Primary Master in 3.4 minutes."),3.4<=A.state.rtoTarget?F(`RESTORE SUCCESS: Measured RTO 3.4m met Target RTO (${A.state.rtoTarget}m). RPO data loss: 0.05m.`):F(`RTO SLA BREACH: Recovery 3.4m exceeded strict target (${A.state.rtoTarget}m).`,!0)},1200))}),a&&a.addEventListener("input",d=>{A.state.rtoTarget=parseInt(d.target.value,10),i&&(i.textContent=`${d.target.value} min`)}),o&&o.addEventListener("input",d=>{A.state.rpoTarget=parseInt(d.target.value,10),s&&(s.textContent=`${d.target.value} min`)})}else if(t===5){const e=document.getElementById("ctrl-scp"),a=document.getElementById("ctrl-bound"),o=document.getElementById("ctrl-identity"),i=document.getElementById("ctrl-resource");e&&e.addEventListener("click",()=>{A.state.scpAllow=!A.state.scpAllow,e.textContent=`[SCP: ${A.state.scpAllow?"ALLOW":"EXPLICIT DENY"}]`,e.className=`px-2 py-0.5 border ${A.state.scpAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),a&&a.addEventListener("click",()=>{A.state.boundaryAllow=!A.state.boundaryAllow,a.textContent=`[BOUNDARY: ${A.state.boundaryAllow?"ALLOW":"RESTRICTED"}]`,a.className=`px-2 py-0.5 border ${A.state.boundaryAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),o&&o.addEventListener("click",()=>{A.state.identityAllow=!A.state.identityAllow,o.textContent=`[IDENTITY: ${A.state.identityAllow?"ALLOW":"NO POLICY"}]`,o.className=`px-2 py-0.5 border ${A.state.identityAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`}),i&&i.addEventListener("click",()=>{A.state.resourceAllow=!A.state.resourceAllow,i.textContent=`[RESOURCE: ${A.state.resourceAllow?"ALLOW":"DENY BUCKET"}]`,i.className=`px-2 py-0.5 border ${A.state.resourceAllow?"border-primary-container text-primary-container":"border-error text-error"} font-mono text-[10px]`})}else if(t===6){const e=document.getElementById("ctrl-drift"),a=document.getElementById("ctrl-reconcile");e&&e.addEventListener("click",()=>{A.state.isDrifted=!0,e.textContent="[UNMANAGED DRIFT ACTIVE]",e.className="px-2.5 py-1 border border-error text-error bg-error-container/20 font-mono text-[10px]";const o=A.nodes.find(i=>i.id==="cloud");o&&(o.fault=!0),F("OUT-OF-BAND DRIFT: Operator launched 8x p4d.24xlarge GPU nodes via Console without IaC declaration!",!0),te({error:"DRIFT DETECTED",cost:"$32.80/hr"})}),a&&a.addEventListener("click",()=>{A.state.isDrifted=!1,e&&(e.textContent="[INTRODUCE ROGUE DRIFT]",e.className="px-2.5 py-1 border border-outline text-outline font-mono text-[10px]");const o=A.nodes.find(i=>i.id==="cloud");o&&(o.fault=!1),F("TERRAFORM APPLY: Reconciling state. Destroying 8 unmanaged rogue GPU instances. Drift eliminated."),te({error:"0.00%",cost:"$0.48/hr"})})}}function wn(){pn&&(cancelAnimationFrame(pn),pn=null),hn&&X&&(hn.unobserve(X),hn=null),X&&(X.removeEventListener("click",Za),X=null,R=null),$e=null,A=null}const Je=document.getElementById("app"),ye={lessonActiveFileIndex:{},sourceActivePath:null};function mn(t){const e={ephemeris:document.getElementById("nav-ephemeris"),lesson:document.getElementById("nav-lesson"),lab:document.getElementById("nav-lab"),source:document.getElementById("nav-source")},a="text-primary-container border-b border-primary-container",o="text-on-surface-variant hover:text-primary";for(const[i,s]of Object.entries(e))s&&(i===t?(s.className=`transition-none py-1 ${a}`,s.setAttribute("aria-current","page")):(s.className=`transition-none py-1 ${o}`,s.removeAttribute("aria-current")))}function Ja(t){const e=(t||"empty").toUpperCase();return e==="READY"?'<span class="border border-primary-container/40 bg-primary-container/10 px-1.5 py-0.5 text-primary-container font-mono text-[9px] tracking-widest uppercase">READY</span>':e==="PARTIAL"?'<span class="border border-[#e0c068]/50 bg-[#e0c068]/10 px-1.5 py-0.5 text-[#e0c068] font-mono text-[9px] tracking-widest uppercase">PARTIAL</span>':'<span class="border border-outline-variant/40 bg-surface-container px-1.5 py-0.5 text-outline font-mono text-[9px] tracking-widest uppercase">EMPTY</span>'}function Fr(t){const e=`void:progress:co${t}`;let a={};try{a=JSON.parse(localStorage.getItem(e)||"{}")}catch{}document.querySelectorAll(`.section-done-checkbox[data-co="${t}"]`).forEach(i=>{const s=i.getAttribute("data-sec");i.checked=!!a[s]}),Xa(t)}function Xa(t){const e=`void:progress:co${t}`;let a={};try{a=JSON.parse(localStorage.getItem(e)||"{}")}catch{}const i=document.querySelectorAll(`.section-done-checkbox[data-co="${t}"]`).length,s=Object.keys(a).filter(l=>a[l]).length,d=i>0?Math.min(100,Math.round(s/i*100)):0,c=document.getElementById("sidebar-progress-percent"),p=document.getElementById("sidebar-progress-bar");c&&(c.innerText=`${d}% (${s}/${i})`),p&&(p.style.width=`${d}%`)}function fa(){wn(),mn("ephemeris");const t=Co(),e=ht.map(a=>{const o=Nn(a.id),i=Ja(o.status),s=a.sessions.map(d=>`S0${d.number}: ${d.title}`).join(" · ");return`
       <div 
         class="group relative flex flex-col md:flex-row md:items-baseline gap-space-md py-space-lg transition-none hover:bg-surface-container-low/40 cursor-pointer"
         onclick="window.location.hash = '#/lesson/co${a.id}'"
@@ -33662,24 +32415,24 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
 
       </div>
     </div>
-  `}function yt(t){wn(),mn("lesson");const e=ht.find(u=>u.id===t)||ht[0],a=Nn(e.id);ye.lessonActiveFileIndex[e.id]===void 0&&(ye.lessonActiveFileIndex[e.id]=0);let o=ye.lessonActiveFileIndex[e.id];o>=a.files.length&&(o=0,ye.lessonActiveFileIndex[e.id]=0);const i=[1,2,3,4,5,6].map(u=>{const l=u===e.id;return`
+  `}function yt(t){wn(),mn("lesson");const e=ht.find(p=>p.id===t)||ht[0],a=Nn(e.id);ye.lessonActiveFileIndex[e.id]===void 0&&(ye.lessonActiveFileIndex[e.id]=0);let o=ye.lessonActiveFileIndex[e.id];o>=a.files.length&&(o=0,ye.lessonActiveFileIndex[e.id]=0);const i=[1,2,3,4,5,6].map(p=>{const l=p===e.id;return`
       <a 
-        href="#/lesson/co${u}" 
+        href="#/lesson/co${p}" 
         class="px-space-md py-1.5 transition-none ${l?"bg-surface-container text-primary-container border-b-2 border-primary-container font-bold":"text-on-surface-variant hover:text-primary"} cursor-pointer"
       >
-        [CO${u}]
+        [CO${p}]
       </a>
     `}).join("");let s="";a.files.length>1&&(s=`
       <div class="w-full bg-surface-container-low/60 border-b border-outline-variant/30 px-margin-mobile lg:px-margin py-1.5 flex items-center gap-space-xs overflow-x-auto text-[11px] font-mono select-none">
         <span class="text-outline uppercase tracking-wider shrink-0 mr-1">ARTIFACTS:</span>
-        ${a.files.map((u,l)=>`
+        ${a.files.map((p,l)=>`
           <button 
             type="button"
             class="sub-tab-btn px-2.5 py-0.5 border ${l===o?"border-primary-container text-primary-container bg-surface-container font-bold":"border-outline-variant/30 text-on-surface-variant hover:text-primary bg-surface-container-lowest"} shrink-0 cursor-pointer uppercase transition-colors"
             data-co="${e.id}"
             data-fidx="${l}"
           >
-            ${u}
+            ${p}
           </button>
         `).join("")}
       </div>
@@ -33696,33 +32449,33 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
             SYLLABUS SEED ALLOCATIONS (4 SESSIONS):
           </div>
           <div class="flex flex-col gap-1">
-            ${e.sessions.map(u=>`
+            ${e.sessions.map(p=>`
               <div class="py-1 border-b border-outline-variant/10 last:border-b-0 text-on-surface font-body-sm flex items-start gap-2">
-                <span class="text-primary-container font-mono text-[11px] font-bold">S0${u.number}</span>
-                <span>${u.title}</span>
+                <span class="text-primary-container font-mono text-[11px] font-bold">S0${p.number}</span>
+                <span>${p.title}</span>
               </div>
             `).join("")}
           </div>
         </div>
       </div>
-    `;else{const u=a.files[o],l=a.data[o];let p="";a.status==="partial"&&(p=`
+    `;else{const p=a.files[o],l=a.data[o];let u="";a.status==="partial"&&(u=`
         <div class="p-space-sm border border-outline-variant/30 bg-surface-container-low/50 text-outline font-label-sm italic my-space-sm flex items-center gap-space-sm">
           <span class="inline-block w-2 h-2 bg-[#e0c068] animate-pulse"></span>
           <span>PARTIAL TELEMETRY DETECTED: Awaiting remaining transmissions for this orbital sector. Telemetry reflects active buffer state.</span>
         </div>
-      `);const h=Mr(l,e.id);d=`
+      `);const h=Br(l,e.id);d=`
       <div class="flex flex-col">
         <div class="flex flex-wrap items-center justify-between pb-space-xs border-b border-outline-variant/30 font-label-sm text-label-sm text-outline">
           <div class="flex items-center gap-space-sm">
             <span class="text-primary font-headline-sm text-headline-sm">+</span>
-            <span class="text-primary font-bold truncate">${u}</span>
+            <span class="text-primary font-bold truncate">${p}</span>
           </div>
           <div class="flex items-center gap-space-sm">
             <span class="text-outline font-mono">FRAME 0${e.id}</span>
           </div>
         </div>
 
-        ${p}
+        ${u}
         ${h}
       </div>
     `}const c=`
@@ -33751,10 +32504,10 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         <span class="text-primary-container font-mono">[${e.code}]</span>
       </div>
       <nav class="flex flex-col gap-1.5 mt-1">
-        ${e.sessions.map(u=>`
+        ${e.sessions.map(p=>`
           <div class="flex items-start gap-2 p-1 hover:bg-surface-container-lowest transition-colors">
-            <span class="font-mono text-primary-container text-[11px] font-bold">S0${u.number}</span>
-            <span class="font-body-sm text-on-surface text-[13px] leading-snug">${u.title}</span>
+            <span class="font-mono text-primary-container text-[11px] font-bold">S0${p.number}</span>
+            <span class="font-body-sm text-on-surface text-[13px] leading-snug">${p.title}</span>
           </div>
         `).join("")}
       </nav>
@@ -33845,11 +32598,11 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         </div>
       </div>
     `;return}(!ye.sourceActivePath||!t.some(c=>c.path===ye.sourceActivePath))&&(ye.sourceActivePath=t[0].path);const a=t.find(c=>c.path===ye.sourceActivePath)||t[0],o=Ao(a.path)||"",i=o.split(`
-`),s=[1,2,3,4,5,6].map(c=>{const u=Nn(c),l=t.filter(h=>h.coNum===c);let p="bg-outline-variant/50";return u.status==="ready"?p="bg-primary-container":u.status==="partial"&&(p="bg-[#e0c068]"),`
+`),s=[1,2,3,4,5,6].map(c=>{const p=Nn(c),l=t.filter(h=>h.coNum===c);let u="bg-outline-variant/50";return p.status==="ready"?u="bg-primary-container":p.status==="partial"&&(u="bg-[#e0c068]"),`
       <div class="flex flex-col gap-1 mb-space-xs">
         <div class="flex items-center justify-between text-outline font-label-sm text-label-sm uppercase py-1 border-b border-outline-variant/10">
           <span class="flex items-center gap-1.5">
-            <span class="inline-block w-1.5 h-1.5 ${p}"></span>
+            <span class="inline-block w-1.5 h-1.5 ${u}"></span>
             <span class="font-bold text-on-surface">CO${c}</span>
           </span>
           <span class="font-mono text-[10px] text-outline">${l.length} files</span>
@@ -33868,9 +32621,9 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
           `).join("")}
         </div>
       </div>
-    `}).join(""),d=i.map((c,u)=>{const l=c.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");return`
+    `}).join(""),d=i.map((c,p)=>{const l=c.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");return`
       <div class="table-row hover:bg-surface-container-low/40">
-        <span class="table-cell pr-space-md pl-space-md text-right text-outline select-none w-12 font-label-sm text-label-sm border-r border-outline-variant/20">${String(u+1).padStart(3,"0")}</span>
+        <span class="table-cell pr-space-md pl-space-md text-right text-outline select-none w-12 font-label-sm text-label-sm border-r border-outline-variant/20">${String(p+1).padStart(3,"0")}</span>
         <span class="table-cell pl-space-md text-on-surface whitespace-pre">${l}</span>
       </div>
     `}).join("");Je.innerHTML=`
@@ -33932,4 +32685,4 @@ Please report this to https://github.com/markedjs/marked.`,t){let o="<p>An error
         </div>
       </div>
     </div>
-  `}function qt(){const t=window.location.hash.trim().toLowerCase()||"#/";if(t==="#/"||t==="#"||t===""||t==="#/ephemeris"){fa();return}const e=t.match(/^#\/lesson\/co[-_]?([1-6])/i);if(e){const o=parseInt(e[1],10);yt(o);return}if(t.startsWith("#/lesson")){yt(1);return}const a=t.match(/^#\/lab\/co[-_]?([1-6])/i);if(a){const o=parseInt(a[1],10);mn("lab"),gt(Je,o);return}if(t.startsWith("#/lab")){mn("lab"),gt(Je,1);return}if(t.startsWith("#/source")){ei();return}wn(),fa()}document.addEventListener("click",t=>{const e=t.target.closest(".copy-btn");if(!e)return;const a=e.getAttribute("data-target");let o="";if(a){const i=document.getElementById(a);i&&(o=i.innerText||i.textContent)}o&&navigator.clipboard.writeText(o).then(()=>{const i=e.innerText;e.innerText="COPIED",e.classList.add("text-primary-container"),setTimeout(()=>{e.innerText=i,e.classList.remove("text-primary-container")},1800)}).catch(()=>{})});document.addEventListener("change",t=>{if(!t.target.matches(".section-done-checkbox"))return;const e=t.target.getAttribute("data-co"),a=t.target.getAttribute("data-sec"),o=t.target.checked,i=`void:progress:co${e}`;let s={};try{s=JSON.parse(localStorage.getItem(i)||"{}")}catch{}o?s[a]=!0:delete s[a],localStorage.setItem(i,JSON.stringify(s)),Xa(e)});document.addEventListener("click",t=>{const e=t.target.closest(".sub-tab-btn");if(!e)return;const a=parseInt(e.getAttribute("data-co"),10),o=parseInt(e.getAttribute("data-fidx"),10);ye.lessonActiveFileIndex[a]=o,yt(a)});document.addEventListener("click",t=>{const e=t.target.closest(".source-file-btn");if(!e)return;const a=e.getAttribute("data-path");a&&(ye.sourceActivePath=a,ei())});window.addEventListener("scroll",()=>{const t=document.getElementById("reading-progress-bar");if(!t)return;const e=document.documentElement.scrollTop||document.body.scrollTop,a=(document.documentElement.scrollHeight||document.body.scrollHeight)-document.documentElement.clientHeight,o=a>0?e/a*100:0;t.style.width=`${Math.min(100,Math.max(0,o))}%`},{passive:!0});window.addEventListener("hashchange",qt);window.addEventListener("DOMContentLoaded",qt);qt();
+  `}function Tt(){const t=window.location.hash.trim().toLowerCase()||"#/";if(t==="#/"||t==="#"||t===""||t==="#/ephemeris"){fa();return}const e=t.match(/^#\/lesson\/co[-_]?([1-6])/i);if(e){const o=parseInt(e[1],10);yt(o);return}if(t.startsWith("#/lesson")){yt(1);return}const a=t.match(/^#\/lab\/co[-_]?([1-6])/i);if(a){const o=parseInt(a[1],10);mn("lab"),gt(Je,o);return}if(t.startsWith("#/lab")){mn("lab"),gt(Je,1);return}if(t.startsWith("#/source")){ei();return}wn(),fa()}document.addEventListener("click",t=>{const e=t.target.closest(".copy-btn");if(!e)return;const a=e.getAttribute("data-target");let o="";if(a){const i=document.getElementById(a);i&&(o=i.innerText||i.textContent)}o&&navigator.clipboard.writeText(o).then(()=>{const i=e.innerText;e.innerText="COPIED",e.classList.add("text-primary-container"),setTimeout(()=>{e.innerText=i,e.classList.remove("text-primary-container")},1800)}).catch(()=>{})});document.addEventListener("change",t=>{if(!t.target.matches(".section-done-checkbox"))return;const e=t.target.getAttribute("data-co"),a=t.target.getAttribute("data-sec"),o=t.target.checked,i=`void:progress:co${e}`;let s={};try{s=JSON.parse(localStorage.getItem(i)||"{}")}catch{}o?s[a]=!0:delete s[a],localStorage.setItem(i,JSON.stringify(s)),Xa(e)});document.addEventListener("click",t=>{const e=t.target.closest(".sub-tab-btn");if(!e)return;const a=parseInt(e.getAttribute("data-co"),10),o=parseInt(e.getAttribute("data-fidx"),10);ye.lessonActiveFileIndex[a]=o,yt(a)});document.addEventListener("click",t=>{const e=t.target.closest(".source-file-btn");if(!e)return;const a=e.getAttribute("data-path");a&&(ye.sourceActivePath=a,ei())});window.addEventListener("scroll",()=>{const t=document.getElementById("reading-progress-bar");if(!t)return;const e=document.documentElement.scrollTop||document.body.scrollTop,a=(document.documentElement.scrollHeight||document.body.scrollHeight)-document.documentElement.clientHeight,o=a>0?e/a*100:0;t.style.width=`${Math.min(100,Math.max(0,o))}%`},{passive:!0});window.addEventListener("hashchange",Tt);window.addEventListener("DOMContentLoaded",Tt);Tt();

@@ -1,0 +1,571 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO2
+  concept_id: CO2_08
+  concept_title: Workload Placement and Performance Engineering
+  source_alignment: 'CO2 of uploaded CDIS handout: compute sizing, virtual machines, containers,
+    Kubernetes, autoscaling, serverless, workload placement, purchasing models and cloud cost
+    optimization.'
+  coverage: Workload Placement and Performance Engineering
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: Minimum 350 substantive YAML lines
+learning_outcomes:
+- Explain the main mechanisms and vocabulary of workload placement and performance engineering.
+- Evaluate compute options by workload, latency, scaling and cost constraints.
+- Diagnose utilization, scheduling and provisioning failures using evidence.
+- Compare AWS, Azure and Google Cloud implementation choices.
+- Defend a resource and purchasing decision using measurable assumptions.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Workload Placement and Performance Engineering
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO2_08_U01
+  topic: Placement decision
+  definition: Placement chooses VM, container, Kubernetes, function or batch based on workload
+    constraints.
+  detailed_explanation: Use measurable latency, throughput, duration and operations requirements.
+  working_principle: For placement decision, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A stateless API uses managed containers.
+  architecture_relationships:
+  - Connect placement decision to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define placement decision and explain its role in compute architecture.
+  - Analyze how placement decision behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of placement decision.
+- unit_id: CO2_08_U02
+  topic: Latency targets
+  definition: Tail latency describes slow user experiences better than averages.
+  detailed_explanation: Measure p95 and p99 under realistic load.
+  working_principle: For latency targets, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A payment API must meet a p99 target.
+  architecture_relationships:
+  - Connect latency targets to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define latency targets and explain its role in compute architecture.
+  - Analyze how latency targets behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of latency targets.
+- unit_id: CO2_08_U03
+  topic: Throughput
+  definition: Throughput is completed work per unit time.
+  detailed_explanation: Compare sustainable throughput with arrival rate.
+  working_principle: For throughput, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A worker pool processes 500 jobs per minute.
+  architecture_relationships:
+  - Connect throughput to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define throughput and explain its role in compute architecture.
+  - Analyze how throughput behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of throughput.
+- unit_id: CO2_08_U04
+  topic: Concurrency
+  definition: Concurrency is simultaneous in-flight work.
+  detailed_explanation: Excess concurrency can saturate databases and queues.
+  working_principle: For concurrency, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: Too many API workers exhaust DB connections.
+  architecture_relationships:
+  - Connect concurrency to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define concurrency and explain its role in compute architecture.
+  - Analyze how concurrency behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of concurrency.
+- unit_id: CO2_08_U05
+  topic: Statefulness
+  definition: Stateful workloads need durable state and careful placement.
+  detailed_explanation: Separate stateless scaling from data persistence.
+  working_principle: For statefulness, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: An API uses an external database.
+  architecture_relationships:
+  - Connect statefulness to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define statefulness and explain its role in compute architecture.
+  - Analyze how statefulness behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of statefulness.
+- unit_id: CO2_08_U06
+  topic: Startup time
+  definition: Startup time influences scale-out and event-driven responsiveness.
+  detailed_explanation: Measure image pull, initialization and readiness.
+  working_principle: For startup time, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A large container image delays deployment.
+  architecture_relationships:
+  - Connect startup time to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define startup time and explain its role in compute architecture.
+  - Analyze how startup time behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of startup time.
+- unit_id: CO2_08_U07
+  topic: GPU workloads
+  definition: Accelerator workloads require compatible hardware, drivers and scheduling.
+  detailed_explanation: Evaluate cost per completed task.
+  working_principle: For gpu workloads, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A model inference service uses GPUs.
+  architecture_relationships:
+  - Connect gpu workloads to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define gpu workloads and explain its role in compute architecture.
+  - Analyze how gpu workloads behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of gpu workloads.
+- unit_id: CO2_08_U08
+  topic: Batch placement
+  definition: Batch work tolerates queueing and can exploit discounted interruptible capacity.
+  detailed_explanation: Choose checkpoints and deadlines.
+  working_principle: For batch placement, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A report runs overnight.
+  architecture_relationships:
+  - Connect batch placement to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define batch placement and explain its role in compute architecture.
+  - Analyze how batch placement behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of batch placement.
+- unit_id: CO2_08_U09
+  topic: Regional placement
+  definition: Region and zone choices affect latency, data residency and failure isolation.
+  detailed_explanation: Test user and dependency paths.
+  working_principle: For regional placement, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: An API is deployed near its users and database.
+  architecture_relationships:
+  - Connect regional placement to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define regional placement and explain its role in compute architecture.
+  - Analyze how regional placement behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of regional placement.
+- unit_id: CO2_08_U10
+  topic: Performance bottlenecks
+  definition: Identify whether CPU, memory, storage, network or dependency is limiting.
+  detailed_explanation: Use traces and resource metrics together.
+  working_principle: For performance bottlenecks, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: A slow endpoint is caused by a database lock.
+  architecture_relationships:
+  - Connect performance bottlenecks to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define performance bottlenecks and explain its role in compute architecture.
+  - Analyze how performance bottlenecks behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of performance bottlenecks.
+- unit_id: CO2_08_U11
+  topic: Placement decision table
+  definition: Compare options against mandatory and preferred requirements.
+  detailed_explanation: Document tradeoffs and evidence.
+  working_principle: For placement decision table, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: A team ranks VMs, Kubernetes and functions.
+  architecture_relationships:
+  - Connect placement decision table to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define placement decision table and explain its role in compute architecture.
+  - Analyze how placement decision table behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of placement decision table.
+- unit_id: CO2_08_U12
+  topic: 'Break-fix: won''t scale'
+  definition: A scaling failure can arise from metrics, quotas, image startup, scheduler or capacity.
+  detailed_explanation: Trace the scaling control loop and actual provisioning outcome.
+  working_principle: 'For break-fix: won''t scale, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.'
+  worked_example: Pods remain Pending due to insufficient node resources.
+  architecture_relationships:
+  - 'Connect break-fix: won''t scale to the application''s compute execution path.'
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - 'Define break-fix: won''t scale and explain its role in compute architecture.'
+  - 'Analyze how break-fix: won''t scale behaves under sudden workload growth.'
+  - 'Evaluate the cost, reliability and performance implications of break-fix: won''t scale.'
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_01_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of fundamentals of cloud computing using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_01_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define fundamentals of cloud computing.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A workload experiences a sudden traffic increase. Explain how workload placement and performance
+    engineering influences the response.
+  - A compute workload has poor p95 latency but moderate average CPU. Identify the missing metrics
+    and likely constraints.
+  - A team must choose among VMs, managed containers, Kubernetes and functions under a strict
+    monthly budget. Defend a selection.
+revision:
+  key_terms:
+  - Workload Placement and Performance Engineering
+  - Placement decision
+  - Latency targets
+  - Throughput
+  - Concurrency
+  - Statefulness
+  - Startup time
+  - GPU workloads
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: Workload Placement and Performance Engineering is assessed by understanding its mechanism,
+    choosing an appropriate workload fit, quantifying latency and utilization, and diagnosing
+    failure through resource and control-plane evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

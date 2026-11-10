@@ -1,0 +1,247 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-08
+  title: Edge Protection, WAF, DDoS Mitigation and Threat Detection
+  session_alignment: '19'
+  focus: WAF, DDoS protection, edge security, threat detection and mapping findings to controls.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Threat surface and defense in depth
+  explanation: 'Internet-facing applications face threats at multiple layers: network floods, protocol abuse, application-layer
+    attacks, credential attacks and exploitation of vulnerable components. Defense in depth combines network controls,
+    edge services, application validation, identity controls, patching, monitoring and incident response. No single
+    security service eliminates all threats.'
+  key_points:
+  - 'Network layer: volumetric and protocol-level traffic attacks.'
+  - 'Transport/application layer: connection exhaustion and HTTP request abuse.'
+  - 'Application layer: injection, cross-site scripting, bot abuse and authentication attacks.'
+  - 'Operational layer: exposed secrets, vulnerable dependencies and misconfiguration.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: Web application firewall concepts
+  explanation: A WAF inspects HTTP/HTTPS requests and applies rules to allow, block, count or challenge traffic.
+    Rules may match IP reputation, URI paths, headers, query parameters, request bodies, rate patterns or known
+    attack signatures. WAFs are useful for reducing common web attack traffic but cannot replace secure application
+    coding, input validation or authorization.
+  key_points:
+  - 'Managed rules: provider-maintained or curated rule groups.'
+  - 'Custom rules: application-specific allow/deny logic.'
+  - 'Rate-based rules: limit request frequency from a source or key.'
+  - 'Logging: record matched rule, action, request metadata and outcome.'
+  - 'False positives: legitimate requests incorrectly blocked.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: WAF deployment and tuning
+  explanation: Deploy a WAF in front of the intended application entry point, confirm traffic actually passes through
+    it, and start in count or monitor mode when safe. Review sampled requests and logs before enforcing broad blocking
+    rules. Exclude only well-understood false positives and document each exception. Test legitimate user flows
+    and representative attack patterns in a controlled environment.
+  key_points:
+  - Inventory public endpoints and origins.
+  - Attach policy to the correct load balancer, gateway or edge distribution.
+  - Enable logging and establish baseline traffic.
+  - Tune rules and rate limits using evidence.
+  - Enforce blocking in stages and monitor impact.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: DDoS concepts and resilience
+  explanation: Distributed denial-of-service attacks attempt to exhaust bandwidth, connection state or application
+    resources using traffic from many sources. Mitigation can include provider edge absorption, rate limiting, caching,
+    autoscaling, upstream filtering and resilient architecture. Application-layer attacks may resemble legitimate
+    traffic and require behavioral controls and application-aware defenses.
+  key_points:
+  - 'Volumetric attack: consumes network bandwidth.'
+  - 'Protocol attack: exhausts connection or protocol state.'
+  - 'Application attack: consumes expensive application resources.'
+  - Design for graceful degradation and protect critical dependencies.
+  - Know escalation paths and provider support procedures.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Threat detection and response
+  explanation: Detection services analyze telemetry to surface suspicious patterns. A finding should trigger triage,
+    correlation, severity assessment and a defined response. Build detections around meaningful signals such as
+    unusual role assumption, impossible travel where applicable, unexpected data access, disabled audit logging
+    or suspicious outbound traffic.
+  key_points:
+  - Confirm finding time, resource, principal and source.
+  - Correlate identity, audit, network and application evidence.
+  - Assess whether the activity is authorized or anomalous.
+  - Contain using scoped credential revocation or network isolation when justified.
+  - Preserve evidence and document recovery.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: Edge-to-origin trust
+  explanation: The origin should not be directly exposed if all public traffic is intended to pass through a WAF
+    or CDN. Restrict origin access to trusted edge paths using supported network or authentication mechanisms. Validate
+    TLS between client and edge and, where required, between edge and origin. Ensure headers used for client identity
+    cannot be spoofed by direct origin requests.
+  key_points:
+  - Restrict origin ingress to the edge service or trusted gateway.
+  - Use authenticated origin access where supported.
+  - Validate forwarded headers and trust boundaries.
+  - Protect administrative endpoints separately.
+  - Test direct-origin access is denied.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Security control mapping
+  explanation: Map each threat to preventive, detective and responsive controls. For example, SQL injection risk
+    maps to parameterized queries and input validation (prevention), WAF rules and application telemetry (additional
+    prevention/detection), and incident response (response). A DDoS scenario maps to edge mitigation, caching, rate
+    limiting, capacity planning and escalation.
+  key_points:
+  - 'Threat: define attacker goal and affected asset.'
+  - 'Prevent: reduce likelihood or block the attack path.'
+  - 'Detect: identify suspicious activity quickly.'
+  - 'Respond: contain, recover and preserve evidence.'
+  - 'Residual risk: state what the controls do not address.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: Edge security validation lab
+  explanation: In a non-production environment, deploy a WAF policy in monitor mode, generate normal test traffic
+    and controlled malformed requests, inspect rule matches, then enable a narrowly scoped block rule. Confirm the
+    origin cannot be reached directly if the architecture requires edge-only access. Record false positives, logs
+    and rollback steps. Never run destructive or high-volume attack tests against public systems.
+  key_points:
+  - Use only a test application and authorized traffic.
+  - Record baseline request patterns.
+  - Test a harmless rule match and expected block.
+  - Verify legitimate traffic remains successful.
+  - Confirm logs contain rule ID, timestamp and action.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

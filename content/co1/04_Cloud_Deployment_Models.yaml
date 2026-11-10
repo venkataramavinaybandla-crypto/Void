@@ -1,0 +1,529 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO1
+  concept_id: CO1_04
+  concept_title: Cloud Deployment Models
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
+    emphasis on CO1 and its lecture/session plan.
+  coverage: public, private, community, hybrid, multicloud, sovereign cloud, cloud bursting, placement
+    decisions and governance
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+learning_outcomes:
+- Define and explain cloud deployment models using precise cloud terminology.
+- Describe the architecture, actors, control boundaries and operational workflow involved.
+- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
+  identical semantics.
+- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
+- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Cloud Deployment Models
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO1_04_U01
+  topic: Public cloud
+  definition: Public cloud infrastructure is provisioned for open use by the general public and
+    operated by a cloud provider.
+  detailed_explanation: The provider offers shared infrastructure and standardized services across
+    customers, with logical isolation and service-specific controls. Customers consume capacity
+    without owning the provider's physical facilities.
+  working_principle: To reason about public cloud, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A startup hosts its customer-facing API in a provider region and uses managed
+    storage and database services.
+  decision_points:
+  - What requirement makes public cloud relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Public cloud does not imply public access to customer workloads or
+    data.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define public cloud and explain why it matters in cloud architecture.
+  - Analyze the example of public cloud and identify one operational risk.
+  - Evaluate the trade-off described for public cloud under a stated workload constraint.
+- unit_id: CO1_04_U02
+  topic: Private cloud
+  definition: Private cloud infrastructure is provisioned for exclusive use by a single organization,
+    though it may be operated by the organization or a third party.
+  detailed_explanation: Private cloud can provide greater control over placement, customization
+    and governance, but the organization or operator must manage capacity, automation, security
+    and lifecycle operations.
+  working_principle: To reason about private cloud, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A bank operates a dedicated cloud environment for workloads with strict internal
+    placement requirements.
+  decision_points:
+  - What requirement makes private cloud relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A virtualized data center is not automatically a mature private cloud
+    unless it offers cloud-like self-service, pooling and automation.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define private cloud and explain why it matters in cloud architecture.
+  - Analyze the example of private cloud and identify one operational risk.
+  - Evaluate the trade-off described for private cloud under a stated workload constraint.
+- unit_id: CO1_04_U03
+  topic: Community cloud
+  definition: Community cloud infrastructure is shared by organizations with common concerns such
+    as mission, security requirements, policy or compliance.
+  detailed_explanation: The community defines governance, membership, shared controls, cost allocation
+    and service responsibilities. It may be operated by one or more community organizations or
+    a third party.
+  working_principle: To reason about community cloud, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: Several public-sector agencies use a jointly governed environment designed around
+    common regulatory requirements.
+  decision_points:
+  - What requirement makes community cloud relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A community cloud is defined by shared organizational concerns, not
+    simply by multiple departments using one account.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define community cloud and explain why it matters in cloud architecture.
+  - Analyze the example of community cloud and identify one operational risk.
+  - Evaluate the trade-off described for community cloud under a stated workload constraint.
+- unit_id: CO1_04_U04
+  topic: Hybrid cloud
+  definition: Hybrid cloud combines distinct cloud infrastructures, such as private and public
+    environments, that remain separate but are connected through technology and management arrangements.
+  detailed_explanation: Hybrid design requires identity integration, network connectivity, data
+    synchronization, workload placement, monitoring and consistent governance across environments.
+  working_principle: To reason about hybrid cloud, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A company keeps a legacy database on premises while a public-cloud application
+    tier accesses it over a private connection.
+  decision_points:
+  - What requirement makes hybrid cloud relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Hybrid is more than having both on-premises servers and a cloud account;
+    integration and coordinated operation are essential.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define hybrid cloud and explain why it matters in cloud architecture.
+  - Analyze the example of hybrid cloud and identify one operational risk.
+  - Evaluate the trade-off described for hybrid cloud under a stated workload constraint.
+- unit_id: CO1_04_U05
+  topic: Multicloud
+  definition: Multicloud uses services from more than one cloud provider, whether for different
+    workloads, resilience, geographic needs or organizational choice.
+  detailed_explanation: It can reduce dependence on one provider but increases identity, networking,
+    policy, skills, observability, data movement and cost complexity. Workload portability is
+    not guaranteed.
+  working_principle: To reason about multicloud, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An organization uses one provider for analytics and another for a customer-facing
+    application due to capability or commercial constraints.
+  decision_points:
+  - What requirement makes multicloud relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Using two providers does not automatically create disaster recovery
+    or avoid lock-in.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define multicloud and explain why it matters in cloud architecture.
+  - Analyze the example of multicloud and identify one operational risk.
+  - Evaluate the trade-off described for multicloud under a stated workload constraint.
+- unit_id: CO1_04_U06
+  topic: Sovereign cloud and data residency
+  definition: Sovereign cloud offerings and regional controls address requirements concerning
+    data location, jurisdiction, operational control and legal authority.
+  detailed_explanation: Evaluate where data is stored, where it is processed, who can administer
+    the service, applicable laws, support access and contractual commitments. Residency and sovereignty
+    are related but not identical.
+  working_principle: To reason about sovereign cloud and data residency, identify the actors,
+    the resource or control being acted upon, the configuration or policy that governs it, the
+    observable result, and the failure modes. Separate the control-plane action from the data-plane
+    behavior whenever both are present.
+  worked_example: A workload stores regulated records in an approved jurisdiction and restricts
+    administrative access according to policy.
+  decision_points:
+  - What requirement makes sovereign cloud and data residency relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Selecting a region alone may not satisfy every sovereignty or cross-border
+    access requirement.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define sovereign cloud and data residency and explain why it matters in cloud architecture.
+  - Analyze the example of sovereign cloud and data residency and identify one operational risk.
+  - Evaluate the trade-off described for sovereign cloud and data residency under a stated workload
+    constraint.
+- unit_id: CO1_04_U07
+  topic: Cloud bursting
+  definition: Cloud bursting temporarily extends a private or primary environment into public
+    cloud capacity when demand exceeds local capacity.
+  detailed_explanation: Bursting requires compatible application deployment, identity, network
+    reachability, data replication, licensing and a method to route traffic to burst capacity.
+  working_principle: To reason about cloud bursting, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A university simulation cluster sends overflow jobs to cloud compute during
+    examination periods.
+  decision_points:
+  - What requirement makes cloud bursting relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Cloud bursting is not synonymous with multicloud; it describes a
+    capacity-extension pattern.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cloud bursting and explain why it matters in cloud architecture.
+  - Analyze the example of cloud bursting and identify one operational risk.
+  - Evaluate the trade-off described for cloud bursting under a stated workload constraint.
+- unit_id: CO1_04_U08
+  topic: Deployment model decision factors
+  definition: Choose a deployment model by evaluating data sensitivity, residency, latency, control,
+    elasticity, skills, availability, cost and regulatory requirements.
+  detailed_explanation: Use explicit constraints and rank trade-offs. Identify which requirements
+    are mandatory and which are preferences, then validate with a representative workload.
+  working_principle: To reason about deployment model decision factors, identify the actors, the
+    resource or control being acted upon, the configuration or policy that governs it, the observable
+    result, and the failure modes. Separate the control-plane action from the data-plane behavior
+    whenever both are present.
+  worked_example: A low-latency edge workload may need local processing while central analytics
+    runs in a public region.
+  decision_points:
+  - What requirement makes deployment model decision factors relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Choosing a model based only on perceived security or prestige ignores
+    operational and economic realities.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define deployment model decision factors and explain why it matters in cloud architecture.
+  - Analyze the example of deployment model decision factors and identify one operational risk.
+  - Evaluate the trade-off described for deployment model decision factors under a stated workload
+    constraint.
+- unit_id: CO1_04_U09
+  topic: Connectivity and integration
+  definition: Hybrid and multicloud environments require reliable connectivity, consistent identity
+    and controlled data exchange.
+  detailed_explanation: Options include VPN, dedicated circuits, private service connectivity,
+    gateways, routing controls and federated identity. Design for redundancy and failure behavior.
+  working_principle: To reason about connectivity and integration, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A private circuit connects a data center to a cloud virtual network with a backup
+    VPN path.
+  decision_points:
+  - What requirement makes connectivity and integration relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Private connectivity does not remove the need for encryption, routing
+    controls or identity authorization.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define connectivity and integration and explain why it matters in cloud architecture.
+  - Analyze the example of connectivity and integration and identify one operational risk.
+  - Evaluate the trade-off described for connectivity and integration under a stated workload
+    constraint.
+- unit_id: CO1_04_U10
+  topic: Governance across environments
+  definition: Governance defines policy, ownership, inventory, tagging, audit, cost allocation
+    and baseline configuration across deployment environments.
+  detailed_explanation: Use common control objectives while allowing provider-specific implementation.
+    Track exceptions, drift, ownership and evidence in a central governance process.
+  working_principle: To reason about governance across environments, identify the actors, the
+    resource or control being acted upon, the configuration or policy that governs it, the observable
+    result, and the failure modes. Separate the control-plane action from the data-plane behavior
+    whenever both are present.
+  worked_example: A policy requires encryption and owner tags across accounts and on-premises
+    environments.
+  decision_points:
+  - What requirement makes governance across environments relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A single dashboard does not guarantee consistent enforcement across
+    independent platforms.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define governance across environments and explain why it matters in cloud architecture.
+  - Analyze the example of governance across environments and identify one operational risk.
+  - Evaluate the trade-off described for governance across environments under a stated workload
+    constraint.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_04_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of cloud deployment models using a small, non-production
+    cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_04_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define cloud deployment models.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
+    propose a diagnostic sequence.
+  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
+    needed.
+  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
+    cost.
+revision:
+  key_terms:
+  - Cloud Deployment Models
+  - abstraction
+  - resource pooling
+  - shared responsibility
+  - failure domain
+  - observability
+  - total cost of ownership
+  - least privilege
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: This concept is best understood by connecting cloud deployment models to workload requirements,
+    architecture boundaries, operational evidence and measurable trade-offs. A defensible answer
+    states the requirement, explains the mechanism, identifies the owner, evaluates limitations
+    and supports the conclusion with evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

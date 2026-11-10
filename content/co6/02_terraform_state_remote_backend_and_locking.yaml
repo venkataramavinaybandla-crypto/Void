@@ -1,0 +1,259 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-02
+  title: Terraform State, Remote Backends, Locking and Recovery
+  lecture_session_alignment: '21'
+  scope: Detailed study notes and applied revision material
+  source_note: Official session/practical alignment follows the supplied course handout. Explanations and examples
+    are expanded learning material.
+learning_objectives:
+- Explain the concepts and lifecycle involved.
+- Evaluate alternative tools and operational approaches.
+- Apply repeatable, secure infrastructure workflows.
+- Interpret plans, state, logs, metrics and cost evidence.
+- Justify decisions against reliability, security, SLO and monetary constraints.
+units:
+- unit: 1
+  title: Purpose of Terraform state
+  explanation: Terraform state maps configuration addresses to real infrastructure objects and stores attributes
+    needed to plan future changes. It helps Terraform determine which objects it manages and what changes are required.
+    State may contain sensitive values even when the configuration does not visibly contain them. Protect state
+    with access controls, encryption, versioning and careful output handling.
+  key_points:
+  - State is an operational database for Terraform, not merely a cache.
+  - State maps resource addresses to provider object identities.
+  - State can contain secrets or sensitive metadata.
+  - Manual editing can corrupt relationships and cause destructive plans.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 2
+  title: Local and remote state
+  explanation: Local state is stored in the working directory and is suitable only for limited individual experiments.
+    Team environments generally require a remote backend so engineers and CI systems share one authoritative state
+    location. Remote backends can provide encryption, access control, versioning and collaboration support depending
+    on provider and configuration.
+  key_points:
+  - 'Local state risks: accidental loss, inconsistent copies and poor collaboration.'
+  - 'Remote state: central controlled storage for team workflows.'
+  - Restrict read access because state may reveal infrastructure details or secret values.
+  - Enable version history and recovery controls where supported.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 3
+  title: Backend configuration and environment separation
+  explanation: A backend identifies where state is stored and how Terraform accesses it. Backend configuration is
+    initialized separately from ordinary resource configuration. Separate state boundaries by application, environment
+    or ownership to reduce blast radius. Do not put backend credentials directly in committed configuration.
+  key_points:
+  - Choose a backend supported by the team and cloud environment.
+  - Separate production and non-production state.
+  - Use distinct state keys or workspaces only when the isolation model is understood.
+  - Keep backend credentials in secure runtime identity or environment configuration.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 4
+  title: State locking and concurrent operations
+  explanation: State locking prevents multiple cooperating Terraform operations from modifying the same state at
+    the same time. Without locking, concurrent plans/applies may overwrite state updates or create conflicting infrastructure
+    operations. Locking behavior depends on backend support and tool version. A lock is a coordination mechanism,
+    not a substitute for change review.
+  key_points:
+  - Lock before state-changing operations when backend supports it.
+  - Wait for a valid active operation rather than forcing unlock casually.
+  - Investigate lock owner, operation and age before intervention.
+  - Use force-unlock only after confirming no active operation holds the lock.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 5
+  title: Two-engineer conflict scenario
+  explanation: Engineer A starts an apply that creates a database. Engineer B starts another apply against the same
+    state and attempts to modify networking. With locking, B should wait or fail safely until A completes. Without
+    effective locking, both may act on stale state, resulting in confusing state records or provider conflicts.
+    The safe process is serialized state mutation and reviewed plans.
+  key_points:
+  - Identify the shared backend and state key.
+  - Confirm lock acquisition and release behavior.
+  - Do not run independent applies against copied state files.
+  - Use CI or a controlled workflow to serialize production changes.
+  - Review resulting state and live resources after interruption.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 6
+  title: State refresh, import and moved resources
+  explanation: Refresh updates Terraform's view of remote object attributes. Import associates an existing object
+    with a Terraform resource address so it can be managed. Moved blocks or state-move operations can change resource
+    addresses without recreating the underlying object when supported. These operations require careful plan review
+    and backups because incorrect mapping can cause replacement or loss of management.
+  key_points:
+  - 'Refresh: reconcile observed provider attributes with state.'
+  - 'Import: begin managing an existing object through configuration and state.'
+  - 'Move: change a resource address while preserving object identity when supported.'
+  - Back up state before sensitive state operations.
+  - Review plan for unexpected create, destroy or replace actions.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 7
+  title: State backup and recovery
+  explanation: Before risky state manipulation, create a protected backup and record the current state version.
+    Recovery may involve restoring a previous backend version, correcting resource mapping or importing an object.
+    Restoring an old state snapshot while infrastructure has continued changing can create divergence. Coordinate
+    recovery with a freeze on concurrent changes.
+  key_points:
+  - Stop competing applies and communicate a change freeze.
+  - Preserve current state and backend version identifiers.
+  - Inspect audit history and provider reality.
+  - Choose a recovery point consistent with actual resources.
+  - Run a plan and reconcile discrepancies before applying.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 8
+  title: State security checklist
+  explanation: State should be encrypted in transit and at rest, access should be limited to the required deployment
+    identities, and backend operations should be logged. Avoid sharing state files through email or public repositories.
+    Protect plan artifacts and CI logs because they may expose values. Separate state administration from routine
+    application permissions where feasible.
+  key_points:
+  - Encrypt backend storage and transport.
+  - Use least-privilege read/write access for state consumers.
+  - Enable access logging and versioning.
+  - Do not commit state files or credentials.
+  - Define recovery ownership and test restoration.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+worked_scenarios:
+- scenario: Two engineers attempt to modify the same production infrastructure state.
+  analysis: Check remote backend, lock ownership and whether another operation is active. Avoid force-unlock without
+    confirming the lock is stale.
+  safe_response: Serialize state mutation, preserve state versions, review the plan and verify provider reality.
+- scenario: A monthly bill spikes while Terraform reports drift.
+  analysis: Correlate billing, resource usage, deployment history, audit events, IaC plan and SLO telemetry. Drift
+    may be intentional and cost may be caused by a separate usage change.
+  safe_response: Stabilize service, collect evidence, classify drift, remediate with a reviewed change and measure
+    actual cost and SLO impact.
+common_misconceptions:
+- IaC does not make infrastructure changes automatically safe.
+- A Terraform plan is a proposal, not proof that apply will succeed.
+- Remote state does not remove the need for locking and access control.
+- A state lock does not replace code review or change approval.
+- Drift must be understood before it is codified or reverted.
+- Application rollback does not always reverse infrastructure or data changes.
+- A budget alert is not necessarily a hard spending cap.
+- Lower cost is not an improvement if the published SLO is violated.
+self_check:
+- question: What is the purpose of Terraform state?
+  answer_elements:
+  - maps configuration addresses to real objects
+  - supports planning
+  - may contain sensitive values
+- question: Why is remote state locking important for teams?
+  answer_elements:
+  - prevents concurrent state mutation
+  - reduces conflicting operations
+  - coordinate shared workflow
+- question: What is infrastructure drift and how should it be handled?
+  answer_elements:
+  - difference between declared and actual state
+  - investigate cause
+  - codify or revert deliberately
+- question: How should an IaC change move through CI/CD?
+  answer_elements:
+  - validation
+  - plan review
+  - approval
+  - apply
+  - post-deployment verification
+- question: How can cloud cost optimization be evaluated responsibly?
+  answer_elements:
+  - billing evidence
+  - unit economics
+  - SLO impact
+  - actual savings
+exam_practice:
+  short_answer:
+  - Differentiate declarative and imperative infrastructure provisioning.
+  - Explain Terraform state and remote locking.
+  - Define reusable modules and explain module versioning.
+  - Explain infrastructure drift and the codify-versus-revert decision.
+  - Differentiate rolling, blue-green and canary deployments.
+  - Define RTO and RPO and explain how they are measured.
+  analytical:
+  - Evaluate Terraform and a cloud-native IaC tool for a multi-account environment.
+  - Analyze a plan containing resource replacement and explain the review steps.
+  - Design an IaC CI/CD pipeline with least-privilege deployment identity.
+  - Diagnose a broken Kubernetes workload using events, logs, selectors and probes.
+  - Analyze NAT, cross-zone and egress charges and propose optimizations.
+  - Evaluate a drift-and-cost-spike incident while preserving an SLO.
+  case_study: A production environment has a Terraform drift alert, a sudden network cost increase and elevated
+    application latency. Prepare an evidence-led investigation, safe remediation sequence, rollback plan and post-change
+    cost/SLO validation.
+glossary:
+- term: IaC
+  definition: Infrastructure as Code.
+- term: State
+  definition: Terraform's mapping between configuration and managed infrastructure objects.
+- term: Backend
+  definition: Configuration describing where and how state is stored.
+- term: State locking
+  definition: Coordination that prevents concurrent state-changing operations.
+- term: Module
+  definition: Reusable package of infrastructure configuration.
+- term: Drift
+  definition: Difference between declared/managed configuration and actual infrastructure.
+- term: CI/CD
+  definition: Continuous integration and continuous delivery/deployment workflows.
+- term: SLO
+  definition: Target for a measured service-level indicator.
+- term: RTO
+  definition: Target time to restore service after disruption.
+- term: RPO
+  definition: Maximum acceptable data-loss interval.
+- term: FinOps
+  definition: Collaborative operating practice for cloud financial accountability and optimization.

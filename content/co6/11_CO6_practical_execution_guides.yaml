@@ -1,0 +1,171 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-PRACTICALS
+  title: CO6 Practical Alignment and Execution Guides
+  scope: Handout-aligned practical reference
+practicals:
+- session: 11
+  handout_task: Analyze module dependencies, remote-state configuration and state locking; implement reusable modules
+    and verify repeatable infrastructure provisioning.
+  objectives:
+  - Understand module dependency relationships.
+  - Configure remote state and locking in an approved lab environment.
+  - Implement reusable modules.
+  - Verify repeatable provisioning.
+  workflow:
+  - Inspect the starter configuration and identify root and child modules.
+  - Map resource dependencies and inputs/outputs.
+  - Configure a supported remote backend using lab-approved credentials.
+  - Initialize the working directory and confirm backend configuration.
+  - Run formatting and validation.
+  - Create a plan and inspect creates, updates, replacements and destroys.
+  - Apply only after review and authorization.
+  - Run a second plan to verify convergence and no unexpected changes.
+  evidence:
+  - Module tree and interface definitions.
+  - Backend configuration with secrets redacted.
+  - Evidence of locking behavior or backend coordination.
+  - Reviewed plan and apply result.
+  - Second plan showing expected stable state.
+  safety:
+  - Never commit state files or credentials.
+  - Do not force-unlock while an apply may still be running.
+  - Use only the designated lab account and resources.
+- session: 12
+  handout_task: Analyze Terraform plans and state information to identify infrastructure drift; diagnose a controlled
+    state-management problem and evaluate safe recovery options.
+  objectives:
+  - Read state and plan output.
+  - Identify differences between configuration, state and live resources.
+  - Diagnose a controlled state issue.
+  - Choose safe recovery options.
+  workflow:
+  - Record the current configuration revision and state version.
+  - Inspect resource addresses and relevant state attributes without exposing secrets.
+  - Refresh/plan using the approved lab workflow.
+  - Identify drift and classify whether it is intended or unauthorized.
+  - Inspect audit/change evidence where available.
+  - Back up state before any recovery operation.
+  - Evaluate import, move, restore or configuration correction as appropriate.
+  - Apply a controlled repair only after review.
+  - Run a final plan and verify live infrastructure.
+  evidence:
+  - Initial plan and state version.
+  - Drift description and root-cause hypothesis.
+  - Recovery option comparison.
+  - Approved change and final clean/expected plan.
+  safety:
+  - Do not edit raw state casually.
+  - Do not restore an old state snapshot without checking live infrastructure.
+  - Do not apply a destructive plan whose consequences are unclear.
+- session: 21
+  handout_task: Evaluate Session Manager and VPC endpoint configurations for security and connectivity; configure
+    bastion-free access and validate private service connectivity.
+  workflow:
+  - Confirm instance registration and management agent health.
+  - Inspect instance role and operator permissions.
+  - Verify private endpoint, DNS and network path requirements.
+  - Start an authorized session without opening unnecessary inbound management ports.
+  - Validate access to the required private service.
+  - Inspect audit evidence and test denial for an unauthorized identity.
+  evidence:
+  - Instance managed/online status.
+  - Identity and endpoint configuration with sensitive values redacted.
+  - Successful authorized session.
+  - Private service connectivity test and audit record.
+- session: 22
+  handout_task: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements; provision
+    the cluster, deploy a workload and validate service discovery.
+  workflow:
+  - Review cluster architecture, network and capacity requirements.
+  - Provision cluster resources in the authorized lab.
+  - Deploy a workload and inspect Pods/Deployments.
+  - Create or inspect Service selectors and endpoints.
+  - Validate DNS-based service discovery from an in-cluster workload.
+  - Record resource utilization and cleanup resources when finished.
+  evidence:
+  - Cluster and node status.
+  - Workload deployment status.
+  - Service and endpoint output.
+  - Successful service discovery test.
+- session: 23
+  handout_task: Evaluate Kubernetes workload configuration and diagnose/repair a deliberately broken BookStash deployment
+    using Kubernetes commands and logs.
+  workflow:
+  - Confirm namespace and target resources.
+  - Inspect Pods, Deployment, Service and events.
+  - Use describe and logs to identify failure evidence.
+  - Check image, configuration references, probes, labels and endpoints.
+  - Make the smallest correction in the source of truth.
+  - Watch rollout and verify application access.
+  - Capture before/after evidence.
+  evidence:
+  - Initial failing status and event/log excerpts.
+  - Root-cause explanation.
+  - Corrected manifest or configuration.
+  - Successful rollout and application smoke test.
+- session: 24
+  handout_task: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs; defend
+    architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+  workflow:
+  - Present architecture and IaC structure.
+  - Show reviewed Terraform plans, state and drift handling.
+  - Present break-fix symptoms, evidence and root cause.
+  - Show recovery test timeline and measured RTO/RPO.
+  - Present actual billing/cost evidence and cost allocation assumptions.
+  - Explain optimization and SLO impact.
+  - Defend alternatives, trade-offs and remaining risks.
+  evidence:
+  - Architecture diagram and decision record.
+  - Terraform configuration/plan/state evidence.
+  - Diagnostic logs and recovery timeline.
+  - Measured RTO/RPO.
+  - Actual cost report and before/after comparison.
+  - SLO and validation evidence.
+handout_practical_sessions_11_and_12_note: The handout's practical delivery plan also maps CO6 to IAM users/groups
+  (Practical 11) and DynamoDB table creation/items/backup/deletion (Practical 12). These are listed below as syllabus
+  cross-references; the detailed practical session-wise plan separately describes Terraform state/module and drift
+  labs.
+additional_practical_delivery_plan:
+- practical: 11
+  task: Create IAM users Dev1, Dev2, Test1 and Test2; create Dev Team and Ops Team groups; add Dev1 and Dev2 to
+    Dev Team; add Dev1, Test1 and Test2 to Ops Team.
+  checkpoints:
+  - Verify all four identities exist.
+  - Verify both groups exist.
+  - Verify Dev1 belongs to both groups.
+  - Verify Dev2 belongs to Dev Team only.
+  - Verify Test1 and Test2 belong to Ops Team.
+  - Review effective permissions and avoid attaching unnecessary broad policies.
+- practical: 12
+  task: Create a DynamoDB table with partition key ID; add five items; take a backup and delete the table.
+  checkpoints:
+  - Create table with the required partition key.
+  - Insert five valid items with unique key values.
+  - Read back and verify the five items.
+  - Create and verify a backup before deletion.
+  - Delete the table only after confirming backup completion and lab authorization.

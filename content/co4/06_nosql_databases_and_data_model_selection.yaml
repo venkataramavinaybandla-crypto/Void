@@ -1,0 +1,711 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO4
+  concept_id: CO4_06
+  concept_title: NoSQL Databases and Data Model Selection
+  source_alignment: CO4 of the uploaded handout; Sessions 13-16 and Practical Sessions 7-8 where
+    applicable.
+  coverage: Storage access patterns, object/block/file services, managed relational and NoSQL
+    databases, caching, analytics, data processing, backup, disaster recovery, RTO and RPO.
+  line_count_target: At least 300-400 substantive YAML lines
+course_outcome_statement: Evaluate storage and data services — object, block and file at protocol
+  level, managed relational and NoSQL stores, caches and analytics services — by access pattern,
+  durability, latency and unit cost; and design a backup and disaster-recovery posture that meets
+  a stated RTO and RPO.
+learning_outcomes:
+- Evaluate object, block and file storage by protocol, access pattern, durability, latency and
+  cost.
+- Select managed relational and NoSQL databases based on data model, consistency and access pattern.
+- Explain caching, analytics, streaming, ETL, queues, event buses and workflow services.
+- Construct full, incremental and differential backup chains and validate restore procedures.
+- Design disaster recovery strategies against stated RTO and RPO requirements.
+prerequisites:
+- Basic file systems, disks and operating-system storage concepts.
+- Basic SQL and client-server database concepts.
+- Basic networking and cloud service concepts.
+concept_map:
+  central_concept: NoSQL Databases and Data Model Selection
+  dimensions:
+  - Data access pattern and protocol
+  - Durability, availability, latency and throughput
+  - Relational and NoSQL data services
+  - Caching, analytics and event/data processing
+  - Backup, restoration and disaster recovery
+  relationships:
+  - Access patterns determine the appropriate storage and database model.
+  - Storage protocol and performance characteristics affect application design.
+  - Caches reduce repeated backend work but require freshness and invalidation policies.
+  - Analytics and data-processing services move or query data using different latency and throughput
+    models.
+  - Backup and disaster recovery are evaluated through measured RTO, RPO, restore time and cost.
+core_units:
+- unit_id: CO4_06_U01
+  topic: NoSQL overview
+  definition: NoSQL databases use data models such as key-value, document, wide-column and graph
+    rather than relying solely on relational tables.
+  detailed_explanation: Choose based on access patterns, data shape, scale and consistency needs.
+  worked_example: A shopping cart uses a key-value access pattern.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain nosql overview and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of nosql overview.
+- unit_id: CO4_06_U02
+  topic: Key-value model
+  definition: A key-value store retrieves a value using a unique key.
+  detailed_explanation: It supports predictable key-based access but is not designed for arbitrary
+    relational joins.
+  worked_example: A session is retrieved by session ID.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain key-value model and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of key-value model.
+- unit_id: CO4_06_U03
+  topic: Document model
+  definition: A document database stores semi-structured records, commonly JSON-like documents.
+  detailed_explanation: Flexible schemas support evolving records while query and indexing design
+    still matter.
+  worked_example: A product document contains nested attributes.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain document model and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of document model.
+- unit_id: CO4_06_U04
+  topic: Wide-column model
+  definition: A wide-column database organizes data by partition and clustering keys for high-scale
+    access patterns.
+  detailed_explanation: Partition-key design strongly influences distribution and query efficiency.
+  worked_example: Time-series events are queried by device and time range.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain wide-column model and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of wide-column model.
+- unit_id: CO4_06_U05
+  topic: Graph model
+  definition: A graph database represents entities as vertices and relationships as edges.
+  detailed_explanation: It is useful when traversing relationships is central to the workload.
+  worked_example: A recommendation system explores user-item relationships.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain graph model and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of graph model.
+- unit_id: CO4_06_U06
+  topic: Partition key
+  definition: A partition key determines how records are distributed or located in a partitioned
+    NoSQL system.
+  detailed_explanation: Avoid hot keys and select a key that matches query access patterns.
+  worked_example: A single global counter creates a hot partition.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain partition key and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of partition key.
+- unit_id: CO4_06_U07
+  topic: Consistency models
+  definition: Consistency models define when reads observe writes across replicas or nodes.
+  detailed_explanation: Select consistency based on correctness, latency and availability requirements.
+  worked_example: A shopping cart may tolerate bounded eventual consistency while account balances
+    need stronger guarantees.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain consistency models and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of consistency models.
+- unit_id: CO4_06_U08
+  topic: Eventual consistency
+  definition: Eventual consistency means replicas converge if updates stop and propagation completes.
+  detailed_explanation: Applications must tolerate temporary stale reads or use stronger read
+    options where offered.
+  worked_example: A recently updated profile may briefly show an older value.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain eventual consistency and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of eventual consistency.
+- unit_id: CO4_06_U09
+  topic: Global relational databases
+  definition: Global relational offerings replicate relational data across regions while preserving
+    provider-defined write and consistency models.
+  detailed_explanation: Understand write locality, conflict handling and regional failover behavior.
+  worked_example: A globally distributed application serves local reads from regional replicas.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain global relational databases and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of global relational databases.
+- unit_id: CO4_06_U10
+  topic: NoSQL access pattern
+  definition: NoSQL design begins with the queries the application must execute.
+  detailed_explanation: Model keys and indexes around access patterns rather than normalizing
+    data by default.
+  worked_example: A table supports lookup by customer ID and recent order time.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain nosql access pattern and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of nosql access pattern.
+- unit_id: CO4_06_U11
+  topic: Hot partition
+  definition: A hot partition receives disproportionate traffic compared with other partitions.
+  detailed_explanation: Distribute keys and avoid low-cardinality partition design.
+  worked_example: All events use the same tenant key and overload one partition.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain hot partition and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of hot partition.
+- unit_id: CO4_06_U12
+  topic: Index design
+  definition: Secondary indexes support additional query patterns at extra storage and write cost.
+  detailed_explanation: Project only needed attributes and understand index consistency and limits.
+  worked_example: An index supports searching orders by status.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain index design and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of index design.
+- unit_id: CO4_06_U13
+  topic: NoSQL transactions
+  definition: Some NoSQL systems support transactions or conditional writes with provider-specific
+    limits.
+  detailed_explanation: Use atomic operations where correctness requires them.
+  worked_example: An inventory update uses a conditional decrement to avoid negative stock.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain nosql transactions and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of nosql transactions.
+- unit_id: CO4_06_U14
+  topic: Relational versus NoSQL
+  definition: Relational systems favor structured relationships and transactional SQL; NoSQL systems
+    can favor flexible models and scale patterns.
+  detailed_explanation: Neither category is universally faster or more scalable; evaluate workload
+    requirements.
+  worked_example: A financial ledger favors relational constraints while a session store uses
+    key-value access.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain relational versus nosql and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of relational versus nosql.
+- unit_id: CO4_06_U15
+  topic: NoSQL troubleshooting
+  definition: Inspect partition distribution, throttling, key design, index usage, consistency
+    settings and request limits.
+  detailed_explanation: Use workload metrics to distinguish capacity shortage from hot-key design.
+  worked_example: A query is throttled because one partition receives concentrated traffic.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain nosql troubleshooting and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of nosql troubleshooting.
+provider_comparison:
+  aws: 'AWS examples: S3; EBS; EFS and FSx; RDS and Aurora; DynamoDB; ElastiCache; Redshift and
+    Athena; Kinesis; SQS and EventBridge; Glue and Step Functions; AWS Backup; Snow Family.'
+  azure: 'Azure examples: Blob Storage; Managed Disks; Azure Files; Azure SQL Database and Managed
+    Instance; Cosmos DB; managed Redis offerings; Synapse/Fabric analytics; Event Hubs; Service
+    Bus and Event Grid; Data Factory and Logic Apps; Azure Backup; Data Box.'
+  google_cloud: 'Google Cloud examples: Cloud Storage; Persistent Disk and Hyperdisk; Filestore;
+    Cloud SQL and AlloyDB; Firestore and Bigtable; Memorystore; BigQuery; Pub/Sub; Dataflow and
+    Workflows; Backup and DR; Transfer Appliance.'
+  comparison_method: Compare actual workload fit and service semantics rather than assuming that
+    similarly named products are identical.
+  checklist:
+  - Which protocols and APIs are supported?
+  - What durability and availability design is provided?
+  - What latency, throughput, IOPS and scaling limits apply?
+  - How are backups, snapshots, versioning and immutability implemented?
+  - What consistency and replication behavior is provided?
+  - Which costs apply to capacity, requests, retrieval, compute and transfer?
+  - Can the service meet the required RTO and RPO in a tested recovery?
+architecture_workflow:
+  data_lifecycle:
+  - Generate or ingest data.
+  - Validate schema, identity and metadata.
+  - Write to the storage or database service selected for the access pattern.
+  - Use cache or read replicas where they meet freshness requirements.
+  - Process or analyze data through query, ETL, stream or workflow services.
+  - Protect data through backup, versioning, replication and retention.
+  - Test restoration and record recovery evidence.
+  design_steps:
+  - Classify data by structure, size, sensitivity, access frequency and retention.
+  - Define read/write patterns, concurrency, consistency and latency targets.
+  - Select object, block, file, relational or NoSQL services.
+  - Estimate capacity, IOPS, throughput, request volume and unit cost.
+  - Design cache and analytics paths without violating freshness requirements.
+  - Define backup frequency, retention, isolation and encryption.
+  - Set explicit RTO and RPO values for each workload tier.
+  - Choose a recovery strategy and document dependency order.
+  - Run restore and failover tests and compare measured results with objectives.
+  evidence_to_collect:
+  - Storage access pattern and protocol matrix
+  - Volume performance and filesystem capacity metrics
+  - Object lifecycle, versioning and retention configuration
+  - Database connection, query and replication metrics
+  - Cache hit ratio and eviction metrics
+  - Pipeline backlog, throughput and processing lag
+  - Backup job history and recovery point metadata
+  - Restore duration, data-loss window and recovery cost
+practical_alignment:
+- lab_id: CO4_06_LAB_EBS
+  title: Launch Linux EC2, attach a 20 GB EBS volume and resize it
+  handout_alignment: Practical Session 7, mapped to CO4.
+  objective: Attach a block storage volume to a Linux instance, inspect it safely, expand it and
+    verify that the guest operating system reflects the new size.
+  procedure:
+  - Launch a temporary Linux EC2 instance.
+  - Create a 20 GB EBS volume in a compatible Availability Zone.
+  - Attach the volume to the instance.
+  - Identify the correct device using read-only operating-system inspection commands.
+  - Create a filesystem only if the volume is new and empty.
+  - Mount the volume and verify read/write access.
+  - Create a snapshot before the resize exercise.
+  - Increase the EBS volume size in the provider control plane.
+  - Expand the partition if applicable and then grow the filesystem using the correct filesystem-specific
+    utility.
+  - Verify the new block-device and filesystem capacity inside Linux.
+  - Record the before/after evidence and remove lab resources safely.
+  safety_controls:
+  - Never format a device until its identity and data state are confirmed.
+  - Create a snapshot before destructive or irreversible changes.
+  - Use a test instance and non-production data.
+  - Check the device naming and filesystem type before running resize commands.
+  - Delete or detach resources after confirming that no required data remains.
+  deliverables:
+  - Instance and volume details
+  - Device identification evidence
+  - Before/after capacity output
+  - Snapshot record
+  - Teardown confirmation
+- lab_id: CO4_06_LAB_RDS
+  title: Launch an RDS instance and access MySQL using Workbench
+  handout_alignment: Practical Session 8, mapped to CO4.
+  objective: Provision a managed relational database and validate secure client connectivity.
+  procedure:
+  - Select a supported managed MySQL database configuration for a learning environment.
+  - Choose a suitable VPC and private networking configuration.
+  - Configure database credentials using secure secret handling.
+  - Restrict inbound database access to the approved client source or application security group.
+  - Create the database and wait for the endpoint to become available.
+  - Connect using MySQL Workbench from an authorized network path.
+  - Run basic schema and query operations using test data.
+  - Inspect connection and database metrics.
+  - Document the endpoint, network policy and query evidence without exposing credentials.
+  - Delete the database after the lab if it is no longer required.
+  safety_controls:
+  - Do not enable unrestricted public database access.
+  - Do not store passwords in YAML, source control or screenshots.
+  - Use test records rather than personal or production data.
+  - Check backup retention and billing before provisioning.
+  - Remove the database or reduce resources after the exercise.
+  deliverables:
+  - Database configuration
+  - Network access rule
+  - Workbench connection evidence with secrets redacted
+  - SQL query output
+  - Teardown or retention decision
+scenario_bank:
+- scenario: A database volume has low average throughput but high query latency.
+  task: Evaluate IOPS, queue depth, random I/O, locks and application wait time.
+  expected_reasoning: Average throughput alone cannot establish that storage is not the bottleneck.
+- scenario: A team stores large objects in a hot storage tier but reads them only once per year.
+  task: Evaluate lifecycle transitions, retrieval charges and retention requirements.
+  expected_reasoning: A colder tier may reduce capacity cost but retrieval delay and fees must
+    be included.
+- scenario: A relational database is healthy but read traffic causes primary CPU saturation.
+  task: Evaluate indexing, caching and read replicas.
+  expected_reasoning: Read scaling options should be selected while accounting for replica lag
+    and consistency.
+- scenario: A NoSQL table throttles despite spare aggregate capacity.
+  task: Inspect partition-key distribution and hot partitions.
+  expected_reasoning: Concentrated access to one partition can cause throttling even when total
+    capacity appears available.
+- scenario: A backup job reports success but a restore fails.
+  task: Inspect backup chain, encryption keys, retention and restore-test evidence.
+  expected_reasoning: A successful backup operation does not prove that a complete and usable
+    recovery path exists.
+- scenario: A workload has a 30-minute RTO and a 5-minute RPO.
+  task: Compare backup/restore, pilot light, warm standby and multi-site options.
+  expected_reasoning: The chosen approach must meet both measured recovery time and data-loss
+    window, not merely one objective.
+common_misconceptions:
+- claim: Object, block and file storage are interchangeable.
+  correction: They expose different access semantics and protocols and fit different workload
+    patterns.
+- claim: RAID is a backup.
+  correction: RAID can improve availability or performance but does not protect against logical
+    deletion, corruption or site loss.
+- claim: A read replica is the same as a standby.
+  correction: A read replica may serve read traffic; a standby is generally intended for failover,
+    depending on the managed service.
+- claim: A cache is always safe to use for database data.
+  correction: Cache freshness, invalidation, consistency and failure behavior must be designed
+    explicitly.
+- claim: A successful backup job proves recoverability.
+  correction: Only a tested restore validates the full recovery process.
+- claim: RTO and RPO measure the same thing.
+  correction: RTO measures time to restore service; RPO measures acceptable data loss in time.
+troubleshooting_method:
+  storage_sequence:
+  - Identify the storage abstraction and operation that failed.
+  - Check resource state, attachment, endpoint and network path.
+  - Inspect capacity, IOPS, throughput, latency and queue depth.
+  - Check filesystem, permissions, quotas and application behavior.
+  - Validate integrity and restore from a protected recovery point if needed.
+  database_sequence:
+  - Confirm DNS, endpoint, port and network access.
+  - Validate identity and credentials without exposing secrets.
+  - Inspect connections, query plans, locks and resource utilization.
+  - Check replication lag, failover events and storage capacity.
+  - Test the application query and record the result.
+  recovery_sequence:
+  - Declare the recovery scenario and start the incident clock.
+  - Identify the selected recovery point and verify required keys and permissions.
+  - Restore infrastructure and data in dependency order.
+  - Validate integrity, application behavior and traffic routing.
+  - Record measured RTO, RPO, data-loss window and cost.
+examination_bank:
+  remember:
+  - Differentiate object, block and file storage.
+  - Define IOPS, throughput, RAID, LUN, RTO and RPO.
+  - List common relational and NoSQL data models.
+  - Define full, incremental and differential backups.
+  understand:
+  - Explain how object lifecycle policies reduce storage cost.
+  - Explain multi-AZ standby versus read replica.
+  - Describe cache-aside and cache invalidation.
+  - Explain how backup-chain dependencies affect restoration.
+  apply:
+  - Select a storage service for a stated access pattern.
+  - Resize a block volume and verify the guest filesystem capacity.
+  - Choose a database model for a given query pattern.
+  - Construct a full and incremental restore sequence.
+  analyze:
+  - Analyze a storage-path failure using device and service metrics.
+  - Diagnose a hot NoSQL partition from access distribution.
+  - Analyze cache stampede and stale-read behavior.
+  - Calculate whether a recovery test meets stated RTO and RPO.
+  evaluate:
+  - Compare object storage classes using total cost and retrieval behavior.
+  - Evaluate relational versus NoSQL for a specified application.
+  - Choose between backup/restore, pilot light, warm standby and multi-site DR.
+  - Compare AWS, Azure and Google Cloud data services by workload semantics and unit cost.
+  scenario_based:
+  - A 20 GB EBS volume is enlarged but Linux still reports the old filesystem size. Explain the
+    verification and expansion layers.
+  - A MySQL application experiences failover and stale reads. Analyze standby, replica and connection
+    behavior.
+  - A data lake query scans excessive data. Recommend partitioning, format and query-in-place
+    improvements.
+  - A restore completes but misses the recovery objective. Identify which stage caused the delay
+    and what evidence is needed.
+revision:
+  key_terms:
+  - Object storage
+  - Block storage
+  - File storage
+  - NFS
+  - SMB
+  - RAID
+  - LUN
+  - Thin provisioning
+  - IOPS
+  - Throughput
+  - Lifecycle policy
+  - Versioning
+  - Object lock
+  - Relational database
+  - Read replica
+  - Multi-AZ standby
+  - NoSQL
+  - Partition key
+  - Cache-aside
+  - Data warehouse
+  - Data lake
+  - ETL
+  - Streaming
+  - Queue
+  - Event bus
+  - Full backup
+  - Incremental backup
+  - Differential backup
+  - RTO
+  - RPO
+  - Pilot light
+  - Warm standby
+  - Multi-site
+  last_minute_checklist:
+  - Can I select storage by access pattern and protocol?
+  - Can I explain IOPS, throughput, RAID and LUNs?
+  - Can I explain object lifecycle, versioning and object lock?
+  - Can I compare relational and NoSQL data models?
+  - Can I explain cache freshness and invalidation?
+  - Can I distinguish ETL, streaming, queues and event buses?
+  - Can I restore a full plus incremental or differential backup chain?
+  - Can I calculate and measure RTO and RPO?
+  - Can I justify a recovery strategy by cost and objectives?
+  summary: CO4 is about matching data services to access patterns and evaluating them through
+    durability, latency, throughput and unit cost. It also requires a recovery design that is
+    tested against explicit RTO and RPO targets. Backup completion is not the same as proven recoverability.
+glossary:
+- term: IOPS
+  meaning: Input/output operations per second.
+- term: LUN
+  meaning: Logical unit number identifying a logical storage unit presented to a host.
+- term: RAID
+  meaning: Redundant array of independent disks; combines devices for performance and/or redundancy.
+- term: ETL
+  meaning: Extract, transform and load.
+- term: RTO
+  meaning: Recovery Time Objective; target maximum time to restore service.
+- term: RPO
+  meaning: Recovery Point Objective; target maximum acceptable data-loss window.
+- term: Pilot light
+  meaning: A DR approach that keeps minimal core resources ready and provisions more capacity
+    during recovery.
+- term: Warm standby
+  meaning: A scaled-down but functional recovery environment kept running.
+study_guidance:
+  recommended_sequence:
+  - Start with object, block and file access semantics.
+  - Study block performance, RAID, LUNs and the EBS resize practical.
+  - Study object lifecycle, versioning, object lock and storage economics.
+  - Compare managed relational and NoSQL databases, then caching.
+  - Understand analytics, ETL, streaming, queues, event buses and workflows.
+  - Construct full, incremental and differential backup chains.
+  - Set RTO/RPO values and compare the four DR strategies.
+  - Complete the EBS and RDS practicals and document evidence.
+  answer_quality_standard: State the workload access pattern, explain the storage or data-service
+    semantics, compare durability and performance, calculate relevant unit costs, and justify
+    recovery using measured RTO and RPO. Keep provider-specific behavior explicit.

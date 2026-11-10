@@ -1,0 +1,248 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-05
+  title: Encryption, KMS, Key Policies and Envelope Encryption
+  session_alignment: '19'
+  focus: Encryption at rest and in transit, key management, envelope encryption and key-policy reasoning.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Security goals and cryptographic basics
+  explanation: Encryption transforms readable plaintext into ciphertext using a cryptographic key. Confidentiality
+    prevents unauthorized disclosure; integrity detects unauthorized modification; authentication helps establish
+    who or what produced a message. Encryption does not automatically solve authorization, availability, endpoint
+    compromise or poor key handling. Strong cryptography depends on sound algorithms, correct implementation and
+    protected keys.
+  key_points:
+  - 'Plaintext: original readable data.'
+  - 'Ciphertext: encrypted representation.'
+  - 'Key: secret or private material used by a cryptographic operation.'
+  - 'Algorithm: defined mathematical procedure.'
+  - 'Nonce/IV: value used by some modes to ensure safe operation; requirements depend on algorithm.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: Encryption at rest and in transit
+  explanation: At-rest encryption protects stored data on disks, object stores, snapshots and backups. In-transit
+    encryption protects communication across networks, commonly using TLS. Application-level encryption may protect
+    selected fields before data reaches a storage service. Choose the layer based on threat model, operational requirements
+    and data sensitivity. Encryption does not prevent an authorized compromised application from reading decrypted
+    data.
+  key_points:
+  - 'At rest: protect media, snapshots, backups and stored objects.'
+  - 'In transit: use TLS with certificate validation and modern configurations.'
+  - 'Application layer: encrypt sensitive fields when storage operators should not see plaintext.'
+  - Verify encryption state rather than assuming a service default is sufficient.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: Symmetric and asymmetric cryptography
+  explanation: 'Symmetric encryption uses the same secret key for encryption and decryption and is efficient for
+    bulk data. Asymmetric cryptography uses a public/private key pair and supports use cases such as key exchange
+    and digital signatures. In practice, secure protocols often combine them: asymmetric techniques establish or
+    authenticate a session, while symmetric keys protect the data stream.'
+  key_points:
+  - 'Symmetric: efficient; key distribution and protection are central challenges.'
+  - 'Asymmetric: public key may be shared; private key must be protected.'
+  - Hashing is not encryption and is not reversible.
+  - Digital signatures provide integrity/authenticity evidence, not confidentiality by themselves.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: Envelope encryption
+  explanation: Envelope encryption encrypts data with a data encryption key (DEK), then encrypts or wraps that DEK
+    with a key-encryption key (KEK) managed by a key-management service. The encrypted data and encrypted DEK can
+    be stored together, while the KEK remains protected by the KMS. This allows efficient bulk encryption without
+    sending every data byte through a central key service.
+  key_points:
+  - Generate or obtain a data key from a trusted key service.
+  - Encrypt application data locally using the plaintext DEK.
+  - Store ciphertext and encrypted DEK; discard plaintext DEK from memory when possible.
+  - To decrypt, request unwrapping of the encrypted DEK and decrypt the data.
+  - Protect encryption context and metadata; they may be required for correct authorization or decryption.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Key management lifecycle
+  explanation: A key lifecycle includes creation, activation, usage, rotation, disablement, revocation or deletion,
+    and archival where applicable. Define key owners, purpose, permitted principals, rotation schedule, backup or
+    recovery expectations and deletion controls. Key deletion can make data permanently unrecoverable, so use waiting
+    periods and approval for destructive operations where supported.
+  key_points:
+  - 'Creation: choose key type, region, purpose and access policy.'
+  - 'Usage: grant only required encrypt/decrypt/sign/verify operations.'
+  - 'Rotation: update key material or key version according to service capabilities.'
+  - 'Disablement: stop use while preserving evidence and recovery options.'
+  - 'Deletion: follow retention, approval and recovery-window requirements.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: Key policies and IAM permissions
+  explanation: 'A key policy or equivalent resource policy controls who may administer or use a key. IAM permissions
+    may also participate in authorization depending on provider and configuration. Separate key administrators from
+    key users where possible: administrators manage lifecycle and policy, while applications receive only cryptographic
+    operations needed for their task. Restrict decrypt permissions more carefully than encrypt-only use where the
+    use case permits.'
+  key_points:
+  - 'Key administrator: manages policy and lifecycle, not necessarily data decryption.'
+  - 'Key user: performs only required cryptographic operations.'
+  - Encryption context or tags can provide additional policy conditions where supported.
+  - Test both allowed encryption/decryption and denied use by unrelated principals.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Certificates and TLS trust
+  explanation: TLS certificates bind a public key to a subject identity under a certificate authority trust model.
+    Clients validate the certificate chain, validity period and requested hostname. Certificate management includes
+    issuance, renewal, deployment, monitoring and revocation response. Expired or mismatched certificates can cause
+    outages even when encryption is otherwise configured correctly.
+  key_points:
+  - 'Certificate chain: leaf certificate, intermediates and trusted root.'
+  - 'Hostname validation: certificate identity must match the endpoint.'
+  - 'Private key: protect it from unauthorized export or access.'
+  - 'Renewal: automate where possible and alert before expiry.'
+  - 'TLS termination: understand which network hop is encrypted and where plaintext exists.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: Encryption architecture review
+  explanation: Document data classification, encryption boundaries, key ownership, key access, rotation, backup,
+    recovery, logging and deletion. Verify encryption for primary data, replicas, snapshots and backups. Identify
+    where plaintext exists in memory, logs, exports and analytics pipelines. Test a controlled restore or decrypt
+    operation so that key loss does not become a silent disaster-recovery failure.
+  key_points:
+  - What data is encrypted, at which layer and with which key?
+  - Who can administer keys and who can decrypt data?
+  - How are key versions rotated and old ciphertext handled?
+  - Can backups be restored if the original key is disabled or unavailable?
+  - Are key operations logged and reviewed?
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

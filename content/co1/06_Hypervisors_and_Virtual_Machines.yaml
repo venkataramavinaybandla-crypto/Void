@@ -1,0 +1,573 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO1
+  concept_id: CO1_06
+  concept_title: Hypervisors and Virtual Machines
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
+    emphasis on CO1 and its lecture/session plan.
+  coverage: hypervisor types, VM architecture, vCPU scheduling and steal, guest metrics, lifecycle,
+    images, sizing and fault diagnosis
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+learning_outcomes:
+- Define and explain hypervisors and virtual machines using precise cloud terminology.
+- Describe the architecture, actors, control boundaries and operational workflow involved.
+- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
+  identical semantics.
+- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
+- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Hypervisors and Virtual Machines
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO1_06_U01
+  topic: Type 1 hypervisor
+  definition: A Type 1, or bare-metal, hypervisor runs directly on server hardware and manages
+    guest virtual machines.
+  detailed_explanation: It has direct responsibility for resource scheduling and hardware virtualization.
+    It is common in data-center and cloud infrastructure because it provides a dedicated virtualization
+    layer.
+  working_principle: To reason about type 1 hypervisor, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A data-center server boots a hypervisor and hosts multiple isolated VMs.
+  decision_points:
+  - What requirement makes type 1 hypervisor relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Type 1 does not mean zero overhead or automatic immunity from hardware
+    and configuration failures.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define type 1 hypervisor and explain why it matters in cloud architecture.
+  - Analyze the example of type 1 hypervisor and identify one operational risk.
+  - Evaluate the trade-off described for type 1 hypervisor under a stated workload constraint.
+- unit_id: CO1_06_U02
+  topic: Type 2 hypervisor
+  definition: A Type 2 hypervisor runs as an application on a conventional host operating system.
+  detailed_explanation: The host OS manages physical devices while the hypervisor application
+    provides guest virtual hardware. This model is common for desktop development, testing and
+    labs.
+  working_principle: To reason about type 2 hypervisor, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A student runs a Linux VM inside a desktop virtualization application on Windows.
+  decision_points:
+  - What requirement makes type 2 hypervisor relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Host OS load, drivers and desktop resource contention can affect
+    guest performance.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define type 2 hypervisor and explain why it matters in cloud architecture.
+  - Analyze the example of type 2 hypervisor and identify one operational risk.
+  - Evaluate the trade-off described for type 2 hypervisor under a stated workload constraint.
+- unit_id: CO1_06_U03
+  topic: Virtual machine components
+  definition: A VM consists of virtual CPU, memory, firmware, virtual devices, disks, network
+    interfaces and guest operating-system state.
+  detailed_explanation: The VM configuration determines the virtual hardware presented to the
+    guest. Images and metadata influence boot behavior, drivers and identity initialization.
+  working_principle: To reason about virtual machine components, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An instance is launched from an image with two vCPUs, a configured memory size,
+    a boot disk and a network interface.
+  decision_points:
+  - What requirement makes virtual machine components relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A VM's instance type is only one part of performance; storage, network,
+    image and placement also matter.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define virtual machine components and explain why it matters in cloud architecture.
+  - Analyze the example of virtual machine components and identify one operational risk.
+  - Evaluate the trade-off described for virtual machine components under a stated workload constraint.
+- unit_id: CO1_06_U04
+  topic: vCPU scheduling
+  definition: A hypervisor schedules virtual CPU execution onto physical processors while balancing
+    runnable guests and host workloads.
+  detailed_explanation: When a vCPU is ready but cannot run, the guest may experience scheduling
+    delay. Provider metrics such as CPU credit, host contention or steal/ready indicators vary
+    by platform.
+  working_principle: To reason about vcpu scheduling, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An application experiences latency spikes when its vCPUs wait for physical CPU
+    time.
+  decision_points:
+  - What requirement makes vcpu scheduling relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A high guest CPU percentage and high scheduling delay are different
+    signals and require different diagnosis.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define vcpu scheduling and explain why it matters in cloud architecture.
+  - Analyze the example of vcpu scheduling and identify one operational risk.
+  - Evaluate the trade-off described for vcpu scheduling under a stated workload constraint.
+- unit_id: CO1_06_U05
+  topic: CPU steal and ready time
+  definition: CPU steal or ready time represents time when a guest wants CPU execution but the
+    virtualization layer does not schedule it immediately.
+  detailed_explanation: Interpret metric definitions carefully because operating systems and hypervisors
+    expose different measures. Correlate with host or provider metrics and application latency.
+  working_principle: To reason about cpu steal and ready time, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A Linux VM reports measurable CPU steal while application response time rises
+    during host contention.
+  decision_points:
+  - What requirement makes cpu steal and ready time relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Do not treat a single metric as proof of a provider fault; validate
+    timing and competing bottlenecks.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cpu steal and ready time and explain why it matters in cloud architecture.
+  - Analyze the example of cpu steal and ready time and identify one operational risk.
+  - Evaluate the trade-off described for cpu steal and ready time under a stated workload constraint.
+- unit_id: CO1_06_U06
+  topic: VM sizing
+  definition: VM sizing selects a compute family and size based on CPU, memory, storage, network,
+    accelerator and workload characteristics.
+  detailed_explanation: Benchmark representative traffic and consider p95/p99 latency, concurrency,
+    memory working set, I/O and burst behavior. Revisit size after observing production utilization.
+  working_principle: To reason about vm sizing, identify the actors, the resource or control being
+    acted upon, the configuration or policy that governs it, the observable result, and the failure
+    modes. Separate the control-plane action from the data-plane behavior whenever both are present.
+  worked_example: A memory-intensive in-memory service selects a memory-optimized family rather
+    than simply maximizing vCPU count.
+  decision_points:
+  - What requirement makes vm sizing relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Sizing only from average CPU utilization can miss memory and tail-latency
+    constraints.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define vm sizing and explain why it matters in cloud architecture.
+  - Analyze the example of vm sizing and identify one operational risk.
+  - Evaluate the trade-off described for vm sizing under a stated workload constraint.
+- unit_id: CO1_06_U07
+  topic: Instance families
+  definition: Cloud providers offer general-purpose, compute-optimized, memory-optimized, storage-optimized
+    and accelerator-oriented instance families.
+  detailed_explanation: Family labels indicate intended balance, but exact CPU generation, memory
+    ratio, network bandwidth and storage characteristics differ by provider and region.
+  working_principle: To reason about instance families, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A numerical simulation uses compute-optimized instances; a cache uses memory-optimized
+    instances.
+  decision_points:
+  - What requirement makes instance families relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Do not compare family names across providers without checking actual
+    specifications and benchmarks.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define instance families and explain why it matters in cloud architecture.
+  - Analyze the example of instance families and identify one operational risk.
+  - Evaluate the trade-off described for instance families under a stated workload constraint.
+- unit_id: CO1_06_U08
+  topic: VM images and bootstrapping
+  definition: An image is a reusable base containing an operating system and possibly preinstalled
+    software or configuration.
+  detailed_explanation: Image pipelines should patch, scan, version, sign where supported and
+    test images. Bootstrapping should be idempotent and avoid embedding long-lived secrets.
+  working_principle: To reason about vm images and bootstrapping, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A hardened image is promoted from test to production after vulnerability and
+    startup tests pass.
+  decision_points:
+  - What requirement makes vm images and bootstrapping relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Mutable manual changes after launch create configuration drift and
+    make rebuilds less predictable.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define vm images and bootstrapping and explain why it matters in cloud architecture.
+  - Analyze the example of vm images and bootstrapping and identify one operational risk.
+  - Evaluate the trade-off described for vm images and bootstrapping under a stated workload constraint.
+- unit_id: CO1_06_U09
+  topic: VM lifecycle
+  definition: A VM lifecycle includes creation, boot, configuration, operation, stop, restart,
+    resize, snapshot, replacement and termination.
+  detailed_explanation: Understand what happens to ephemeral disks, public addresses, attached
+    volumes and billing when a VM is stopped or terminated. Provider semantics vary.
+  working_principle: To reason about vm lifecycle, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A failed instance is replaced from an image while persistent data remains on
+    a separate managed volume.
+  decision_points:
+  - What requirement makes vm lifecycle relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Stopping and terminating are not interchangeable; termination can
+    destroy attached ephemeral resources.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define vm lifecycle and explain why it matters in cloud architecture.
+  - Analyze the example of vm lifecycle and identify one operational risk.
+  - Evaluate the trade-off described for vm lifecycle under a stated workload constraint.
+- unit_id: CO1_06_U10
+  topic: Guest operating-system responsibility
+  definition: In IaaS, the customer commonly manages guest OS users, patching, hardening, endpoint
+    agents and application packages.
+  detailed_explanation: Automate patch baselines, vulnerability scanning, maintenance windows
+    and rollback. Keep an inventory of images and running instances.
+  working_principle: To reason about guest operating-system responsibility, identify the actors,
+    the resource or control being acted upon, the configuration or policy that governs it, the
+    observable result, and the failure modes. Separate the control-plane action from the data-plane
+    behavior whenever both are present.
+  worked_example: A fleet management service applies security updates to a group of Linux VMs.
+  decision_points:
+  - What requirement makes guest operating-system responsibility relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: The provider's responsibility for physical hosts does not extend
+    automatically to customer guest operating systems.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define guest operating-system responsibility and explain why it matters in cloud architecture.
+  - Analyze the example of guest operating-system responsibility and identify one operational
+    risk.
+  - Evaluate the trade-off described for guest operating-system responsibility under a stated
+    workload constraint.
+- unit_id: CO1_06_U11
+  topic: VM networking and storage attachment
+  definition: VMs use virtual network interfaces and attached storage devices that are configured
+    through provider control planes and guest operating systems.
+  detailed_explanation: Validate route tables, security rules, interface state, device names,
+    filesystem mounts, disk identifiers and permissions when connectivity or storage fails.
+  working_principle: To reason about vm networking and storage attachment, identify the actors,
+    the resource or control being acted upon, the configuration or policy that governs it, the
+    observable result, and the failure modes. Separate the control-plane action from the data-plane
+    behavior whenever both are present.
+  worked_example: A newly attached volume appears as a block device but must be partitioned or
+    formatted and mounted when appropriate.
+  decision_points:
+  - What requirement makes vm networking and storage attachment relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A control-plane attachment status does not prove the guest has mounted
+    or can use the disk.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define vm networking and storage attachment and explain why it matters in cloud architecture.
+  - Analyze the example of vm networking and storage attachment and identify one operational risk.
+  - Evaluate the trade-off described for vm networking and storage attachment under a stated workload
+    constraint.
+- unit_id: CO1_06_U12
+  topic: VM troubleshooting workflow
+  definition: 'Troubleshoot from the symptom inward: verify instance state, reachability, guest
+    health, CPU, memory, disk, network, application and dependency health.'
+  detailed_explanation: Collect timestamps, recent changes, system logs, boot diagnostics, serial
+    output and provider events. Change one variable at a time and preserve evidence.
+  working_principle: To reason about vm troubleshooting workflow, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A VM is reachable by ping but SSH fails; inspect security rules, host firewall,
+    sshd state and authentication logs.
+  decision_points:
+  - What requirement makes vm troubleshooting workflow relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A ping response does not prove the application port or authentication
+    path works.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define vm troubleshooting workflow and explain why it matters in cloud architecture.
+  - Analyze the example of vm troubleshooting workflow and identify one operational risk.
+  - Evaluate the trade-off described for vm troubleshooting workflow under a stated workload constraint.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_06_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of hypervisors and virtual machines using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_06_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define hypervisors and virtual machines.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
+    propose a diagnostic sequence.
+  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
+    needed.
+  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
+    cost.
+revision:
+  key_terms:
+  - Hypervisors and Virtual Machines
+  - abstraction
+  - resource pooling
+  - shared responsibility
+  - failure domain
+  - observability
+  - total cost of ownership
+  - least privilege
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: This concept is best understood by connecting hypervisors and virtual machines to workload
+    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
+    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
+    and supports the conclusion with evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

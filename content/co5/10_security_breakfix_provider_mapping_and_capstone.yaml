@@ -1,0 +1,259 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-10
+  title: Security Break-Fix, Incident Response and AWS/Azure/GCP Mapping
+  session_alignment: '20'
+  focus: Provider equivalents for identity, governance, SSO, keys, secrets, TLS, WAF/DDoS, threat detection, posture,
+    data discovery, audit, configuration and tracing; Break-fix 5.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Cross-provider mapping principles
+  explanation: AWS, Microsoft Azure and Google Cloud provide analogous security capabilities, but names, policy
+    semantics and service boundaries are not identical. Map the control objective first, then identify the provider
+    implementation and verify its behavior in current documentation. Avoid assuming that similarly named features
+    have identical evaluation order, scope or defaults.
+  key_points:
+  - 'Identity and access: AWS IAM; Microsoft Entra ID plus Azure RBAC; Google Cloud IAM and Cloud Identity.'
+  - 'Organization governance: AWS Organizations/SCPs; Azure management groups/Azure Policy; Google Cloud Resource
+    Manager organization policies.'
+  - 'Audit: AWS CloudTrail; Azure Activity Log and resource diagnostic logs; Google Cloud Audit Logs.'
+  - 'Key management: AWS KMS; Azure Key Vault; Google Cloud Cloud KMS.'
+  - 'Secrets: AWS Secrets Manager/Systems Manager Parameter Store; Azure Key Vault; Google Secret Manager.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: 'Provider mapping: edge and threat protection'
+  explanation: Edge and threat capabilities also differ. AWS examples include AWS WAF, AWS Shield and GuardDuty;
+    Azure examples include Azure Web Application Firewall, DDoS Protection and Microsoft Defender for Cloud; Google
+    Cloud examples include Cloud Armor, Cloud IDS and Security Command Center. Product availability, feature names
+    and packaging can change. Compare by control objective, deployment point, telemetry and operational workflow.
+  key_points:
+  - 'WAF objective: inspect and filter web requests.'
+  - 'DDoS objective: absorb or mitigate volumetric and application-layer denial of service.'
+  - 'Threat detection objective: identify suspicious behavior from telemetry.'
+  - 'Posture objective: aggregate misconfiguration and risk findings.'
+  - Validate region, tier, integration and pricing before deployment.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: 'Provider mapping: observability and audit'
+  explanation: 'For observability, compare metric, log, trace, alert and dashboard capabilities rather than selecting
+    by brand name. Examples include Amazon CloudWatch and AWS X-Ray; Azure Monitor and Application Insights; Google
+    Cloud Monitoring, Logging and Trace. Audit services are not interchangeable with application telemetry: retain
+    both security audit records and operational diagnostics.'
+  key_points:
+  - 'Metrics: define common SLI before comparing services.'
+  - 'Logs: compare ingestion, query, retention, access and export controls.'
+  - 'Traces: compare context propagation, sampling and dependency views.'
+  - 'Audit: ensure identity and administrative actions are captured.'
+  - 'Cost: estimate ingestion, retention, queries and alert volume.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: 'Break-fix 5: AccessDenied with no obvious cause'
+  explanation: The handout's Session 20 break-fix task is to investigate AccessDenied with no obvious cause using
+    policy evidence, audit events and telemetry. Begin by capturing the request identity, action, resource, time
+    and request ID. Verify which credentials were actually used. Trace the request through identity policy, resource
+    policy, trust policy, permission boundary, session policy, organization guardrail and condition evaluation.
+    Use audit events to confirm the attempted action and correlate workload logs or traces for surrounding behavior.
+  key_points:
+  - Do not immediately attach administrator access.
+  - Do not assume the error message identifies the exact policy layer.
+  - Do not remove organization guardrails to make the request succeed.
+  - Record each checked layer and its evidence.
+  - Separate a missing Allow from an explicit Deny.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Break-fix investigation worksheet
+  explanation: 'Use a consistent worksheet: symptom, impact, affected principal, action, resource, timestamp, request
+    ID, credential source, policy layers checked, audit evidence, telemetry evidence, root cause, safe remediation,
+    positive retest, negative retest and rollback. If evidence is missing, investigate logging coverage and event
+    delivery as a separate issue.'
+  key_points:
+  - 'Symptom: exact error and observed user impact.'
+  - 'Scope: one identity, workload, resource, account or region?'
+  - 'Evidence: policy documents, audit event, logs and traces.'
+  - 'Root cause: one specific missing grant, deny or failed condition.'
+  - 'Remediation: smallest policy change with approval.'
+  - 'Validation: intended action works; unrelated action remains denied.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: Incident response lifecycle
+  explanation: Incident response typically includes preparation, detection, analysis, containment, eradication,
+    recovery and lessons learned. The order may be iterative during an active incident. Preserve evidence, maintain
+    a timeline and communicate impact. Containment should reduce harm without destroying evidence or causing unnecessary
+    service disruption.
+  key_points:
+  - 'Preparation: owners, runbooks, access and communication paths.'
+  - 'Detection/analysis: validate alert and determine scope.'
+  - 'Containment: isolate workload or revoke credential as justified.'
+  - 'Eradication: remove persistence, exposed secret or misconfiguration.'
+  - 'Recovery: restore service and verify controls.'
+  - 'Lessons: identify control gaps and track corrective actions.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Least privilege end-to-end capstone
+  explanation: Design a small cloud application with a human developer, CI/CD pipeline, application workload, database,
+    object storage and public web entry point. Use workforce federation for humans, OIDC or role-based workload
+    identity for CI and runtime, scoped IAM policies, organization guardrails, managed secrets, KMS-backed encryption,
+    WAF at the edge, centralized audit logs and SLI-based monitoring. Demonstrate that every identity can do its
+    required task and is denied unrelated tasks.
+  key_points:
+  - 'Developer: federated access to non-production resources only.'
+  - 'CI/CD: short-lived deployment identity restricted to approved repository and environment.'
+  - 'Runtime: separate workload role with access to one database secret and required data paths.'
+  - 'Database: TLS, encryption at rest and least-privileged database account.'
+  - 'Storage: private by default, scoped object permissions and audit logging.'
+  - 'Edge: WAF policy, rate controls and protected origin.'
+  - 'Operations: metrics, logs, traces, alerts and documented incident runbook.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: Final CO5 revision and assessment map
+  explanation: CO5 is an analysis outcome (BTL 4). Be prepared to explain how policy layers interact, diagnose access
+    denial from evidence, compare workload identity with static credentials, design multi-account guardrails, distinguish
+    keys from secrets, explain envelope encryption, map compliance requirements to controls, evaluate edge protection
+    and interpret metrics/logs/traces. Strong answers show reasoning and tradeoffs rather than only listing service
+    names.
+  key_points:
+  - Explain explicit deny versus implicit deny with an example.
+  - Trace an access request across identity, resource, boundary, session and organization layers.
+  - Design a workload identity flow without embedded long-lived credentials.
+  - Explain how a secret rotation event is proven by audit evidence.
+  - Map a compliance requirement to control, owner and evidence.
+  - Choose an SLI and alert threshold for a user-facing service.
+  - Diagnose AccessDenied using policy evidence, audit events and telemetry.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

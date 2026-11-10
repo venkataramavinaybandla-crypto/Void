@@ -1,0 +1,586 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO1
+  concept_id: CO1_03
+  concept_title: Shared Responsibility Model
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
+    emphasis on CO1 and its lecture/session plan.
+  coverage: provider/customer security boundary, control ownership, cloud service variations,
+    incident classification, evidence and least-privilege operations
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+learning_outcomes:
+- Define and explain shared responsibility model using precise cloud terminology.
+- Describe the architecture, actors, control boundaries and operational workflow involved.
+- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
+  identical semantics.
+- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
+- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Shared Responsibility Model
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO1_03_U01
+  topic: Shared responsibility principle
+  definition: Cloud security and compliance responsibilities are divided between the cloud provider
+    and the customer; the division changes with the service consumed.
+  detailed_explanation: The provider is responsible for security of the cloud, including facilities
+    and underlying infrastructure. The customer is responsible for security in the cloud, including
+    customer data, identities, configurations and workload controls as applicable.
+  working_principle: To reason about shared responsibility principle, identify the actors, the
+    resource or control being acted upon, the configuration or policy that governs it, the observable
+    result, and the failure modes. Separate the control-plane action from the data-plane behavior
+    whenever both are present.
+  worked_example: A provider secures the physical data center while a customer configures an object
+    bucket to prevent unintended public access.
+  decision_points:
+  - What requirement makes shared responsibility principle relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: The phrase 'the provider handles security' is too broad and can cause
+    serious control gaps.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define shared responsibility principle and explain why it matters in cloud architecture.
+  - Analyze the example of shared responsibility principle and identify one operational risk.
+  - Evaluate the trade-off described for shared responsibility principle under a stated workload
+    constraint.
+- unit_id: CO1_03_U02
+  topic: Security of the cloud
+  definition: Provider-operated controls protect facilities, physical hardware, foundational networking
+    and managed service infrastructure within the provider's scope.
+  detailed_explanation: Provider assurance may include physical access controls, hardware lifecycle
+    processes, environmental safeguards, infrastructure monitoring and service resilience. Customers
+    should review independent assurance reports and service commitments.
+  working_principle: To reason about security of the cloud, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A customer relies on provider-controlled physical access restrictions for the
+    host running its VM.
+  decision_points:
+  - What requirement makes security of the cloud relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Provider controls do not automatically protect customer credentials,
+    application vulnerabilities or exposed data.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define security of the cloud and explain why it matters in cloud architecture.
+  - Analyze the example of security of the cloud and identify one operational risk.
+  - Evaluate the trade-off described for security of the cloud under a stated workload constraint.
+- unit_id: CO1_03_U03
+  topic: Security in the cloud
+  definition: Customer controls protect identities, data, workload configuration, applications,
+    operating systems and network rules to the extent those controls are exposed to the customer.
+  detailed_explanation: The customer must identify assets, classify data, configure access, patch
+    customer-managed components, monitor activity and respond to workload incidents.
+  working_principle: To reason about security in the cloud, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A customer patches a VM guest OS, restricts inbound ports and rotates an application
+    secret.
+  decision_points:
+  - What requirement makes security in the cloud relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Responsibility for a control can be shared; the exact service configuration
+    determines the customer's tasks.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define security in the cloud and explain why it matters in cloud architecture.
+  - Analyze the example of security in the cloud and identify one operational risk.
+  - Evaluate the trade-off described for security in the cloud under a stated workload constraint.
+- unit_id: CO1_03_U04
+  topic: Responsibility changes by service model
+  definition: IaaS generally leaves more operating-system and network configuration responsibility
+    with the customer than PaaS or SaaS.
+  detailed_explanation: As the provider manages more of the stack, customer responsibility shifts
+    toward data, identity, configuration, access and application usage. Product-specific exceptions
+    must be documented.
+  working_principle: To reason about responsibility changes by service model, identify the actors,
+    the resource or control being acted upon, the configuration or policy that governs it, the
+    observable result, and the failure modes. Separate the control-plane action from the data-plane
+    behavior whenever both are present.
+  worked_example: A customer manages guest OS patching on a VM but typically does not patch the
+    underlying host OS of a fully managed SaaS product.
+  decision_points:
+  - What requirement makes responsibility changes by service model relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Do not transfer a responsibility matrix from one product to another
+    without verification.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define responsibility changes by service model and explain why it matters in cloud architecture.
+  - Analyze the example of responsibility changes by service model and identify one operational
+    risk.
+  - Evaluate the trade-off described for responsibility changes by service model under a stated
+    workload constraint.
+- unit_id: CO1_03_U05
+  topic: Identity and access ownership
+  definition: The provider supplies identity and access mechanisms, while the customer defines
+    users, roles, permissions, authentication strength and credential hygiene for its environment.
+  detailed_explanation: Use federated identity, MFA, role-based access, least privilege, temporary
+    credentials, separation of duties and periodic access review.
+  working_principle: To reason about identity and access ownership, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An organization enforces MFA for administrators and grants a deployment role
+    only the actions required by its pipeline.
+  decision_points:
+  - What requirement makes identity and access ownership relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A provider's secure identity service cannot compensate for an administrator
+    who grants wildcard permissions.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define identity and access ownership and explain why it matters in cloud architecture.
+  - Analyze the example of identity and access ownership and identify one operational risk.
+  - Evaluate the trade-off described for identity and access ownership under a stated workload
+    constraint.
+- unit_id: CO1_03_U06
+  topic: Data protection ownership
+  definition: Customers are responsible for classifying and handling their data and selecting
+    appropriate access, encryption, retention and deletion settings.
+  detailed_explanation: Provider encryption features may protect data at rest or in transit, but
+    customers must understand key ownership, policy configuration, backups, sharing and legal
+    requirements.
+  working_principle: To reason about data protection ownership, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A customer enables encryption, limits bucket access and defines retention for
+    regulated records.
+  decision_points:
+  - What requirement makes data protection ownership relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Encryption being available by default does not prove that the complete
+    data lifecycle meets policy.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define data protection ownership and explain why it matters in cloud architecture.
+  - Analyze the example of data protection ownership and identify one operational risk.
+  - Evaluate the trade-off described for data protection ownership under a stated workload constraint.
+- unit_id: CO1_03_U07
+  topic: Configuration and patching
+  definition: The party responsible for configuration and patching depends on the layer and managed-service
+    contract.
+  detailed_explanation: For IaaS, customers commonly patch guest operating systems and applications.
+    For managed databases, the provider may patch engine infrastructure while customers manage
+    schemas, credentials, query behavior and maintenance settings.
+  working_principle: To reason about configuration and patching, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A VM owner applies security updates; a managed database customer schedules an
+    engine maintenance window and updates application drivers.
+  decision_points:
+  - What requirement makes configuration and patching relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A managed service does not mean every customer-visible setting is
+    automatically secure.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define configuration and patching and explain why it matters in cloud architecture.
+  - Analyze the example of configuration and patching and identify one operational risk.
+  - Evaluate the trade-off described for configuration and patching under a stated workload constraint.
+- unit_id: CO1_03_U08
+  topic: Incident ownership
+  definition: Incident response requires coordinated provider and customer actions, with clear
+    escalation paths and evidence preservation.
+  detailed_explanation: The customer investigates workload logs, IAM activity, application behavior
+    and configuration changes. The provider may investigate underlying service events and infrastructure
+    issues within its scope.
+  working_principle: To reason about incident ownership, identify the actors, the resource or
+    control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A customer reports a suspected host-level issue to the provider while isolating
+    compromised application credentials.
+  decision_points:
+  - What requirement makes incident ownership relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Blaming the provider before identifying the affected layer delays
+    containment.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define incident ownership and explain why it matters in cloud architecture.
+  - Analyze the example of incident ownership and identify one operational risk.
+  - Evaluate the trade-off described for incident ownership under a stated workload constraint.
+- unit_id: CO1_03_U09
+  topic: Control ownership classification
+  definition: Classify a control by layer, service model, product contract and the actor able
+    to configure or operate it.
+  detailed_explanation: For each control, record owner, evidence source, review cadence, escalation
+    path and residual risk. Distinguish provider-operated controls from customer-configurable
+    controls.
+  working_principle: To reason about control ownership classification, identify the actors, the
+    resource or control being acted upon, the configuration or policy that governs it, the observable
+    result, and the failure modes. Separate the control-plane action from the data-plane behavior
+    whenever both are present.
+  worked_example: For an exposed storage object, inspect bucket policy, access settings, identity
+    grants and audit events before assigning ownership.
+  decision_points:
+  - What requirement makes control ownership classification relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A control may have shared implementation but a single accountable
+    owner in the customer's governance register.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define control ownership classification and explain why it matters in cloud architecture.
+  - Analyze the example of control ownership classification and identify one operational risk.
+  - Evaluate the trade-off described for control ownership classification under a stated workload
+    constraint.
+- unit_id: CO1_03_U10
+  topic: 'Break-fix: public storage exposure'
+  definition: A public storage exposure is commonly caused by customer-controlled access policy,
+    public-access settings or application-level sharing configuration.
+  detailed_explanation: Inspect the resource policy, identity permissions, public-access blocks,
+    object ACL behavior where applicable and access logs. Preserve evidence, restrict exposure,
+    rotate affected credentials if needed and assess data access.
+  working_principle: 'To reason about break-fix: public storage exposure, identify the actors,
+    the resource or control being acted upon, the configuration or policy that governs it, the
+    observable result, and the failure modes. Separate the control-plane action from the data-plane
+    behavior whenever both are present.'
+  worked_example: A storage bucket becomes publicly readable after a broad resource policy is
+    applied; the customer removes the grant and reviews audit evidence.
+  decision_points:
+  - 'What requirement makes break-fix: public storage exposure relevant to this workload?'
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Do not assume provider physical security prevents internet exposure
+    caused by customer configuration.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - 'Define break-fix: public storage exposure and explain why it matters in cloud architecture.'
+  - 'Analyze the example of break-fix: public storage exposure and identify one operational risk.'
+  - 'Evaluate the trade-off described for break-fix: public storage exposure under a stated workload
+    constraint.'
+- unit_id: CO1_03_U11
+  topic: 'Break-fix: unpatched guest'
+  definition: An unpatched guest operating system on an IaaS VM is normally within the customer's
+    patch-management responsibility.
+  detailed_explanation: Confirm image age, patch baseline, update status, maintenance window and
+    vulnerability evidence. Patch or rebuild from a maintained image, then validate service health.
+  working_principle: 'To reason about break-fix: unpatched guest, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.'
+  worked_example: A VM remains vulnerable because the team assumed the cloud provider patched
+    guest operating systems.
+  decision_points:
+  - 'What requirement makes break-fix: unpatched guest relevant to this workload?'
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Provider host maintenance and customer guest maintenance are different
+    layers.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - 'Define break-fix: unpatched guest and explain why it matters in cloud architecture.'
+  - 'Analyze the example of break-fix: unpatched guest and identify one operational risk.'
+  - 'Evaluate the trade-off described for break-fix: unpatched guest under a stated workload constraint.'
+- unit_id: CO1_03_U12
+  topic: Evidence and assurance
+  definition: Responsibility claims should be supported by provider documentation, service terms,
+    audit evidence and customer configuration records.
+  detailed_explanation: Use service-specific responsibility documentation, compliance reports,
+    configuration snapshots, access logs, change records and incident timelines.
+  working_principle: To reason about evidence and assurance, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An auditor asks who patches a managed database engine and the team provides
+    the product responsibility documentation and maintenance configuration.
+  decision_points:
+  - What requirement makes evidence and assurance relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A marketing statement is not sufficient evidence of a control's scope
+    or effectiveness.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define evidence and assurance and explain why it matters in cloud architecture.
+  - Analyze the example of evidence and assurance and identify one operational risk.
+  - Evaluate the trade-off described for evidence and assurance under a stated workload constraint.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_03_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of shared responsibility model using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_03_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define shared responsibility model.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
+    propose a diagnostic sequence.
+  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
+    needed.
+  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
+    cost.
+revision:
+  key_terms:
+  - Shared Responsibility Model
+  - abstraction
+  - resource pooling
+  - shared responsibility
+  - failure domain
+  - observability
+  - total cost of ownership
+  - least privilege
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: This concept is best understood by connecting shared responsibility model to workload
+    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
+    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
+    and supports the conclusion with evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

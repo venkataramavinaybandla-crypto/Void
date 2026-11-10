@@ -1,0 +1,570 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO2
+  concept_id: CO2_11
+  concept_title: Compute Break-Fix and Diagnostic Labs
+  source_alignment: 'CO2 of uploaded CDIS handout: compute sizing, virtual machines, containers,
+    Kubernetes, autoscaling, serverless, workload placement, purchasing models and cloud cost
+    optimization.'
+  coverage: Compute Break-Fix and Diagnostic Labs
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: Minimum 350 substantive YAML lines
+learning_outcomes:
+- Explain the main mechanisms and vocabulary of compute break-fix and diagnostic labs.
+- Evaluate compute options by workload, latency, scaling and cost constraints.
+- Diagnose utilization, scheduling and provisioning failures using evidence.
+- Compare AWS, Azure and Google Cloud implementation choices.
+- Defend a resource and purchasing decision using measurable assumptions.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Compute Break-Fix and Diagnostic Labs
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO2_11_U01
+  topic: Symptom definition
+  definition: Troubleshooting begins by defining the observable failure and its time window.
+  detailed_explanation: Record affected users, service and expected behavior.
+  working_principle: For symptom definition, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A rollout cannot add replicas after 14:00.
+  architecture_relationships:
+  - Connect symptom definition to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define symptom definition and explain its role in compute architecture.
+  - Analyze how symptom definition behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of symptom definition.
+- unit_id: CO2_11_U02
+  topic: Metric validation
+  definition: Confirm metric source, aggregation and freshness before using it.
+  detailed_explanation: Stale or incorrect metrics mislead autoscaling.
+  working_principle: For metric validation, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A scaling policy watches the wrong namespace.
+  architecture_relationships:
+  - Connect metric validation to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define metric validation and explain its role in compute architecture.
+  - Analyze how metric validation behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of metric validation.
+- unit_id: CO2_11_U03
+  topic: Quota investigation
+  definition: Quotas can block instance, container or function provisioning.
+  detailed_explanation: Check account and regional limits.
+  working_principle: For quota investigation, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: An autoscaling group hits its instance quota.
+  architecture_relationships:
+  - Connect quota investigation to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define quota investigation and explain its role in compute architecture.
+  - Analyze how quota investigation behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of quota investigation.
+- unit_id: CO2_11_U04
+  topic: Capacity shortage
+  definition: Provider capacity can be unavailable for a selected size or zone.
+  detailed_explanation: Use alternate size or zone when requirements permit.
+  working_principle: For capacity shortage, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A VM launch fails due to zonal capacity.
+  architecture_relationships:
+  - Connect capacity shortage to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define capacity shortage and explain its role in compute architecture.
+  - Analyze how capacity shortage behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of capacity shortage.
+- unit_id: CO2_11_U05
+  topic: Warm-up mismatch
+  definition: Capacity may arrive after the traffic peak.
+  detailed_explanation: Measure provisioning and readiness duration.
+  working_principle: For warm-up mismatch, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: New nodes take six minutes to become ready.
+  architecture_relationships:
+  - Connect warm-up mismatch to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define warm-up mismatch and explain its role in compute architecture.
+  - Analyze how warm-up mismatch behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of warm-up mismatch.
+- unit_id: CO2_11_U06
+  topic: Pod pending
+  definition: Pods may remain unscheduled because of requests, affinity or taints.
+  detailed_explanation: Read scheduler events before changing configuration.
+  working_principle: For pod pending, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A Pod requests more memory than any node has.
+  architecture_relationships:
+  - Connect pod pending to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define pod pending and explain its role in compute architecture.
+  - Analyze how pod pending behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of pod pending.
+- unit_id: CO2_11_U07
+  topic: Crash loops
+  definition: Containers may restart due to startup failures or liveness checks.
+  detailed_explanation: Inspect previous logs and exit codes.
+  working_principle: For crash loops, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A missing environment variable crashes a container.
+  architecture_relationships:
+  - Connect crash loops to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define crash loops and explain its role in compute architecture.
+  - Analyze how crash loops behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of crash loops.
+- unit_id: CO2_11_U08
+  topic: OOM kills
+  definition: Memory limits can terminate workloads unexpectedly.
+  detailed_explanation: Inspect memory peaks and limits.
+  working_principle: For oom kills, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A worker exceeds its memory cap.
+  architecture_relationships:
+  - Connect oom kills to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define oom kills and explain its role in compute architecture.
+  - Analyze how oom kills behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of oom kills.
+- unit_id: CO2_11_U09
+  topic: Throttling
+  definition: CPU limits and burst credits can reduce effective throughput.
+  detailed_explanation: Correlate throttling with latency.
+  working_principle: For throttling, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A container slows under sustained load.
+  architecture_relationships:
+  - Connect throttling to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define throttling and explain its role in compute architecture.
+  - Analyze how throttling behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of throttling.
+- unit_id: CO2_11_U10
+  topic: Load balancer health
+  definition: Unhealthy targets reduce available capacity even when instances are running.
+  detailed_explanation: Inspect health paths and response codes.
+  working_principle: For load balancer health, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: An API health endpoint returns 500.
+  architecture_relationships:
+  - Connect load balancer health to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define load balancer health and explain its role in compute architecture.
+  - Analyze how load balancer health behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of load balancer health.
+- unit_id: CO2_11_U11
+  topic: Function throttling
+  definition: Function concurrency quotas can reject or delay invocations.
+  detailed_explanation: Check invocation and throttle metrics.
+  working_principle: For function throttling, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: An event burst exceeds concurrency.
+  architecture_relationships:
+  - Connect function throttling to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define function throttling and explain its role in compute architecture.
+  - Analyze how function throttling behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of function throttling.
+- unit_id: CO2_11_U12
+  topic: Evidence-based remediation
+  definition: Select the smallest reversible change that addresses the proven cause.
+  detailed_explanation: Verify recovery against original symptoms and SLO.
+  working_principle: For evidence-based remediation, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: Quota increase resolves provisioning failure.
+  architecture_relationships:
+  - Connect evidence-based remediation to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define evidence-based remediation and explain its role in compute architecture.
+  - Analyze how evidence-based remediation behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of evidence-based remediation.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_01_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of fundamentals of cloud computing using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_01_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define fundamentals of cloud computing.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A workload experiences a sudden traffic increase. Explain how compute break-fix and diagnostic
+    labs influences the response.
+  - A compute workload has poor p95 latency but moderate average CPU. Identify the missing metrics
+    and likely constraints.
+  - A team must choose among VMs, managed containers, Kubernetes and functions under a strict
+    monthly budget. Defend a selection.
+revision:
+  key_terms:
+  - Compute Break-Fix and Diagnostic Labs
+  - Symptom definition
+  - Metric validation
+  - Quota investigation
+  - Capacity shortage
+  - Warm-up mismatch
+  - Pod pending
+  - Crash loops
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: Compute Break-Fix and Diagnostic Labs is assessed by understanding its mechanism, choosing
+    an appropriate workload fit, quantifying latency and utilization, and diagnosing failure through
+    resource and control-plane evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

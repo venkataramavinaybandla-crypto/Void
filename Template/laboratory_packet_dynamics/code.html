@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-primary-container":"#52657d","on-secondary":"#2d3133","inverse-surface":"#e2e2e2","on-background":"#e2e2e2","outline":"#8e9197","on-secondary-fixed":"#191c1e","inverse-primary":"#4d6077","primary-fixed":"#d1e4ff","on-primary-fixed-variant":"#35485f","background":"#131313","inverse-on-surface":"#303030","surface-container-high":"#2a2a2a","on-tertiary-container":"#5d6471","secondary":"#c4c7ca","error-container":"#93000a","surface-bright":"#393939","tertiary-container":"#dbe1f1","surface-tint":"#b4c8e3","surface-dim":"#131313","surface-container":"#1f1f1f","surface-container-low":"#1b1b1b","tertiary":"#fffdff","primary":"#fffdff","primary-fixed-dim":"#b4c8e3","error":"#ffb4ab","on-error":"#690005","on-secondary-fixed-variant":"#44474a","on-surface-variant":"#c4c6cd","tertiary-fixed-dim":"#c0c7d6","on-secondary-container":"#b3b5b8","surface-container-lowest":"#0e0e0e","tertiary-fixed":"#dce2f3","on-surface":"#e2e2e2","on-primary":"#1e3247","primary-container":"#cfe3ff","secondary-fixed":"#e0e3e6","on-tertiary":"#2a313d","on-tertiary-fixed":"#151c27","outline-variant":"#43474d","on-primary-fixed":"#071d31","surface-variant":"#353535","on-tertiary-fixed-variant":"#404754","secondary-container":"#44474a","surface-container-highest":"#353535","surface":"#131313","on-error-container":"#ffdad6","secondary-fixed-dim":"#c4c7ca"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","margin":"2rem","space-xs":"0.25rem","margin-mobile":"1rem","space-sm":"0.5rem","gutter-mobile":"0.75rem","space-xl":"2.5rem","space-md":"1rem","gutter":"1rem"},"fontFamily":{"headline-xl":["Space Mono"],"label-sm":["Space Mono"],"headline-sm":["Space Mono"],"body-md":["Space Grotesk"],"headline-lg":["Space Mono"],"headline-xl-mobile":["Space Mono"],"label-lg":["Space Mono"],"body-lg":["Space Grotesk"],"headline-md":["Space Mono"],"headline-lg-mobile":["Space Mono"],"body-sm":["Space Grotesk"],"label-md":["Space Mono"]},"fontSize":{"headline-xl":["48px",{"lineHeight":"56px","letterSpacing":"-0.04em","fontWeight":"400"}],"label-sm":["9px",{"lineHeight":"12px","letterSpacing":"0.18em","fontWeight":"400"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"26.4px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"400"}],"headline-xl-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"400"}],"label-lg":["13px",{"lineHeight":"18px","letterSpacing":"0.08em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"400"}],"body-sm":["14px",{"lineHeight":"22px","letterSpacing":"0.01em","fontWeight":"400"}],"label-md":["11px",{"lineHeight":"16px","letterSpacing":"0.14em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant/30"><div class="h-16 w-full px-margin-mobile lg:px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md shrink-0"><span class="text-outline-variant select-none font-headline-sm text-headline-sm">+</span><div class="flex flex-col"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm tracking-tight text-primary">VOID</span><span class="text-outline-variant">/</span><span class="font-label-md text-label-md tracking-widest text-on-surface-variant uppercase">ASTROPHYSICAL NETWORKS RECORD</span></div><div class="flex items-center gap-space-sm font-label-sm text-label-sm text-outline"><span class="border border-outline-variant/40 px-1 text-on-surface-variant">MSS. COLL. 892-A</span><span class="hidden xl:inline text-outline-variant">|</span><span class="hidden xl:inline text-outline">RA 17h 45m 40s · DEC −29° 00′ 28″</span></div></div></div><nav class="hidden lg:flex items-center gap-space-lg font-label-md text-label-md uppercase tracking-wider" data-active-classes="text-primary-container border-b border-primary-container"><a class="text-on-surface-variant hover:text-primary transition-none py-1" data-path="ephemeris" href="#">[00 / EPHEMERIS]</a><a class="text-on-surface-variant hover:text-primary transition-none py-1" data-path="three-way-handshake" href="#">[01 / LESSON (HANDSHAKE)]</a><a aria-current="page" class="transition-none py-1 text-primary-container border-b border-primary-container" data-path="packet-dynamics" href="#">[02 / LABORATORY (DYNAMICS)]</a><a class="text-on-surface-variant hover:text-primary transition-none py-1" data-path="source-manuscript" href="#">[03 / SOURCE MANUSCRIPT]</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden md:flex flex-col text-right font-label-sm text-label-sm"><div class="flex items-center justify-end gap-space-xs text-primary-container"><span class="inline-block w-1.5 h-1.5 bg-primary-container"></span><span>SINGULARITY DISTANCE: 6 HOPS</span></div><span class="text-outline">EPOCH 2026.4 // UTC-SYNCHRONIZED</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="text-outline-variant select-none font-headline-sm text-headline-sm">+</span></div></div></header><main class="w-full pt-16 bg-surface-container-lowest min-h-screen"><div class="flex flex-col w-full">
+<!-- TOP TELEMETRY BANNER -->
+<div class="w-full bg-surface-container-lowest px-margin-mobile lg:px-margin py-3 border-b border-outline-variant/30 flex flex-col md:flex-row md:items-center justify-between gap-2 text-on-surface">
+<div class="flex items-center gap-space-sm font-label-md text-label-md uppercase tracking-wider">
+<span class="text-primary-container font-headline-sm text-headline-sm select-none">+</span>
+<span class="text-primary font-bold">LAB 03 / TOPOLOGY COLLAPSE SIMULATION</span>
+<span class="text-outline-variant">·</span>
+<span class="text-on-surface-variant">ENGINE: SCHWARZSCHILD-NET V2.1</span>
+<span class="text-outline-variant hidden sm:inline">//</span>
+<span class="text-outline hidden sm:inline text-label-sm font-label-sm">PLATE REF: 0x892-A-OBS</span>
+</div>
+<div class="flex items-center gap-space-md font-label-sm text-label-sm text-outline">
+<div class="flex items-center gap-space-xs">
+<span class="text-on-surface-variant">LATENCY:</span>
+<span class="text-primary-container font-bold" id="stat-latency">42.8ms</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-space-xs">
+<span class="text-on-surface-variant">PACKET LOSS:</span>
+<span class="text-error font-bold" id="stat-loss">0.04%</span>
+</div>
+<span class="text-outline-variant">·</span>
+<div class="flex items-center gap-space-xs">
+<span class="text-on-surface-variant">SINGULARITY ACCRETION:</span>
+<span class="text-primary-container font-bold" id="stat-accretion">1.2 MB/s</span>
+</div>
+<span class="text-outline-variant select-none font-headline-sm text-headline-sm">+</span>
+</div>
+</div>
+<!-- MAIN DUAL-PANEL OBSERVATORY VIEWPORT -->
+<div class="w-full grid grid-cols-1 xl:grid-cols-12 bg-surface-container-lowest min-h-[680px]">
+<!-- LEFT 75%: SCHWARZSCHILD TOPOLOGY CANVAS -->
+<div class="xl:col-span-9 relative flex flex-col bg-surface-container-lowest border-b xl:border-b-0 xl:border-r border-outline-variant/30 select-none overflow-hidden">
+<!-- Grid registration anchors -->
+<div class="absolute top-2 left-2 pointer-events-none flex items-center gap-1 font-label-sm text-label-sm text-outline">
+<span class="text-outline-variant font-headline-sm text-headline-sm">+</span>
+<span>GRID: GEO-POLAR [r_g = 68px]</span>
+</div>
+<div class="absolute top-2 right-2 pointer-events-none flex items-center gap-1 font-label-sm text-label-sm text-outline">
+<span>LOC: [0x4F:CORE_TOPOLOGY]</span>
+<span class="text-outline-variant font-headline-sm text-headline-sm">+</span>
+</div>
+<div class="absolute bottom-10 left-3 pointer-events-none flex flex-col font-label-sm text-label-sm text-outline">
+<span class="text-on-surface-variant">DISTANCE TO CORE: <span class="text-primary-container font-mono">r = 3.2 r_g</span></span>
+<span class="text-outline font-label-sm text-label-sm">CURVATURE METRIC: g_00 = -(1 - 2M/r)</span>
+</div>
+<div class="absolute bottom-3 right-3 pointer-events-none text-right font-label-sm text-label-sm text-outline">
+<span class="text-on-surface-variant tracking-wider uppercase font-body-sm text-body-sm">FIG. 3.4: Dynamic packet deflection under heavy buffer saturation.</span>
+</div>
+<!-- Realtime Interactive SVG Star Chart & Geodesic Raytracer -->
+<div class="w-full h-[580px] sm:h-[620px] lg:h-[680px] relative">
+<svg class="w-full h-full block cursor-crosshair" id="topo-canvas" preserveaspectratio="xMidYMid meet" viewbox="0 0 1000 680">
+<defs>
+<!-- Faint Coordinate Grid Patterns -->
+<pattern height="40" id="celestial-grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1c1f24" stroke-width="0.75"></path>
+<circle cx="40" cy="40" fill="#43474d" r="0.8"></circle>
+</pattern>
+<radialgradient cx="50%" cy="50%" id="singularity-glow" r="50%">
+<stop offset="0%" stop-color="#000000" stop-opacity="1"></stop>
+<stop offset="70%" stop-color="#071d31" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#0e0e0e" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+<!-- Grid Background -->
+<rect fill="url(#celestial-grid)" height="680" width="1000"></rect>
+<!-- Core Gravitational Potential Wells / Concentric Orbital Shells -->
+<g transform="translate(500, 340)">
+<!-- Outer ergosphere shells -->
+<circle fill="none" r="260" stroke="#1c1f24" stroke-dasharray="3,6" stroke-width="1"></circle>
+<circle fill="none" r="190" stroke="#2a2a2a" stroke-dasharray="2,4" stroke-width="1"></circle>
+<circle fill="none" r="120" stroke="#43474d" stroke-dasharray="4,4" stroke-width="1"></circle>
+<!-- Accretion disk halo -->
+<ellipse fill="none" rx="150" ry="46" stroke="#43474d" stroke-width="0.8" transform="rotate(-15)"></ellipse>
+<ellipse fill="none" rx="100" ry="28" stroke="#cfe3ff" stroke-opacity="0.2" stroke-width="1" transform="rotate(-15)"></ellipse>
+<ellipse fill="url(#singularity-glow)" rx="68" ry="68"></ellipse>
+<!-- Event Horizon Ring -->
+<circle fill="#000000" r="52" stroke="#cfe3ff" stroke-width="1.2"></circle>
+<!-- Photon Sphere -->
+<circle fill="none" r="72" stroke="#b4c8e3" stroke-dasharray="1,5" stroke-width="0.75"></circle>
+<!-- Singularity Coordinate Crosshairs -->
+<line stroke="#cfe3ff" stroke-width="1" x1="-60" x2="-54" y1="0" y2="0"></line>
+<line stroke="#cfe3ff" stroke-width="1" x1="54" x2="60" y1="0" y2="0"></line>
+<line stroke="#cfe3ff" stroke-width="1" x1="0" x2="0" y1="-60" y2="-54"></line>
+<line stroke="#cfe3ff" stroke-width="1" x1="0" x2="0" y1="54" y2="60"></line>
+<!-- Core Router Label -->
+<text fill="#fffdff" font-family="Space Mono" font-size="11" font-weight="700" letter-spacing="0.1em" text-anchor="middle" x="0" y="-4">CORE-0</text>
+<text fill="#8e9197" font-family="Space Mono" font-size="9" letter-spacing="0.05em" text-anchor="middle" x="0" y="14">0.0.0.0 / r_s</text>
+</g>
+<!-- Topologic Links (Astronomical Star Chart Constellation Lines) -->
+<!-- A -> B -->
+<path d="M 140 180 Q 280 120 450 110" fill="none" id="link-ab" stroke="#1c1f24" stroke-width="1"></path>
+<!-- A -> Core (Deflected Geodesic) -->
+<path d="M 140 180 Q 300 290 448 335" fill="none" id="link-acore" stroke="#1c1f24" stroke-dasharray="4,4" stroke-width="1"></path>
+<!-- B -> Core -->
+<path d="M 450 110 Q 480 220 500 288" fill="none" id="link-bcore" stroke="#1c1f24" stroke-width="1"></path>
+<!-- B -> D -->
+<path d="M 450 110 Q 660 140 840 210" fill="none" id="link-bd" stroke="#1c1f24" stroke-width="1"></path>
+<!-- Core -> C -->
+<path d="M 500 392 Q 470 470 330 520" fill="none" id="link-corec" stroke="#1c1f24" stroke-width="1"></path>
+<!-- C -> D (Curved Horizon Escape) -->
+<path d="M 330 520 Q 610 610 840 210" fill="none" id="link-cd" stroke="#1c1f24" stroke-width="1"></path>
+<!-- Core -> D -->
+<path d="M 552 342 Q 700 320 840 210" fill="none" id="link-cored" stroke="#1c1f24" stroke-dasharray="3,3" stroke-width="1"></path>
+<!-- Dynamic Geodesic Rays Overlay (Class toggled) -->
+<g id="geodesic-layer" opacity="0.6">
+<path d="M 140 180 C 260 260 380 340 448 338" fill="none" stroke="#b4c8e3" stroke-dasharray="2,6" stroke-width="0.8"></path>
+<path d="M 448 342 C 530 400 680 430 840 210" fill="none" stroke="#b4c8e3" stroke-dasharray="2,6" stroke-width="0.8"></path>
+<path d="M 450 110 C 470 190 490 260 500 288" fill="none" stroke="#b4c8e3" stroke-dasharray="1,4" stroke-width="0.6"></path>
+</g>
+<!-- Telemetry annotations along link vectors -->
+<g fill="#8e9197" font-family="Space Mono" font-size="9">
+<text transform="rotate(-12, 240, 135)" x="240" y="135">100 Gbps · 0.2ms [L-01]</text>
+<text transform="rotate(15, 610, 150)" x="610" y="150">40 Gbps · 4.8ms [L-02]</text>
+<text transform="rotate(-18, 560, 550)" x="560" y="550">10 Gbps · 14.5ms [GEOD-BETA]</text>
+<text transform="rotate(32, 310, 270)" x="310" y="270">SHEAR METRIC: 0.812</text>
+</g>
+<!-- NODE A: INGRESS -->
+<g class="cursor-pointer" id="node-a" transform="translate(140, 180)">
+<circle fill="#0e0e0e" r="14" stroke="#cfe3ff" stroke-width="1"></circle>
+<circle fill="#cfe3ff" r="4"></circle>
+<circle fill="none" r="22" stroke="#43474d" stroke-dasharray="2,2" stroke-width="0.5"></circle>
+<text fill="#fffdff" font-family="Space Mono" font-size="11" font-weight="700" text-anchor="middle" x="0" y="-28">NODE A [INGRESS]</text>
+<text fill="#8e9197" font-family="Space Mono" font-size="9" text-anchor="middle" x="0" y="-16">192.168.1.10 · RA 17h42m</text>
+<text fill="#b4c8e3" font-family="Space Mono" font-size="8" text-anchor="middle" x="0" y="32">TX: 94.2 Mb/s</text>
+</g>
+<!-- NODE B: RELAY ALPHA -->
+<g class="cursor-pointer" id="node-b" transform="translate(450, 110)">
+<circle fill="#0e0e0e" r="12" stroke="#8e9197" stroke-width="1"></circle>
+<circle fill="#c4c7ca" r="3.5"></circle>
+<circle fill="none" r="19" stroke="#43474d" stroke-width="0.5"></circle>
+<text fill="#fffdff" font-family="Space Mono" font-size="11" font-weight="700" text-anchor="middle" x="0" y="-24">NODE B [RELAY ALPHA]</text>
+<text fill="#8e9197" font-family="Space Mono" font-size="9" text-anchor="middle" x="0" y="-13">10.0.4.1 · AZ 042°</text>
+<text fill="#8e9197" font-family="Space Mono" font-size="8" text-anchor="middle" x="0" y="28">Q_DEPTH: 84%</text>
+</g>
+<!-- NODE C: RELAY BETA -->
+<g class="cursor-pointer" id="node-c" transform="translate(330, 520)">
+<circle fill="#0e0e0e" r="12" stroke="#8e9197" stroke-width="1"></circle>
+<circle fill="#c4c7ca" r="3.5"></circle>
+<circle fill="none" r="19" stroke="#43474d" stroke-width="0.5"></circle>
+<text fill="#fffdff" font-family="Space Mono" font-size="11" font-weight="700" text-anchor="middle" x="0" y="26">NODE C [RELAY BETA]</text>
+<text fill="#8e9197" font-family="Space Mono" font-size="9" text-anchor="middle" x="0" y="38">172.16.0.2 · DEC -29°</text>
+<text fill="#8e9197" font-family="Space Mono" font-size="8" text-anchor="middle" x="0" y="-18">BUFFER: 218 KB</text>
+</g>
+<!-- NODE D: EGRESS GATE -->
+<g class="cursor-pointer" id="node-d" transform="translate(840, 210)">
+<circle fill="#0e0e0e" r="16" stroke="#cfe3ff" stroke-width="1.2"></circle>
+<rect fill="#cfe3ff" height="8" width="8" x="-4" y="-4"></rect>
+<circle fill="none" r="26" stroke="#43474d" stroke-dasharray="3,3" stroke-width="0.5"></circle>
+<text fill="#fffdff" font-family="Space Mono" font-size="11" font-weight="700" text-anchor="middle" x="0" y="-28">NODE D [EGRESS GATE]</text>
+<text fill="#8e9197" font-family="Space Mono" font-size="9" text-anchor="middle" x="0" y="-16">198.51.100.4 · EXT-SYS</text>
+<text fill="#cfe3ff" font-family="Space Mono" font-size="8" text-anchor="middle" x="0" y="34">SINK ESTABLISHED</text>
+</g>
+<!-- Dynamic Active Packets Container -->
+<g id="packet-container"></g>
+<!-- Crosshair coordinate cursor tracker overlay -->
+<g id="interactive-crosshair" opacity="0.8" pointer-events="none">
+<line id="cross-x" stroke="#43474d" stroke-dasharray="2,6" stroke-width="0.5" x1="0" x2="1000" y1="0" y2="0"></line>
+<line id="cross-y" stroke="#43474d" stroke-dasharray="2,6" stroke-width="0.5" x1="0" x2="0" y1="0" y2="680"></line>
+<rect fill="#0e0e0e" height="18" id="cross-tag-box" stroke="#43474d" stroke-width="0.8" width="130" x="0" y="0"></rect>
+<text fill="#cfe3ff" font-family="Space Mono" font-size="9" id="cross-tag-text" x="0" y="0">R: 000 | T: 000°</text>
+</g>
+</svg>
+</div>
+<!-- Footer Micro-Status Bar within Canvas -->
+<div class="w-full px-4 py-2 border-t border-outline-variant/30 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<div class="flex items-center gap-space-md">
+<span class="text-on-surface-variant font-mono">[CANVAS: POLAR_RAYTRACE_ACTIVE]</span>
+<span class="text-outline-variant">|</span>
+<span class="text-outline">METRIC TENSOR: SCHWARZSCHILD POLAR ds²</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container inline-block"></span>
+<span class="text-primary-container font-mono uppercase">WARP DEFLECTION: NOMINAL</span>
+</div>
+</div>
+</div>
+<!-- RIGHT 25%: AUSTERE EVENT LOG & TELEMETRY STREAM -->
+<div class="xl:col-span-3 flex flex-col bg-surface-container-lowest overflow-hidden">
+<!-- Stream Header -->
+<div class="px-4 py-3 border-b border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary-container animate-pulse inline-block"></span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">INSTRUMENT LOG / STREAM</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-container border border-primary-container/40 px-1 py-0.5">[SYNC=ACTIVE]</span>
+</div>
+<!-- Realtime Event Narration Feed -->
+<div class="flex-1 p-4 font-label-md text-label-md text-on-surface-variant overflow-y-auto space-y-2 select-text font-mono max-h-[540px] xl:max-h-none" id="event-log-container">
+<!-- Event rows appended mechanically via JS -->
+<div class="flex items-start gap-2 border-l border-outline-variant/30 pl-2">
+<span class="text-outline text-label-sm font-label-sm shrink-0">t=0.00s</span>
+<span class="text-on-surface">INGRESS-A emits <span class="text-primary-container font-bold">SYN</span> (seq=3912048, win=65535, mss=1460)</span>
+</div>
+<div class="flex items-start gap-2 border-l border-outline-variant/30 pl-2">
+<span class="text-outline text-label-sm font-label-sm shrink-0">t=0.04s</span>
+<span class="text-secondary">RELAY-ALPHA queue depth reaches 84% capacity</span>
+</div>
+<div class="flex items-start gap-2 border-l border-outline-variant/30 pl-2">
+<span class="text-outline text-label-sm font-label-sm shrink-0">t=0.07s</span>
+<span class="text-on-surface">GRAVITY-WELL core applies <span class="text-primary-container">RED</span> (Random Early Detection)</span>
+</div>
+<div class="flex items-start gap-2 border-l border-error/50 pl-2 bg-error-container/10">
+<span class="text-error text-label-sm font-label-sm shrink-0">t=0.11s</span>
+<span class="text-error">Packet [ID:0xFA4B] dropped at horizon threshold r = 1.0 r_s</span>
+</div>
+<div class="flex items-start gap-2 border-l border-outline-variant/30 pl-2">
+<span class="text-outline text-label-sm font-label-sm shrink-0">t=0.15s</span>
+<span class="text-on-surface">RELAY-B routes alternate geodesic via Dijkstra metric</span>
+</div>
+<div class="flex items-start gap-2 border-l border-outline-variant/30 pl-2">
+<span class="text-outline text-label-sm font-label-sm shrink-0">t=0.19s</span>
+<span class="text-primary-container">SYN-ACK received at INGRESS-A (seq=9102834, ack=3912049)</span>
+</div>
+<div class="flex items-start gap-2 border-l border-outline-variant/30 pl-2">
+<span class="text-outline text-label-sm font-label-sm shrink-0">t=0.23s</span>
+<span class="text-primary">ACK delivered. 3-way handshake established across 3 hops</span>
+</div>
+<div class="flex items-start gap-2 border-l border-outline-variant/30 pl-2">
+<span class="text-outline text-label-sm font-label-sm shrink-0">t=0.28s</span>
+<span class="text-outline">RTT measured: 43.12ms (variance ±0.4ms)</span>
+</div>
+</div>
+<!-- Telemetry Sidenote Footer (Tufte Style) -->
+<div class="p-3 border-t border-outline-variant/30 bg-surface-container-low font-label-sm text-label-sm flex flex-col gap-1 text-outline">
+<div class="flex justify-between items-center text-on-surface">
+<span class="uppercase tracking-widest font-bold">NOTE 03 // BGP METRIC</span>
+<span>RFC-793 / SING-04</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+          Massive gravity gradients induce apparent transit delays indistinguishable from bufferbloat. Photonic packets entering within 1.5 r_g suffer irreversible absorption.
+        </p>
+</div>
+</div>
+</div>
+<!-- AUSTERE BOTTOM CONTROL BAR -->
+<div class="w-full bg-surface-container-lowest border-t border-outline-variant/30 px-margin-mobile lg:px-margin py-4 flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-6">
+<!-- Parameter Sliders -->
+<div class="flex flex-wrap items-center gap-6 lg:gap-8 font-label-md text-label-md">
+<!-- Slider 1 -->
+<div class="flex flex-col gap-1 min-w-[190px]">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant tracking-wider uppercase">EMISSION RATE</span>
+<span class="text-primary-container font-mono" id="label-emission">120 pkts/s</span>
+</div>
+<input class="w-full h-1 bg-surface-container-high rounded-none appearance-none accent-primary-container cursor-pointer" id="slider-emission" max="300" min="20" type="range" value="120"/>
+<div class="flex justify-between font-label-sm text-label-sm text-outline select-none">
+<span>| 20</span>
+<span>150</span>
+<span>300 |</span>
+</div>
+</div>
+<!-- Slider 2 -->
+<div class="flex flex-col gap-1 min-w-[190px]">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant tracking-wider uppercase">BUFFER DEPTH</span>
+<span class="text-primary-container font-mono" id="label-buffer">512 KB</span>
+</div>
+<input class="w-full h-1 bg-surface-container-high rounded-none appearance-none accent-primary-container cursor-pointer" id="slider-buffer" max="1024" min="64" step="64" type="range" value="512"/>
+<div class="flex justify-between font-label-sm text-label-sm text-outline select-none">
+<span>| 64KB</span>
+<span>512KB</span>
+<span>1024KB |</span>
+</div>
+</div>
+<!-- Slider 3 -->
+<div class="flex flex-col gap-1 min-w-[190px]">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant tracking-wider uppercase">GRAVITATIONAL SHEAR</span>
+<span class="text-error font-mono" id="label-shear">2.4%</span>
+</div>
+<input class="w-full h-1 bg-surface-container-high rounded-none appearance-none accent-error cursor-pointer" id="slider-shear" max="15" min="0" step="0.1" type="range" value="2.4"/>
+<div class="flex justify-between font-label-sm text-label-sm text-outline select-none">
+<span>| 0.0%</span>
+<span>7.5%</span>
+<span>15.0% |</span>
+</div>
+</div>
+</div>
+<!-- Square Monospaced Toggles -->
+<div class="flex flex-wrap items-center gap-4 font-label-md text-label-md">
+<button class="px-2 py-1 bg-surface-container-lowest border border-primary-container text-primary-container hover:bg-primary-container hover:text-surface-container-lowest transition-none flex items-center gap-2" id="toggle-geodesic">
+<span class="w-2.5 h-2.5 border border-primary-container flex items-center justify-center">
+<span class="w-1.5 h-1.5 bg-primary-container" id="chk-geodesic-mark"></span>
+</span>
+<span>[TRACE GEODESICS]</span>
+</button>
+<button class="px-2 py-1 bg-surface-container-lowest border border-outline-variant/60 text-outline hover:border-primary-container hover:text-primary-container transition-none flex items-center gap-2" id="toggle-ecn">
+<span class="w-2.5 h-2.5 border border-outline-variant flex items-center justify-center">
+<span class="w-1.5 h-1.5 bg-transparent" id="chk-ecn-mark"></span>
+</span>
+<span>[ECN MARKING]</span>
+</button>
+<button class="px-2 py-1 bg-surface-container-lowest border border-primary-container text-primary-container hover:bg-primary-container hover:text-surface-container-lowest transition-none flex items-center gap-2" id="toggle-log">
+<span class="w-2.5 h-2.5 border border-primary-container flex items-center justify-center">
+<span class="w-1.5 h-1.5 bg-primary-container" id="chk-log-mark"></span>
+</span>
+<span>[LOG INGRESS ONLY]</span>
+</button>
+</div>
+<!-- Immediate Action Controls (Strict Hairline Astronomical Typography) -->
+<div class="flex items-center gap-space-md shrink-0 font-label-md text-label-md">
+<button class="text-on-surface hover:text-primary-container underline underline-offset-4 decoration-outline-variant hover:decoration-primary-container tracking-wider" id="btn-step">
+        [STEP 10ms →]
+      </button>
+<button class="border border-primary-container px-3 py-1.5 text-primary-container hover:bg-primary-container hover:text-on-primary transition-none font-bold tracking-wider" id="btn-inject">
+        [INJECT PACKET TRAIN]
+      </button>
+<button class="text-error hover:text-on-surface underline underline-offset-4 decoration-error/50 hover:decoration-on-surface tracking-wider" id="btn-flush">
+        [FLUSH QUEUES]
+      </button>
+</div>
+</div>
+<!-- Realtime Simulation & Interactive Scripting Engine -->
+<script>
+    (function initSchwarzschildLab() {
+      const svg = document.getElementById('topo-canvas');
+      const packetContainer = document.getElementById('packet-container');
+      const logContainer = document.getElementById('event-log-container');
+      
+      // Sliders & Telemetry elements
+      const sliderEmission = document.getElementById('slider-emission');
+      const sliderBuffer = document.getElementById('slider-buffer');
+      const sliderShear = document.getElementById('slider-shear');
+      const labelEmission = document.getElementById('label-emission');
+      const labelBuffer = document.getElementById('label-buffer');
+      const labelShear = document.getElementById('label-shear');
+      
+      const statLatency = document.getElementById('stat-latency');
+      const statLoss = document.getElementById('stat-loss');
+      const statAccretion = document.getElementById('stat-accretion');
+
+      // Toggles
+      const toggleGeodesic = document.getElementById('toggle-geodesic');
+      const chkGeodesicMark = document.getElementById('chk-geodesic-mark');
+      const geodesicLayer = document.getElementById('geodesic-layer');
+      let geodesicsVisible = true;
+
+      const toggleEcn = document.getElementById('toggle-ecn');
+      const chkEcnMark = document.getElementById('chk-ecn-mark');
+      let ecnActive = false;
+
+      const toggleLog = document.getElementById('toggle-log');
+      const chkLogMark = document.getElementById('chk-log-mark');
+      let logIngressOnly = true;
+
+      // Buttons
+      const btnStep = document.getElementById('btn-step');
+      const btnInject = document.getElementById('btn-inject');
+      const btnFlush = document.getElementById('btn-flush');
+
+      // Interactive Crosshairs
+      const crossX = document.getElementById('cross-x');
+      const crossY = document.getElementById('cross-y');
+      const crossTagBox = document.getElementById('cross-tag-box');
+      const crossTagText = document.getElementById('cross-tag-text');
+
+      // Geodesic Paths definitions
+      const paths = [
+        // Ingress -> Relay Alpha -> Egress
+        {
+          d: "M 140 180 Q 280 120 450 110 Q 660 140 840 210",
+          name: "PATH_UPPER_ORBIT"
+        },
+        // Ingress -> Schwarzschild Perimeter Deflection -> Relay Beta -> Egress
+        {
+          d: "M 140 180 Q 300 290 448 335 Q 470 470 330 520 Q 610 610 840 210",
+          name: "PATH_GRAVITY_LENS"
+        },
+        // Direct Core Horizon Infall (Drop Candidate)
+        {
+          d: "M 140 180 Q 290 270 500 340",
+          name: "PATH_EVENT_HORIZON_CAPTURE"
+        }
+      ];
+
+      // Simulated Packets pool
+      let activePackets = [];
+      let packetIdCounter = 4912;
+      let virtualTime = 0.32;
+      let lastEmissionTime = 0;
+
+      // Crosshair tracking
+      svg.addEventListener('mousemove', (e) => {
+        const pt = svg.createSVGPoint();
+        pt.x = e.clientX;
+        pt.y = e.clientY;
+        const ctm = svg.getScreenCTM();
+        if (!ctm) return;
+        const svgPt = pt.matrixTransform(ctm.inverse());
+        const x = Math.max(0, Math.min(1000, svgPt.x));
+        const y = Math.max(0, Math.min(680, svgPt.y));
+
+        crossX.setAttribute('y1', y);
+        crossX.setAttribute('y2', y);
+        crossY.setAttribute('x1', x);
+        crossY.setAttribute('x2', x);
+
+        const dx = x - 500;
+        const dy = y - 340;
+        const r = (Math.sqrt(dx*dx + dy*dy) / 68).toFixed(2);
+        const theta = ((Math.atan2(dy, dx) * 180 / Math.PI + 360) % 360).toFixed(0);
+
+        crossTagBox.setAttribute('x', Math.min(860, x + 8));
+        crossTagBox.setAttribute('y', Math.max(10, y - 22));
+        crossTagText.setAttribute('x', Math.min(860, x + 14));
+        crossTagText.setAttribute('y', Math.max(10, y - 10));
+        crossTagText.textContent = `r=${r} r_g | θ=${theta}°`;
+      });
+
+      // Toggles behavior
+      toggleGeodesic.addEventListener('click', () => {
+        geodesicsVisible = !geodesicsVisible;
+        geodesicLayer.style.display = geodesicsVisible ? 'block' : 'none';
+        chkGeodesicMark.className = geodesicsVisible ? 'w-1.5 h-1.5 bg-primary-container' : 'w-1.5 h-1.5 bg-transparent';
+        toggleGeodesic.className = geodesicsVisible 
+          ? 'px-2 py-1 bg-surface-container-lowest border border-primary-container text-primary-container hover:bg-primary-container hover:text-surface-container-lowest transition-none flex items-center gap-2'
+          : 'px-2 py-1 bg-surface-container-lowest border border-outline-variant/60 text-outline hover:border-primary-container hover:text-primary-container transition-none flex items-center gap-2';
+        appendLog(`Geodesic curvature rendering toggled: ${geodesicsVisible ? 'VISIBLE' : 'MUTED'}`);
+      });
+
+      toggleEcn.addEventListener('click', () => {
+        ecnActive = !ecnActive;
+        chkEcnMark.className = ecnActive ? 'w-1.5 h-1.5 bg-primary-container' : 'w-1.5 h-1.5 bg-transparent';
+        toggleEcn.className = ecnActive 
+          ? 'px-2 py-1 bg-surface-container-lowest border border-primary-container text-primary-container hover:bg-primary-container hover:text-surface-container-lowest transition-none flex items-center gap-2'
+          : 'px-2 py-1 bg-surface-container-lowest border border-outline-variant/60 text-outline hover:border-primary-container hover:text-primary-container transition-none flex items-center gap-2';
+        appendLog(`Explicit Congestion Notification (ECN) set: ${ecnActive ? 'CE_ENABLED' : 'DISABLED'}`);
+      });
+
+      toggleLog.addEventListener('click', () => {
+        logIngressOnly = !logIngressOnly;
+        chkLogMark.className = logIngressOnly ? 'w-1.5 h-1.5 bg-primary-container' : 'w-1.5 h-1.5 bg-transparent';
+        toggleLog.className = logIngressOnly 
+          ? 'px-2 py-1 bg-surface-container-lowest border border-primary-container text-primary-container hover:bg-primary-container hover:text-surface-container-lowest transition-none flex items-center gap-2'
+          : 'px-2 py-1 bg-surface-container-lowest border border-outline-variant/60 text-outline hover:border-primary-container hover:text-primary-container transition-none flex items-center gap-2';
+        appendLog(`Event logging filter altered: ${logIngressOnly ? 'INGRESS_ONLY' : 'FULL_VERBOSE'}`);
+      });
+
+      // Controls Sliders
+      sliderEmission.addEventListener('input', (e) => {
+        labelEmission.textContent = `${e.target.value} pkts/s`;
+      });
+      sliderBuffer.addEventListener('input', (e) => {
+        labelBuffer.textContent = `${e.target.value} KB`;
+      });
+      sliderShear.addEventListener('input', (e) => {
+        labelShear.textContent = `${parseFloat(e.target.value).toFixed(1)}%`;
+        statLoss.textContent = `${(parseFloat(e.target.value) * 0.02).toFixed(2)}%`;
+      });
+
+      // Logging mechanism
+      function appendLog(msg, type = 'normal') {
+        const row = document.createElement('div');
+        row.className = 'flex items-start gap-2 border-l pl-2 ' + 
+          (type === 'drop' ? 'border-error/50 bg-error-container/10 text-error' :
+           type === 'ack' ? 'border-primary-container text-primary-container' :
+           'border-outline-variant/30 text-on-surface-variant');
+
+        const timeSpan = document.createElement('span');
+        timeSpan.className = 'text-outline text-label-sm font-label-sm shrink-0 font-mono';
+        timeSpan.textContent = `t=${virtualTime.toFixed(2)}s`;
+
+        const textSpan = document.createElement('span');
+        textSpan.className = 'font-mono';
+        textSpan.innerHTML = msg;
+
+        row.appendChild(timeSpan);
+        row.appendChild(textSpan);
+        logContainer.appendChild(row);
+        logContainer.scrollTop = logContainer.scrollHeight;
+      }
+
+      // Packet Creation along SVG Path
+      function spawnPacket(pathIndex = null) {
+        packetIdCounter++;
+        const hexId = '0x' + packetIdCounter.toString(16).toUpperCase();
+        const pIndex = pathIndex !== null ? pathIndex : (Math.random() < 0.22 ? 2 : (Math.random() < 0.5 ? 0 : 1));
+        const pathDef = paths[pIndex];
+
+        // Invisible temporary path for calculating length and points
+        const tempPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        tempPath.setAttribute("d", pathDef.d);
+        const totalLength = tempPath.getTotalLength();
+
+        const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        
+        // Dashed fading tail
+        const trail = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        trail.setAttribute("stroke", "#cfe3ff");
+        trail.setAttribute("stroke-width", "1");
+        trail.setAttribute("stroke-dasharray", "1,3");
+        trail.setAttribute("opacity", "0.6");
+
+        // Primary packet core photon dot
+        const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        dot.setAttribute("r", "2.5");
+        dot.setAttribute("fill", "#cfe3ff");
+
+        group.appendChild(trail);
+        group.appendChild(dot);
+        packetContainer.appendChild(group);
+
+        const packet = {
+          id: hexId,
+          tempPath,
+          totalLength,
+          group,
+          dot,
+          trail,
+          progress: 0,
+          speed: 0.0035 + (Math.random() * 0.002),
+          isCaptured: pIndex === 2,
+          pathIndex: pIndex
+        };
+
+        activePackets.push(packet);
+        if (!logIngressOnly || pIndex === 0) {
+          appendLog(`Node A emits SYN segment [${hexId}] on ${pathDef.name}`);
+        }
+      }
+
+      // Actions
+      btnInject.addEventListener('click', () => {
+        appendLog(`[TRAIN_INJECT] Burst sequence queued: 8 datagrams back-to-back`, 'ack');
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => spawnPacket(), i * 70);
+        }
+      });
+
+      btnStep.addEventListener('click', () => {
+        virtualTime += 0.01;
+        appendLog(`Clock stepped manually +10ms. Relativistic frame recalculated.`);
+        statLatency.textContent = (42.0 + Math.random() * 2).toFixed(1) + 'ms';
+      });
+
+      btnFlush.addEventListener('click', () => {
+        activePackets.forEach(p => p.group.remove());
+        activePackets = [];
+        appendLog(`[BUFFER_FLUSH] All transient in-flight frames discarded across topology`, 'drop');
+        statLoss.textContent = '0.00%';
+        statAccretion.textContent = '0.0 MB/s';
+      });
+
+      // Simulation Render Loop
+      function render(timestamp) {
+        virtualTime += 0.002;
+        const emissionRate = parseInt(sliderEmission.value, 10);
+        const emissionInterval = 1000 / (emissionRate / 10);
+
+        if (!lastEmissionTime || (timestamp - lastEmissionTime) > emissionInterval) {
+          spawnPacket();
+          lastEmissionTime = timestamp;
+        }
+
+        // Accretion readout variance
+        if (Math.random() < 0.04) {
+          const acc = (0.8 + Math.random() * 0.9).toFixed(1);
+          statAccretion.textContent = `${acc} MB/s`;
+        }
+
+        // Animate packets
+        for (let i = activePackets.length - 1; i >= 0; i--) {
+          const p = activePackets[i];
+          p.progress += p.speed;
+
+          if (p.progress >= 1) {
+            // Reached destination or singularity
+            if (p.isCaptured) {
+              appendLog(`CRITICAL: Singularity tidal pull exceeded [${p.id}] absorbed at r = 1.0 r_s`, 'drop');
+            } else {
+              if (Math.random() < 0.3) {
+                appendLog(`Packet [${p.id}] arrived at EGRESS GATE · ACK roundtrip verified`, 'ack');
+              }
+            }
+            p.group.remove();
+            activePackets.splice(i, 1);
+            continue;
+          }
+
+          const currentDist = p.progress * p.totalLength;
+          const pt = p.tempPath.getPointAtLength(currentDist);
+          
+          const prevDist = Math.max(0, currentDist - 16);
+          const prevPt = p.tempPath.getPointAtLength(prevDist);
+
+          p.dot.setAttribute("cx", pt.x);
+          p.dot.setAttribute("cy", pt.y);
+
+          p.trail.setAttribute("x1", prevPt.x);
+          p.trail.setAttribute("y1", prevPt.y);
+          p.trail.setAttribute("x2", pt.x);
+          p.trail.setAttribute("y2", pt.y);
+        }
+
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 py-space-lg"><div class="w-full px-margin-mobile lg:px-margin flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md font-label-sm text-label-sm text-outline"><div class="flex items-center gap-space-md"><span class="text-outline-variant select-none font-headline-sm text-headline-sm">+</span><div class="flex flex-col sm:flex-row sm:items-center gap-space-xs sm:gap-space-sm"><span class="text-on-surface tracking-widest uppercase">OBSERVATORY OF PACKET ASTROPHYSICS</span><span class="hidden sm:inline text-outline-variant">//</span><span class="text-outline">REF: SGR-A*-PROTOCOL-SPEC</span></div></div><div class="flex items-center gap-space-lg text-outline-variant"><span class="font-label-sm text-label-sm text-outline">GRID: 12-COL TIK [0x4F:TEL]</span><span class="font-label-sm text-label-sm text-outline">STATUS: NOMINAL</span><span class="text-outline-variant select-none font-headline-sm text-headline-sm">+</span></div></div></footer></body></html>

@@ -1,0 +1,246 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-02
+  title: Policy Evaluation Logic, Permission Boundaries and AccessDenied Diagnosis
+  session_alignment: '17'
+  focus: Policy evaluation order, identity/resource policies, permission boundaries, session policies, organization
+    guardrails and denial analysis.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Access request evaluation model
+  explanation: An authorization request can be represented as principal + action + resource + context. The policy
+    engine evaluates all applicable policy layers. A request succeeds only when the applicable rules permit it and
+    no applicable explicit deny or higher-level guardrail blocks it. The exact evaluation algorithm varies by provider;
+    learn the conceptual layers first and then verify the provider's documented decision logic.
+  key_points:
+  - 'Principal: who is making the request?'
+  - 'Action: which API operation is attempted?'
+  - 'Resource: which resource is targeted?'
+  - 'Context: which tags, network, time, MFA and session attributes apply?'
+  - 'Decision: allowed or denied, with evidence identifying the controlling rule.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: Identity-based and resource-based policies
+  explanation: Identity-based policies attach permissions to users, groups or roles and describe what the identity
+    may do. Resource-based policies attach directly to a resource and specify which principals may access it. Some
+    services support both; others rely more heavily on one model. A resource policy can enable cross-account access,
+    but it does not automatically bypass organization-level restrictions or explicit denies.
+  key_points:
+  - 'Identity policy question: what can this identity access?'
+  - 'Resource policy question: who can access this resource, and how?'
+  - Cross-account access often requires coordinated trust and permission configuration.
+  - Check resource ownership and policy attachment points when diagnosing unexpected denial.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: Explicit deny and implicit deny
+  explanation: 'An explicit Deny is a matching rule that intentionally blocks access and normally overrides an Allow.
+    An implicit deny occurs when no applicable policy grants the requested permission. This distinction matters
+    during troubleshooting: adding another Allow will not fix a matching explicit Deny. The correct response is
+    to identify the denying layer and change it only through the approved security process.'
+  key_points:
+  - 'Explicit deny: locate the exact statement and matching condition.'
+  - 'Implicit deny: determine which required Allow is absent or out of scope.'
+  - Do not remove guardrails simply to make a test pass.
+  - Record why the final decision is safe and justified.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: Permission boundaries and session policies
+  explanation: A permission boundary defines the maximum permissions an identity-based policy can grant to a principal.
+    It is not itself a grant of permissions. A session policy can further restrict permissions for a temporary role
+    session. These mechanisms constrain effective access and are useful for delegated administration and temporary
+    access. Their exact interaction is provider-specific and must be checked in the relevant IAM documentation.
+  key_points:
+  - Identity permission grants are constrained by applicable boundaries.
+  - A boundary does not independently authorize an action.
+  - Session restrictions can make a role session narrower than the role's base permissions.
+  - When a role works in one context but fails in another, inspect session and boundary constraints.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Organization guardrails
+  explanation: Organizations can apply policies across accounts, subscriptions or projects. A service control policy
+    (SCP) is a guardrail that limits the maximum permissions available to member accounts in supported provider
+    models; it does not normally grant permissions by itself. Organizational policies help prevent risky actions
+    even when an account administrator has broad local permissions.
+  key_points:
+  - 'Account hierarchy: root or organization, organizational units and member accounts.'
+  - 'Guardrails: block prohibited regions, services or high-risk operations.'
+  - 'Inheritance: understand which organizational units and accounts receive each policy.'
+  - 'Exception handling: document, approve, time-limit and audit exceptions.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: A repeatable AccessDenied investigation
+  explanation: Start with the exact error, timestamp, principal, action, resource and request ID. Confirm which
+    identity or role was actually used. Reproduce the request with the same session and context. Inspect identity
+    policy, resource policy, trust relationship, permission boundary, session policy, organization guardrails and
+    conditions. Review audit events for the denied API call. Change one cause at a time and retest both the intended
+    permission and a negative case.
+  key_points:
+  - Capture principal ARN or equivalent identity identifier.
+  - Confirm action and exact resource ARN/ID, including region and account.
+  - Inspect explicit denies before adding new allows.
+  - Check condition keys, tags, MFA, source IP, encryption context and region.
+  - Check temporary credentials, session expiration and role trust.
+  - Use policy simulation or provider troubleshooting tools where available.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Worked denial scenarios
+  explanation: 'Scenario A: a role has object-read permission but the bucket policy denies access from unapproved
+    networks. The network condition is the controlling cause. Scenario B: a developer can assume a role but cannot
+    delete a resource because a permission boundary excludes delete. Scenario C: a local administrator''s action
+    is blocked by an organization guardrail. Each scenario requires evidence from the relevant policy layer, not
+    a blanket administrator grant.'
+  key_points:
+  - 'Write the request tuple: principal/action/resource/context.'
+  - List each applicable policy layer and its decision.
+  - Identify the first decisive deny or missing grant.
+  - Propose the smallest safe change and an expected-denial regression test.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: Policy evidence and safe remediation
+  explanation: A remediation record should include the original request, relevant policy version, audit event, root
+    cause, approved change, test evidence and rollback path. Avoid broad wildcards, disabling organization policies
+    or using shared administrator credentials as a diagnostic shortcut. Prefer temporary elevation with approval
+    and logging if privileged investigation is required.
+  key_points:
+  - 'Evidence: policy document, policy version, audit event and test result.'
+  - 'Change control: owner, reviewer, reason and expiry where applicable.'
+  - 'Regression: required action succeeds; unrelated action remains denied.'
+  - 'Rollback: restore the previous policy version if unintended access appears.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

@@ -1,0 +1,673 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO3
+  concept_id: CO3_01
+  concept_title: IP Addressing, IPv4 and CIDR Fundamentals
+  source_alignment: Based on CO3 and Sessions 9-12 plus Practical Sessions 5-6 in the uploaded
+    CDIS handout.
+  coverage: Cloud IP addressing, CIDR, subnet planning, virtual networks, routing, traffic filtering,
+    private access, NAT, load balancing, DNS, CDN, hybrid connectivity and network troubleshooting.
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  intended_level: Undergraduate CSE; application, analysis and fault diagnosis
+  line_count_target: At least 350 substantive YAML lines
+learning_outcomes:
+- Calculate IPv4 CIDR ranges, subnet boundaries and usable address capacity.
+- Design virtual networks with public and private subnets, routes and controlled egress.
+- Analyze stateful and stateless filtering, NAT and private service access.
+- Evaluate L4/L7 load balancing, DNS routing, CDN and hybrid connectivity.
+- Diagnose network faults using resolve, route, reach and respond evidence.
+prerequisites:
+- Basic IPv4, binary arithmetic and TCP/IP concepts.
+- Basic understanding of client-server applications and HTTP.
+- Familiarity with Linux or Windows command-line networking tools.
+concept_map:
+  central_concept: IP Addressing, IPv4 and CIDR Fundamentals
+  major_dimensions:
+  - Addressing and subnet allocation
+  - Virtual network architecture and routing
+  - Traffic filtering and private service access
+  - Traffic distribution, DNS and content delivery
+  - Hybrid connectivity and evidence-led troubleshooting
+  relationships:
+  - Addressing defines which destinations can be represented and routed.
+  - Routes select a path while filtering controls whether traffic is permitted.
+  - DNS identifies endpoints while load balancers distribute traffic to healthy targets.
+  - CDNs serve eligible content near users while hybrid links connect separate network domains.
+  - Troubleshooting follows the request path from name resolution through application response.
+core_units:
+- unit_id: CO3_01_U01
+  topic: IPv4 structure
+  definition: IPv4 addresses are 32-bit logical identifiers commonly written as four decimal octets.
+  detailed_explanation: Each octet represents eight bits. Network and host portions are determined
+    by the prefix length, not by visual octet boundaries alone.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: For 192.168.10.25/24, the first 24 bits identify the network and the remaining
+    eight bits identify the host.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define ipv4 structure and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of ipv4 structure.
+- unit_id: CO3_01_U02
+  topic: Binary and decimal conversion
+  definition: IPv4 subnet calculations rely on binary representation and bitwise boundaries.
+  detailed_explanation: Convert each octet to eight bits, apply the subnet mask and identify network
+    and host bits.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A /26 mask is 255.255.255.192 because the final octet has two network bits.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define binary and decimal conversion and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of binary and decimal conversion.
+- unit_id: CO3_01_U03
+  topic: Network masks
+  definition: A subnet mask marks network bits as one and host bits as zero.
+  detailed_explanation: The mask is applied with a bitwise AND operation to obtain the network
+    address.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: 192.168.1.77 AND 255.255.255.0 produces 192.168.1.0.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define network masks and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of network masks.
+- unit_id: CO3_01_U04
+  topic: CIDR notation
+  definition: CIDR expresses a network prefix as an address followed by a slash and prefix length.
+  detailed_explanation: The prefix length indicates how many leading bits are fixed for the network.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: 10.20.0.0/16 contains 16 network bits.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define cidr notation and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of cidr notation.
+- unit_id: CO3_01_U05
+  topic: Address range calculation
+  definition: A CIDR block defines a contiguous range of addresses sharing a common prefix.
+  detailed_explanation: Calculate the block size from the remaining host bits and align the network
+    address to the block boundary.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A /24 contains 256 total IPv4 addresses.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define address range calculation and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of address range calculation.
+- unit_id: CO3_01_U06
+  topic: Usable host count
+  definition: Traditional IPv4 subnetting commonly reserves network and broadcast addresses, though
+    cloud platform conventions may differ for special addresses.
+  detailed_explanation: For a conventional subnet with h host bits, usable hosts are often 2^h
+    minus two; provider-reserved addresses must also be considered.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A conventional /24 has 254 usable host addresses before provider-specific reservations.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define usable host count and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of usable host count.
+- unit_id: CO3_01_U07
+  topic: Subnet boundaries
+  definition: A subnet begins at an address aligned to its prefix block size.
+  detailed_explanation: Find the increment in the relevant octet and identify the first address
+    of the containing block.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A /26 advances in blocks of 64 in the last octet.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define subnet boundaries and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of subnet boundaries.
+- unit_id: CO3_01_U08
+  topic: Private and public IPv4 ranges
+  definition: RFC 1918 defines private IPv4 ranges that are not globally routed on the public
+    internet.
+  detailed_explanation: Use private ranges for internal cloud address plans and public addresses
+    only where internet reachability is intended.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: 10.0.0.0/8 is a private address range.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define private and public ipv4 ranges and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of private and public ipv4 ranges.
+- unit_id: CO3_01_U09
+  topic: Overlapping CIDR ranges
+  definition: Overlapping address spaces make routing and network connection difficult or ambiguous.
+  detailed_explanation: Check all connected VPCs, on-premises networks, VPNs and peered networks
+    before assigning a range.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: Two networks both using 10.0.0.0/16 cannot be cleanly routed together without
+    translation or redesign.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define overlapping cidr ranges and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of overlapping cidr ranges.
+- unit_id: CO3_01_U10
+  topic: IPv6 fundamentals
+  definition: IPv6 uses 128-bit addresses and has a much larger address space than IPv4.
+  detailed_explanation: IPv6 addressing, routing, security and dual-stack behavior must be planned
+    explicitly.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A dual-stack subnet can provide both IPv4 and IPv6 addresses.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define ipv6 fundamentals and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of ipv6 fundamentals.
+- unit_id: CO3_01_U11
+  topic: Address planning
+  definition: Address planning allocates non-overlapping ranges for environments, regions, zones
+    and subnet roles.
+  detailed_explanation: Reserve growth space, document ownership and consider future peering or
+    hybrid connectivity.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A company allocates distinct CIDR blocks to development, staging and production.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define address planning and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of address planning.
+- unit_id: CO3_01_U12
+  topic: Subnetting practice
+  definition: Subnetting divides a larger address range into smaller logical networks.
+  detailed_explanation: Choose prefix sizes based on required hosts, growth, zone design and provider
+    constraints.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A /16 can be divided into multiple /20 or /24 subnets.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define subnetting practice and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of subnetting practice.
+provider_comparison:
+  comparison_method: Compare network scope, address model, route behavior, filtering semantics,
+    endpoint support, DNS behavior, load-balancer layer, hybrid options, telemetry and pricing.
+    Product names are not proof of identical behavior.
+  aws: AWS networking examples include Amazon VPC, subnets, route tables, Internet Gateway, NAT
+    Gateway, security groups, network ACLs, VPC endpoints, Elastic Load Balancing, Route 53, CloudFront,
+    Site-to-Site VPN, Direct Connect and VPC Flow Logs.
+  azure: Azure networking examples include Virtual Network, subnets, route tables, Network Security
+    Groups, Azure Firewall, NAT Gateway, Private Link/private endpoints, Azure Load Balancer,
+    Application Gateway, Azure DNS, Azure Front Door, VPN Gateway and ExpressRoute.
+  google_cloud: Google Cloud networking examples include VPC networks, subnets, routes, firewall
+    rules, Cloud NAT, Private Service Connect, Cloud Load Balancing, Cloud DNS, Cloud CDN, Cloud
+    VPN, Cloud Interconnect and VPC Flow Logs.
+  comparison_checklist:
+  - What is the virtual network and subnet scope?
+  - How are routes associated and how is longest-prefix or priority behavior determined?
+  - Are security rules stateful or stateless, and at what resource boundary do they apply?
+  - How does private service access work for the selected service?
+  - What load-balancer layers and health-check options are supported?
+  - Which DNS routing policies and private DNS mechanisms are available?
+  - What hybrid VPN or dedicated connectivity options exist?
+  - Which flow logs and network diagnostics can prove the packet path?
+  - Which NAT, inter-zone, load-balancer and data-transfer charges apply?
+architecture_and_workflow:
+  reference_topology:
+  - Client or internet user
+  - Public DNS and optional CDN
+  - Internet-facing L7 or L4 load balancer
+  - Private application subnets distributed across zones
+  - Private database or managed service subnet
+  - NAT or private service endpoint for required outbound service access
+  - Optional VPN or dedicated connection to on-premises networks
+  network_design_steps:
+  - Collect application flows, users, protocols, ports and data classification.
+  - Choose a non-overlapping address space and reserve growth capacity.
+  - Create subnets by role and failure domain.
+  - Create route tables and document every next hop.
+  - Attach internet, NAT, peering, endpoint or hybrid gateways as required.
+  - Apply least-access security groups, ACLs and firewall policies.
+  - Configure DNS, load balancing and health checks.
+  - Enable flow logging and application-level tracing.
+  - Test both forward and return paths from representative clients.
+  - Record costs, ownership and teardown procedures.
+  evidence_to_collect:
+  - CIDR allocation table and subnet calculations
+  - Route tables and gateway attachment state
+  - Security group, ACL and firewall rule exports
+  - DNS query output and TTL values
+  - Load-balancer listener and target health evidence
+  - Flow logs and connectivity test output
+  - VPN tunnel state and BGP route information
+  - Latency, packet loss and throughput measurements
+practical_labs:
+- lab_id: CO3_01_LAB01
+  title: VPC and gateway foundation
+  objective: Create a virtual network, attach an internet gateway and understand subnet route
+    behavior.
+  handout_alignment: 'Practical Session 5: VPC isolated network and Internet Gateway attachment.'
+  procedure:
+  - Create a VPC and record the CIDR block.
+  - Create a public subnet and associate a route table.
+  - Attach an internet gateway to the VPC.
+  - Add a default route to the internet gateway in the public route table.
+  - Launch a temporary test instance with suitable public addressing and tightly scoped access.
+  - Test connectivity and record route and security evidence.
+  - Remove temporary resources after the lab.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget alert before creating chargeable resources.
+  - Restrict inbound access to the learner's approved source address.
+  - Do not expose databases or administrative ports publicly.
+  - Delete public IPs and all temporary network resources after testing.
+  deliverables:
+  - VPC diagram
+  - CIDR and subnet table
+  - Route table evidence
+  - Connectivity test
+  - Teardown confirmation
+- lab_id: CO3_01_LAB02
+  title: One public and two private subnets with NAT
+  objective: Build the topology specified by the CO3 practical and prove private subnet outbound
+    connectivity.
+  handout_alignment: 'Practical Session 6: create a VPC with 120.0.0.0/16, one public subnet and
+    two private subnets, and connect a NAT gateway for private subnet internet connectivity.'
+  source_specific_note: The handout specifies 120.0.0.0/16. Preserve this value when documenting
+    the prescribed exercise. For real production address planning, use an address range that the
+    organization is authorized to use, typically an RFC1918 private range, and avoid overlapping
+    connected networks.
+  procedure:
+  - Record the handout-specified VPC CIDR exactly in the lab plan.
+  - Divide the VPC range into three non-overlapping subnet ranges with adequate capacity.
+  - Create one public subnet and two private subnets.
+  - Attach an internet gateway and configure the public subnet route table.
+  - Create a NAT gateway in the public subnet with the required public address allocation.
+  - Configure the private subnet route table to send internet-bound traffic to NAT.
+  - Launch a test instance in a private subnet without a public IP.
+  - Test outbound access from the private instance and verify that unsolicited inbound internet
+    access is not enabled.
+  - Inspect flow evidence and route tables, then tear down NAT and other billable resources.
+  safety_controls:
+  - Confirm the account, region and billing budget before provisioning NAT.
+  - Do not use the lab CIDR in a production network without validating address ownership and routing
+    implications.
+  - Keep private test instances without public addresses.
+  - Delete NAT gateways and allocated public IPs after the test.
+  deliverables:
+  - Address allocation table
+  - Public/private route tables
+  - NAT configuration evidence
+  - Outbound connectivity result
+  - Cost and teardown checklist
+scenario_bank:
+- scenario: A private VM cannot download operating-system updates although the VPC has an internet
+    gateway.
+  task: Trace the subnet route, NAT placement, public subnet route, security policy and return
+    path.
+  expected_reasoning: An internet gateway alone does not give a private subnet direct outbound
+    access; a suitable NAT path and routes are required.
+- scenario: A TCP connection times out even though DNS resolves the destination.
+  task: Inspect route selection, filtering, NAT and return traffic, then use flow evidence.
+  expected_reasoning: Name resolution and routing are separate stages; a timeout can indicate
+    silent filtering or an incomplete path.
+- scenario: A request reaches a load balancer but receives HTTP 503.
+  task: Inspect listener rules, target registration, health checks, security rules and backend
+    logs.
+  expected_reasoning: Transport reachability to the load balancer does not prove that healthy
+    application targets exist.
+- scenario: DNS failover changes the authoritative answer but some users still reach the old region.
+  task: Analyze TTL, resolver caching, health-check interval and client retry behavior.
+  expected_reasoning: Client-observed recovery can lag the control-plane change because cached
+    answers remain valid until expiry.
+common_misconceptions:
+- claim: A public subnet automatically makes every instance public.
+  correction: The route table, public addressing and filtering configuration all affect reachability.
+- claim: A NAT gateway allows unsolicited inbound internet connections to private instances.
+  correction: NAT commonly supports outbound-initiated connectivity; it is not a general inbound
+    publishing mechanism.
+- claim: Security groups and network ACLs behave identically.
+  correction: Security groups are commonly stateful while network ACLs are commonly stateless
+    and require explicit return traffic rules.
+- claim: If DNS resolves, the network is working.
+  correction: DNS only establishes a name-to-address answer; route, transport, filtering and application
+    behavior still need validation.
+- claim: A load balancer health check proves the whole user journey works.
+  correction: A shallow health check may not exercise authentication, business logic or downstream
+    dependencies.
+- claim: Private connectivity means trusted connectivity.
+  correction: Private paths still require identity, encryption where appropriate, routing and
+    traffic filtering.
+troubleshooting_method:
+  sequence:
+  - 'Resolve: confirm the hostname, resolver, returned address and TTL.'
+  - 'Route: inspect the source subnet route table, destination prefix and next hop.'
+  - 'Reach: test endpoint, port, protocol, security rules, ACLs and return path.'
+  - 'Respond: inspect TLS, HTTP status, load-balancer health and application dependencies.'
+  command_toolbox:
+  - tool: nslookup or dig
+    purpose: Inspect DNS answer, resolver and TTL-related details.
+  - tool: ip route or route print
+    purpose: Inspect local route selection and default gateway.
+  - tool: ping or traceroute/tracert
+    purpose: Test ICMP reachability or observe a possible network path; interpret filtered hops
+      cautiously.
+  - tool: curl, nc or an equivalent TCP client
+    purpose: Test application response or transport connection to a specific port.
+  incident_record_fields:
+  - Timestamp
+  - Source address
+  - Destination address
+  - Protocol
+  - Port
+  - DNS answer
+  - Route decision
+  - Filtering evidence
+  - Connection result
+  - Application response
+  - Root cause
+  - Remediation
+  - Verification
+examination_bank:
+  remember:
+  - Define CIDR and explain the purpose of a subnet mask.
+  - Differentiate a public subnet and a private subnet.
+  - State the difference between a security group and a network ACL.
+  - Define NAT, DNS TTL and CDN.
+  understand:
+  - Explain how a private subnet obtains outbound internet access through NAT.
+  - Explain why stateless filtering requires explicit return traffic rules.
+  - Describe how DNS caching influences failover time.
+  - Differentiate L4 and L7 load balancing.
+  apply:
+  - Calculate the network range and usable host capacity for a given CIDR block.
+  - Design one public and two private subnets with appropriate route tables.
+  - Configure a rule set that permits HTTPS from a load balancer to an application tier.
+  - Select an endpoint or NAT path for private access to a cloud service.
+  analyze:
+  - Analyze a timeout using the resolve-route-reach-respond sequence.
+  - Trace the return-rule trap in a stateless ACL.
+  - Analyze why a DNS failover event takes longer for clients than the health-check interval.
+  - Use flow logs to identify the likely network boundary dropping a packet.
+  evaluate:
+  - Evaluate two network designs for security, resiliency, latency and cost.
+  - Choose between NAT-based access and private service endpoints for a stated workload.
+  - Evaluate an L4 or L7 load-balancing design for a given protocol and routing requirement.
+  - Defend a hybrid connectivity choice between VPN and a dedicated circuit.
+  scenario_based:
+  - A VM resolves a hostname but TCP 443 times out. Identify the next four checks in order.
+  - A private application can reach the internet but cannot access a managed storage service privately.
+    Diagnose endpoint DNS and route configuration.
+  - A service becomes unavailable after one zone loses capacity. Evaluate load-balancer health,
+    subnet capacity and failover behavior.
+  - Users in one region receive stale content after a deployment. Analyze CDN cache key, TTL and
+    invalidation.
+revision:
+  key_terms:
+  - IPv4
+  - CIDR
+  - subnet
+  - VPC
+  - VNet
+  - route table
+  - Internet Gateway
+  - NAT Gateway
+  - security group
+  - network ACL
+  - endpoint
+  - L4
+  - L7
+  - DNS
+  - TTL
+  - CDN
+  - VPN
+  - BGP
+  - flow log
+  last_minute_checklist:
+  - Can I convert an IPv4 address and mask into a network range?
+  - Can I allocate non-overlapping public and private subnets?
+  - Can I trace forward and return routes?
+  - Can I explain stateful versus stateless filtering?
+  - Can I distinguish NAT from private service endpoints?
+  - Can I compare L4 and L7 load balancing?
+  - Can I calculate how TTL affects DNS failover?
+  - Can I diagnose a failure using resolve, route, reach and respond?
+  summary: CO3 connects addressing, routing and filtering with the services that deliver and protect
+    application traffic. A strong network design uses non-overlapping address space, explicit
+    routes, least-access filtering, suitable private access, resilient traffic distribution and
+    measurable DNS and hybrid behavior. A strong diagnosis follows the packet and request path
+    using evidence.
+glossary:
+- term: CIDR
+  meaning: Classless Inter-Domain Routing notation that expresses an IP prefix length.
+- term: VPC/VNet
+  meaning: A logically isolated virtual network construct provided by a cloud platform.
+- term: NAT
+  meaning: Network address translation used to translate packet address information.
+- term: TTL
+  meaning: Time to live; in DNS it controls how long an answer may be cached.
+- term: ACL
+  meaning: Access control list; a rule set that permits or denies traffic.
+- term: BGP
+  meaning: Border Gateway Protocol, used to exchange routing information between networks.
+- term: CDN
+  meaning: Content delivery network that serves content through distributed edge locations.
+- term: RTO
+  meaning: Recovery time objective; included here only as a cross-topic service recovery term,
+    not a core CO3 focus.
+study_guidance:
+  recommended_sequence:
+  - Master IPv4 binary arithmetic and CIDR before designing subnets.
+  - Draw a VPC/VNet with public and private subnet roles.
+  - Trace internet, NAT, endpoint and hybrid routes.
+  - Compare stateful and stateless filtering with request and return packets.
+  - Study load balancers, DNS policies, TTL and CDN caching.
+  - Practice the resolve-route-reach-respond diagnostic sequence.
+  - Complete the two handout-aligned VPC practical labs and record evidence.
+  answer_quality_standard: Show subnet arithmetic, state the route and next hop, identify the
+    filtering boundary, trace the return path and support diagnosis with command output or flow
+    evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
+    marked running.

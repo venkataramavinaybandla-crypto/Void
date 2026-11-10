@@ -1,0 +1,248 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-01
+  title: IAM Identity Fundamentals and Least Privilege
+  session_alignment: '17'
+  focus: Identity, authentication, authorization, principals, permissions, policy structure and least-privilege
+    design.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Identity and access management foundations
+  explanation: 'IAM answers two different questions: who or what is requesting access, and what may that requester
+    do to which resource under which conditions. Authentication establishes an identity; authorization evaluates
+    the requested action. Identification names a principal, authentication verifies it, and authorization decides
+    whether an operation is permitted. IAM is a control plane for governing access rather than a substitute for
+    network security or application-level validation.'
+  key_points:
+  - 'Human identity: a person using a console, CLI or application.'
+  - 'Workload identity: a VM, container, function or application acting without a human.'
+  - 'Principal: the identity represented in an access request.'
+  - 'Resource: the protected object, service, API or data set.'
+  - 'Action: the operation being requested, such as read, write, list or delete.'
+  - 'Policy: a set of rules used by an authorization system to evaluate access.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: Authentication versus authorization
+  explanation: Authentication may use passwords, MFA, certificates, federation or workload credentials. Authorization
+    evaluates permissions after an identity has been established. A successful login does not imply permission to
+    perform every action. A user may authenticate successfully but receive AccessDenied when trying to read a protected
+    object. Conversely, a broadly authorized identity with weak authentication creates a serious security exposure.
+  key_points:
+  - 'Authentication factors: something known, possessed or inherent; MFA combines independent factors.'
+  - 'Federation: an external identity provider authenticates a user and supplies a trusted assertion or token.'
+  - Authorization context can include principal, action, resource, request conditions and organizational guardrails.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: Principals, roles, users and groups
+  explanation: A user is a human or service identity represented directly in an IAM system. A group simplifies permission
+    assignment to collections of users. A role is an assumable identity with a permission set and a trust relationship
+    describing who may assume it. Roles are generally preferable to embedding permanent credentials in scripts.
+    Service principals and federated principals allow cloud services or external identity providers to obtain scoped
+    access.
+  key_points:
+  - Use groups for consistent human permission assignment, not as a replacement for role-based workload access.
+  - Use roles for temporary, task-scoped permissions.
+  - Separate trust policy (who may assume) from permission policy (what the role may do).
+  - Review role chaining and session duration because temporary credentials still need governance.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: Policy anatomy
+  explanation: A policy commonly identifies an effect, action, resource and optional conditions. Allow grants a
+    matching permission; explicit Deny blocks a matching request. Wildcards can broaden action or resource scope
+    dramatically. Conditions narrow a statement using attributes such as source network, MFA state, resource tags,
+    time, encryption state or requested region. Policy syntax and evaluation details differ among providers, so
+    provider-specific semantics must be checked before implementation.
+  key_points:
+  - 'Effect: Allow or Deny.'
+  - 'Action: API operations covered by the statement.'
+  - 'Resource: objects or service resources to which the statement applies.'
+  - 'Condition: contextual predicates that must match.'
+  - 'Principal: the identity to which a resource-based or trust policy applies.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Least privilege as an engineering method
+  explanation: Least privilege grants only the actions, resources and conditions needed for a defined task. Start
+    with a workload or job description, map each required operation to a resource, then grant the narrowest practical
+    scope. Observe real usage, remove unused grants and test both expected success and expected denial. Avoid treating
+    administrator access as a convenient default. Emergency access should be separately controlled, monitored and
+    time-limited.
+  key_points:
+  - 'Task-based permissions: define the job before writing the policy.'
+  - 'Resource scoping: prefer exact resource identifiers or constrained resource patterns.'
+  - 'Action scoping: separate read, write, administer and destructive actions.'
+  - 'Condition scoping: require encryption, approved network paths, tags or MFA where appropriate.'
+  - 'Lifecycle review: recertify access after role changes and project completion.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: Role-based and attribute-based access control
+  explanation: RBAC assigns permissions through roles that represent job functions. ABAC evaluates attributes of
+    the principal, resource and request. RBAC is easy to understand for stable job categories; ABAC can scale across
+    large environments where tags and attributes consistently describe ownership, sensitivity and environment. Poor
+    tag governance can make ABAC unreliable, while excessive role proliferation can make RBAC difficult to maintain.
+  key_points:
+  - 'RBAC example: a read-only analyst role can query approved reporting resources.'
+  - 'ABAC example: allow access when principal.team equals resource.owner_team and environment is approved.'
+  - Hybrid designs often use roles for broad job boundaries and attributes for resource-level filtering.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Identity lifecycle and access review
+  explanation: Provisioning creates an identity and assigns approved access. Changes in role, team or project should
+    trigger permission updates. Deprovisioning disables accounts, revokes sessions where supported, removes keys
+    and transfers resource ownership. Access reviews compare assigned permissions with current job need. Dormant
+    accounts, orphaned keys, stale role grants and shared accounts are common sources of excessive access.
+  key_points:
+  - 'Joiner: create identity through an approved source and assign minimum baseline access.'
+  - 'Mover: update access when responsibilities change; do not merely accumulate permissions.'
+  - 'Leaver: disable identity, revoke sessions and remove credentials promptly.'
+  - 'Periodic review: identify stale, unused, conflicting and over-privileged grants.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: IAM design review checklist
+  explanation: A good IAM design documents the principal, purpose, actions, resources, trust relationship, conditions,
+    credential lifetime, owner, approval and review date. Validate it with a positive test for the required operation
+    and a negative test for an operation that must remain forbidden. Store policies in version control where possible
+    and review changes like application code.
+  key_points:
+  - Can the principal perform the required task?
+  - Can it access an unrelated resource? It should not.
+  - Can it perform a destructive action not required by its job? It should not.
+  - Is access temporary where possible?
+  - Is the owner accountable for review and removal?
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

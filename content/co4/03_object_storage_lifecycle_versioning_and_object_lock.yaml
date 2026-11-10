@@ -1,0 +1,767 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO4
+  concept_id: CO4_03
+  concept_title: Object Storage, Lifecycle, Versioning and Object Lock
+  source_alignment: CO4 of the uploaded handout; Sessions 13-16 and Practical Sessions 7-8 where
+    applicable.
+  coverage: Storage access patterns, object/block/file services, managed relational and NoSQL
+    databases, caching, analytics, data processing, backup, disaster recovery, RTO and RPO.
+  line_count_target: At least 300-400 substantive YAML lines
+course_outcome_statement: Evaluate storage and data services — object, block and file at protocol
+  level, managed relational and NoSQL stores, caches and analytics services — by access pattern,
+  durability, latency and unit cost; and design a backup and disaster-recovery posture that meets
+  a stated RTO and RPO.
+learning_outcomes:
+- Evaluate object, block and file storage by protocol, access pattern, durability, latency and
+  cost.
+- Select managed relational and NoSQL databases based on data model, consistency and access pattern.
+- Explain caching, analytics, streaming, ETL, queues, event buses and workflow services.
+- Construct full, incremental and differential backup chains and validate restore procedures.
+- Design disaster recovery strategies against stated RTO and RPO requirements.
+prerequisites:
+- Basic file systems, disks and operating-system storage concepts.
+- Basic SQL and client-server database concepts.
+- Basic networking and cloud service concepts.
+concept_map:
+  central_concept: Object Storage, Lifecycle, Versioning and Object Lock
+  dimensions:
+  - Data access pattern and protocol
+  - Durability, availability, latency and throughput
+  - Relational and NoSQL data services
+  - Caching, analytics and event/data processing
+  - Backup, restoration and disaster recovery
+  relationships:
+  - Access patterns determine the appropriate storage and database model.
+  - Storage protocol and performance characteristics affect application design.
+  - Caches reduce repeated backend work but require freshness and invalidation policies.
+  - Analytics and data-processing services move or query data using different latency and throughput
+    models.
+  - Backup and disaster recovery are evaluated through measured RTO, RPO, restore time and cost.
+core_units:
+- unit_id: CO4_03_U01
+  topic: Object structure
+  definition: An object contains data, metadata and a key within a bucket or container namespace.
+  detailed_explanation: Object APIs operate on complete objects or supported multipart/range operations
+    rather than a traditional mounted block device.
+  worked_example: A JSON report is stored as an object with content-type metadata.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain object structure and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of object structure.
+- unit_id: CO4_03_U02
+  topic: Bucket and container
+  definition: A bucket or container is a logical namespace that holds objects and policy configuration.
+  detailed_explanation: Naming, region, access policy, encryption and lifecycle settings are part
+    of its design.
+  worked_example: A project creates separate buckets for raw and curated data.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain bucket and container and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of bucket and container.
+- unit_id: CO4_03_U03
+  topic: Object key
+  definition: An object key identifies an object within its namespace.
+  detailed_explanation: Key naming affects organization, listing patterns and sometimes partitioning
+    behavior.
+  worked_example: A key uses date and department prefixes for audit exports.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain object key and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of object key.
+- unit_id: CO4_03_U04
+  topic: Metadata
+  definition: Object metadata stores descriptive attributes associated with an object.
+  detailed_explanation: Use standard headers and custom metadata carefully; metadata is not a
+    substitute for a searchable database.
+  worked_example: A media object stores content type and retention tags.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain metadata and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of metadata.
+- unit_id: CO4_03_U05
+  topic: Storage classes
+  definition: Storage classes optimize for different access frequency, retrieval latency and cost
+    profiles.
+  detailed_explanation: Compare storage charge, retrieval fee, minimum duration and restore delay.
+  worked_example: Frequently accessed assets stay in a hot class while old backups move to archival
+    storage.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain storage classes and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of storage classes.
+- unit_id: CO4_03_U06
+  topic: Lifecycle policy
+  definition: Lifecycle policies transition or expire objects according to age, prefix, tag or
+    other conditions.
+  detailed_explanation: Test rules against sample objects and consider versioned-object behavior.
+  worked_example: A policy transitions logs after 30 days and expires them after retention ends.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain lifecycle policy and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of lifecycle policy.
+- unit_id: CO4_03_U07
+  topic: Retrieval latency
+  definition: Retrieval latency is the delay before archived data becomes available for use.
+  detailed_explanation: An archive tier may require restore initiation and waiting.
+  worked_example: A compliance team requests an archived object before an audit.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain retrieval latency and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of retrieval latency.
+- unit_id: CO4_03_U08
+  topic: Retrieval charges
+  definition: Retrieval charges are costs associated with reading data from certain storage tiers.
+  detailed_explanation: Estimate retrieval frequency and data volume before selecting an archive
+    tier.
+  worked_example: A rarely used archive becomes expensive when restored repeatedly.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain retrieval charges and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of retrieval charges.
+- unit_id: CO4_03_U09
+  topic: Versioning
+  definition: Versioning preserves multiple object versions under one key when enabled and supported.
+  detailed_explanation: It can recover overwritten or deleted content but increases storage use
+    and needs lifecycle management.
+  worked_example: An accidental overwrite is reversed by restoring a previous version.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain versioning and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of versioning.
+- unit_id: CO4_03_U10
+  topic: Delete markers
+  definition: In versioned object storage, a delete operation may create a marker rather than
+    permanently removing prior versions.
+  detailed_explanation: Understand how listing and permanent deletion behave under versioning.
+  worked_example: A user sees an object as deleted while older versions remain recoverable.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain delete markers and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of delete markers.
+- unit_id: CO4_03_U11
+  topic: Object lock
+  definition: Object lock provides retention controls that can prevent object versions from being
+    deleted or altered for a configured period or legal hold.
+  detailed_explanation: Retention mode, permissions and governance procedures must be designed
+    carefully.
+  worked_example: A backup object is protected from deletion during a compliance retention window.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain object lock and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of object lock.
+- unit_id: CO4_03_U12
+  topic: Ransomware resilience
+  definition: Versioning, immutability, separate credentials and isolated backup copies reduce
+    some ransomware data-loss risks.
+  detailed_explanation: Protect management credentials and test restoration; versioning alone
+    is not a complete security plan.
+  worked_example: An attacker cannot erase immutable backup versions using ordinary application
+    credentials.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain ransomware resilience and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of ransomware resilience.
+- unit_id: CO4_03_U13
+  topic: Multipart upload
+  definition: Multipart upload divides a large object into parts that can be transferred independently.
+  detailed_explanation: It improves resilience for large transfers but incomplete uploads may
+    require cleanup.
+  worked_example: A multi-gigabyte video is uploaded in parallel parts.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain multipart upload and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of multipart upload.
+- unit_id: CO4_03_U14
+  topic: Consistency behavior
+  definition: Object services define consistency guarantees for reads, writes, deletes and listing
+    operations.
+  detailed_explanation: Verify the provider's current semantics and application assumptions.
+  worked_example: A workflow reads an object immediately after writing it.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain consistency behavior and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of consistency behavior.
+- unit_id: CO4_03_U15
+  topic: Object access control
+  definition: Object access may be controlled through identity policies, bucket policies, ACLs
+    or provider-specific mechanisms.
+  detailed_explanation: Prefer a clear policy model and avoid unintended public access.
+  worked_example: A private bucket permits reads only to a designated workload role.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain object access control and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of object access control.
+- unit_id: CO4_03_U16
+  topic: Object storage economics
+  definition: Total object cost can include capacity, requests, retrieval, lifecycle transitions,
+    replication and data transfer.
+  detailed_explanation: Calculate total cost using expected access and retention patterns.
+  worked_example: A low storage price is offset by frequent retrieval fees.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain object storage economics and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of object storage economics.
+- unit_id: CO4_03_U17
+  topic: Object storage troubleshooting
+  definition: Check bucket policy, identity, object key, region, encryption permissions, version
+    state and lifecycle behavior.
+  detailed_explanation: Use request IDs and service logs when available.
+  worked_example: A read is denied because the caller lacks permission to decrypt the object.
+  decision_questions:
+  - What operations does the application perform most frequently?
+  - What latency, durability, availability and consistency does the workload require?
+  - What capacity, throughput, IOPS or concurrency is expected at peak?
+  - Which service charges apply during normal use, retrieval, replication and recovery?
+  tradeoffs:
+  - Compare performance against the total cost of ownership.
+  - Account for operational responsibility and provider-specific limits.
+  - Separate high availability from backup and disaster recovery.
+  - Validate behavior with a representative workload and a restore test.
+  diagnostic_steps:
+  - Define the symptom and identify the affected data service.
+  - Check service health, resource state, quota and recent configuration changes.
+  - Inspect application metrics, service metrics and relevant logs.
+  - Test the exact access path and operation using a controlled client.
+  - Verify data integrity and recovery behavior before closing the incident.
+  review_questions:
+  - Explain object storage troubleshooting and identify the workload for which it is suitable.
+  - Analyze the worked example and identify one likely performance or reliability risk.
+  - Evaluate the cost and recovery implications of object storage troubleshooting.
+provider_comparison:
+  aws: 'AWS examples: S3; EBS; EFS and FSx; RDS and Aurora; DynamoDB; ElastiCache; Redshift and
+    Athena; Kinesis; SQS and EventBridge; Glue and Step Functions; AWS Backup; Snow Family.'
+  azure: 'Azure examples: Blob Storage; Managed Disks; Azure Files; Azure SQL Database and Managed
+    Instance; Cosmos DB; managed Redis offerings; Synapse/Fabric analytics; Event Hubs; Service
+    Bus and Event Grid; Data Factory and Logic Apps; Azure Backup; Data Box.'
+  google_cloud: 'Google Cloud examples: Cloud Storage; Persistent Disk and Hyperdisk; Filestore;
+    Cloud SQL and AlloyDB; Firestore and Bigtable; Memorystore; BigQuery; Pub/Sub; Dataflow and
+    Workflows; Backup and DR; Transfer Appliance.'
+  comparison_method: Compare actual workload fit and service semantics rather than assuming that
+    similarly named products are identical.
+  checklist:
+  - Which protocols and APIs are supported?
+  - What durability and availability design is provided?
+  - What latency, throughput, IOPS and scaling limits apply?
+  - How are backups, snapshots, versioning and immutability implemented?
+  - What consistency and replication behavior is provided?
+  - Which costs apply to capacity, requests, retrieval, compute and transfer?
+  - Can the service meet the required RTO and RPO in a tested recovery?
+architecture_workflow:
+  data_lifecycle:
+  - Generate or ingest data.
+  - Validate schema, identity and metadata.
+  - Write to the storage or database service selected for the access pattern.
+  - Use cache or read replicas where they meet freshness requirements.
+  - Process or analyze data through query, ETL, stream or workflow services.
+  - Protect data through backup, versioning, replication and retention.
+  - Test restoration and record recovery evidence.
+  design_steps:
+  - Classify data by structure, size, sensitivity, access frequency and retention.
+  - Define read/write patterns, concurrency, consistency and latency targets.
+  - Select object, block, file, relational or NoSQL services.
+  - Estimate capacity, IOPS, throughput, request volume and unit cost.
+  - Design cache and analytics paths without violating freshness requirements.
+  - Define backup frequency, retention, isolation and encryption.
+  - Set explicit RTO and RPO values for each workload tier.
+  - Choose a recovery strategy and document dependency order.
+  - Run restore and failover tests and compare measured results with objectives.
+  evidence_to_collect:
+  - Storage access pattern and protocol matrix
+  - Volume performance and filesystem capacity metrics
+  - Object lifecycle, versioning and retention configuration
+  - Database connection, query and replication metrics
+  - Cache hit ratio and eviction metrics
+  - Pipeline backlog, throughput and processing lag
+  - Backup job history and recovery point metadata
+  - Restore duration, data-loss window and recovery cost
+practical_alignment:
+- lab_id: CO4_03_LAB_EBS
+  title: Launch Linux EC2, attach a 20 GB EBS volume and resize it
+  handout_alignment: Practical Session 7, mapped to CO4.
+  objective: Attach a block storage volume to a Linux instance, inspect it safely, expand it and
+    verify that the guest operating system reflects the new size.
+  procedure:
+  - Launch a temporary Linux EC2 instance.
+  - Create a 20 GB EBS volume in a compatible Availability Zone.
+  - Attach the volume to the instance.
+  - Identify the correct device using read-only operating-system inspection commands.
+  - Create a filesystem only if the volume is new and empty.
+  - Mount the volume and verify read/write access.
+  - Create a snapshot before the resize exercise.
+  - Increase the EBS volume size in the provider control plane.
+  - Expand the partition if applicable and then grow the filesystem using the correct filesystem-specific
+    utility.
+  - Verify the new block-device and filesystem capacity inside Linux.
+  - Record the before/after evidence and remove lab resources safely.
+  safety_controls:
+  - Never format a device until its identity and data state are confirmed.
+  - Create a snapshot before destructive or irreversible changes.
+  - Use a test instance and non-production data.
+  - Check the device naming and filesystem type before running resize commands.
+  - Delete or detach resources after confirming that no required data remains.
+  deliverables:
+  - Instance and volume details
+  - Device identification evidence
+  - Before/after capacity output
+  - Snapshot record
+  - Teardown confirmation
+- lab_id: CO4_03_LAB_RDS
+  title: Launch an RDS instance and access MySQL using Workbench
+  handout_alignment: Practical Session 8, mapped to CO4.
+  objective: Provision a managed relational database and validate secure client connectivity.
+  procedure:
+  - Select a supported managed MySQL database configuration for a learning environment.
+  - Choose a suitable VPC and private networking configuration.
+  - Configure database credentials using secure secret handling.
+  - Restrict inbound database access to the approved client source or application security group.
+  - Create the database and wait for the endpoint to become available.
+  - Connect using MySQL Workbench from an authorized network path.
+  - Run basic schema and query operations using test data.
+  - Inspect connection and database metrics.
+  - Document the endpoint, network policy and query evidence without exposing credentials.
+  - Delete the database after the lab if it is no longer required.
+  safety_controls:
+  - Do not enable unrestricted public database access.
+  - Do not store passwords in YAML, source control or screenshots.
+  - Use test records rather than personal or production data.
+  - Check backup retention and billing before provisioning.
+  - Remove the database or reduce resources after the exercise.
+  deliverables:
+  - Database configuration
+  - Network access rule
+  - Workbench connection evidence with secrets redacted
+  - SQL query output
+  - Teardown or retention decision
+scenario_bank:
+- scenario: A database volume has low average throughput but high query latency.
+  task: Evaluate IOPS, queue depth, random I/O, locks and application wait time.
+  expected_reasoning: Average throughput alone cannot establish that storage is not the bottleneck.
+- scenario: A team stores large objects in a hot storage tier but reads them only once per year.
+  task: Evaluate lifecycle transitions, retrieval charges and retention requirements.
+  expected_reasoning: A colder tier may reduce capacity cost but retrieval delay and fees must
+    be included.
+- scenario: A relational database is healthy but read traffic causes primary CPU saturation.
+  task: Evaluate indexing, caching and read replicas.
+  expected_reasoning: Read scaling options should be selected while accounting for replica lag
+    and consistency.
+- scenario: A NoSQL table throttles despite spare aggregate capacity.
+  task: Inspect partition-key distribution and hot partitions.
+  expected_reasoning: Concentrated access to one partition can cause throttling even when total
+    capacity appears available.
+- scenario: A backup job reports success but a restore fails.
+  task: Inspect backup chain, encryption keys, retention and restore-test evidence.
+  expected_reasoning: A successful backup operation does not prove that a complete and usable
+    recovery path exists.
+- scenario: A workload has a 30-minute RTO and a 5-minute RPO.
+  task: Compare backup/restore, pilot light, warm standby and multi-site options.
+  expected_reasoning: The chosen approach must meet both measured recovery time and data-loss
+    window, not merely one objective.
+common_misconceptions:
+- claim: Object, block and file storage are interchangeable.
+  correction: They expose different access semantics and protocols and fit different workload
+    patterns.
+- claim: RAID is a backup.
+  correction: RAID can improve availability or performance but does not protect against logical
+    deletion, corruption or site loss.
+- claim: A read replica is the same as a standby.
+  correction: A read replica may serve read traffic; a standby is generally intended for failover,
+    depending on the managed service.
+- claim: A cache is always safe to use for database data.
+  correction: Cache freshness, invalidation, consistency and failure behavior must be designed
+    explicitly.
+- claim: A successful backup job proves recoverability.
+  correction: Only a tested restore validates the full recovery process.
+- claim: RTO and RPO measure the same thing.
+  correction: RTO measures time to restore service; RPO measures acceptable data loss in time.
+troubleshooting_method:
+  storage_sequence:
+  - Identify the storage abstraction and operation that failed.
+  - Check resource state, attachment, endpoint and network path.
+  - Inspect capacity, IOPS, throughput, latency and queue depth.
+  - Check filesystem, permissions, quotas and application behavior.
+  - Validate integrity and restore from a protected recovery point if needed.
+  database_sequence:
+  - Confirm DNS, endpoint, port and network access.
+  - Validate identity and credentials without exposing secrets.
+  - Inspect connections, query plans, locks and resource utilization.
+  - Check replication lag, failover events and storage capacity.
+  - Test the application query and record the result.
+  recovery_sequence:
+  - Declare the recovery scenario and start the incident clock.
+  - Identify the selected recovery point and verify required keys and permissions.
+  - Restore infrastructure and data in dependency order.
+  - Validate integrity, application behavior and traffic routing.
+  - Record measured RTO, RPO, data-loss window and cost.
+examination_bank:
+  remember:
+  - Differentiate object, block and file storage.
+  - Define IOPS, throughput, RAID, LUN, RTO and RPO.
+  - List common relational and NoSQL data models.
+  - Define full, incremental and differential backups.
+  understand:
+  - Explain how object lifecycle policies reduce storage cost.
+  - Explain multi-AZ standby versus read replica.
+  - Describe cache-aside and cache invalidation.
+  - Explain how backup-chain dependencies affect restoration.
+  apply:
+  - Select a storage service for a stated access pattern.
+  - Resize a block volume and verify the guest filesystem capacity.
+  - Choose a database model for a given query pattern.
+  - Construct a full and incremental restore sequence.
+  analyze:
+  - Analyze a storage-path failure using device and service metrics.
+  - Diagnose a hot NoSQL partition from access distribution.
+  - Analyze cache stampede and stale-read behavior.
+  - Calculate whether a recovery test meets stated RTO and RPO.
+  evaluate:
+  - Compare object storage classes using total cost and retrieval behavior.
+  - Evaluate relational versus NoSQL for a specified application.
+  - Choose between backup/restore, pilot light, warm standby and multi-site DR.
+  - Compare AWS, Azure and Google Cloud data services by workload semantics and unit cost.
+  scenario_based:
+  - A 20 GB EBS volume is enlarged but Linux still reports the old filesystem size. Explain the
+    verification and expansion layers.
+  - A MySQL application experiences failover and stale reads. Analyze standby, replica and connection
+    behavior.
+  - A data lake query scans excessive data. Recommend partitioning, format and query-in-place
+    improvements.
+  - A restore completes but misses the recovery objective. Identify which stage caused the delay
+    and what evidence is needed.
+revision:
+  key_terms:
+  - Object storage
+  - Block storage
+  - File storage
+  - NFS
+  - SMB
+  - RAID
+  - LUN
+  - Thin provisioning
+  - IOPS
+  - Throughput
+  - Lifecycle policy
+  - Versioning
+  - Object lock
+  - Relational database
+  - Read replica
+  - Multi-AZ standby
+  - NoSQL
+  - Partition key
+  - Cache-aside
+  - Data warehouse
+  - Data lake
+  - ETL
+  - Streaming
+  - Queue
+  - Event bus
+  - Full backup
+  - Incremental backup
+  - Differential backup
+  - RTO
+  - RPO
+  - Pilot light
+  - Warm standby
+  - Multi-site
+  last_minute_checklist:
+  - Can I select storage by access pattern and protocol?
+  - Can I explain IOPS, throughput, RAID and LUNs?
+  - Can I explain object lifecycle, versioning and object lock?
+  - Can I compare relational and NoSQL data models?
+  - Can I explain cache freshness and invalidation?
+  - Can I distinguish ETL, streaming, queues and event buses?
+  - Can I restore a full plus incremental or differential backup chain?
+  - Can I calculate and measure RTO and RPO?
+  - Can I justify a recovery strategy by cost and objectives?
+  summary: CO4 is about matching data services to access patterns and evaluating them through
+    durability, latency, throughput and unit cost. It also requires a recovery design that is
+    tested against explicit RTO and RPO targets. Backup completion is not the same as proven recoverability.
+glossary:
+- term: IOPS
+  meaning: Input/output operations per second.
+- term: LUN
+  meaning: Logical unit number identifying a logical storage unit presented to a host.
+- term: RAID
+  meaning: Redundant array of independent disks; combines devices for performance and/or redundancy.
+- term: ETL
+  meaning: Extract, transform and load.
+- term: RTO
+  meaning: Recovery Time Objective; target maximum time to restore service.
+- term: RPO
+  meaning: Recovery Point Objective; target maximum acceptable data-loss window.
+- term: Pilot light
+  meaning: A DR approach that keeps minimal core resources ready and provisions more capacity
+    during recovery.
+- term: Warm standby
+  meaning: A scaled-down but functional recovery environment kept running.
+study_guidance:
+  recommended_sequence:
+  - Start with object, block and file access semantics.
+  - Study block performance, RAID, LUNs and the EBS resize practical.
+  - Study object lifecycle, versioning, object lock and storage economics.
+  - Compare managed relational and NoSQL databases, then caching.
+  - Understand analytics, ETL, streaming, queues, event buses and workflows.
+  - Construct full, incremental and differential backup chains.
+  - Set RTO/RPO values and compare the four DR strategies.
+  - Complete the EBS and RDS practicals and document evidence.
+  answer_quality_standard: State the workload access pattern, explain the storage or data-service
+    semantics, compare durability and performance, calculate relevant unit costs, and justify
+    recovery using measured RTO and RPO. Keep provider-specific behavior explicit.

@@ -1,0 +1,264 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-08
+  title: Kubernetes Operations, Workload Configuration and BookStash Break-Fix
+  lecture_session_alignment: 23-24
+  scope: Detailed study notes and applied revision material
+  source_note: Official session/practical alignment follows the supplied course handout. Explanations and examples
+    are expanded learning material.
+learning_objectives:
+- Explain the concepts and lifecycle involved.
+- Evaluate alternative tools and operational approaches.
+- Apply repeatable, secure infrastructure workflows.
+- Interpret plans, state, logs, metrics and cost evidence.
+- Justify decisions against reliability, security, SLO and monetary constraints.
+units:
+- unit: 1
+  title: Kubernetes operational model
+  explanation: Kubernetes manages containerized workloads through desired-state resources. The control plane stores
+    and reconciles desired configuration while nodes run workloads. A Deployment manages ReplicaSets and Pods; Services
+    provide stable network access to selected Pods; ConfigMaps and Secrets supply configuration; probes influence
+    readiness and restart behavior. Cluster operation requires attention to capacity, security, networking and upgrades.
+  key_points:
+  - 'Cluster: control plane plus worker nodes or managed equivalents.'
+  - 'Pod: smallest deployable workload unit.'
+  - 'Deployment: manages stateless replica rollout.'
+  - 'Service: stable access abstraction over selected Pods.'
+  - 'Namespace: logical scope for names and policies.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 2
+  title: Workload configuration
+  explanation: A workload specification includes image, command, ports, replicas, resource requests and limits,
+    environment/configuration, security context, probes, scheduling and service account. Incorrect configuration
+    can cause Pending Pods, CrashLoopBackOff, ImagePullBackOff or poor performance. Review manifests and events
+    before changing the cluster.
+  key_points:
+  - Requests influence scheduling; limits constrain resource use.
+  - Readiness probe controls whether a Pod receives traffic.
+  - Liveness probe can trigger restart when configured behavior fails.
+  - Use non-root and restricted capabilities where possible.
+  - Pin image versions or digests for reproducibility.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 3
+  title: Service discovery and networking
+  explanation: Kubernetes Services provide stable names and virtual access to dynamic Pod endpoints. Cluster DNS
+    resolves service names. Network policies may restrict Pod communication when supported by the CNI. A service
+    with no ready endpoints may exist but still fail to route traffic. Troubleshooting should inspect labels, selectors,
+    endpoints and DNS.
+  key_points:
+  - Check Service selector matches Pod labels.
+  - Check endpoints or EndpointSlices contain ready Pods.
+  - Test DNS from a workload inside the cluster.
+  - Inspect NetworkPolicy and CNI behavior.
+  - Distinguish cluster-internal access from external ingress.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 4
+  title: Observing workload health
+  explanation: Use kubectl get, describe, logs, events and exec carefully to understand workload status. A Pod status
+    is a symptom, not the full cause. Inspect scheduling events, container termination reason, image pull errors,
+    probe failures, resource pressure and application logs. Preserve output for diagnosis.
+  key_points:
+  - 'kubectl get pods -o wide: overview and node placement.'
+  - 'kubectl describe pod: events and conditions.'
+  - 'kubectl logs: application output; use previous logs after restart where applicable.'
+  - 'kubectl get svc/endpoints: service routing state.'
+  - 'kubectl top: resource metrics when metrics pipeline is available.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 5
+  title: BookStash broken deployment investigation
+  explanation: The handout specifies diagnosing and repairing a deliberately broken BookStash deployment using Kubernetes
+    commands and logs. Begin with workload and namespace status, inspect Deployment and Pod descriptions, examine
+    events and current/previous container logs, then inspect Services, selectors, endpoints, configuration and image
+    references. Identify the root cause before editing resources.
+  key_points:
+  - Confirm namespace and deployment name from the lab environment.
+  - Inspect pods, deployments, services and recent events.
+  - Check image, command, environment, ConfigMap/Secret references and probes.
+  - Check service selector and ready endpoints.
+  - Make the smallest correction and observe rollout.
+  - Verify application endpoint and preserve diagnostic evidence.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 6
+  title: Safe Kubernetes repair workflow
+  explanation: A repair should be controlled and explainable. Export or version the current manifest, make one targeted
+    change, apply it, watch rollout and validate the application. Avoid deleting namespaces or persistent volumes
+    as a first response. If the cluster is managed through IaC or GitOps, update the source of truth so the repair
+    is not overwritten.
+  key_points:
+  - Capture current resource state and events.
+  - 'Identify authoritative source: Git, IaC, Helm or direct manifest.'
+  - Change one faulty field or dependency.
+  - Watch rollout and inspect new Pod logs.
+  - Run service discovery and application smoke tests.
+  - Commit the fix to the source of truth.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 7
+  title: Cluster lifecycle and operational requirements
+  explanation: Cluster operations include provisioning, node capacity, version upgrades, add-ons, networking, storage,
+    identity, policy, monitoring and backup. Managed Kubernetes reduces some control-plane work but does not remove
+    responsibility for workloads, access, costs and configuration. Self-provisioned clusters increase control and
+    operational burden.
+  key_points:
+  - Plan cluster version and upgrade compatibility.
+  - Validate node capacity and disruption budgets.
+  - Protect workloads during maintenance.
+  - Monitor control plane, nodes, Pods and network paths.
+  - Estimate cluster and worker cost, including idle capacity.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 8
+  title: Kubernetes operational decision exercise
+  explanation: Evaluate a cluster that has Pending Pods, a Service with no endpoints and rising node cost. Determine
+    whether the cause is resource requests, node capacity, label mismatch, readiness failure or unnecessary replicas.
+    Propose changes and specify the metrics and logs that would confirm improvement.
+  key_points:
+  - Separate scheduling failure from service-discovery failure.
+  - Use events and selectors as evidence.
+  - Estimate cost effect of node or replica changes.
+  - Preserve availability through staged rollout.
+  - Document verification and rollback.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+worked_scenarios:
+- scenario: Two engineers attempt to modify the same production infrastructure state.
+  analysis: Check remote backend, lock ownership and whether another operation is active. Avoid force-unlock without
+    confirming the lock is stale.
+  safe_response: Serialize state mutation, preserve state versions, review the plan and verify provider reality.
+- scenario: A monthly bill spikes while Terraform reports drift.
+  analysis: Correlate billing, resource usage, deployment history, audit events, IaC plan and SLO telemetry. Drift
+    may be intentional and cost may be caused by a separate usage change.
+  safe_response: Stabilize service, collect evidence, classify drift, remediate with a reviewed change and measure
+    actual cost and SLO impact.
+common_misconceptions:
+- IaC does not make infrastructure changes automatically safe.
+- A Terraform plan is a proposal, not proof that apply will succeed.
+- Remote state does not remove the need for locking and access control.
+- A state lock does not replace code review or change approval.
+- Drift must be understood before it is codified or reverted.
+- Application rollback does not always reverse infrastructure or data changes.
+- A budget alert is not necessarily a hard spending cap.
+- Lower cost is not an improvement if the published SLO is violated.
+self_check:
+- question: What is the purpose of Terraform state?
+  answer_elements:
+  - maps configuration addresses to real objects
+  - supports planning
+  - may contain sensitive values
+- question: Why is remote state locking important for teams?
+  answer_elements:
+  - prevents concurrent state mutation
+  - reduces conflicting operations
+  - coordinate shared workflow
+- question: What is infrastructure drift and how should it be handled?
+  answer_elements:
+  - difference between declared and actual state
+  - investigate cause
+  - codify or revert deliberately
+- question: How should an IaC change move through CI/CD?
+  answer_elements:
+  - validation
+  - plan review
+  - approval
+  - apply
+  - post-deployment verification
+- question: How can cloud cost optimization be evaluated responsibly?
+  answer_elements:
+  - billing evidence
+  - unit economics
+  - SLO impact
+  - actual savings
+exam_practice:
+  short_answer:
+  - Differentiate declarative and imperative infrastructure provisioning.
+  - Explain Terraform state and remote locking.
+  - Define reusable modules and explain module versioning.
+  - Explain infrastructure drift and the codify-versus-revert decision.
+  - Differentiate rolling, blue-green and canary deployments.
+  - Define RTO and RPO and explain how they are measured.
+  analytical:
+  - Evaluate Terraform and a cloud-native IaC tool for a multi-account environment.
+  - Analyze a plan containing resource replacement and explain the review steps.
+  - Design an IaC CI/CD pipeline with least-privilege deployment identity.
+  - Diagnose a broken Kubernetes workload using events, logs, selectors and probes.
+  - Analyze NAT, cross-zone and egress charges and propose optimizations.
+  - Evaluate a drift-and-cost-spike incident while preserving an SLO.
+  case_study: A production environment has a Terraform drift alert, a sudden network cost increase and elevated
+    application latency. Prepare an evidence-led investigation, safe remediation sequence, rollback plan and post-change
+    cost/SLO validation.
+glossary:
+- term: IaC
+  definition: Infrastructure as Code.
+- term: State
+  definition: Terraform's mapping between configuration and managed infrastructure objects.
+- term: Backend
+  definition: Configuration describing where and how state is stored.
+- term: State locking
+  definition: Coordination that prevents concurrent state-changing operations.
+- term: Module
+  definition: Reusable package of infrastructure configuration.
+- term: Drift
+  definition: Difference between declared/managed configuration and actual infrastructure.
+- term: CI/CD
+  definition: Continuous integration and continuous delivery/deployment workflows.
+- term: SLO
+  definition: Target for a measured service-level indicator.
+- term: RTO
+  definition: Target time to restore service after disruption.
+- term: RPO
+  definition: Maximum acceptable data-loss interval.
+- term: FinOps
+  definition: Collaborative operating practice for cloud financial accountability and optimization.

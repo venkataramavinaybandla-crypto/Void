@@ -1,0 +1,262 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-06
+  title: Cloud Billing, Cost Analysis and Unit Economics
+  lecture_session_alignment: '23'
+  scope: Detailed study notes and applied revision material
+  source_note: Official session/practical alignment follows the supplied course handout. Explanations and examples
+    are expanded learning material.
+learning_objectives:
+- Explain the concepts and lifecycle involved.
+- Evaluate alternative tools and operational approaches.
+- Apply repeatable, secure infrastructure workflows.
+- Interpret plans, state, logs, metrics and cost evidence.
+- Justify decisions against reliability, security, SLO and monetary constraints.
+units:
+- unit: 1
+  title: Cloud cost model
+  explanation: Cloud cost is driven by resource quantity, runtime, storage, data movement, service tier, region,
+    requests, licensing and support. A useful cost analysis decomposes the bill into components rather than looking
+    only at a monthly total. Cost drivers vary by provider and service; understand the billing meter and pricing
+    unit before estimating savings.
+  key_points:
+  - 'Compute: instance size, runtime, utilization and purchase commitment.'
+  - 'Storage: capacity, request count, retrieval tier, replication and retention.'
+  - 'Network: NAT processing, cross-zone traffic, internet egress and inter-region transfer.'
+  - 'Managed services: provisioned capacity, throughput, requests and backup.'
+  - 'Operations: logs, metrics, traces, support and security service tiers.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 2
+  title: Cost allocation, tags and ownership
+  explanation: Cost allocation connects resource spend to teams, applications, environments or products. Tags and
+    labels support attribution, but they must be consistently applied and validated. Untagged spend creates accountability
+    gaps. Shared resources such as NAT gateways, clusters and logging platforms need an allocation method that avoids
+    double counting.
+  key_points:
+  - 'Define mandatory tags: owner, application, environment, cost center and expiry where relevant.'
+  - Enforce tags through IaC or policy checks.
+  - Track unallocated spend separately.
+  - Allocate shared platform costs using a documented metric.
+  - Review tag coverage and stale resources.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 3
+  title: Detailed billing and cost exports
+  explanation: Detailed billing exports provide granular usage and cost records for analysis. They can support chargeback,
+    trend analysis, anomaly investigation and unit economics. Understand whether values represent usage, amortized
+    commitments, credits, taxes or list prices. Billing data may arrive with delay and may be revised.
+  key_points:
+  - Group by service, account, region, resource and usage type.
+  - Distinguish on-demand cost from effective amortized cost.
+  - Account for credits, discounts, taxes and support fees.
+  - Use consistent date windows and currency.
+  - Document data freshness and any estimation limitations.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 4
+  title: Network cost drivers
+  explanation: Network charges can be significant and are often overlooked. NAT processing may incur hourly and
+    per-GB costs. Cross-zone traffic may be charged depending on provider and service path. Internet egress and
+    inter-region transfer can dominate data-intensive workloads. Caching, private service access, topology changes
+    and data locality can reduce cost when they preserve reliability and security.
+  key_points:
+  - 'NAT gateway: fixed/hourly and data-processing charges may apply.'
+  - 'Cross-zone traffic: evaluate request and response paths across zones.'
+  - 'Internet egress: identify data volume leaving provider network.'
+  - 'Inter-region transfer: include replication, backup and failover traffic.'
+  - Do not route traffic inefficiently merely to reduce a small charge.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 5
+  title: Cost anomaly detection
+  explanation: 'Anomaly detection compares current spend or usage with expected patterns and highlights unusual
+    changes. Not every spike is waste: launches, seasonal demand, backups or incidents can explain increases. Investigate
+    anomalies by service, resource, time, deployment and owner. Establish budgets and alerts that account for expected
+    growth and billing delay.'
+  key_points:
+  - 'Detect: identify service/resource and time of change.'
+  - 'Explain: correlate deployments, scaling, traffic and data movement.'
+  - 'Validate: compare unit cost and business activity.'
+  - 'Act: right-size, fix leaks, adjust architecture or update forecast.'
+  - 'Record: owner, savings estimate and service impact.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 6
+  title: Commitments, purchasing models and free tiers
+  explanation: Savings plans, reservations or committed-use discounts can reduce unit cost when usage is predictable
+    and eligible. They introduce commitment risk if demand falls or workloads change. Spot capacity may be cheaper
+    but can be interrupted. Free-tier categories and quotas change; never assume an account is cost-free. Evaluate
+    utilization, coverage, flexibility and break-even point.
+  key_points:
+  - 'On-demand: flexible but often higher unit price.'
+  - 'Commitment: discount in exchange for defined usage or spend commitment.'
+  - 'Spot/preemptible: lower cost with interruption risk.'
+  - 'Free tier: limits, eligibility and expiry conditions must be checked.'
+  - Support plans and add-on services can create recurring charges.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 7
+  title: Right-sizing and utilization
+  explanation: Right-sizing aligns provisioned resources with measured demand and performance objectives. A resource
+    that is underutilized may be oversized, but utilization alone is insufficient. CPU, memory, disk I/O, network,
+    latency, queue depth and burst patterns should be considered. Preserve headroom for failover and peak demand.
+  key_points:
+  - Collect representative utilization across peak and quiet periods.
+  - Inspect latency and saturation before downsizing.
+  - Check memory and I/O, not only CPU.
+  - Use autoscaling for variable demand when appropriate.
+  - Measure before/after cost and SLO impact.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 8
+  title: Unit economics and optimization decisions
+  explanation: Unit economics expresses infrastructure cost relative to a business or workload unit, such as cost
+    per request, active user, transaction or GB processed. It helps distinguish lower total spend from genuinely
+    more efficient service. Optimization should preserve security, reliability and SLOs. A cheap architecture that
+    causes outages or data loss is not an optimization.
+  key_points:
+  - Choose a unit meaningful to the workload.
+  - Calculate total relevant cost divided by completed units.
+  - Compare baseline and proposed design over equivalent demand.
+  - Include operational effort and reliability impact.
+  - State assumptions and confidence range.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+worked_scenarios:
+- scenario: Two engineers attempt to modify the same production infrastructure state.
+  analysis: Check remote backend, lock ownership and whether another operation is active. Avoid force-unlock without
+    confirming the lock is stale.
+  safe_response: Serialize state mutation, preserve state versions, review the plan and verify provider reality.
+- scenario: A monthly bill spikes while Terraform reports drift.
+  analysis: Correlate billing, resource usage, deployment history, audit events, IaC plan and SLO telemetry. Drift
+    may be intentional and cost may be caused by a separate usage change.
+  safe_response: Stabilize service, collect evidence, classify drift, remediate with a reviewed change and measure
+    actual cost and SLO impact.
+common_misconceptions:
+- IaC does not make infrastructure changes automatically safe.
+- A Terraform plan is a proposal, not proof that apply will succeed.
+- Remote state does not remove the need for locking and access control.
+- A state lock does not replace code review or change approval.
+- Drift must be understood before it is codified or reverted.
+- Application rollback does not always reverse infrastructure or data changes.
+- A budget alert is not necessarily a hard spending cap.
+- Lower cost is not an improvement if the published SLO is violated.
+self_check:
+- question: What is the purpose of Terraform state?
+  answer_elements:
+  - maps configuration addresses to real objects
+  - supports planning
+  - may contain sensitive values
+- question: Why is remote state locking important for teams?
+  answer_elements:
+  - prevents concurrent state mutation
+  - reduces conflicting operations
+  - coordinate shared workflow
+- question: What is infrastructure drift and how should it be handled?
+  answer_elements:
+  - difference between declared and actual state
+  - investigate cause
+  - codify or revert deliberately
+- question: How should an IaC change move through CI/CD?
+  answer_elements:
+  - validation
+  - plan review
+  - approval
+  - apply
+  - post-deployment verification
+- question: How can cloud cost optimization be evaluated responsibly?
+  answer_elements:
+  - billing evidence
+  - unit economics
+  - SLO impact
+  - actual savings
+exam_practice:
+  short_answer:
+  - Differentiate declarative and imperative infrastructure provisioning.
+  - Explain Terraform state and remote locking.
+  - Define reusable modules and explain module versioning.
+  - Explain infrastructure drift and the codify-versus-revert decision.
+  - Differentiate rolling, blue-green and canary deployments.
+  - Define RTO and RPO and explain how they are measured.
+  analytical:
+  - Evaluate Terraform and a cloud-native IaC tool for a multi-account environment.
+  - Analyze a plan containing resource replacement and explain the review steps.
+  - Design an IaC CI/CD pipeline with least-privilege deployment identity.
+  - Diagnose a broken Kubernetes workload using events, logs, selectors and probes.
+  - Analyze NAT, cross-zone and egress charges and propose optimizations.
+  - Evaluate a drift-and-cost-spike incident while preserving an SLO.
+  case_study: A production environment has a Terraform drift alert, a sudden network cost increase and elevated
+    application latency. Prepare an evidence-led investigation, safe remediation sequence, rollback plan and post-change
+    cost/SLO validation.
+glossary:
+- term: IaC
+  definition: Infrastructure as Code.
+- term: State
+  definition: Terraform's mapping between configuration and managed infrastructure objects.
+- term: Backend
+  definition: Configuration describing where and how state is stored.
+- term: State locking
+  definition: Coordination that prevents concurrent state-changing operations.
+- term: Module
+  definition: Reusable package of infrastructure configuration.
+- term: Drift
+  definition: Difference between declared/managed configuration and actual infrastructure.
+- term: CI/CD
+  definition: Continuous integration and continuous delivery/deployment workflows.
+- term: SLO
+  definition: Target for a measured service-level indicator.
+- term: RTO
+  definition: Target time to restore service after disruption.
+- term: RPO
+  definition: Maximum acceptable data-loss interval.
+- term: FinOps
+  definition: Collaborative operating practice for cloud financial accountability and optimization.

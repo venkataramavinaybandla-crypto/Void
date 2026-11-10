@@ -1,0 +1,665 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO3
+  concept_id: CO3_09
+  concept_title: Hybrid Connectivity, VPN and Dedicated Links
+  source_alignment: Based on CO3 and Sessions 9-12 plus Practical Sessions 5-6 in the uploaded
+    CDIS handout.
+  coverage: Cloud IP addressing, CIDR, subnet planning, virtual networks, routing, traffic filtering,
+    private access, NAT, load balancing, DNS, CDN, hybrid connectivity and network troubleshooting.
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  intended_level: Undergraduate CSE; application, analysis and fault diagnosis
+  line_count_target: At least 350 substantive YAML lines
+learning_outcomes:
+- Calculate IPv4 CIDR ranges, subnet boundaries and usable address capacity.
+- Design virtual networks with public and private subnets, routes and controlled egress.
+- Analyze stateful and stateless filtering, NAT and private service access.
+- Evaluate L4/L7 load balancing, DNS routing, CDN and hybrid connectivity.
+- Diagnose network faults using resolve, route, reach and respond evidence.
+prerequisites:
+- Basic IPv4, binary arithmetic and TCP/IP concepts.
+- Basic understanding of client-server applications and HTTP.
+- Familiarity with Linux or Windows command-line networking tools.
+concept_map:
+  central_concept: Hybrid Connectivity, VPN and Dedicated Links
+  major_dimensions:
+  - Addressing and subnet allocation
+  - Virtual network architecture and routing
+  - Traffic filtering and private service access
+  - Traffic distribution, DNS and content delivery
+  - Hybrid connectivity and evidence-led troubleshooting
+  relationships:
+  - Addressing defines which destinations can be represented and routed.
+  - Routes select a path while filtering controls whether traffic is permitted.
+  - DNS identifies endpoints while load balancers distribute traffic to healthy targets.
+  - CDNs serve eligible content near users while hybrid links connect separate network domains.
+  - Troubleshooting follows the request path from name resolution through application response.
+core_units:
+- unit_id: CO3_09_U01
+  topic: Hybrid connectivity
+  definition: Hybrid connectivity links on-premises networks with cloud virtual networks through
+    private or encrypted paths.
+  detailed_explanation: It requires compatible addressing, routing, identity, DNS, redundancy
+    and monitoring.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A corporate data center reaches private application subnets through a VPN.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define hybrid connectivity and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of hybrid connectivity.
+- unit_id: CO3_09_U02
+  topic: Site-to-site VPN
+  definition: A site-to-site VPN creates encrypted tunnels over an underlying network between
+    network gateways.
+  detailed_explanation: Configure tunnel parameters, routes, failover and monitoring.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A branch office connects to a cloud VPC through IPsec tunnels.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define site-to-site vpn and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of site-to-site vpn.
+- unit_id: CO3_09_U03
+  topic: Client VPN
+  definition: A client VPN provides remote users or devices with secure network access.
+  detailed_explanation: Use identity-based access, device posture and restricted routes.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: An administrator connects to a private management subnet.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define client vpn and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of client vpn.
+- unit_id: CO3_09_U04
+  topic: Dedicated connectivity
+  definition: Dedicated circuits provide private connectivity between an organization and a cloud
+    provider through a carrier or exchange.
+  detailed_explanation: They can offer predictable paths and bandwidth but require provisioning,
+    redundancy and cost planning.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A data center uses a dedicated cloud interconnect.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define dedicated connectivity and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of dedicated connectivity.
+- unit_id: CO3_09_U05
+  topic: BGP routing
+  definition: BGP exchanges route information between autonomous systems and is commonly used
+    in hybrid connectivity.
+  detailed_explanation: Control advertisements, prefixes, path preference and failover carefully.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A cloud gateway learns on-premises prefixes through BGP.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define bgp routing and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of bgp routing.
+- unit_id: CO3_09_U06
+  topic: Redundant connectivity
+  definition: Redundant links reduce the impact of circuit, device or provider-edge failures.
+  detailed_explanation: Avoid shared conduits and test failover behavior.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A dedicated circuit is backed by a separate VPN path.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define redundant connectivity and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of redundant connectivity.
+- unit_id: CO3_09_U07
+  topic: Address overlap
+  definition: Overlapping on-premises and cloud address spaces complicate route exchange and connectivity.
+  detailed_explanation: Plan CIDR before deployment; use NAT or renumbering only with explicit
+    design.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A merger introduces two networks with the same private range.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define address overlap and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of address overlap.
+- unit_id: CO3_09_U08
+  topic: Hybrid DNS
+  definition: Hybrid DNS integrates private zones, forwarding and on-premises resolvers.
+  detailed_explanation: Define authoritative ownership and forwarding direction.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A cloud workload resolves an internal corporate hostname.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define hybrid dns and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of hybrid dns.
+- unit_id: CO3_09_U09
+  topic: Hub connectivity
+  definition: A hub network can centralize VPN, dedicated circuits, DNS and inspection services.
+  detailed_explanation: Avoid unintended transitive routing and asymmetric flows.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: Multiple workload spokes connect to a shared hub.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define hub connectivity and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of hub connectivity.
+- unit_id: CO3_09_U10
+  topic: Latency and throughput
+  definition: Hybrid path performance depends on distance, routing, encryption overhead, bandwidth
+    and congestion.
+  detailed_explanation: Measure round-trip time, packet loss and sustained throughput.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A database chatty application performs poorly over a high-latency circuit.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define latency and throughput and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of latency and throughput.
+- unit_id: CO3_09_U11
+  topic: Hybrid security
+  definition: Hybrid links need encryption, routing controls, segmentation, identity and monitoring.
+  detailed_explanation: Private connectivity is not equivalent to trusted access.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A private circuit still enforces firewall policy.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define hybrid security and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of hybrid security.
+- unit_id: CO3_09_U12
+  topic: Hybrid troubleshooting
+  definition: Check tunnel state, BGP routes, route tables, firewall rules, DNS and return paths.
+  detailed_explanation: Compare both ends of the connection and inspect tunnel counters.
+  working_principle: Identify the source, destination, protocol, address range, route decision,
+    filtering boundary and expected response. Trace the forward and return paths separately. Use
+    configuration and telemetry to verify each assumption.
+  worked_example: A tunnel is up but no traffic flows because the route is missing.
+  design_checks:
+  - Is the address plan non-overlapping and large enough for expected growth?
+  - Does the route table select the intended next hop for both directions?
+  - Which security control evaluates the flow, and is it stateful or stateless?
+  - What evidence proves that the request reached the intended endpoint?
+  tradeoffs:
+  - Evaluate security, availability, latency and cost together.
+  - Consider operational complexity and the blast radius of a route or policy change.
+  - Distinguish control-plane configuration success from actual data-plane connectivity.
+  troubleshooting_checks:
+  - Record source, destination, protocol, port and timestamp.
+  - Verify DNS answer and TTL if a hostname is involved.
+  - Inspect route selection and next-hop health.
+  - Inspect security groups, ACLs, firewalls and endpoint policies.
+  - Test transport reachability and then application response.
+  - Correlate flow logs, load-balancer health and application logs.
+  review_questions:
+  - Define hybrid troubleshooting and explain its role in cloud network architecture.
+  - Analyze the worked example and identify a likely failure mode.
+  - Evaluate the security, latency and cost trade-offs of hybrid troubleshooting.
+provider_comparison:
+  comparison_method: Compare network scope, address model, route behavior, filtering semantics,
+    endpoint support, DNS behavior, load-balancer layer, hybrid options, telemetry and pricing.
+    Product names are not proof of identical behavior.
+  aws: AWS networking examples include Amazon VPC, subnets, route tables, Internet Gateway, NAT
+    Gateway, security groups, network ACLs, VPC endpoints, Elastic Load Balancing, Route 53, CloudFront,
+    Site-to-Site VPN, Direct Connect and VPC Flow Logs.
+  azure: Azure networking examples include Virtual Network, subnets, route tables, Network Security
+    Groups, Azure Firewall, NAT Gateway, Private Link/private endpoints, Azure Load Balancer,
+    Application Gateway, Azure DNS, Azure Front Door, VPN Gateway and ExpressRoute.
+  google_cloud: Google Cloud networking examples include VPC networks, subnets, routes, firewall
+    rules, Cloud NAT, Private Service Connect, Cloud Load Balancing, Cloud DNS, Cloud CDN, Cloud
+    VPN, Cloud Interconnect and VPC Flow Logs.
+  comparison_checklist:
+  - What is the virtual network and subnet scope?
+  - How are routes associated and how is longest-prefix or priority behavior determined?
+  - Are security rules stateful or stateless, and at what resource boundary do they apply?
+  - How does private service access work for the selected service?
+  - What load-balancer layers and health-check options are supported?
+  - Which DNS routing policies and private DNS mechanisms are available?
+  - What hybrid VPN or dedicated connectivity options exist?
+  - Which flow logs and network diagnostics can prove the packet path?
+  - Which NAT, inter-zone, load-balancer and data-transfer charges apply?
+architecture_and_workflow:
+  reference_topology:
+  - Client or internet user
+  - Public DNS and optional CDN
+  - Internet-facing L7 or L4 load balancer
+  - Private application subnets distributed across zones
+  - Private database or managed service subnet
+  - NAT or private service endpoint for required outbound service access
+  - Optional VPN or dedicated connection to on-premises networks
+  network_design_steps:
+  - Collect application flows, users, protocols, ports and data classification.
+  - Choose a non-overlapping address space and reserve growth capacity.
+  - Create subnets by role and failure domain.
+  - Create route tables and document every next hop.
+  - Attach internet, NAT, peering, endpoint or hybrid gateways as required.
+  - Apply least-access security groups, ACLs and firewall policies.
+  - Configure DNS, load balancing and health checks.
+  - Enable flow logging and application-level tracing.
+  - Test both forward and return paths from representative clients.
+  - Record costs, ownership and teardown procedures.
+  evidence_to_collect:
+  - CIDR allocation table and subnet calculations
+  - Route tables and gateway attachment state
+  - Security group, ACL and firewall rule exports
+  - DNS query output and TTL values
+  - Load-balancer listener and target health evidence
+  - Flow logs and connectivity test output
+  - VPN tunnel state and BGP route information
+  - Latency, packet loss and throughput measurements
+practical_labs:
+- lab_id: CO3_09_LAB01
+  title: VPC and gateway foundation
+  objective: Create a virtual network, attach an internet gateway and understand subnet route
+    behavior.
+  handout_alignment: 'Practical Session 5: VPC isolated network and Internet Gateway attachment.'
+  procedure:
+  - Create a VPC and record the CIDR block.
+  - Create a public subnet and associate a route table.
+  - Attach an internet gateway to the VPC.
+  - Add a default route to the internet gateway in the public route table.
+  - Launch a temporary test instance with suitable public addressing and tightly scoped access.
+  - Test connectivity and record route and security evidence.
+  - Remove temporary resources after the lab.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget alert before creating chargeable resources.
+  - Restrict inbound access to the learner's approved source address.
+  - Do not expose databases or administrative ports publicly.
+  - Delete public IPs and all temporary network resources after testing.
+  deliverables:
+  - VPC diagram
+  - CIDR and subnet table
+  - Route table evidence
+  - Connectivity test
+  - Teardown confirmation
+- lab_id: CO3_09_LAB02
+  title: One public and two private subnets with NAT
+  objective: Build the topology specified by the CO3 practical and prove private subnet outbound
+    connectivity.
+  handout_alignment: 'Practical Session 6: create a VPC with 120.0.0.0/16, one public subnet and
+    two private subnets, and connect a NAT gateway for private subnet internet connectivity.'
+  source_specific_note: The handout specifies 120.0.0.0/16. Preserve this value when documenting
+    the prescribed exercise. For real production address planning, use an address range that the
+    organization is authorized to use, typically an RFC1918 private range, and avoid overlapping
+    connected networks.
+  procedure:
+  - Record the handout-specified VPC CIDR exactly in the lab plan.
+  - Divide the VPC range into three non-overlapping subnet ranges with adequate capacity.
+  - Create one public subnet and two private subnets.
+  - Attach an internet gateway and configure the public subnet route table.
+  - Create a NAT gateway in the public subnet with the required public address allocation.
+  - Configure the private subnet route table to send internet-bound traffic to NAT.
+  - Launch a test instance in a private subnet without a public IP.
+  - Test outbound access from the private instance and verify that unsolicited inbound internet
+    access is not enabled.
+  - Inspect flow evidence and route tables, then tear down NAT and other billable resources.
+  safety_controls:
+  - Confirm the account, region and billing budget before provisioning NAT.
+  - Do not use the lab CIDR in a production network without validating address ownership and routing
+    implications.
+  - Keep private test instances without public addresses.
+  - Delete NAT gateways and allocated public IPs after the test.
+  deliverables:
+  - Address allocation table
+  - Public/private route tables
+  - NAT configuration evidence
+  - Outbound connectivity result
+  - Cost and teardown checklist
+scenario_bank:
+- scenario: A private VM cannot download operating-system updates although the VPC has an internet
+    gateway.
+  task: Trace the subnet route, NAT placement, public subnet route, security policy and return
+    path.
+  expected_reasoning: An internet gateway alone does not give a private subnet direct outbound
+    access; a suitable NAT path and routes are required.
+- scenario: A TCP connection times out even though DNS resolves the destination.
+  task: Inspect route selection, filtering, NAT and return traffic, then use flow evidence.
+  expected_reasoning: Name resolution and routing are separate stages; a timeout can indicate
+    silent filtering or an incomplete path.
+- scenario: A request reaches a load balancer but receives HTTP 503.
+  task: Inspect listener rules, target registration, health checks, security rules and backend
+    logs.
+  expected_reasoning: Transport reachability to the load balancer does not prove that healthy
+    application targets exist.
+- scenario: DNS failover changes the authoritative answer but some users still reach the old region.
+  task: Analyze TTL, resolver caching, health-check interval and client retry behavior.
+  expected_reasoning: Client-observed recovery can lag the control-plane change because cached
+    answers remain valid until expiry.
+common_misconceptions:
+- claim: A public subnet automatically makes every instance public.
+  correction: The route table, public addressing and filtering configuration all affect reachability.
+- claim: A NAT gateway allows unsolicited inbound internet connections to private instances.
+  correction: NAT commonly supports outbound-initiated connectivity; it is not a general inbound
+    publishing mechanism.
+- claim: Security groups and network ACLs behave identically.
+  correction: Security groups are commonly stateful while network ACLs are commonly stateless
+    and require explicit return traffic rules.
+- claim: If DNS resolves, the network is working.
+  correction: DNS only establishes a name-to-address answer; route, transport, filtering and application
+    behavior still need validation.
+- claim: A load balancer health check proves the whole user journey works.
+  correction: A shallow health check may not exercise authentication, business logic or downstream
+    dependencies.
+- claim: Private connectivity means trusted connectivity.
+  correction: Private paths still require identity, encryption where appropriate, routing and
+    traffic filtering.
+troubleshooting_method:
+  sequence:
+  - 'Resolve: confirm the hostname, resolver, returned address and TTL.'
+  - 'Route: inspect the source subnet route table, destination prefix and next hop.'
+  - 'Reach: test endpoint, port, protocol, security rules, ACLs and return path.'
+  - 'Respond: inspect TLS, HTTP status, load-balancer health and application dependencies.'
+  command_toolbox:
+  - tool: nslookup or dig
+    purpose: Inspect DNS answer, resolver and TTL-related details.
+  - tool: ip route or route print
+    purpose: Inspect local route selection and default gateway.
+  - tool: ping or traceroute/tracert
+    purpose: Test ICMP reachability or observe a possible network path; interpret filtered hops
+      cautiously.
+  - tool: curl, nc or an equivalent TCP client
+    purpose: Test application response or transport connection to a specific port.
+  incident_record_fields:
+  - Timestamp
+  - Source address
+  - Destination address
+  - Protocol
+  - Port
+  - DNS answer
+  - Route decision
+  - Filtering evidence
+  - Connection result
+  - Application response
+  - Root cause
+  - Remediation
+  - Verification
+examination_bank:
+  remember:
+  - Define CIDR and explain the purpose of a subnet mask.
+  - Differentiate a public subnet and a private subnet.
+  - State the difference between a security group and a network ACL.
+  - Define NAT, DNS TTL and CDN.
+  understand:
+  - Explain how a private subnet obtains outbound internet access through NAT.
+  - Explain why stateless filtering requires explicit return traffic rules.
+  - Describe how DNS caching influences failover time.
+  - Differentiate L4 and L7 load balancing.
+  apply:
+  - Calculate the network range and usable host capacity for a given CIDR block.
+  - Design one public and two private subnets with appropriate route tables.
+  - Configure a rule set that permits HTTPS from a load balancer to an application tier.
+  - Select an endpoint or NAT path for private access to a cloud service.
+  analyze:
+  - Analyze a timeout using the resolve-route-reach-respond sequence.
+  - Trace the return-rule trap in a stateless ACL.
+  - Analyze why a DNS failover event takes longer for clients than the health-check interval.
+  - Use flow logs to identify the likely network boundary dropping a packet.
+  evaluate:
+  - Evaluate two network designs for security, resiliency, latency and cost.
+  - Choose between NAT-based access and private service endpoints for a stated workload.
+  - Evaluate an L4 or L7 load-balancing design for a given protocol and routing requirement.
+  - Defend a hybrid connectivity choice between VPN and a dedicated circuit.
+  scenario_based:
+  - A VM resolves a hostname but TCP 443 times out. Identify the next four checks in order.
+  - A private application can reach the internet but cannot access a managed storage service privately.
+    Diagnose endpoint DNS and route configuration.
+  - A service becomes unavailable after one zone loses capacity. Evaluate load-balancer health,
+    subnet capacity and failover behavior.
+  - Users in one region receive stale content after a deployment. Analyze CDN cache key, TTL and
+    invalidation.
+revision:
+  key_terms:
+  - IPv4
+  - CIDR
+  - subnet
+  - VPC
+  - VNet
+  - route table
+  - Internet Gateway
+  - NAT Gateway
+  - security group
+  - network ACL
+  - endpoint
+  - L4
+  - L7
+  - DNS
+  - TTL
+  - CDN
+  - VPN
+  - BGP
+  - flow log
+  last_minute_checklist:
+  - Can I convert an IPv4 address and mask into a network range?
+  - Can I allocate non-overlapping public and private subnets?
+  - Can I trace forward and return routes?
+  - Can I explain stateful versus stateless filtering?
+  - Can I distinguish NAT from private service endpoints?
+  - Can I compare L4 and L7 load balancing?
+  - Can I calculate how TTL affects DNS failover?
+  - Can I diagnose a failure using resolve, route, reach and respond?
+  summary: CO3 connects addressing, routing and filtering with the services that deliver and protect
+    application traffic. A strong network design uses non-overlapping address space, explicit
+    routes, least-access filtering, suitable private access, resilient traffic distribution and
+    measurable DNS and hybrid behavior. A strong diagnosis follows the packet and request path
+    using evidence.
+glossary:
+- term: CIDR
+  meaning: Classless Inter-Domain Routing notation that expresses an IP prefix length.
+- term: VPC/VNet
+  meaning: A logically isolated virtual network construct provided by a cloud platform.
+- term: NAT
+  meaning: Network address translation used to translate packet address information.
+- term: TTL
+  meaning: Time to live; in DNS it controls how long an answer may be cached.
+- term: ACL
+  meaning: Access control list; a rule set that permits or denies traffic.
+- term: BGP
+  meaning: Border Gateway Protocol, used to exchange routing information between networks.
+- term: CDN
+  meaning: Content delivery network that serves content through distributed edge locations.
+- term: RTO
+  meaning: Recovery time objective; included here only as a cross-topic service recovery term,
+    not a core CO3 focus.
+study_guidance:
+  recommended_sequence:
+  - Master IPv4 binary arithmetic and CIDR before designing subnets.
+  - Draw a VPC/VNet with public and private subnet roles.
+  - Trace internet, NAT, endpoint and hybrid routes.
+  - Compare stateful and stateless filtering with request and return packets.
+  - Study load balancers, DNS policies, TTL and CDN caching.
+  - Practice the resolve-route-reach-respond diagnostic sequence.
+  - Complete the two handout-aligned VPC practical labs and record evidence.
+  answer_quality_standard: Show subnet arithmetic, state the route and next hop, identify the
+    filtering boundary, trace the return path and support diagnosis with command output or flow
+    evidence. Do not claim a packet is reachable merely because DNS resolves or an instance is
+    marked running.

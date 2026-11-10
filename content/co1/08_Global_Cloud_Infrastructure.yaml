@@ -1,0 +1,553 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO1
+  concept_id: CO1_08
+  concept_title: Global Cloud Infrastructure
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
+    emphasis on CO1 and its lecture/session plan.
+  coverage: regions, Availability Zones, region pairs, local and edge zones, residency, latency,
+    fault isolation and placement
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+learning_outcomes:
+- Define and explain global cloud infrastructure using precise cloud terminology.
+- Describe the architecture, actors, control boundaries and operational workflow involved.
+- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
+  identical semantics.
+- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
+- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Global Cloud Infrastructure
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO1_08_U01
+  topic: Cloud region
+  definition: A region is a distinct geographic area containing provider infrastructure and a
+    set of cloud services.
+  detailed_explanation: Regions are independent placement choices with different service availability,
+    pricing, latency, legal and capacity characteristics. Not every service or feature is present
+    in every region.
+  working_principle: To reason about cloud region, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An application serving users in southern India evaluates nearby regions for
+    latency and data requirements.
+  decision_points:
+  - What requirement makes cloud region relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A region name does not guarantee every service is available or that
+    all data stays there under every service configuration.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cloud region and explain why it matters in cloud architecture.
+  - Analyze the example of cloud region and identify one operational risk.
+  - Evaluate the trade-off described for cloud region under a stated workload constraint.
+- unit_id: CO1_08_U02
+  topic: Availability Zone
+  definition: An Availability Zone is an isolated location or group of data centers within a region,
+    designed to reduce correlated failures between zones.
+  detailed_explanation: Multi-zone architectures distribute resources across failure domains and
+    require resilient networking, load balancing, data replication and application behavior.
+  working_principle: To reason about availability zone, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An application runs replicas in two zones and routes traffic away from unhealthy
+    capacity.
+  decision_points:
+  - What requirement makes availability zone relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Two instances in one zone do not provide zone-level fault tolerance.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define availability zone and explain why it matters in cloud architecture.
+  - Analyze the example of availability zone and identify one operational risk.
+  - Evaluate the trade-off described for availability zone under a stated workload constraint.
+- unit_id: CO1_08_U03
+  topic: Region pairs
+  definition: Some providers define region-pair relationships for selected resilience, replication
+    or recovery capabilities.
+  detailed_explanation: Pairing rules, distance, replication behavior and failover support are
+    service-specific. A region pair should not be assumed to provide automatic application disaster
+    recovery.
+  working_principle: To reason about region pairs, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A database service offers a geo-replication option between designated regions.
+  decision_points:
+  - What requirement makes region pairs relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A region pair is not a substitute for testing application recovery
+    and data consistency.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define region pairs and explain why it matters in cloud architecture.
+  - Analyze the example of region pairs and identify one operational risk.
+  - Evaluate the trade-off described for region pairs under a stated workload constraint.
+- unit_id: CO1_08_U04
+  topic: Local zones and edge zones
+  definition: Local or edge zones place selected compute and services closer to users or devices
+    than a central region.
+  detailed_explanation: They can reduce latency for interactive, media, gaming or industrial workloads,
+    but may offer fewer services and different pricing or capacity constraints.
+  working_principle: To reason about local zones and edge zones, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A media processing workload uses a nearby edge location for low-latency processing
+    and a central region for durable analytics.
+  decision_points:
+  - What requirement makes local zones and edge zones relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Proximity alone does not ensure low end-to-end latency if upstream
+    dependencies remain distant.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define local zones and edge zones and explain why it matters in cloud architecture.
+  - Analyze the example of local zones and edge zones and identify one operational risk.
+  - Evaluate the trade-off described for local zones and edge zones under a stated workload constraint.
+- unit_id: CO1_08_U05
+  topic: Geographic placement and latency
+  definition: Network latency depends on physical distance, routing, congestion, peering and the
+    location of dependent services.
+  detailed_explanation: Measure real client-to-service latency, not only geographic distance.
+    Place tightly coupled tiers near each other and consider data gravity and cross-zone traffic.
+  working_principle: To reason about geographic placement and latency, identify the actors, the
+    resource or control being acted upon, the configuration or policy that governs it, the observable
+    result, and the failure modes. Separate the control-plane action from the data-plane behavior
+    whenever both are present.
+  worked_example: An API in one region calls a database in another, adding network round-trip
+    time to every query.
+  decision_points:
+  - What requirement makes geographic placement and latency relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A geographically close region can still have a slower path because
+    of network routing or congestion.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define geographic placement and latency and explain why it matters in cloud architecture.
+  - Analyze the example of geographic placement and latency and identify one operational risk.
+  - Evaluate the trade-off described for geographic placement and latency under a stated workload
+    constraint.
+- unit_id: CO1_08_U06
+  topic: Data residency and jurisdiction
+  definition: Data residency concerns where data is stored or processed; jurisdiction concerns
+    which laws and authorities may apply.
+  detailed_explanation: Assess primary data, replicas, backups, logs, support access, metadata
+    and cross-border transfers. Review contractual and regulatory requirements.
+  working_principle: To reason about data residency and jurisdiction, identify the actors, the
+    resource or control being acted upon, the configuration or policy that governs it, the observable
+    result, and the failure modes. Separate the control-plane action from the data-plane behavior
+    whenever both are present.
+  worked_example: A workload restricts primary and backup storage to approved locations and documents
+    any service metadata exceptions.
+  decision_points:
+  - What requirement makes data residency and jurisdiction relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Choosing a region is necessary for some residency controls but may
+    not settle every jurisdiction question.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define data residency and jurisdiction and explain why it matters in cloud architecture.
+  - Analyze the example of data residency and jurisdiction and identify one operational risk.
+  - Evaluate the trade-off described for data residency and jurisdiction under a stated workload
+    constraint.
+- unit_id: CO1_08_U07
+  topic: Failure domains
+  definition: A failure domain is a set of resources that may fail together due to a shared dependency
+    or event.
+  detailed_explanation: Identify host, rack, zone, region, network, identity, control-plane and
+    application dependencies. Redundancy is effective only when replicas do not share the same
+    critical failure domain.
+  working_principle: To reason about failure domains, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: Two web replicas on different hosts but in the same zone may still fail during
+    a zone outage.
+  decision_points:
+  - What requirement makes failure domains relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Counting instances is not the same as counting independent failure
+    domains.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define failure domains and explain why it matters in cloud architecture.
+  - Analyze the example of failure domains and identify one operational risk.
+  - Evaluate the trade-off described for failure domains under a stated workload constraint.
+- unit_id: CO1_08_U08
+  topic: Multi-zone architecture
+  definition: Multi-zone architecture distributes workload components across zones to improve
+    resilience against localized failures.
+  detailed_explanation: Use health-aware load balancing, sufficient capacity in surviving zones,
+    resilient data replication and graceful degradation. Test loss of a zone rather than assuming
+    failover works.
+  working_principle: To reason about multi-zone architecture, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A stateless application tier spans three zones and the database uses a supported
+    multi-zone deployment mode.
+  decision_points:
+  - What requirement makes multi-zone architecture relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A multi-zone design may increase cross-zone traffic costs and requires
+    application-level testing.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define multi-zone architecture and explain why it matters in cloud architecture.
+  - Analyze the example of multi-zone architecture and identify one operational risk.
+  - Evaluate the trade-off described for multi-zone architecture under a stated workload constraint.
+- unit_id: CO1_08_U09
+  topic: Regional disaster recovery
+  definition: Regional disaster recovery protects against a broad regional outage or loss of regional
+    services.
+  detailed_explanation: Options include backups, replicated data, warm standby and active-active
+    designs. Evaluate replication lag, recovery dependencies, DNS behavior, capacity reservation
+    and cost.
+  working_principle: To reason about regional disaster recovery, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A secondary region holds replicated data and a reduced application footprint
+    that can be scaled during recovery.
+  decision_points:
+  - What requirement makes regional disaster recovery relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A backup stored in the same failed region may not meet regional recovery
+    requirements.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define regional disaster recovery and explain why it matters in cloud architecture.
+  - Analyze the example of regional disaster recovery and identify one operational risk.
+  - Evaluate the trade-off described for regional disaster recovery under a stated workload constraint.
+- unit_id: CO1_08_U10
+  topic: Provider infrastructure comparison
+  definition: AWS, Azure and Google Cloud all organize services geographically, but naming, fault-domain
+    semantics and service availability differ.
+  detailed_explanation: Compare the actual service's region and zone model, replication guarantees,
+    SLA scope and configuration options. Record provider documentation dates for architecture
+    decisions.
+  working_principle: To reason about provider infrastructure comparison, identify the actors,
+    the resource or control being acted upon, the configuration or policy that governs it, the
+    observable result, and the failure modes. Separate the control-plane action from the data-plane
+    behavior whenever both are present.
+  worked_example: A design review compares the zone behavior of the chosen compute and database
+    services across providers.
+  decision_points:
+  - What requirement makes provider infrastructure comparison relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Do not assume that similarly named regions or zones have identical
+    physical or contractual properties.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define provider infrastructure comparison and explain why it matters in cloud architecture.
+  - Analyze the example of provider infrastructure comparison and identify one operational risk.
+  - Evaluate the trade-off described for provider infrastructure comparison under a stated workload
+    constraint.
+- unit_id: CO1_08_U11
+  topic: Placement decision method
+  definition: Choose placement by combining user latency, data residency, availability, service
+    availability, cost, quota and operational support requirements.
+  detailed_explanation: Build a decision table, mark mandatory constraints, then benchmark candidate
+    locations. Revalidate when a service, regulation or user population changes.
+  working_principle: To reason about placement decision method, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A workload selects a region that satisfies residency and offers all required
+    services, then adds zone-level redundancy.
+  decision_points:
+  - What requirement makes placement decision method relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: The cheapest region may not be viable if it violates residency or
+    latency requirements.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define placement decision method and explain why it matters in cloud architecture.
+  - Analyze the example of placement decision method and identify one operational risk.
+  - Evaluate the trade-off described for placement decision method under a stated workload constraint.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_08_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of global cloud infrastructure using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_08_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define global cloud infrastructure.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
+    propose a diagnostic sequence.
+  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
+    needed.
+  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
+    cost.
+revision:
+  key_terms:
+  - Global Cloud Infrastructure
+  - abstraction
+  - resource pooling
+  - shared responsibility
+  - failure domain
+  - observability
+  - total cost of ownership
+  - least privilege
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: This concept is best understood by connecting global cloud infrastructure to workload
+    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
+    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
+    and supports the conclusion with evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

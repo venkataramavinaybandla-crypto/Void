@@ -1,0 +1,547 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO2
+  concept_id: CO2_07
+  concept_title: Compute Purchasing and Commitment Models
+  source_alignment: 'CO2 of uploaded CDIS handout: compute sizing, virtual machines, containers,
+    Kubernetes, autoscaling, serverless, workload placement, purchasing models and cloud cost
+    optimization.'
+  coverage: Compute Purchasing and Commitment Models
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: Minimum 350 substantive YAML lines
+learning_outcomes:
+- Explain the main mechanisms and vocabulary of compute purchasing and commitment models.
+- Evaluate compute options by workload, latency, scaling and cost constraints.
+- Diagnose utilization, scheduling and provisioning failures using evidence.
+- Compare AWS, Azure and Google Cloud implementation choices.
+- Defend a resource and purchasing decision using measurable assumptions.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Compute Purchasing and Commitment Models
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO2_07_U01
+  topic: On-demand
+  definition: On-demand capacity is billed without a long-term usage commitment.
+  detailed_explanation: Flexible but may cost more than commitment-based options.
+  working_principle: For on-demand, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A short experiment uses on-demand VMs.
+  architecture_relationships:
+  - Connect on-demand to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define on-demand and explain its role in compute architecture.
+  - Analyze how on-demand behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of on-demand.
+- unit_id: CO2_07_U02
+  topic: Reserved capacity
+  definition: Reservation programs may provide discounts or capacity assurance depending on the
+    product.
+  detailed_explanation: Distinguish billing discounts from capacity reservations.
+  working_principle: For reserved capacity, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A stable workload receives a reservation discount.
+  architecture_relationships:
+  - Connect reserved capacity to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define reserved capacity and explain its role in compute architecture.
+  - Analyze how reserved capacity behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of reserved capacity.
+- unit_id: CO2_07_U03
+  topic: Savings plans
+  definition: Savings plans or similar commitments discount eligible usage in exchange for committed
+    spend.
+  detailed_explanation: Understand scope, term and eligible services.
+  working_principle: For savings plans, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A steady compute baseline is covered by a plan.
+  architecture_relationships:
+  - Connect savings plans to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define savings plans and explain its role in compute architecture.
+  - Analyze how savings plans behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of savings plans.
+- unit_id: CO2_07_U04
+  topic: Committed use
+  definition: Committed-use discounts reward a defined level of long-term usage.
+  detailed_explanation: Forecast demand and avoid overcommitment.
+  working_principle: For committed use, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A predictable service commits part of its baseline.
+  architecture_relationships:
+  - Connect committed use to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define committed use and explain its role in compute architecture.
+  - Analyze how committed use behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of committed use.
+- unit_id: CO2_07_U05
+  topic: Spot and interruptible
+  definition: Spot capacity uses spare provider capacity with interruption risk.
+  detailed_explanation: Use checkpointing and retries for fault-tolerant work.
+  working_principle: For spot and interruptible, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: A batch render uses interruptible workers.
+  architecture_relationships:
+  - Connect spot and interruptible to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define spot and interruptible and explain its role in compute architecture.
+  - Analyze how spot and interruptible behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of spot and interruptible.
+- unit_id: CO2_07_U06
+  topic: Coverage
+  definition: Commitment coverage measures the share of eligible usage covered by commitments.
+  detailed_explanation: Track coverage separately from utilization.
+  working_principle: For coverage, start with the workload requirement, identify the compute or
+    control-plane mechanism, measure the operational effect and test the limiting condition. Separate
+    resource allocation from actual application performance.
+  worked_example: A team covers its steady overnight baseline.
+  architecture_relationships:
+  - Connect coverage to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define coverage and explain its role in compute architecture.
+  - Analyze how coverage behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of coverage.
+- unit_id: CO2_07_U07
+  topic: Utilization of commitments
+  definition: Commitment utilization measures how much purchased commitment is consumed.
+  detailed_explanation: Unused commitments reduce savings.
+  working_principle: For utilization of commitments, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: An oversized commitment sits idle on weekends.
+  architecture_relationships:
+  - Connect utilization of commitments to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define utilization of commitments and explain its role in compute architecture.
+  - Analyze how utilization of commitments behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of utilization of commitments.
+- unit_id: CO2_07_U08
+  topic: Break-even
+  definition: Compare commitment savings against the risk and cost of unused capacity.
+  detailed_explanation: Use a range of demand scenarios.
+  working_principle: For break-even, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A seasonal workload does not commit its peak.
+  architecture_relationships:
+  - Connect break-even to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define break-even and explain its role in compute architecture.
+  - Analyze how break-even behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of break-even.
+- unit_id: CO2_07_U09
+  topic: Interruption handling
+  definition: Interruptible workloads need graceful termination and recovery.
+  detailed_explanation: Checkpoint state and persist progress externally.
+  working_principle: For interruption handling, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: A training job resumes from a checkpoint.
+  architecture_relationships:
+  - Connect interruption handling to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define interruption handling and explain its role in compute architecture.
+  - Analyze how interruption handling behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of interruption handling.
+- unit_id: CO2_07_U10
+  topic: Pricing dimensions
+  definition: Compute billing can include instance time, attached storage, data transfer, licenses
+    and support.
+  detailed_explanation: Model all material dimensions.
+  working_principle: For pricing dimensions, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A cheap VM incurs substantial egress charges.
+  architecture_relationships:
+  - Connect pricing dimensions to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define pricing dimensions and explain its role in compute architecture.
+  - Analyze how pricing dimensions behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of pricing dimensions.
+- unit_id: CO2_07_U11
+  topic: FinOps review
+  definition: Review purchases using actual utilization and demand forecasts.
+  detailed_explanation: Coordinate engineering, finance and operations.
+  working_principle: For finops review, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: Monthly reports adjust commitment strategy.
+  architecture_relationships:
+  - Connect finops review to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define finops review and explain its role in compute architecture.
+  - Analyze how finops review behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of finops review.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_01_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of fundamentals of cloud computing using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_01_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define fundamentals of cloud computing.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A workload experiences a sudden traffic increase. Explain how compute purchasing and commitment
+    models influences the response.
+  - A compute workload has poor p95 latency but moderate average CPU. Identify the missing metrics
+    and likely constraints.
+  - A team must choose among VMs, managed containers, Kubernetes and functions under a strict
+    monthly budget. Defend a selection.
+revision:
+  key_terms:
+  - Compute Purchasing and Commitment Models
+  - On-demand
+  - Reserved capacity
+  - Savings plans
+  - Committed use
+  - Spot and interruptible
+  - Coverage
+  - Utilization of commitments
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: Compute Purchasing and Commitment Models is assessed by understanding its mechanism,
+    choosing an appropriate workload fit, quantifying latency and utilization, and diagnosing
+    failure through resource and control-plane evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

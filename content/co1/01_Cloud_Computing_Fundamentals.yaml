@@ -1,0 +1,586 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO1
+  concept_id: CO1_01
+  concept_title: Fundamentals of Cloud Computing
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
+    emphasis on CO1 and its lecture/session plan.
+  coverage: cloud computing foundations, essential characteristics, resource pooling, elasticity,
+    measured service, economics, service delivery and foundational terminology
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+learning_outcomes:
+- Define and explain fundamentals of cloud computing using precise cloud terminology.
+- Describe the architecture, actors, control boundaries and operational workflow involved.
+- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
+  identical semantics.
+- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
+- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Fundamentals of Cloud Computing
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO1_01_U01
+  topic: Cloud computing definition
+  definition: Cloud computing is a model for enabling convenient, on-demand network access to
+    a shared pool of configurable computing resources that can be rapidly provisioned and released
+    with minimal management effort or provider interaction.
+  detailed_explanation: Treat cloud as an operating and delivery model, not merely as a remote
+    server or a billing label. A cloud service combines abstraction, automation, network access,
+    resource pooling, metering and an operational contract.
+  working_principle: To reason about cloud computing definition, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A team requests a database through a portal or API, receives an endpoint and
+    credentials, scales capacity through supported controls, and is billed according to the selected
+    service and consumption dimensions.
+  decision_points:
+  - What requirement makes cloud computing definition relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Calling any hosted virtual machine 'cloud' is incomplete when provisioning
+    is manual, capacity is fixed and usage is not measured.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cloud computing definition and explain why it matters in cloud architecture.
+  - Analyze the example of cloud computing definition and identify one operational risk.
+  - Evaluate the trade-off described for cloud computing definition under a stated workload constraint.
+- unit_id: CO1_01_U02
+  topic: On-demand self-service
+  definition: Consumers can provision supported resources when needed without requiring a human
+    provider employee to perform each routine allocation.
+  detailed_explanation: Self-service is implemented through portals, command-line interfaces,
+    APIs, templates, policy checks and automated workflows. It reduces request queues but does
+    not remove approval, quota or security controls.
+  working_principle: To reason about on-demand self-service, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An engineer provisions a development database from an approved template and
+    receives a connection endpoint after policy validation.
+  decision_points:
+  - What requirement makes on-demand self-service relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Self-service does not mean unrestricted access; guardrails and quotas
+    still apply.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define on-demand self-service and explain why it matters in cloud architecture.
+  - Analyze the example of on-demand self-service and identify one operational risk.
+  - Evaluate the trade-off described for on-demand self-service under a stated workload constraint.
+- unit_id: CO1_01_U03
+  topic: Broad network access
+  definition: Cloud capabilities are reachable over networks through standard mechanisms and client
+    platforms.
+  detailed_explanation: Network access introduces identity, endpoint, routing, DNS, TLS, latency
+    and availability considerations. The service may be reachable from browsers, mobile devices,
+    command-line tools or application SDKs.
+  working_principle: To reason about broad network access, identify the actors, the resource or
+    control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A deployment pipeline calls a provider API over HTTPS to create an application
+    environment.
+  decision_points:
+  - What requirement makes broad network access relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A resource being hosted remotely does not guarantee it is safely
+    or universally reachable.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define broad network access and explain why it matters in cloud architecture.
+  - Analyze the example of broad network access and identify one operational risk.
+  - Evaluate the trade-off described for broad network access under a stated workload constraint.
+- unit_id: CO1_01_U04
+  topic: Resource pooling
+  definition: Provider resources are pooled to serve multiple consumers using a multi-tenant model,
+    with physical and logical resources dynamically assigned and reassigned.
+  detailed_explanation: Pooling improves utilization and enables provider scale. Isolation controls,
+    scheduling, quotas and tenant boundaries must prevent one consumer from accessing another
+    consumer's data or exhausting shared capacity.
+  working_principle: To reason about resource pooling, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: Multiple customer VMs may share a physical host while receiving logically isolated
+    virtual CPU, memory and storage resources.
+  decision_points:
+  - What requirement makes resource pooling relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Pooling is not the same as sharing application data or granting tenants
+    visibility into one another.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define resource pooling and explain why it matters in cloud architecture.
+  - Analyze the example of resource pooling and identify one operational risk.
+  - Evaluate the trade-off described for resource pooling under a stated workload constraint.
+- unit_id: CO1_01_U05
+  topic: Rapid elasticity
+  definition: Capabilities can be elastically provisioned and released, sometimes automatically,
+    to scale outward or inward with demand.
+  detailed_explanation: Elasticity depends on metrics, scaling policies, quotas, provisioning
+    time, application statelessness and downstream capacity. A control loop observes demand, compares
+    it with policy and changes capacity.
+  working_principle: To reason about rapid elasticity, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A web tier adds instances during a traffic surge and removes excess instances
+    after demand subsides.
+  decision_points:
+  - What requirement makes rapid elasticity relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Elasticity is not instantaneous or unlimited; startup time, quotas
+    and database bottlenecks can constrain it.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define rapid elasticity and explain why it matters in cloud architecture.
+  - Analyze the example of rapid elasticity and identify one operational risk.
+  - Evaluate the trade-off described for rapid elasticity under a stated workload constraint.
+- unit_id: CO1_01_U06
+  topic: Measured service
+  definition: Cloud systems automatically control and optimize resource use by metering appropriate
+    dimensions.
+  detailed_explanation: Metering may include instance time, vCPU-hours, memory, requests, transactions,
+    stored GB-months, provisioned IOPS, data transfer and license units. The bill is a financial
+    view of measured consumption.
+  working_principle: To reason about measured service, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A storage service reports stored capacity, retrieval requests and outbound transfer
+    as separate charge dimensions.
+  decision_points:
+  - What requirement makes measured service relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A low headline hourly rate does not represent total cost when transfer,
+    requests, support and ancillary services are omitted.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define measured service and explain why it matters in cloud architecture.
+  - Analyze the example of measured service and identify one operational risk.
+  - Evaluate the trade-off described for measured service under a stated workload constraint.
+- unit_id: CO1_01_U07
+  topic: Cloud economics
+  definition: Cloud changes capital expenditure, capacity planning and procurement into a more
+    consumption-oriented operating model.
+  detailed_explanation: The economic benefit depends on utilization, demand variability, commitment
+    discounts, operational labor, migration cost, licensing and data movement. Pay-as-you-go can
+    reduce idle capacity but can also create unpredictable bills.
+  working_principle: To reason about cloud economics, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A seasonal retailer scales down after a festival rather than owning enough hardware
+    for the annual peak.
+  decision_points:
+  - What requirement makes cloud economics relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Cloud is not automatically cheaper than on-premises; compare equivalent
+    service levels and full lifecycle costs.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cloud economics and explain why it matters in cloud architecture.
+  - Analyze the example of cloud economics and identify one operational risk.
+  - Evaluate the trade-off described for cloud economics under a stated workload constraint.
+- unit_id: CO1_01_U08
+  topic: Scalability and elasticity
+  definition: Scalability is the ability to handle increased workload; elasticity is the ability
+    to adjust resources dynamically as workload changes.
+  detailed_explanation: Vertical scaling changes the size of a resource. Horizontal scaling changes
+    the number of resource instances. Application design, state management and partitioning determine
+    how effectively either approach works.
+  working_principle: To reason about scalability and elasticity, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A database is vertically resized while stateless API replicas are horizontally
+    scaled behind a load balancer.
+  decision_points:
+  - What requirement makes scalability and elasticity relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A system can be scalable without being elastic if capacity changes
+    require planned manual intervention.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define scalability and elasticity and explain why it matters in cloud architecture.
+  - Analyze the example of scalability and elasticity and identify one operational risk.
+  - Evaluate the trade-off described for scalability and elasticity under a stated workload constraint.
+- unit_id: CO1_01_U09
+  topic: Availability and reliability
+  definition: Availability describes whether a service is usable when required; reliability concerns
+    its ability to perform correctly over time.
+  detailed_explanation: Availability is influenced by component failure rates, redundancy, dependencies,
+    health checks, failover behavior and maintenance. Reliability also includes correctness and
+    predictable behavior.
+  working_principle: To reason about availability and reliability, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A service runs across multiple failure zones and removes unhealthy instances
+    from traffic.
+  decision_points:
+  - What requirement makes availability and reliability relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A provider's service availability does not automatically make the
+    customer's complete application highly available.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define availability and reliability and explain why it matters in cloud architecture.
+  - Analyze the example of availability and reliability and identify one operational risk.
+  - Evaluate the trade-off described for availability and reliability under a stated workload
+    constraint.
+- unit_id: CO1_01_U10
+  topic: Cloud deployment lifecycle
+  definition: A cloud resource typically moves through request, policy validation, provisioning,
+    configuration, operation, monitoring, modification and decommissioning.
+  detailed_explanation: Lifecycle automation should include ownership tags, configuration baselines,
+    backups, monitoring, cost allocation and teardown. Resources that are no longer needed should
+    be removed or archived deliberately.
+  working_principle: To reason about cloud deployment lifecycle, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An infrastructure pipeline creates a test environment, runs tests, exports results
+    and destroys temporary resources.
+  decision_points:
+  - What requirement makes cloud deployment lifecycle relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Provisioning without lifecycle ownership often leaves orphaned resources
+    and recurring charges.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cloud deployment lifecycle and explain why it matters in cloud architecture.
+  - Analyze the example of cloud deployment lifecycle and identify one operational risk.
+  - Evaluate the trade-off described for cloud deployment lifecycle under a stated workload constraint.
+- unit_id: CO1_01_U11
+  topic: Cloud risks and constraints
+  definition: Cloud adoption introduces dependencies on network connectivity, provider APIs, identity
+    systems, service quotas, provider availability and contractual terms.
+  detailed_explanation: Risk assessment should include concentration risk, data residency, portability,
+    egress charges, service limits, shared responsibility, incident response and exit planning.
+  working_principle: To reason about cloud risks and constraints, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A workload that depends on a proprietary managed database evaluates export formats
+    and migration options before adoption.
+  decision_points:
+  - What requirement makes cloud risks and constraints relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Cloud does not eliminate infrastructure risk; it changes where controls
+    and failure modes reside.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cloud risks and constraints and explain why it matters in cloud architecture.
+  - Analyze the example of cloud risks and constraints and identify one operational risk.
+  - Evaluate the trade-off described for cloud risks and constraints under a stated workload constraint.
+- unit_id: CO1_01_U12
+  topic: Cloud terminology
+  definition: A resource is a managed or provisioned capability; a workload is the application
+    or processing activity using resources; a tenant is a logically isolated consumer context.
+  detailed_explanation: Regions, zones, instances, images, volumes, snapshots, buckets, policies,
+    endpoints and quotas have provider-specific meanings. Use provider documentation to verify
+    exact semantics.
+  working_principle: To reason about cloud terminology, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A workload may consist of a virtual network, compute instances, a database,
+    object storage and monitoring resources.
+  decision_points:
+  - What requirement makes cloud terminology relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Provider terms that sound similar are not necessarily identical in
+    behavior or scope.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cloud terminology and explain why it matters in cloud architecture.
+  - Analyze the example of cloud terminology and identify one operational risk.
+  - Evaluate the trade-off described for cloud terminology under a stated workload constraint.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_01_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of fundamentals of cloud computing using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_01_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define fundamentals of cloud computing.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
+    propose a diagnostic sequence.
+  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
+    needed.
+  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
+    cost.
+revision:
+  key_terms:
+  - Fundamentals of Cloud Computing
+  - abstraction
+  - resource pooling
+  - shared responsibility
+  - failure domain
+  - observability
+  - total cost of ownership
+  - least privilege
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: This concept is best understood by connecting fundamentals of cloud computing to workload
+    requirements, architecture boundaries, operational evidence and measurable trade-offs. A defensible
+    answer states the requirement, explains the mechanism, identifies the owner, evaluates limitations
+    and supports the conclusion with evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

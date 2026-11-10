@@ -1,0 +1,578 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO1
+  concept_id: CO1_05
+  concept_title: Cloud Virtualization Fundamentals
+  source_alignment: Prepared from the uploaded Cloud Infrastructure and Services handout, with
+    emphasis on CO1 and its lecture/session plan.
+  coverage: abstraction, hardware virtualization, resource partitioning, isolation, virtual CPU,
+    memory, storage, networking and performance
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: At least 350 meaningful YAML lines; line count is verified during packaging
+learning_outcomes:
+- Define and explain cloud virtualization fundamentals using precise cloud terminology.
+- Describe the architecture, actors, control boundaries and operational workflow involved.
+- Compare relevant implementation choices across AWS, Azure and Google Cloud without assuming
+  identical semantics.
+- Analyze realistic workload scenarios, identify failure domains and justify a design decision.
+- Use observable evidence to diagnose a fault and explain the limits of the available evidence.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Cloud Virtualization Fundamentals
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO1_05_U01
+  topic: Virtualization concept
+  definition: Virtualization creates a software-defined representation of computing resources
+    so multiple isolated environments can share underlying physical infrastructure.
+  detailed_explanation: A virtualization layer maps virtual resources to physical resources and
+    enforces boundaries. It enables consolidation, flexible provisioning, snapshots and workload
+    mobility subject to compatibility and platform limits.
+  working_principle: To reason about virtualization concept, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: Several virtual machines run on one physical server while each sees its own
+    virtual hardware configuration.
+  decision_points:
+  - What requirement makes virtualization concept relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Virtualization is a mechanism that supports cloud services; it is
+    not by itself the complete cloud operating model.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define virtualization concept and explain why it matters in cloud architecture.
+  - Analyze the example of virtualization concept and identify one operational risk.
+  - Evaluate the trade-off described for virtualization concept under a stated workload constraint.
+- unit_id: CO1_05_U02
+  topic: Host and guest
+  definition: The host is the physical or controlling environment that provides resources; a guest
+    is a virtual machine operating system running on virtual hardware.
+  detailed_explanation: The hypervisor mediates access to CPU, memory, storage and network devices.
+    Guest operating systems use virtual devices and drivers to interact with the platform.
+  working_principle: To reason about host and guest, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A Linux guest sees virtual CPUs and a virtual network interface backed by a
+    physical host.
+  decision_points:
+  - What requirement makes host and guest relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Guest-level metrics may not expose all host contention or scheduling
+    delays.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define host and guest and explain why it matters in cloud architecture.
+  - Analyze the example of host and guest and identify one operational risk.
+  - Evaluate the trade-off described for host and guest under a stated workload constraint.
+- unit_id: CO1_05_U03
+  topic: Hypervisor role
+  definition: A hypervisor creates, runs and manages virtual machines by allocating and isolating
+    hardware resources.
+  detailed_explanation: It handles CPU scheduling, memory mapping, device virtualization, interrupt
+    handling and VM lifecycle operations. Implementations differ in architecture and hardware
+    assistance.
+  working_principle: To reason about hypervisor role, identify the actors, the resource or control
+    being acted upon, the configuration or policy that governs it, the observable result, and
+    the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: The hypervisor schedules vCPU execution onto available physical CPU cores.
+  decision_points:
+  - What requirement makes hypervisor role relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A hypervisor does not make physical capacity infinite; overcommitment
+    can cause contention.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define hypervisor role and explain why it matters in cloud architecture.
+  - Analyze the example of hypervisor role and identify one operational risk.
+  - Evaluate the trade-off described for hypervisor role under a stated workload constraint.
+- unit_id: CO1_05_U04
+  topic: CPU virtualization
+  definition: CPU virtualization exposes virtual processors to guests and schedules their execution
+    on physical processor resources.
+  detailed_explanation: A vCPU is a schedulable virtual execution context, not necessarily a dedicated
+    physical core. Performance depends on host capacity, scheduling, topology, workload parallelism
+    and contention.
+  working_principle: To reason about cpu virtualization, identify the actors, the resource or
+    control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A VM configured with four vCPUs may share physical cores with other VMs.
+  decision_points:
+  - What requirement makes cpu virtualization relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Increasing vCPU count can fail to improve performance when the application
+    is serial or host contention dominates.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define cpu virtualization and explain why it matters in cloud architecture.
+  - Analyze the example of cpu virtualization and identify one operational risk.
+  - Evaluate the trade-off described for cpu virtualization under a stated workload constraint.
+- unit_id: CO1_05_U05
+  topic: Memory virtualization
+  definition: Memory virtualization maps guest-visible memory to physical memory through translation
+    mechanisms and platform management.
+  detailed_explanation: The hypervisor may use hardware-assisted address translation, memory reservation,
+    ballooning, swapping or other mechanisms. Overcommitment can increase density but may degrade
+    latency under pressure.
+  working_principle: To reason about memory virtualization, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A guest requests memory pages while the hypervisor maps them to host physical
+    pages.
+  decision_points:
+  - What requirement makes memory virtualization relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Guest free-memory metrics do not always reveal host-level reclamation
+    or swapping.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define memory virtualization and explain why it matters in cloud architecture.
+  - Analyze the example of memory virtualization and identify one operational risk.
+  - Evaluate the trade-off described for memory virtualization under a stated workload constraint.
+- unit_id: CO1_05_U06
+  topic: Storage virtualization
+  definition: Storage virtualization presents logical disks or volumes independently of the physical
+    storage devices that back them.
+  detailed_explanation: The platform maps virtual disk blocks to storage systems and may support
+    snapshots, thin provisioning, replication and performance tiers. I/O latency depends on queues,
+    network path and storage policy.
+  working_principle: To reason about storage virtualization, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A VM attaches a virtual disk that is backed by a distributed block-storage service.
+  decision_points:
+  - What requirement makes storage virtualization relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A virtual disk's advertised capacity does not guarantee a particular
+    IOPS or latency level.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define storage virtualization and explain why it matters in cloud architecture.
+  - Analyze the example of storage virtualization and identify one operational risk.
+  - Evaluate the trade-off described for storage virtualization under a stated workload constraint.
+- unit_id: CO1_05_U07
+  topic: Network virtualization
+  definition: Network virtualization creates logical network interfaces, switches, segments and
+    routing constructs over physical network infrastructure.
+  detailed_explanation: Virtual switches, overlays, virtual NICs and software-defined policies
+    isolate and connect workloads. Troubleshooting must consider both guest configuration and
+    virtual network controls.
+  working_principle: To reason about network virtualization, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: Two VMs communicate through a virtual switch while policy rules restrict traffic
+    between their subnets.
+  decision_points:
+  - What requirement makes network virtualization relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A correct guest IP configuration does not prove that virtual network
+    policy permits the flow.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define network virtualization and explain why it matters in cloud architecture.
+  - Analyze the example of network virtualization and identify one operational risk.
+  - Evaluate the trade-off described for network virtualization under a stated workload constraint.
+- unit_id: CO1_05_U08
+  topic: Isolation boundaries
+  definition: Isolation prevents one guest or tenant from accessing another tenant's resources
+    without authorization.
+  detailed_explanation: Isolation is implemented through hypervisor boundaries, memory protection,
+    virtual device mediation, network segmentation, storage access controls and provider security
+    processes.
+  working_principle: To reason about isolation boundaries, identify the actors, the resource or
+    control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A VM cannot read another VM's memory through ordinary guest permissions.
+  decision_points:
+  - What requirement makes isolation boundaries relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Isolation is layered risk reduction, not a reason to ignore patching,
+    identity or secure configuration.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define isolation boundaries and explain why it matters in cloud architecture.
+  - Analyze the example of isolation boundaries and identify one operational risk.
+  - Evaluate the trade-off described for isolation boundaries under a stated workload constraint.
+- unit_id: CO1_05_U09
+  topic: Resource overcommitment
+  definition: Overcommitment allocates more virtual capacity than the physical system can simultaneously
+    deliver, relying on workload usage patterns.
+  detailed_explanation: CPU overcommitment can be workable for bursty workloads, while memory
+    overcommitment may create severe performance risks if active demand exceeds physical capacity.
+    Monitor contention indicators.
+  working_principle: To reason about resource overcommitment, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A host assigns vCPUs to many mostly idle development VMs.
+  decision_points:
+  - What requirement makes resource overcommitment relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Overcommit ratios are not universal safe constants; workload behavior
+    and service objectives determine acceptable levels.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define resource overcommitment and explain why it matters in cloud architecture.
+  - Analyze the example of resource overcommitment and identify one operational risk.
+  - Evaluate the trade-off described for resource overcommitment under a stated workload constraint.
+- unit_id: CO1_05_U10
+  topic: Noisy-neighbour effect
+  definition: A noisy neighbour is a workload that consumes shared resources and degrades the
+    performance of other workloads on the same infrastructure.
+  detailed_explanation: Symptoms can include variable CPU scheduling delay, storage queue latency,
+    network contention and inconsistent response times. Provider isolation and dedicated options
+    may reduce exposure but do not eliminate every shared dependency.
+  working_principle: To reason about noisy-neighbour effect, identify the actors, the resource
+    or control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: An API's latency rises during a period of high host storage activity despite
+    modest guest CPU utilization.
+  decision_points:
+  - What requirement makes noisy-neighbour effect relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Low guest CPU does not rule out infrastructure contention.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define noisy-neighbour effect and explain why it matters in cloud architecture.
+  - Analyze the example of noisy-neighbour effect and identify one operational risk.
+  - Evaluate the trade-off described for noisy-neighbour effect under a stated workload constraint.
+- unit_id: CO1_05_U11
+  topic: Snapshots and images
+  definition: A VM image is a reusable template for creating instances; a snapshot captures a
+    point-in-time representation of disk state according to platform semantics.
+  detailed_explanation: Images support repeatable provisioning. Snapshots support backup-like
+    workflows and cloning, but application consistency may require quiescing or database-aware
+    coordination.
+  working_principle: To reason about snapshots and images, identify the actors, the resource or
+    control being acted upon, the configuration or policy that governs it, the observable result,
+    and the failure modes. Separate the control-plane action from the data-plane behavior whenever
+    both are present.
+  worked_example: A hardened base image is used to launch new application VMs in an autoscaling
+    group.
+  decision_points:
+  - What requirement makes snapshots and images relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: A snapshot is not automatically an application-consistent backup
+    or a complete disaster-recovery plan.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define snapshots and images and explain why it matters in cloud architecture.
+  - Analyze the example of snapshots and images and identify one operational risk.
+  - Evaluate the trade-off described for snapshots and images under a stated workload constraint.
+- unit_id: CO1_05_U12
+  topic: Virtualization performance diagnosis
+  definition: Diagnose performance by comparing guest metrics, hypervisor or provider metrics,
+    application latency and resource-specific telemetry.
+  detailed_explanation: Check CPU utilization and ready/steal time, memory pressure, disk latency
+    and queue depth, network throughput and packet loss, and application dependencies. Establish
+    a baseline before resizing.
+  working_principle: To reason about virtualization performance diagnosis, identify the actors,
+    the resource or control being acted upon, the configuration or policy that governs it, the
+    observable result, and the failure modes. Separate the control-plane action from the data-plane
+    behavior whenever both are present.
+  worked_example: A VM reports low CPU but high response time; disk latency and CPU steal evidence
+    point away from application CPU saturation.
+  decision_points:
+  - What requirement makes virtualization performance diagnosis relevant to this workload?
+  - Which component owns the configuration and which component provides the evidence?
+  - What changes when demand, failure conditions or security requirements change?
+  limitations_and_tradeoffs: Resizing blindly can increase cost without addressing the constrained
+    layer.
+  diagnostic_clues:
+  - Record the exact timestamp, resource identifier and recent change before modifying the system.
+  - Compare expected behavior with observed metrics, logs, configuration and provider events.
+  - Test the smallest hypothesis that can explain the symptom and preserve a rollback path.
+  review_questions:
+  - Define virtualization performance diagnosis and explain why it matters in cloud architecture.
+  - Analyze the example of virtualization performance diagnosis and identify one operational risk.
+  - Evaluate the trade-off described for virtualization performance diagnosis under a stated workload
+    constraint.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_05_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of cloud virtualization fundamentals using a
+    small, non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_05_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define cloud virtualization fundamentals.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A user receives an HTTP 503 while compute instances appear healthy. Trace the request and
+    propose a diagnostic sequence.
+  - A workload has low average CPU but poor p95 response time. Identify the additional evidence
+    needed.
+  - A monthly bill rises after a traffic increase. Separate expected scaling cost from avoidable
+    cost.
+revision:
+  key_terms:
+  - Cloud Virtualization Fundamentals
+  - abstraction
+  - resource pooling
+  - shared responsibility
+  - failure domain
+  - observability
+  - total cost of ownership
+  - least privilege
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: This concept is best understood by connecting cloud virtualization fundamentals to
+    workload requirements, architecture boundaries, operational evidence and measurable trade-offs.
+    A defensible answer states the requirement, explains the mechanism, identifies the owner,
+    evaluates limitations and supports the conclusion with evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

@@ -1,0 +1,262 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-09
+  title: Cloud Operations, Bastion-Free Access, Private Connectivity and Reliability
+  lecture_session_alignment: '23'
+  scope: Detailed study notes and applied revision material
+  source_note: Official session/practical alignment follows the supplied course handout. Explanations and examples
+    are expanded learning material.
+learning_objectives:
+- Explain the concepts and lifecycle involved.
+- Evaluate alternative tools and operational approaches.
+- Apply repeatable, secure infrastructure workflows.
+- Interpret plans, state, logs, metrics and cost evidence.
+- Justify decisions against reliability, security, SLO and monetary constraints.
+units:
+- unit: 1
+  title: Operational access patterns
+  explanation: Administrative access to cloud workloads should be controlled, auditable and restricted. Traditional
+    bastion hosts provide an intermediate jump point but add patching, network exposure and credential-management
+    responsibilities. Bastion-free access can use provider-managed session services or identity-aware connectivity,
+    reducing inbound management ports when configured correctly.
+  key_points:
+  - Use identity-based access and MFA for administrators.
+  - Avoid public SSH/RDP exposure where possible.
+  - Use session logging and approved access paths.
+  - Separate operational access from application traffic.
+  - Review provider prerequisites and audit coverage.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 2
+  title: AWS Systems Manager Session Manager concept
+  explanation: Session Manager can provide managed access to supported instances without opening inbound SSH/RDP
+    ports when the instance agent, permissions and network connectivity are correctly configured. Access depends
+    on IAM, instance registration, agent health and service endpoints. The handout practical asks students to evaluate
+    Session Manager and VPC endpoint configurations and configure bastion-free access.
+  key_points:
+  - Confirm supported instance and agent status.
+  - Attach least-privilege instance role for required management actions.
+  - Grant operator session permissions through approved IAM policy.
+  - Provide outbound access to required service endpoints, often through VPC endpoints for private networks.
+  - Verify session start/stop and audit evidence.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 3
+  title: VPC endpoints and private service access
+  explanation: A VPC endpoint or equivalent private connectivity mechanism allows resources to reach supported cloud
+    services without routing traffic over the public internet. Endpoint type, DNS behavior, route tables, security
+    groups and endpoint policies matter. A private subnet does not automatically have private access to every cloud
+    service.
+  key_points:
+  - Identify target service and supported endpoint type.
+  - Check endpoint policy and resource permissions.
+  - Verify private DNS and route behavior.
+  - Check security groups and network ACLs where applicable.
+  - Test service access from the intended private workload.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 4
+  title: Reliability and operational objectives
+  explanation: Reliability is the ability to perform correctly over time despite faults. Operational choices should
+    consider availability target, recovery objectives, redundancy, monitoring and change risk. SLOs describe target
+    service behavior; RTO and RPO describe recovery time and data-loss tolerance. Operational procedures should
+    be consistent with these objectives.
+  key_points:
+  - 'Availability: proportion of time or requests meeting service criteria.'
+  - 'RTO: target time to restore service after disruption.'
+  - 'RPO: acceptable data-loss window measured in time.'
+  - 'Redundancy: remove single points of failure where justified.'
+  - 'Runbooks: make recovery repeatable and testable.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 5
+  title: Maintenance and lifecycle operations
+  explanation: Cloud infrastructure requires ongoing patching, upgrades, certificate renewal, backup validation,
+    capacity review, access review and retirement. A resource that is provisioned correctly can become unsafe or
+    wasteful over time. Define lifecycle owners and review cadences.
+  key_points:
+  - 'Provision: create from approved IaC.'
+  - 'Operate: monitor health, capacity, security and spend.'
+  - 'Maintain: patch, rotate, upgrade and test recovery.'
+  - 'Optimize: improve efficiency without violating SLOs.'
+  - 'Retire: remove dependencies, preserve required data and delete resources safely.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 6
+  title: Operational evidence and runbooks
+  explanation: Operational evidence includes deployment logs, Terraform plans, audit events, Kubernetes events,
+    diagnostic logs, metrics, traces, recovery test results and billing exports. A runbook should identify commands,
+    expected output, safety gates, rollback and escalation. Evidence enables architecture defence and post-incident
+    learning.
+  key_points:
+  - Keep timestamps and resource identifiers.
+  - Record the exact configuration or code version.
+  - Protect logs and avoid secret disclosure.
+  - Link evidence to incident or change ticket.
+  - Measure recovery and cost results.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 7
+  title: Reliability-cost trade-offs
+  explanation: Reliability often requires redundancy, replicas, backups, cross-zone traffic and reserved capacity,
+    all of which affect cost. Cost optimization should not remove essential fault tolerance. Compare expected failure
+    impact with incremental resilience cost and the workload's SLO, RTO and RPO.
+  key_points:
+  - Identify failure modes and business impact.
+  - Estimate resilience option cost.
+  - Measure recovery improvement.
+  - Consider cross-zone/inter-region transfer charges.
+  - Choose a design that meets the stated SLO and recovery targets.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 8
+  title: Private access lab checklist
+  explanation: For the handout's bastion-free access practical, verify instance registration, operator identity,
+    instance role, agent health, endpoint routing, DNS and logging. Test access from an authorized operator and
+    denial from an unauthorized identity. Confirm that no unnecessary inbound management port is exposed.
+  key_points:
+  - Check instance is managed and online.
+  - Check operator role and instance role.
+  - Check endpoint reachability from private subnet.
+  - Start a session and validate command access.
+  - Inspect audit trail and network configuration.
+  - Verify unauthorized access is denied.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+worked_scenarios:
+- scenario: Two engineers attempt to modify the same production infrastructure state.
+  analysis: Check remote backend, lock ownership and whether another operation is active. Avoid force-unlock without
+    confirming the lock is stale.
+  safe_response: Serialize state mutation, preserve state versions, review the plan and verify provider reality.
+- scenario: A monthly bill spikes while Terraform reports drift.
+  analysis: Correlate billing, resource usage, deployment history, audit events, IaC plan and SLO telemetry. Drift
+    may be intentional and cost may be caused by a separate usage change.
+  safe_response: Stabilize service, collect evidence, classify drift, remediate with a reviewed change and measure
+    actual cost and SLO impact.
+common_misconceptions:
+- IaC does not make infrastructure changes automatically safe.
+- A Terraform plan is a proposal, not proof that apply will succeed.
+- Remote state does not remove the need for locking and access control.
+- A state lock does not replace code review or change approval.
+- Drift must be understood before it is codified or reverted.
+- Application rollback does not always reverse infrastructure or data changes.
+- A budget alert is not necessarily a hard spending cap.
+- Lower cost is not an improvement if the published SLO is violated.
+self_check:
+- question: What is the purpose of Terraform state?
+  answer_elements:
+  - maps configuration addresses to real objects
+  - supports planning
+  - may contain sensitive values
+- question: Why is remote state locking important for teams?
+  answer_elements:
+  - prevents concurrent state mutation
+  - reduces conflicting operations
+  - coordinate shared workflow
+- question: What is infrastructure drift and how should it be handled?
+  answer_elements:
+  - difference between declared and actual state
+  - investigate cause
+  - codify or revert deliberately
+- question: How should an IaC change move through CI/CD?
+  answer_elements:
+  - validation
+  - plan review
+  - approval
+  - apply
+  - post-deployment verification
+- question: How can cloud cost optimization be evaluated responsibly?
+  answer_elements:
+  - billing evidence
+  - unit economics
+  - SLO impact
+  - actual savings
+exam_practice:
+  short_answer:
+  - Differentiate declarative and imperative infrastructure provisioning.
+  - Explain Terraform state and remote locking.
+  - Define reusable modules and explain module versioning.
+  - Explain infrastructure drift and the codify-versus-revert decision.
+  - Differentiate rolling, blue-green and canary deployments.
+  - Define RTO and RPO and explain how they are measured.
+  analytical:
+  - Evaluate Terraform and a cloud-native IaC tool for a multi-account environment.
+  - Analyze a plan containing resource replacement and explain the review steps.
+  - Design an IaC CI/CD pipeline with least-privilege deployment identity.
+  - Diagnose a broken Kubernetes workload using events, logs, selectors and probes.
+  - Analyze NAT, cross-zone and egress charges and propose optimizations.
+  - Evaluate a drift-and-cost-spike incident while preserving an SLO.
+  case_study: A production environment has a Terraform drift alert, a sudden network cost increase and elevated
+    application latency. Prepare an evidence-led investigation, safe remediation sequence, rollback plan and post-change
+    cost/SLO validation.
+glossary:
+- term: IaC
+  definition: Infrastructure as Code.
+- term: State
+  definition: Terraform's mapping between configuration and managed infrastructure objects.
+- term: Backend
+  definition: Configuration describing where and how state is stored.
+- term: State locking
+  definition: Coordination that prevents concurrent state-changing operations.
+- term: Module
+  definition: Reusable package of infrastructure configuration.
+- term: Drift
+  definition: Difference between declared/managed configuration and actual infrastructure.
+- term: CI/CD
+  definition: Continuous integration and continuous delivery/deployment workflows.
+- term: SLO
+  definition: Target for a measured service-level indicator.
+- term: RTO
+  definition: Target time to restore service after disruption.
+- term: RPO
+  definition: Maximum acceptable data-loss interval.
+- term: FinOps
+  definition: Collaborative operating practice for cloud financial accountability and optimization.

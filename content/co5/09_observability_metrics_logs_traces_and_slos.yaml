@@ -1,0 +1,247 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-09
+  title: 'Observability: Metrics, Logs, Traces, SLIs, SLOs and Alerting'
+  session_alignment: '20'
+  focus: Evaluate metrics, logs and traces; design SLIs and alert thresholds that page only when intervention is
+    required.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Observability foundations
+  explanation: Observability is the ability to understand internal system behavior from emitted telemetry. Monitoring
+    usually tracks known conditions; observability helps investigate unexpected behavior. Metrics, logs and traces
+    provide complementary views. Instrumentation must include useful context, consistent timestamps and service
+    identity while avoiding sensitive data leakage.
+  key_points:
+  - 'Metrics: numeric measurements over time.'
+  - 'Logs: timestamped event records with contextual detail.'
+  - 'Traces: linked spans showing a request path across services.'
+  - 'Events: discrete changes such as deployment, failover or policy update.'
+  - 'Context: service, environment, version, region and correlation identifiers.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: Metrics and cardinality
+  explanation: Metrics summarize behavior using measurements such as request rate, error rate, latency, saturation,
+    CPU, memory, queue depth and connection count. Labels enable slicing by service, route or region, but high-cardinality
+    labels can create cost and performance problems. Avoid labels containing user IDs, request IDs or arbitrary
+    values unless the telemetry platform is designed for them.
+  key_points:
+  - 'Counter: cumulative event count, such as requests served.'
+  - 'Gauge: current value, such as active connections.'
+  - 'Histogram: distribution of values, such as request latency.'
+  - 'Rate: change in a counter over time.'
+  - 'Percentiles: tail latency measures such as p95 or p99.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: Logs and structured events
+  explanation: Logs provide detailed records for debugging, audit and security investigation. Structured logs use
+    consistent fields so they can be filtered and queried. Include timestamp, severity, service, environment, request
+    correlation ID and outcome. Do not log passwords, tokens, private keys or unnecessary personal data. Define
+    retention, access and integrity controls.
+  key_points:
+  - Use consistent severity levels and event names.
+  - Prefer structured JSON-like records over inconsistent free text for machine analysis.
+  - Include correlation IDs to connect events across services.
+  - Redact secrets and sensitive fields before ingestion.
+  - Separate security audit logs from noisy diagnostic logs where appropriate.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: Distributed tracing
+  explanation: A distributed trace follows one request through multiple services. A trace contains spans, each representing
+    an operation with start time, duration, status and relationships. Tracing helps identify which dependency contributes
+    latency or errors. Propagate trace context across service boundaries and avoid recording sensitive request payloads.
+  key_points:
+  - 'Trace: end-to-end request path.'
+  - 'Span: one operation within the trace.'
+  - 'Parent-child relationship: captures call hierarchy.'
+  - 'Sampling: controls volume and cost while preserving useful traces.'
+  - Trace IDs connect logs and metrics to a specific request.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Golden signals and service health
+  explanation: Common service-health signals include latency, traffic, errors and saturation. They provide a starting
+    point for dashboards and alerts. A healthy CPU graph does not prove a service is healthy; users may still experience
+    high latency due to database contention or dependency failures. Combine infrastructure and user-facing measurements.
+  key_points:
+  - 'Latency: how long requests take, including tail behavior.'
+  - 'Traffic: demand or throughput.'
+  - 'Errors: failed requests or operations.'
+  - 'Saturation: how close a constrained resource is to capacity.'
+  - 'Dependency health: database, queue, DNS and external API behavior.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: SLIs, SLOs and SLAs
+  explanation: A service-level indicator (SLI) is a measured signal of service behavior, such as successful request
+    ratio or latency under a threshold. A service-level objective (SLO) is a target for an SLI over a time window.
+    A service-level agreement (SLA) is an external commitment that may include remedies. Choose indicators that
+    reflect user experience rather than metrics that are easy to collect.
+  key_points:
+  - 'SLI example: successful eligible requests divided by total eligible requests.'
+  - 'SLO example: 99.9% successful requests over a rolling 30-day window.'
+  - 'Error budget: permitted unreliability implied by the SLO.'
+  - 'SLA: contractual promise; may differ from internal SLO.'
+  - Define exclusions carefully and avoid hiding real user failures.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Alert design and alert fatigue
+  explanation: An alert should page a human only when timely intervention is required. Use actionable symptoms,
+    sustained thresholds, burn-rate conditions or correlated signals. Route lower-severity issues to tickets or
+    dashboards. Every page should include impact, affected service, evidence, runbook and owner. Review noisy alerts
+    and remove alerts that do not lead to action.
+  key_points:
+  - Page on user impact or imminent severe risk, not every metric fluctuation.
+  - Use duration windows to avoid transient noise.
+  - Use SLO burn rate to detect rapid error-budget consumption.
+  - Add deduplication, grouping and maintenance suppression carefully.
+  - Track alert precision, acknowledgement time and repeat incidents.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: Operational scenario analysis
+  explanation: If latency rises while request volume is stable, inspect p95/p99 latency, traces and dependency metrics.
+    If errors rise immediately after deployment, correlate deployment events, application logs and traces. If CPU
+    is normal but queue depth grows, inspect downstream processing capacity. State a hypothesis, gather evidence,
+    test it and document the result rather than guessing from one dashboard.
+  key_points:
+  - Start with user-visible symptom and time window.
+  - Compare baseline and affected period.
+  - Correlate metrics with deployment and infrastructure events.
+  - Use traces to locate slow spans and logs to inspect failures.
+  - Verify recovery with the same SLI that detected the incident.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

@@ -1,0 +1,243 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-04
+  title: Multi-Account Governance, Organization Guardrails and SSO
+  session_alignment: '18'
+  focus: Organization/account/OU structures, service control policies, workforce SSO/federation, customer identity
+    options and governance.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Why multi-account governance matters
+  explanation: Separating workloads into accounts or equivalent administrative boundaries reduces blast radius,
+    supports billing and ownership separation, and enables different security controls for production, development,
+    security and logging. A single flat account can become difficult to govern as teams, environments and regulatory
+    requirements grow. Account separation must be paired with centralized identity, logging and policy management.
+  key_points:
+  - 'Isolation: separate production from experimentation and shared services.'
+  - 'Ownership: map accounts to teams, applications or business units.'
+  - 'Billing: attribute usage and budgets to accountable owners.'
+  - 'Security: centralize guardrails and audit collection.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: Organization hierarchy and account design
+  explanation: An organization commonly contains a management or payer account, organizational units and member
+    accounts. OUs group accounts by policy needs. Avoid placing routine workloads in the management account. Design
+    the hierarchy around security boundaries and governance requirements rather than mirroring every reporting line.
+    Keep the structure understandable and document account purpose, owner and lifecycle.
+  key_points:
+  - 'Management account: organization-level administration; protect it strongly.'
+  - 'Security/log archive account: centralized security operations and evidence storage.'
+  - 'Production and non-production accounts: separate risk and change controls.'
+  - 'Sandbox accounts: bounded experimentation with budgets and expiration.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: Service control policies and guardrails
+  explanation: An SCP or equivalent organization policy sets a maximum permission boundary for accounts or organizational
+    units. It can prevent risky actions such as disabling audit collection or using prohibited services. It does
+    not replace local IAM policies and does not itself grant permissions. Roll out guardrails carefully using staged
+    testing and exception handling.
+  key_points:
+  - Start with audit or report-only mode if the provider supports it.
+  - Apply policies to a test OU before broad rollout.
+  - Protect logging, security tooling and organization administration.
+  - Document exceptions and test that expected business operations still work.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: Workforce SSO and federation
+  explanation: Single sign-on lets staff authenticate through a central identity provider and access multiple cloud
+    accounts or applications. Federation avoids maintaining separate passwords and local users everywhere. Central
+    identity governance supports MFA, conditional access, joiner-mover-leaver processes and access reviews. Role
+    assignments should be job-based, scoped and reviewed.
+  key_points:
+  - Central identity provider is the source of workforce authentication.
+  - Cloud roles or permission sets define the target access level.
+  - Use MFA and risk-based controls where available.
+  - Remove access centrally when employment or role changes.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Customer identity is a different problem
+  explanation: Customer identity and access management (CIAM) handles external users of a product. It may include
+    registration, login, password reset, social login, consent, account recovery, profile management and customer
+    session controls. Workforce SSO and customer identity have different threat models, scale, user experience and
+    data governance needs. Do not expose internal workforce roles to customer-facing identities.
+  key_points:
+  - 'Workforce identity: employees, contractors and administrators.'
+  - 'Customer identity: users of a product or service.'
+  - Keep customer authorization in application design as well as identity-provider configuration.
+  - Protect account recovery and enrollment flows against takeover and abuse.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: Separation of duties and privileged access
+  explanation: Separation of duties prevents one person or identity from controlling every stage of a sensitive
+    operation. Privileged access management adds approval, time limits, session recording or additional verification
+    for elevated actions. Separate policy authoring from approval and deployment where feasible. Emergency access
+    must be narrow, monitored and periodically tested.
+  key_points:
+  - Developer should not automatically approve their own production privilege escalation.
+  - Use time-bound elevation rather than permanent administrator membership.
+  - Monitor privileged role assumption and sensitive API calls.
+  - Review emergency access credentials and procedures regularly.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Governance operating model
+  explanation: 'Effective governance defines policy owners, account owners, identity owners, exception approvers,
+    audit responsibilities and incident escalation. Technical controls should be measurable: coverage of MFA, percentage
+    of workloads using temporary identity, number of public resources, stale credentials and policy exceptions.
+    Governance is a continuous operating process, not a one-time account setup.'
+  key_points:
+  - 'Policy lifecycle: draft, review, approve, publish, monitor and retire.'
+  - 'Inventory: accounts, identities, roles, service principals and trust relationships.'
+  - 'Evidence: policy versions, access reviews, audit events and exception records.'
+  - 'Metrics: coverage, exceptions, remediation age and privileged access frequency.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: Provider-neutral architecture exercise
+  explanation: Design an organization with separate production, development, security and shared-services accounts.
+    Centralize workforce federation, send audit events to a protected logging account, apply organization guardrails
+    and assign workload roles per application. State which controls are organization-wide and which are account-specific.
+    Provider implementations differ; map concepts to AWS Organizations/IAM Identity Center, Microsoft Entra ID/Azure
+    management groups and Google Cloud Resource Manager/Cloud Identity without assuming identical semantics.
+  key_points:
+  - Draw the hierarchy and identify trust boundaries.
+  - Assign account owner and purpose to each boundary.
+  - Define central SSO and least-privilege role mapping.
+  - Define guardrails and logging destination.
+  - Describe onboarding, offboarding and exception workflows.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

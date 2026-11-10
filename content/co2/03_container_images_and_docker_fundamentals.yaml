@@ -1,0 +1,520 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO2
+  concept_id: CO2_03
+  concept_title: Container Images and Docker Fundamentals
+  source_alignment: 'CO2 of uploaded CDIS handout: compute sizing, virtual machines, containers,
+    Kubernetes, autoscaling, serverless, workload placement, purchasing models and cloud cost
+    optimization.'
+  coverage: Container Images and Docker Fundamentals
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: Minimum 350 substantive YAML lines
+learning_outcomes:
+- Explain the main mechanisms and vocabulary of container images and docker fundamentals.
+- Evaluate compute options by workload, latency, scaling and cost constraints.
+- Diagnose utilization, scheduling and provisioning failures using evidence.
+- Compare AWS, Azure and Google Cloud implementation choices.
+- Defend a resource and purchasing decision using measurable assumptions.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Container Images and Docker Fundamentals
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO2_03_U01
+  topic: Container model
+  definition: Containers isolate processes using kernel facilities rather than running separate
+    guest kernels.
+  detailed_explanation: Containers package runtime dependencies and configuration.
+  working_principle: For container model, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A Python API runs in a Linux container.
+  architecture_relationships:
+  - Connect container model to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define container model and explain its role in compute architecture.
+  - Analyze how container model behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of container model.
+- unit_id: CO2_03_U02
+  topic: Dockerfile
+  definition: A Dockerfile describes steps for building an image.
+  detailed_explanation: Keep builds reproducible and base images maintained.
+  working_principle: For dockerfile, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A multi-stage Dockerfile builds then copies a small runtime artifact.
+  architecture_relationships:
+  - Connect dockerfile to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define dockerfile and explain its role in compute architecture.
+  - Analyze how dockerfile behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of dockerfile.
+- unit_id: CO2_03_U03
+  topic: Image layers
+  definition: Image layers enable reuse and caching across builds.
+  detailed_explanation: Order stable dependencies before frequently changing source.
+  working_principle: For image layers, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A source edit reuses the dependency layer.
+  architecture_relationships:
+  - Connect image layers to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define image layers and explain its role in compute architecture.
+  - Analyze how image layers behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of image layers.
+- unit_id: CO2_03_U04
+  topic: BuildKit cache
+  definition: BuildKit cache mounts can speed dependency resolution without baking caches into
+    final images.
+  detailed_explanation: Use cache keys and reproducibility controls.
+  working_principle: For buildkit cache, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A package cache reduces rebuild time.
+  architecture_relationships:
+  - Connect buildkit cache to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define buildkit cache and explain its role in compute architecture.
+  - Analyze how buildkit cache behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of buildkit cache.
+- unit_id: CO2_03_U05
+  topic: Registries
+  definition: Registries distribute versioned container images.
+  detailed_explanation: Restrict access and verify artifact provenance.
+  working_principle: For registries, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A deployment pulls a tagged image from a private registry.
+  architecture_relationships:
+  - Connect registries to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define registries and explain its role in compute architecture.
+  - Analyze how registries behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of registries.
+- unit_id: CO2_03_U06
+  topic: Container networking
+  definition: Container interfaces, bridges and overlays connect isolated processes.
+  detailed_explanation: Understand port mapping and service discovery.
+  working_principle: For container networking, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A container exposes an API through a published port.
+  architecture_relationships:
+  - Connect container networking to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define container networking and explain its role in compute architecture.
+  - Analyze how container networking behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of container networking.
+- unit_id: CO2_03_U07
+  topic: Volumes
+  definition: Volumes preserve data independently of container writable layers.
+  detailed_explanation: Select appropriate persistence and backup semantics.
+  working_principle: For volumes, start with the workload requirement, identify the compute or
+    control-plane mechanism, measure the operational effect and test the limiting condition. Separate
+    resource allocation from actual application performance.
+  worked_example: A database stores its files in a managed volume.
+  architecture_relationships:
+  - Connect volumes to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define volumes and explain its role in compute architecture.
+  - Analyze how volumes behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of volumes.
+- unit_id: CO2_03_U08
+  topic: Runtime limits
+  definition: CPU and memory limits constrain resource usage.
+  detailed_explanation: Limits can cause throttling or OOM termination.
+  working_principle: For runtime limits, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A container is killed when it exceeds memory limits.
+  architecture_relationships:
+  - Connect runtime limits to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define runtime limits and explain its role in compute architecture.
+  - Analyze how runtime limits behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of runtime limits.
+- unit_id: CO2_03_U09
+  topic: Image security
+  definition: Image scanning and minimal privileges reduce supply-chain and runtime risk.
+  detailed_explanation: Avoid secrets in image layers and run non-root.
+  working_principle: For image security, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A scan blocks a vulnerable base image.
+  architecture_relationships:
+  - Connect image security to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define image security and explain its role in compute architecture.
+  - Analyze how image security behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of image security.
+- unit_id: CO2_03_U10
+  topic: Container troubleshooting
+  definition: Inspect process exit status, logs, networking, health and resource pressure.
+  detailed_explanation: Reproduce the image and configuration used in deployment.
+  working_principle: For container troubleshooting, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: A container restarts due to a failed readiness dependency.
+  architecture_relationships:
+  - Connect container troubleshooting to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define container troubleshooting and explain its role in compute architecture.
+  - Analyze how container troubleshooting behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of container troubleshooting.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_01_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of fundamentals of cloud computing using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_01_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define fundamentals of cloud computing.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A workload experiences a sudden traffic increase. Explain how container images and docker
+    fundamentals influences the response.
+  - A compute workload has poor p95 latency but moderate average CPU. Identify the missing metrics
+    and likely constraints.
+  - A team must choose among VMs, managed containers, Kubernetes and functions under a strict
+    monthly budget. Defend a selection.
+revision:
+  key_terms:
+  - Container Images and Docker Fundamentals
+  - Container model
+  - Dockerfile
+  - Image layers
+  - BuildKit cache
+  - Registries
+  - Container networking
+  - Volumes
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: Container Images and Docker Fundamentals is assessed by understanding its mechanism,
+    choosing an appropriate workload fit, quantifying latency and utilization, and diagnosing
+    failure through resource and control-plane evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

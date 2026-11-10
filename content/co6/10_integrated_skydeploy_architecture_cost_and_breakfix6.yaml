@@ -1,0 +1,271 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-10
+  title: Integrated SkyDeploy Project, Architecture Defence and Break-Fix 6
+  lecture_session_alignment: '24'
+  scope: Detailed study notes and applied revision material
+  source_note: Official session/practical alignment follows the supplied course handout. Explanations and examples
+    are expanded learning material.
+learning_objectives:
+- Explain the concepts and lifecycle involved.
+- Evaluate alternative tools and operational approaches.
+- Apply repeatable, secure infrastructure workflows.
+- Interpret plans, state, logs, metrics and cost evidence.
+- Justify decisions against reliability, security, SLO and monetary constraints.
+units:
+- unit: 1
+  title: Integrated architecture objectives
+  explanation: The handout identifies an Integrated SkyDeploy Project and Architecture Defence focused on cost engineering,
+    optimization, PodYard and final integration. The final architecture should connect IaC, deployment, operations,
+    break-fix evidence, recovery results and cost trade-offs. Decisions must be justified with measurable evidence
+    rather than unsupported claims.
+  key_points:
+  - Provision infrastructure reproducibly through IaC.
+  - Release workloads using controlled deployment strategies.
+  - Operate and troubleshoot with diagnostic evidence.
+  - Measure recovery outcomes and service behavior.
+  - Analyze actual cost and justify optimization choices.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 2
+  title: End-to-end architecture documentation
+  explanation: Architecture documentation should show components, trust boundaries, network paths, identities, data
+    stores, deployment pipeline, observability and operational ownership. Include dependencies and failure domains.
+    Distinguish the intended architecture from the deployed state and provide evidence that they match.
+  key_points:
+  - Context diagram and component responsibilities.
+  - Network and service-discovery paths.
+  - Identity and access boundaries.
+  - Data flow, storage and recovery dependencies.
+  - Deployment and operational flow.
+  - Cost allocation and key cost drivers.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 3
+  title: Terraform evidence for architecture defence
+  explanation: Terraform evidence includes module structure, version constraints, backend configuration, state locking,
+    reviewed plans, apply output and drift checks. The evidence should demonstrate repeatability and controlled
+    change. Avoid exposing state secrets or credentials in presentation material.
+  key_points:
+  - Show source commit and module versions.
+  - Show remote backend and locking configuration without secrets.
+  - Show plan summary and approved apply evidence.
+  - Show state mapping or outputs with sensitive values redacted.
+  - Show drift check and remediation record.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 4
+  title: 'Break-Fix 6: Drift and a cost spike together'
+  explanation: 'The handout''s Session 23 asks students to evaluate a cross-cloud IaC, operations and cost-remediation
+    plan that preserves a published SLO; complete Break-fix 6: Drift and a spike, together, and justify the safest
+    sequence of actions. Investigate the cost anomaly and infrastructure drift as related but distinct signals.
+    Do not immediately apply a plan or delete resources before understanding whether the drift is intentional or
+    supporting an incident.'
+  key_points:
+  - Identify affected account, service, resource and time window.
+  - Compare current bill with baseline and identify spike source.
+  - Inspect Terraform plan/state for drift and proposed changes.
+  - Correlate with deployment, scaling, traffic and incident events.
+  - Assess SLO, security, availability and data-retention impact.
+  - Choose codify, revert, resize or redesign with approvals.
+  - Measure post-change cost and SLO behavior.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 5
+  title: Safest sequence of remediation
+  explanation: A safe response first stabilizes critical service behavior and gathers evidence. Next identify the
+    cost driver and drift cause. Determine whether manual changes are intentional and whether a rollback would harm
+    service. Then make a controlled, reviewed change, validate recovery and measure the financial effect. Preserve
+    an emergency exception if it is still needed, but give it an owner and expiry.
+  key_points:
+  - 1. Establish impact and protect service/SLO.
+  - 2. Freeze conflicting infrastructure changes if necessary.
+  - 3. Capture plan, state version, audit events, billing and telemetry.
+  - 4. Determine root cause and classify drift.
+  - 5. Select minimal remediation with review/approval.
+  - 6. Apply in a staged manner and verify.
+  - 7. Record cost delta and operational outcome.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 6
+  title: RTO/RPO and recovery evidence
+  explanation: The final defence expects measured RTO/RPO evidence. RTO should be measured from disruption or declared
+    recovery start to service restoration according to the defined test. RPO should be measured by comparing the
+    latest recoverable data point with the disruption time. A claimed target is not a measured result; record test
+    conditions and evidence.
+  key_points:
+  - Define the event that starts the RTO clock.
+  - Define service-restored success criteria.
+  - Record backup or replication timestamp for RPO.
+  - Perform controlled recovery test.
+  - Calculate actual RTO and RPO and compare with target.
+  - Document gaps and improvement actions.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 7
+  title: Actual cost results and architecture trade-offs
+  explanation: Actual cost evidence should identify the measurement period, services, usage, discounts/credits and
+    shared-cost allocation. Compare baseline and post-optimization spend under similar demand. Explain whether a
+    cost reduction came from right-sizing, reduced data transfer, shorter retention, commitment discounts or removed
+    waste. Include any effect on latency, availability, security or operator effort.
+  key_points:
+  - Use actual billing export or provider cost report where available.
+  - Normalize cost per request, user, workload or transaction.
+  - Separate recurring savings from one-time credits.
+  - Compare SLO and utilization before/after.
+  - State assumptions and remaining risks.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 8
+  title: Architecture defence and viva preparation
+  explanation: A strong defence explains why the tools and patterns were selected, how changes are controlled, how
+    drift is detected, how incidents are repaired and how cost is measured. Be ready to justify alternatives and
+    limitations. The handout explicitly emphasizes Terraform evidence, diagnostic logs, measured RTO/RPO and actual
+    cost results.
+  key_points:
+  - Why this IaC tool and module structure?
+  - How is remote state protected and locked?
+  - How are CI/CD changes reviewed and rolled back?
+  - How was drift identified and safely reconciled?
+  - What evidence supports the break-fix root cause?
+  - What were measured RTO/RPO values?
+  - What was the actual cost change and its SLO impact?
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+worked_scenarios:
+- scenario: Two engineers attempt to modify the same production infrastructure state.
+  analysis: Check remote backend, lock ownership and whether another operation is active. Avoid force-unlock without
+    confirming the lock is stale.
+  safe_response: Serialize state mutation, preserve state versions, review the plan and verify provider reality.
+- scenario: A monthly bill spikes while Terraform reports drift.
+  analysis: Correlate billing, resource usage, deployment history, audit events, IaC plan and SLO telemetry. Drift
+    may be intentional and cost may be caused by a separate usage change.
+  safe_response: Stabilize service, collect evidence, classify drift, remediate with a reviewed change and measure
+    actual cost and SLO impact.
+common_misconceptions:
+- IaC does not make infrastructure changes automatically safe.
+- A Terraform plan is a proposal, not proof that apply will succeed.
+- Remote state does not remove the need for locking and access control.
+- A state lock does not replace code review or change approval.
+- Drift must be understood before it is codified or reverted.
+- Application rollback does not always reverse infrastructure or data changes.
+- A budget alert is not necessarily a hard spending cap.
+- Lower cost is not an improvement if the published SLO is violated.
+self_check:
+- question: What is the purpose of Terraform state?
+  answer_elements:
+  - maps configuration addresses to real objects
+  - supports planning
+  - may contain sensitive values
+- question: Why is remote state locking important for teams?
+  answer_elements:
+  - prevents concurrent state mutation
+  - reduces conflicting operations
+  - coordinate shared workflow
+- question: What is infrastructure drift and how should it be handled?
+  answer_elements:
+  - difference between declared and actual state
+  - investigate cause
+  - codify or revert deliberately
+- question: How should an IaC change move through CI/CD?
+  answer_elements:
+  - validation
+  - plan review
+  - approval
+  - apply
+  - post-deployment verification
+- question: How can cloud cost optimization be evaluated responsibly?
+  answer_elements:
+  - billing evidence
+  - unit economics
+  - SLO impact
+  - actual savings
+exam_practice:
+  short_answer:
+  - Differentiate declarative and imperative infrastructure provisioning.
+  - Explain Terraform state and remote locking.
+  - Define reusable modules and explain module versioning.
+  - Explain infrastructure drift and the codify-versus-revert decision.
+  - Differentiate rolling, blue-green and canary deployments.
+  - Define RTO and RPO and explain how they are measured.
+  analytical:
+  - Evaluate Terraform and a cloud-native IaC tool for a multi-account environment.
+  - Analyze a plan containing resource replacement and explain the review steps.
+  - Design an IaC CI/CD pipeline with least-privilege deployment identity.
+  - Diagnose a broken Kubernetes workload using events, logs, selectors and probes.
+  - Analyze NAT, cross-zone and egress charges and propose optimizations.
+  - Evaluate a drift-and-cost-spike incident while preserving an SLO.
+  case_study: A production environment has a Terraform drift alert, a sudden network cost increase and elevated
+    application latency. Prepare an evidence-led investigation, safe remediation sequence, rollback plan and post-change
+    cost/SLO validation.
+glossary:
+- term: IaC
+  definition: Infrastructure as Code.
+- term: State
+  definition: Terraform's mapping between configuration and managed infrastructure objects.
+- term: Backend
+  definition: Configuration describing where and how state is stored.
+- term: State locking
+  definition: Coordination that prevents concurrent state-changing operations.
+- term: Module
+  definition: Reusable package of infrastructure configuration.
+- term: Drift
+  definition: Difference between declared/managed configuration and actual infrastructure.
+- term: CI/CD
+  definition: Continuous integration and continuous delivery/deployment workflows.
+- term: SLO
+  definition: Target for a measured service-level indicator.
+- term: RTO
+  definition: Target time to restore service after disruption.
+- term: RPO
+  definition: Maximum acceptable data-loss interval.
+- term: FinOps
+  definition: Collaborative operating practice for cloud financial accountability and optimization.

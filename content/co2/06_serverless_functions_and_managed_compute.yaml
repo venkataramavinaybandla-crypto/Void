@@ -1,0 +1,571 @@
+metadata:
+  course_title: Cloud Infrastructure and Services
+  course_code: 25CS2206E
+  semester: 2026-2027 Even Semester
+  course_outcome: CO2
+  concept_id: CO2_06
+  concept_title: Serverless Functions and Managed Compute
+  source_alignment: 'CO2 of uploaded CDIS handout: compute sizing, virtual machines, containers,
+    Kubernetes, autoscaling, serverless, workload placement, purchasing models and cloud cost
+    optimization.'
+  coverage: Serverless Functions and Managed Compute
+  intended_level: Undergraduate CSE; conceptual understanding through analysis and scenario-based
+    evaluation
+  provider_scope:
+  - AWS
+  - Microsoft Azure
+  - Google Cloud
+  line_count_target: Minimum 350 substantive YAML lines
+learning_outcomes:
+- Explain the main mechanisms and vocabulary of serverless functions and managed compute.
+- Evaluate compute options by workload, latency, scaling and cost constraints.
+- Diagnose utilization, scheduling and provisioning failures using evidence.
+- Compare AWS, Azure and Google Cloud implementation choices.
+- Defend a resource and purchasing decision using measurable assumptions.
+prerequisites:
+- 'Basic operating-system concepts: processes, memory, storage and networking.'
+- Basic TCP/IP, DNS, HTTP and client-server application concepts.
+- Familiarity with command-line interfaces and the purpose of cloud accounts.
+concept_map:
+  central_concept: Serverless Functions and Managed Compute
+  major_dimensions:
+  - Terminology and foundational model
+  - Architecture and component interactions
+  - Control ownership and security implications
+  - Performance, reliability and cost implications
+  - Operational evidence and troubleshooting
+  relationships:
+  - Connect each concept to the workload requirement it is intended to satisfy.
+  - Distinguish logical abstraction from the physical or managed implementation beneath it.
+  - Connect design decisions to observable outcomes, costs and failure modes.
+core_units:
+- unit_id: CO2_06_U01
+  topic: Serverless concept
+  definition: Serverless abstracts server provisioning while exposing code or workload execution
+    interfaces.
+  detailed_explanation: Customers still own code, data, identity and configuration.
+  working_principle: For serverless concept, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: An event triggers a managed function.
+  architecture_relationships:
+  - Connect serverless concept to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define serverless concept and explain its role in compute architecture.
+  - Analyze how serverless concept behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of serverless concept.
+- unit_id: CO2_06_U02
+  topic: Function triggers
+  definition: Events can arrive from HTTP, queues, object storage or schedules.
+  detailed_explanation: Delivery guarantees and retries vary by source.
+  working_principle: For function triggers, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A queue message invokes a function.
+  architecture_relationships:
+  - Connect function triggers to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define function triggers and explain its role in compute architecture.
+  - Analyze how function triggers behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of function triggers.
+- unit_id: CO2_06_U03
+  topic: Cold starts
+  definition: A cold start initializes a new execution environment before handling work.
+  detailed_explanation: Initialization time affects latency-sensitive requests.
+  working_principle: For cold starts, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A rarely used function has slower first response.
+  architecture_relationships:
+  - Connect cold starts to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define cold starts and explain its role in compute architecture.
+  - Analyze how cold starts behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of cold starts.
+- unit_id: CO2_06_U04
+  topic: Concurrency
+  definition: Concurrency determines simultaneous function executions.
+  detailed_explanation: Account and function quotas can cause throttling.
+  working_principle: For concurrency, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A sudden burst exceeds concurrency limits.
+  architecture_relationships:
+  - Connect concurrency to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define concurrency and explain its role in compute architecture.
+  - Analyze how concurrency behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of concurrency.
+- unit_id: CO2_06_U05
+  topic: Execution duration
+  definition: Functions have provider-specific timeout and resource limits.
+  detailed_explanation: Long tasks may need batch or container compute.
+  working_principle: For execution duration, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A multi-hour report job is moved to batch processing.
+  architecture_relationships:
+  - Connect execution duration to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define execution duration and explain its role in compute architecture.
+  - Analyze how execution duration behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of execution duration.
+- unit_id: CO2_06_U06
+  topic: Idempotency
+  definition: Idempotent handlers tolerate repeated event delivery without duplicate side effects.
+  detailed_explanation: Use event IDs and transactional deduplication.
+  working_principle: For idempotency, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A retried payment event does not create a second charge.
+  architecture_relationships:
+  - Connect idempotency to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define idempotency and explain its role in compute architecture.
+  - Analyze how idempotency behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of idempotency.
+- unit_id: CO2_06_U07
+  topic: Stateless design
+  definition: Ephemeral compute should externalize durable state.
+  detailed_explanation: Persist data in databases or object storage.
+  working_principle: For stateless design, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A function stores output in a managed database.
+  architecture_relationships:
+  - Connect stateless design to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define stateless design and explain its role in compute architecture.
+  - Analyze how stateless design behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of stateless design.
+- unit_id: CO2_06_U08
+  topic: Serverless containers
+  definition: Serverless containers execute containerized workloads without direct node administration.
+  detailed_explanation: Compare startup, concurrency and request lifecycle.
+  working_principle: For serverless containers, start with the workload requirement, identify
+    the compute or control-plane mechanism, measure the operational effect and test the limiting
+    condition. Separate resource allocation from actual application performance.
+  worked_example: An HTTP container scales to meet requests.
+  architecture_relationships:
+  - Connect serverless containers to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define serverless containers and explain its role in compute architecture.
+  - Analyze how serverless containers behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of serverless containers.
+- unit_id: CO2_06_U09
+  topic: Managed batch
+  definition: Batch platforms schedule finite jobs with resource and retry policies.
+  detailed_explanation: Match job size and interruption tolerance.
+  working_principle: For managed batch, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A nightly data transform runs as a batch job.
+  architecture_relationships:
+  - Connect managed batch to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define managed batch and explain its role in compute architecture.
+  - Analyze how managed batch behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of managed batch.
+- unit_id: CO2_06_U10
+  topic: Observability
+  definition: Instrument cold starts, errors, duration, throttling and downstream calls.
+  detailed_explanation: Correlate invocation IDs with traces.
+  working_principle: For observability, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A dashboard reveals timeout spikes.
+  architecture_relationships:
+  - Connect observability to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define observability and explain its role in compute architecture.
+  - Analyze how observability behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of observability.
+- unit_id: CO2_06_U11
+  topic: Cost model
+  definition: Function cost may depend on requests, execution duration and allocated resources.
+  detailed_explanation: Compare with always-on compute at expected utilization.
+  working_principle: For cost model, start with the workload requirement, identify the compute
+    or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: An infrequent task is cheaper per month as a function.
+  architecture_relationships:
+  - Connect cost model to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define cost model and explain its role in compute architecture.
+  - Analyze how cost model behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of cost model.
+- unit_id: CO2_06_U12
+  topic: Serverless selection
+  definition: Choose based on state, duration, startup latency, networking and operations.
+  detailed_explanation: A workload with tight tail-latency targets may need warm capacity.
+  working_principle: For serverless selection, start with the workload requirement, identify the
+    compute or control-plane mechanism, measure the operational effect and test the limiting condition.
+    Separate resource allocation from actual application performance.
+  worked_example: A synchronous API chooses a managed container over a cold-start-sensitive function.
+  architecture_relationships:
+  - Connect serverless selection to the application's compute execution path.
+  - Identify the metrics, quotas and dependencies that can limit the intended behavior.
+  - State whether the action affects scheduling, execution, networking, storage or billing.
+  tradeoffs:
+  - Evaluate latency and throughput under both normal and peak demand.
+  - Consider the operational effort and failure recovery required.
+  - Include capacity reservation, resource utilization and billing effects.
+  diagnostic_procedure:
+  - Record the symptom, affected resource and relevant timestamps.
+  - Inspect the current configuration, resource state and recent changes.
+  - Correlate workload telemetry with provider metrics and events.
+  - Test the most likely constraint before changing capacity.
+  - Verify the outcome and document any remaining risk.
+  review_questions:
+  - Define serverless selection and explain its role in compute architecture.
+  - Analyze how serverless selection behaves under sudden workload growth.
+  - Evaluate the cost, reliability and performance implications of serverless selection.
+provider_comparison:
+  comparison_method: Compare capability, scope, configuration, failure behavior, identity integration,
+    regional availability, operational responsibility and billing dimensions. Do not assume similarly
+    named products are equivalent.
+  aws: AWS examples commonly include AWS Organizations and accounts, Regions and Availability
+    Zones, EC2, S3, VPC, IAM, CloudWatch, Elastic Load Balancing and the AWS Well-Architected
+    Framework. Verify current service names, regional availability, limits and pricing in AWS
+    documentation.
+  azure: Azure examples commonly include Microsoft Entra ID, management groups, subscriptions,
+    resource groups, Azure Virtual Machines, Blob Storage, Virtual Network, Azure Monitor and
+    the Azure Well-Architected Framework. Verify current service names, regional availability,
+    limits and pricing in Azure documentation.
+  google_cloud: Google Cloud examples commonly include organizations, folders and projects, Compute
+    Engine, Cloud Storage, VPC networks, IAM, Cloud Monitoring and the Google Cloud Architecture
+    Framework. Verify current service names, regional availability, limits and pricing in Google
+    Cloud documentation.
+  comparison_checklist:
+  - 'What is the resource boundary: account, subscription, project, region, zone or service instance?'
+  - Which party manages the physical layer, host layer, guest layer, runtime and application?
+  - Which identity principal authorizes the operation?
+  - Which network path carries the request and which policy filters it?
+  - What is the service's availability and recovery model?
+  - Which usage dimensions appear on the bill?
+  - Which quotas, regional restrictions or feature limitations apply?
+  - What logs, metrics and audit records can prove the behavior?
+architecture_and_workflow:
+  architecture_review_steps:
+  - State the business outcome and workload boundary.
+  - List components, dependencies, identities and data stores.
+  - Draw request and data flows, including trust boundaries.
+  - Mark provider-managed and customer-managed layers.
+  - Identify failure domains and recovery dependencies.
+  - Estimate normal, peak and degraded-mode capacity.
+  - Map every material resource to an owner and cost center.
+  - Define telemetry, alerts, runbooks and rollback actions.
+  evidence_to_collect:
+  - Resource configuration and deployment records
+  - Identity and access policy evaluation evidence
+  - Provider service events and health information
+  - Application logs, metrics and distributed traces
+  - Billing exports, usage records and budget notifications
+  - Backup, restore and failover test results
+practical_labs:
+- lab_id: CO1_01_LAB01
+  title: Cloud architecture observation and evidence notebook
+  objective: Build an evidence-based explanation of fundamentals of cloud computing using a small,
+    non-production cloud environment or a documented architecture.
+  procedure:
+  - Create or select a clearly identified learning environment and confirm the account or project
+    boundary.
+  - List the resources and record their region, ownership tags and purpose.
+  - Draw the relevant request, resource or control flow.
+  - Capture configuration evidence and the metrics or logs that show actual behavior.
+  - Identify one failure mode and state how it would be detected.
+  - Estimate the recurring cost dimensions and define a teardown checklist.
+  - Write a short conclusion that separates observed facts from assumptions.
+  safety_controls:
+  - Enable MFA and use a least-privilege learning identity.
+  - Set a budget or billing notification before provisioning chargeable resources.
+  - Do not place secrets, personal data or production data in the lab.
+  - Delete temporary resources and verify that billable dependencies are removed.
+  deliverables:
+  - Architecture sketch
+  - Configuration evidence
+  - Troubleshooting notes
+  - Cost estimate
+  - Teardown confirmation
+- lab_id: CO1_01_LAB02
+  title: Scenario-based design and break-fix
+  objective: Diagnose a deliberately described cloud failure using evidence rather than guessing.
+  procedure:
+  - Read the scenario and state the expected behavior.
+  - List at least three plausible fault locations.
+  - Choose the lowest-cost evidence source that can distinguish the hypotheses.
+  - Interpret the evidence and eliminate unsupported explanations.
+  - Recommend a safe remediation and a verification test.
+  - Record residual risk and the condition that would trigger escalation.
+  assessment_rubric:
+    diagnostic_economy: Uses a small number of high-value checks in a logical order.
+    evidence_quality: Cites configuration, logs, metrics or test output rather than unsupported
+      assumptions.
+    remediation_safety: Limits blast radius and includes rollback or recovery.
+    explanation: Explains why competing hypotheses were rejected.
+scenario_bank:
+- scenario: A cloud workload behaves correctly during a small test but fails or becomes expensive
+    when usage increases.
+  task: Identify the assumptions that may not hold at peak demand. Analyze capacity, limits, dependencies,
+    data movement and cost dimensions.
+  expected_reasoning: A strong answer distinguishes a compute bottleneck from a downstream dependency,
+    a quota constraint and a cost-model omission.
+- scenario: A team assumes that a managed cloud service removes every customer security obligation.
+  task: Classify the relevant controls by layer and identify the evidence needed to establish
+    ownership.
+  expected_reasoning: A strong answer identifies provider-operated infrastructure controls and
+    customer-controlled identity, data and configuration responsibilities.
+- scenario: A user request fails even though the primary compute resource reports healthy.
+  task: Trace the complete dependency path and identify evidence at each layer.
+  expected_reasoning: A strong answer checks name resolution, routing, filtering, endpoint health,
+    application behavior and downstream dependencies.
+- scenario: A design meets performance targets but exceeds its budget.
+  task: Identify cost drivers and propose changes without silently violating reliability or security
+    requirements.
+  expected_reasoning: A strong answer quantifies the effect of utilization, commitments, storage
+    lifecycle, transfer and unnecessary resources.
+common_misconceptions:
+- claim: Cloud means somebody else's computer.
+  correction: This description omits self-service, pooling, elasticity, metering, automation and
+    the service contract.
+- claim: The provider is responsible for all security.
+  correction: Responsibility varies by service and layer; customers retain important identity,
+    data and configuration duties.
+- claim: More virtual CPUs always make an application faster.
+  correction: Application parallelism, memory, I/O, scheduling and dependency latency may be the
+    actual constraints.
+- claim: A multi-zone deployment cannot fail.
+  correction: It reduces selected failure risks but does not remove shared dependencies or application-level
+    failure modes.
+- claim: A pricing calculator is the final bill.
+  correction: Actual cost depends on real usage, transfer, requests, support, discounts, taxes
+    and omitted assumptions.
+troubleshooting_method:
+  sequence:
+  - Clarify the symptom, scope, start time and user impact.
+  - Confirm the resource identity, region, zone and recent changes.
+  - Check name resolution and network reachability when the symptom involves a request path.
+  - Inspect identity authorization and service-specific policy where access is denied.
+  - Compare application and infrastructure metrics to locate the constrained layer.
+  - Check provider events, quotas and service health before attributing a fault.
+  - Apply the smallest reversible correction.
+  - Verify the original user journey and document the evidence.
+  incident_record_fields:
+  - Timestamp
+  - Affected workload
+  - Observed symptom
+  - Expected behavior
+  - Recent changes
+  - Evidence
+  - Hypotheses
+  - Root cause
+  - Remediation
+  - Verification
+  - Residual risk
+examination_bank:
+  remember:
+  - Define fundamentals of cloud computing.
+  - List the major cloud deployment and service model terms relevant to this concept.
+  - State the purpose of architecture evidence and operational telemetry.
+  understand:
+  - Explain the relationship between abstraction, control and operational responsibility.
+  - Explain why a cloud architecture must be evaluated as a complete dependency path.
+  - Describe how a design decision can affect security, reliability and cost at the same time.
+  apply:
+  - Apply the concept to a small multi-tier application and identify its main resources.
+  - Prepare a comparison table for AWS, Azure and Google Cloud using capability-level criteria.
+  - Use a scenario to select a suitable architecture and justify the selected controls.
+  analyze:
+  - Analyze a failure using configuration, logs, metrics and request-flow evidence.
+  - Distinguish provider responsibility from customer responsibility for a given incident.
+  - Identify hidden dependencies and failure domains in a proposed cloud design.
+  evaluate:
+  - Evaluate two architecture alternatives against stated latency, availability, security and
+    cost constraints.
+  - Defend a cloud placement or service choice using measurable evidence.
+  - Critique a design that optimizes one architectural pillar while weakening another.
+  scenario_based:
+  - A workload experiences a sudden traffic increase. Explain how serverless functions and managed
+    compute influences the response.
+  - A compute workload has poor p95 latency but moderate average CPU. Identify the missing metrics
+    and likely constraints.
+  - A team must choose among VMs, managed containers, Kubernetes and functions under a strict
+    monthly budget. Defend a selection.
+revision:
+  key_terms:
+  - Serverless Functions and Managed Compute
+  - Serverless concept
+  - Function triggers
+  - Cold starts
+  - Concurrency
+  - Execution duration
+  - Idempotency
+  - Stateless design
+  last_minute_checklist:
+  - Can I define the central terms precisely?
+  - Can I draw the architecture or control boundary?
+  - Can I explain the provider and customer responsibilities?
+  - Can I compare the relevant AWS, Azure and Google Cloud capabilities?
+  - Can I identify performance, reliability and cost trade-offs?
+  - Can I diagnose a scenario using evidence rather than assumptions?
+  summary: Serverless Functions and Managed Compute is assessed by understanding its mechanism,
+    choosing an appropriate workload fit, quantifying latency and utilization, and diagnosing
+    failure through resource and control-plane evidence.
+glossary:
+- term: Workload
+  meaning: An application, service or processing activity that consumes cloud resources.
+- term: Control plane
+  meaning: The interfaces and systems used to configure, provision and manage resources.
+- term: Data plane
+  meaning: The path or mechanisms that carry workload traffic or perform the service's data operations.
+- term: Failure domain
+  meaning: A set of components that may be affected by one shared failure.
+- term: SLO
+  meaning: 'A service-level objective: a measurable target for a service characteristic such as
+    availability or latency.'
+- term: TCO
+  meaning: Total cost of ownership over a defined scope and time horizon.
+study_guidance:
+  recommended_sequence:
+  - Read the definitions and concept map.
+  - Study each core unit and explain it without looking at the notes.
+  - Draw the architecture or responsibility boundary.
+  - Complete both practical labs using a safe environment.
+  - Answer the analysis and evaluation questions in writing.
+  - Revisit misconceptions and explain why each correction matters.
+  answer_quality_standard: Use precise terminology, explain the mechanism, state assumptions,
+    identify trade-offs and support conclusions with observable evidence. Avoid unsupported claims
+    that a provider or service guarantees behavior not established by the handout or current service
+    documentation.

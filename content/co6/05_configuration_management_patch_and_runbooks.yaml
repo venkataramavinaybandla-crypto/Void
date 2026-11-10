@@ -1,0 +1,264 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-05
+  title: Configuration Management, Patch Orchestration and Operational Runbooks
+  lecture_session_alignment: '23'
+  scope: Detailed study notes and applied revision material
+  source_note: Official session/practical alignment follows the supplied course handout. Explanations and examples
+    are expanded learning material.
+learning_objectives:
+- Explain the concepts and lifecycle involved.
+- Evaluate alternative tools and operational approaches.
+- Apply repeatable, secure infrastructure workflows.
+- Interpret plans, state, logs, metrics and cost evidence.
+- Justify decisions against reliability, security, SLO and monetary constraints.
+units:
+- unit: 1
+  title: Configuration management purpose
+  explanation: Configuration management keeps systems in a known, supported and secure state. It manages settings
+    such as packages, services, users, files, runtime versions and system policies. IaC often provisions infrastructure
+    while configuration management handles operating-system and application configuration. The boundary is not absolute;
+    select tools based on lifecycle, repeatability and ownership.
+  key_points:
+  - 'Provisioning: create infrastructure resources.'
+  - 'Configuration: install and maintain desired software and settings.'
+  - 'Orchestration: coordinate changes across multiple systems.'
+  - 'Inventory: identify systems, versions, owners and status.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 2
+  title: Desired configuration and idempotence
+  explanation: A configuration task should converge the system toward a defined state. Idempotent operations can
+    be repeated without unintended repeated effects. Scripts that blindly append lines, create duplicate users or
+    reinstall packages on every run can produce drift and operational instability. Validate the resulting state
+    rather than relying only on command exit codes.
+  key_points:
+  - Declare package version and service state.
+  - Use configuration management that checks current state before changing it.
+  - Test repeated execution.
+  - Record configuration version and change owner.
+  - Avoid hidden manual changes outside the managed process.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 3
+  title: Patch management lifecycle
+  explanation: Patch management includes inventory, vulnerability assessment, prioritization, testing, scheduling,
+    deployment, verification and reporting. Critical security patches may require expedited handling, but production
+    rollout should still account for compatibility and recovery. Patch windows should reflect business impact and
+    exposure rather than an arbitrary schedule alone.
+  key_points:
+  - Inventory assets and operating-system/application versions.
+  - Prioritize by severity, exploitability, exposure and business criticality.
+  - Test patches in a representative environment.
+  - Deploy in waves with health checks.
+  - Verify patch level and service function.
+  - Document exceptions and compensating controls.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 4
+  title: Patch orchestration at scale
+  explanation: Orchestration coordinates patching across fleets while respecting availability zones, maintenance
+    windows and application dependencies. Avoid patching every replica simultaneously. For stateful systems, protect
+    quorum and data consistency. Define what happens when an instance fails patch validation and how it is removed
+    from service.
+  key_points:
+  - Group assets by role, environment and criticality.
+  - Use canary or small initial wave.
+  - Respect redundancy and quorum requirements.
+  - Stop rollout when error or failure thresholds are crossed.
+  - Capture patch compliance and exceptions.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 5
+  title: Operational runbooks
+  explanation: A runbook is a practical, step-by-step guide for recurring operational tasks or incidents. It should
+    state purpose, prerequisites, permissions, safety warnings, commands or console actions, expected output, validation,
+    rollback and escalation. Runbooks should be tested and versioned; an outdated runbook can be more dangerous
+    than no runbook.
+  key_points:
+  - Trigger and symptoms.
+  - Scope and prerequisites.
+  - Required role and least-privilege permissions.
+  - Step sequence with expected observations.
+  - Validation and rollback.
+  - Escalation contacts and evidence to preserve.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 6
+  title: Change management and maintenance windows
+  explanation: Operational changes should be classified by risk, reviewed and scheduled according to service impact.
+    Emergency changes may use an expedited process but still need evidence and retrospective review. Maintenance
+    windows should consider user demand, replication, backups, dependencies and provider maintenance events.
+  key_points:
+  - Classify change risk and blast radius.
+  - Identify stakeholders and dependencies.
+  - Choose a window and communication plan.
+  - Monitor during change and validate afterward.
+  - Review emergency changes and update documentation.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 7
+  title: Incident operations and break-fix discipline
+  explanation: During an incident, stabilize service, preserve evidence and communicate clearly. Avoid making several
+    unrelated changes at once because it becomes difficult to identify the cause. Use hypotheses, targeted checks
+    and controlled remediation. Capture timestamps and correlate them with deployments, patch events and provider
+    status.
+  key_points:
+  - Establish incident owner and timeline.
+  - State impact and current known facts.
+  - Collect logs, metrics, events and configuration evidence.
+  - Change one controlled variable at a time.
+  - Verify recovery against user-facing indicators.
+  - Document root cause and preventive action.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 8
+  title: Runbook exercise
+  explanation: Create a runbook for patching a small application fleet. Include prechecks, backup status, canary
+    selection, patch deployment, service health checks, stop conditions, rollback and final compliance evidence.
+    Explain how the procedure changes for a stateful database cluster.
+  key_points:
+  - Define service and asset scope.
+  - Specify required access and approvals.
+  - Add staged deployment and stop conditions.
+  - Include validation and rollback steps.
+  - Identify evidence and ownership.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+worked_scenarios:
+- scenario: Two engineers attempt to modify the same production infrastructure state.
+  analysis: Check remote backend, lock ownership and whether another operation is active. Avoid force-unlock without
+    confirming the lock is stale.
+  safe_response: Serialize state mutation, preserve state versions, review the plan and verify provider reality.
+- scenario: A monthly bill spikes while Terraform reports drift.
+  analysis: Correlate billing, resource usage, deployment history, audit events, IaC plan and SLO telemetry. Drift
+    may be intentional and cost may be caused by a separate usage change.
+  safe_response: Stabilize service, collect evidence, classify drift, remediate with a reviewed change and measure
+    actual cost and SLO impact.
+common_misconceptions:
+- IaC does not make infrastructure changes automatically safe.
+- A Terraform plan is a proposal, not proof that apply will succeed.
+- Remote state does not remove the need for locking and access control.
+- A state lock does not replace code review or change approval.
+- Drift must be understood before it is codified or reverted.
+- Application rollback does not always reverse infrastructure or data changes.
+- A budget alert is not necessarily a hard spending cap.
+- Lower cost is not an improvement if the published SLO is violated.
+self_check:
+- question: What is the purpose of Terraform state?
+  answer_elements:
+  - maps configuration addresses to real objects
+  - supports planning
+  - may contain sensitive values
+- question: Why is remote state locking important for teams?
+  answer_elements:
+  - prevents concurrent state mutation
+  - reduces conflicting operations
+  - coordinate shared workflow
+- question: What is infrastructure drift and how should it be handled?
+  answer_elements:
+  - difference between declared and actual state
+  - investigate cause
+  - codify or revert deliberately
+- question: How should an IaC change move through CI/CD?
+  answer_elements:
+  - validation
+  - plan review
+  - approval
+  - apply
+  - post-deployment verification
+- question: How can cloud cost optimization be evaluated responsibly?
+  answer_elements:
+  - billing evidence
+  - unit economics
+  - SLO impact
+  - actual savings
+exam_practice:
+  short_answer:
+  - Differentiate declarative and imperative infrastructure provisioning.
+  - Explain Terraform state and remote locking.
+  - Define reusable modules and explain module versioning.
+  - Explain infrastructure drift and the codify-versus-revert decision.
+  - Differentiate rolling, blue-green and canary deployments.
+  - Define RTO and RPO and explain how they are measured.
+  analytical:
+  - Evaluate Terraform and a cloud-native IaC tool for a multi-account environment.
+  - Analyze a plan containing resource replacement and explain the review steps.
+  - Design an IaC CI/CD pipeline with least-privilege deployment identity.
+  - Diagnose a broken Kubernetes workload using events, logs, selectors and probes.
+  - Analyze NAT, cross-zone and egress charges and propose optimizations.
+  - Evaluate a drift-and-cost-spike incident while preserving an SLO.
+  case_study: A production environment has a Terraform drift alert, a sudden network cost increase and elevated
+    application latency. Prepare an evidence-led investigation, safe remediation sequence, rollback plan and post-change
+    cost/SLO validation.
+glossary:
+- term: IaC
+  definition: Infrastructure as Code.
+- term: State
+  definition: Terraform's mapping between configuration and managed infrastructure objects.
+- term: Backend
+  definition: Configuration describing where and how state is stored.
+- term: State locking
+  definition: Coordination that prevents concurrent state-changing operations.
+- term: Module
+  definition: Reusable package of infrastructure configuration.
+- term: Drift
+  definition: Difference between declared/managed configuration and actual infrastructure.
+- term: CI/CD
+  definition: Continuous integration and continuous delivery/deployment workflows.
+- term: SLO
+  definition: Target for a measured service-level indicator.
+- term: RTO
+  definition: Target time to restore service after disruption.
+- term: RPO
+  definition: Maximum acceptable data-loss interval.
+- term: FinOps
+  definition: Collaborative operating practice for cloud financial accountability and optimization.

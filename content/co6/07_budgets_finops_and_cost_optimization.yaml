@@ -1,0 +1,261 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO6
+course_outcome_statement: Evaluate and apply Infrastructure-as-Code, deployment strategies, operational lifecycle
+  practice and cost-engineering technique to provision, release, operate and financially optimize cloud infrastructure
+  reproducibly; and justify each choice against its measured operational and monetary cost.
+taxonomy_level: BTL 5 — Evaluate
+source_alignment:
+  session_21: Terraform, Infrastructure State, and Remote Locking
+  session_22: IaC Modules, CI/CD, Deployment, and Infrastructure Drift
+  session_23: Operations, Cloud Billing, and Cost Optimization
+  session_24: Integrated SkyDeploy Project and Architecture Defence — Cost engineering, optimization, PodYard, final
+    integration
+  practical_session_11: Analyze module dependencies, remote-state configuration and state locking; implement reusable
+    modules and verify repeatable provisioning.
+  practical_session_12: Analyze Terraform plans and state information to identify infrastructure drift; diagnose
+    a controlled state-management problem and evaluate safe recovery options.
+  practical_session_21: Evaluate Session Manager and VPC endpoint configurations; configure bastion-free access
+    and validate private service connectivity.
+  practical_session_22: Evaluate self-provisioned Kubernetes architecture, networking and operational requirements;
+    provision cluster, deploy workload and validate service discovery.
+  practical_session_23: Evaluate Kubernetes workload configuration; diagnose and repair a deliberately broken BookStash
+    deployment using Kubernetes commands and logs.
+  practical_session_24: Evaluate end-to-end architecture, break-fix evidence, recovery results and cost trade-offs;
+    defend architecture decisions using Terraform evidence, diagnostic logs, measured RTO/RPO and actual cost results.
+document:
+  id: CO6-07
+  title: Budgets, FinOps, Cost Optimization and Financial Governance
+  lecture_session_alignment: '23'
+  scope: Detailed study notes and applied revision material
+  source_note: Official session/practical alignment follows the supplied course handout. Explanations and examples
+    are expanded learning material.
+learning_objectives:
+- Explain the concepts and lifecycle involved.
+- Evaluate alternative tools and operational approaches.
+- Apply repeatable, secure infrastructure workflows.
+- Interpret plans, state, logs, metrics and cost evidence.
+- Justify decisions against reliability, security, SLO and monetary constraints.
+units:
+- unit: 1
+  title: FinOps operating model
+  explanation: 'FinOps is a collaborative operating practice that brings engineering, finance and business teams
+    together to make cloud spending visible, accountable and optimized. It is continuous: inform, optimize and operate.
+    Engineers need timely usage and cost data; finance needs forecasts and allocation; product teams need unit economics
+    and business context.'
+  key_points:
+  - 'Inform: visibility, allocation, forecasting and anomaly awareness.'
+  - 'Optimize: right-size, eliminate waste and improve architecture efficiency.'
+  - 'Operate: define ownership, budgets, policies and recurring reviews.'
+  - 'Shared accountability: cost decisions belong to teams that create and consume resources.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 2
+  title: Budgets and alerts
+  explanation: Budgets define expected spend and trigger notifications when actual or forecasted cost approaches
+    thresholds. Alerts should reach an accountable owner and include enough context to investigate. A budget alert
+    is not necessarily a hard spending cap; services may continue running after a threshold is crossed. Understand
+    alert delay and forecast behavior.
+  key_points:
+  - Set budget by account, project, service or cost center.
+  - Use multiple thresholds for early warning and escalation.
+  - Route notifications to owners and finance stakeholders.
+  - Include forecast and actual spend where available.
+  - Do not assume an alert automatically stops resources.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 3
+  title: Forecasting and seasonality
+  explanation: Forecasts estimate future cost using historical usage, known commitments, growth assumptions and
+    planned changes. Seasonal demand, launches, one-off migrations and credits can distort trends. A forecast should
+    include assumptions and uncertainty, not a single unexplained number. Revisit it after major architecture or
+    traffic changes.
+  key_points:
+  - Baseline historical spend over a representative period.
+  - Separate recurring, seasonal and one-time costs.
+  - Include planned capacity, data growth and commitments.
+  - Compare forecast to actual and explain variance.
+  - Update assumptions after material changes.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 4
+  title: Waste identification
+  explanation: Common waste includes unattached volumes, idle compute, unused load balancers, stale snapshots, oversized
+    databases, forgotten test clusters, excessive log retention and unnecessary data transfer. Before deletion,
+    verify ownership, backups, dependencies and retention obligations. Automated cleanup should use tags, age thresholds
+    and safe exclusions.
+  key_points:
+  - Inventory resources and owners.
+  - Find low utilization and orphaned resources.
+  - Check dependencies and retention requirements.
+  - Schedule cleanup and communicate impact.
+  - Verify savings after deletion or resizing.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 5
+  title: Optimization levers
+  explanation: Optimization may involve rightsizing, autoscaling, storage lifecycle, caching, data compression,
+    scheduling non-production resources, commitment purchasing, network topology and observability retention. Each
+    lever has trade-offs. Measure both financial impact and service behavior after change.
+  key_points:
+  - 'Compute: right-size, schedule, autoscale and choose purchase model.'
+  - 'Storage: lifecycle, tiering, compression and retention.'
+  - 'Network: reduce unnecessary egress and cross-zone transfer.'
+  - 'Managed services: adjust capacity and request patterns.'
+  - 'Operations: tune telemetry retention without losing required evidence.'
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 6
+  title: Cost guardrails and policy
+  explanation: Guardrails prevent avoidable spending through quotas, approved instance families, budget alerts,
+    mandatory tags, resource expiry and policy-as-code. Controls should allow justified exceptions. A hard quota
+    may prevent an emergency scale-out, so critical production workloads need carefully designed limits and override
+    procedures.
+  key_points:
+  - Set allowed regions and resource classes where appropriate.
+  - Require owner and expiry tags for temporary resources.
+  - Alert on expensive service creation and commitment utilization.
+  - Use approval for high-cost resources.
+  - Test guardrails against reliability and incident scenarios.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 7
+  title: Cost optimization prioritization
+  explanation: Prioritize actions by savings potential, confidence, implementation effort, risk and SLO impact.
+    A small recurring waste item may be easy to fix; a major architecture change may have high savings but substantial
+    migration risk. Use a backlog with owners and verify realized savings rather than reporting theoretical estimates.
+  key_points:
+  - Estimate annualized savings using actual usage.
+  - Estimate engineering effort and migration risk.
+  - Identify security, availability and performance trade-offs.
+  - Prioritize reversible low-risk wins first when appropriate.
+  - Measure realized spend after the change.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+- unit: 8
+  title: Cost review exercise
+  explanation: Given a monthly bill with compute, NAT, cross-zone transfer, object storage, database, logging and
+    egress charges, identify the top cost drivers. Propose two optimizations, calculate expected savings from stated
+    assumptions and define metrics that would reveal an SLO regression. Explain why a lower bill alone does not
+    prove a better architecture.
+  key_points:
+  - Rank services by cost and trend.
+  - Trace high-cost usage to resource and architecture path.
+  - Calculate savings using explicit unit rates and volumes.
+  - Identify service-health guardrails.
+  - Compare actual post-change spend and performance.
+  practice:
+  - Write a concise definition.
+  - Draw the workflow or dependency path.
+  - Identify one failure mode and its safe response.
+  - State what evidence would prove the result.
+worked_scenarios:
+- scenario: Two engineers attempt to modify the same production infrastructure state.
+  analysis: Check remote backend, lock ownership and whether another operation is active. Avoid force-unlock without
+    confirming the lock is stale.
+  safe_response: Serialize state mutation, preserve state versions, review the plan and verify provider reality.
+- scenario: A monthly bill spikes while Terraform reports drift.
+  analysis: Correlate billing, resource usage, deployment history, audit events, IaC plan and SLO telemetry. Drift
+    may be intentional and cost may be caused by a separate usage change.
+  safe_response: Stabilize service, collect evidence, classify drift, remediate with a reviewed change and measure
+    actual cost and SLO impact.
+common_misconceptions:
+- IaC does not make infrastructure changes automatically safe.
+- A Terraform plan is a proposal, not proof that apply will succeed.
+- Remote state does not remove the need for locking and access control.
+- A state lock does not replace code review or change approval.
+- Drift must be understood before it is codified or reverted.
+- Application rollback does not always reverse infrastructure or data changes.
+- A budget alert is not necessarily a hard spending cap.
+- Lower cost is not an improvement if the published SLO is violated.
+self_check:
+- question: What is the purpose of Terraform state?
+  answer_elements:
+  - maps configuration addresses to real objects
+  - supports planning
+  - may contain sensitive values
+- question: Why is remote state locking important for teams?
+  answer_elements:
+  - prevents concurrent state mutation
+  - reduces conflicting operations
+  - coordinate shared workflow
+- question: What is infrastructure drift and how should it be handled?
+  answer_elements:
+  - difference between declared and actual state
+  - investigate cause
+  - codify or revert deliberately
+- question: How should an IaC change move through CI/CD?
+  answer_elements:
+  - validation
+  - plan review
+  - approval
+  - apply
+  - post-deployment verification
+- question: How can cloud cost optimization be evaluated responsibly?
+  answer_elements:
+  - billing evidence
+  - unit economics
+  - SLO impact
+  - actual savings
+exam_practice:
+  short_answer:
+  - Differentiate declarative and imperative infrastructure provisioning.
+  - Explain Terraform state and remote locking.
+  - Define reusable modules and explain module versioning.
+  - Explain infrastructure drift and the codify-versus-revert decision.
+  - Differentiate rolling, blue-green and canary deployments.
+  - Define RTO and RPO and explain how they are measured.
+  analytical:
+  - Evaluate Terraform and a cloud-native IaC tool for a multi-account environment.
+  - Analyze a plan containing resource replacement and explain the review steps.
+  - Design an IaC CI/CD pipeline with least-privilege deployment identity.
+  - Diagnose a broken Kubernetes workload using events, logs, selectors and probes.
+  - Analyze NAT, cross-zone and egress charges and propose optimizations.
+  - Evaluate a drift-and-cost-spike incident while preserving an SLO.
+  case_study: A production environment has a Terraform drift alert, a sudden network cost increase and elevated
+    application latency. Prepare an evidence-led investigation, safe remediation sequence, rollback plan and post-change
+    cost/SLO validation.
+glossary:
+- term: IaC
+  definition: Infrastructure as Code.
+- term: State
+  definition: Terraform's mapping between configuration and managed infrastructure objects.
+- term: Backend
+  definition: Configuration describing where and how state is stored.
+- term: State locking
+  definition: Coordination that prevents concurrent state-changing operations.
+- term: Module
+  definition: Reusable package of infrastructure configuration.
+- term: Drift
+  definition: Difference between declared/managed configuration and actual infrastructure.
+- term: CI/CD
+  definition: Continuous integration and continuous delivery/deployment workflows.
+- term: SLO
+  definition: Target for a measured service-level indicator.
+- term: RTO
+  definition: Target time to restore service after disruption.
+- term: RPO
+  definition: Maximum acceptable data-loss interval.
+- term: FinOps
+  definition: Collaborative operating practice for cloud financial accountability and optimization.

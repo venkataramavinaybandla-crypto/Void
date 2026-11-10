@@ -1,0 +1,247 @@
+course: Cloud Infrastructure and Services
+course_code: 25CS2206E
+course_outcome: CO5
+outcome_statement: Analyze cloud identity, security posture, regulatory compliance and observability — policy evaluation
+  logic, multi-account governance, federation, key and secret management, edge protection, hardening baselines,
+  audit trails, metrics, logs and traces — and apply least privilege end-to-end.
+source_alignment:
+  session_17: IAM Policies and Access Evaluation
+  session_18: Workload Identity and Multi-Account Governance
+  session_19: Encryption, Secrets Management, and Compliance
+  session_20: Observability and Security Break-Fix
+  course_handout_note: The session topics and break-fix scenario are taken from the supplied course handout. Explanatory
+    examples below are study expansions.
+document:
+  id: CO5-07
+  title: Compliance, Audit Trails, Configuration Posture and Hardening Baselines
+  session_alignment: '19'
+  focus: Compliance and protection services, audit trails, configuration compliance, posture/finding hubs, data
+    discovery and hardening.
+  level: Detailed undergraduate study notes
+  important_scope_note: Provider-specific details are conceptual examples. Verify current provider documentation
+    before implementing production controls.
+learning_objectives:
+- Explain the central concepts and terminology.
+- Analyze the control flow and identify trust boundaries.
+- Compare alternative designs and their trade-offs.
+- Apply least privilege and validate it with evidence.
+- Diagnose a realistic failure using logs, policies or telemetry.
+units:
+- unit: 1
+  title: Compliance versus security
+  explanation: Security is the set of practices and controls used to reduce risk. Compliance is evidence that an
+    organization meets applicable legal, regulatory, contractual or internal requirements. Passing an audit does
+    not prove that a system is secure, and a secure design may still fail a compliance requirement if evidence or
+    process is missing. Map each requirement to a control, owner, evidence source and review cadence.
+  key_points:
+  - 'Requirement: what must be protected or demonstrated?'
+  - 'Control: what technical or procedural measure addresses it?'
+  - 'Evidence: what proves the control operated?'
+  - 'Owner: who maintains and reviews it?'
+  - 'Gap: what is missing, ineffective or not evidenced?'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 2
+  title: Audit trails and event logging
+  explanation: Audit trails record security-relevant actions such as authentication, role assumption, policy changes,
+    key use, data access and administrative operations. Useful events identify actor, action, target, time, source
+    and outcome. Centralize logs into a protected destination with restricted write/delete permissions. Ensure timestamps
+    are consistent and retention meets organizational requirements.
+  key_points:
+  - Enable coverage for all relevant accounts, regions and services.
+  - Protect logs against alteration and unauthorized deletion.
+  - Restrict access to audit logs separately from workload administration.
+  - Alert on logging disablement, policy changes and unusual privileged actions.
+  - Test that expected events actually appear.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 3
+  title: Configuration compliance and posture management
+  explanation: 'Configuration tools evaluate cloud resources against desired rules or benchmarks and identify drift
+    or non-compliant settings. Security posture or finding hubs aggregate signals from multiple security services.
+    Findings need triage: validate asset, severity, exploitability, exposure, business impact and compensating controls.
+    Automated remediation should be restricted to well-understood, reversible changes.'
+  key_points:
+  - 'Examples: public storage, open management ports, unencrypted volumes, missing MFA or disabled logging.'
+  - 'Configuration rule: measurable condition with pass/fail result.'
+  - 'Finding: evidence of a possible misconfiguration or threat.'
+  - 'Posture dashboard: aggregate view; it does not replace investigation.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 4
+  title: Hardening baselines
+  explanation: A hardening baseline is a documented minimum secure configuration for a system or service. Baselines
+    reduce avoidable attack surface and create repeatable configuration expectations. They should be versioned,
+    tested and adapted to workload requirements. Avoid copying a benchmark without understanding its impact on availability
+    and application compatibility.
+  key_points:
+  - 'Identity: MFA, no shared admin accounts, scoped roles and credential hygiene.'
+  - 'Compute: patching, minimal packages, secure boot where supported and restricted management access.'
+  - 'Network: deny-by-default ingress, controlled egress and private endpoints where suitable.'
+  - 'Storage: encryption, public-access restrictions and lifecycle/retention controls.'
+  - 'Logging: centralized audit, application logs and alerting.'
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 5
+  title: Data discovery and classification
+  explanation: Data discovery identifies where sensitive data resides; classification assigns labels based on sensitivity,
+    legal obligations and business impact. Discovery findings should be validated because false positives and missed
+    data are possible. Classification should influence access, encryption, retention, monitoring and deletion policies.
+  key_points:
+  - Inventory data stores and data flows.
+  - Classify personal, financial, health, credential and business-confidential data as applicable.
+  - Apply least-privilege access and encryption based on classification.
+  - Review copies in backups, analytics, exports and test environments.
+  - Define retention and deletion rules.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 6
+  title: Threat detection and security findings
+  explanation: 'Threat detection services analyze events and behaviors to identify suspicious activity. Findings
+    may include unusual API calls, credential misuse, unexpected network behavior or potential malware. Detection
+    is not prevention: it must connect to triage, containment, investigation and recovery. Tune detections to reduce
+    noise without suppressing meaningful signals.'
+  key_points:
+  - Know the source telemetry and detection logic behind a finding.
+  - Validate affected principal, asset, region and time range.
+  - Correlate with audit logs, network flow, workload logs and identity events.
+  - Contain based on incident severity and response playbook.
+  - Record false-positive rationale and tuning changes.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 7
+  title: Control mapping and evidence matrix
+  explanation: Map each requirement to a control and evidence source. For example, a requirement to restrict privileged
+    access may map to MFA, role-based access, approval records, privileged-session logs and periodic access reviews.
+    Evidence should be current, complete, attributable and protected. A screenshot of a dashboard may be useful
+    but is weaker than exportable, timestamped system records.
+  key_points:
+  - Requirement ID and plain-language interpretation.
+  - Control statement and implementation scope.
+  - Evidence location, collection date and retention.
+  - Control owner and reviewer.
+  - Test result, exception and remediation status.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+- unit: 8
+  title: Compliance scenario analysis
+  explanation: Given a finding that a storage bucket is public, identify the data classification, public-access
+    control, audit evidence, owner, exposure window and remediation. Given missing audit events, determine whether
+    logging was disabled, misconfigured, delayed or routed incorrectly. In each case, distinguish control failure
+    from evidence collection failure and record a defensible remediation.
+  key_points:
+  - State the risk and affected asset.
+  - Identify the control intended to prevent or detect it.
+  - Collect audit/configuration evidence.
+  - Remediate with least disruptive safe change.
+  - Retest and preserve evidence of closure.
+  study_actions:
+  - Define the concept in your own words.
+  - Draw or write the request/data flow where applicable.
+  - Identify one security failure mode and its mitigation.
+  - Create one positive test and one negative test.
+worked_examples:
+- scenario: A service needs to read one configuration object and nothing else.
+  analysis: Identify its workload principal, exact read action, exact resource and any required context. Avoid broad
+    account-wide permissions.
+  expected_design: A dedicated workload identity with a narrowly scoped read permission and an explicit negative
+    test against an unrelated object.
+- scenario: A cloud API call returns AccessDenied even though an Allow statement exists.
+  analysis: Check for explicit denies, resource policy restrictions, permission boundaries, session restrictions,
+    organization guardrails and failed conditions.
+  expected_design: Use the audit event and policy evidence to identify the controlling layer; change only that layer
+    and retest.
+common_misconceptions:
+- Authentication success does not mean every requested action is authorized.
+- A permission boundary or organization guardrail is not automatically a permission grant.
+- Adding an Allow does not override a matching explicit Deny.
+- Temporary credentials reduce long-lived credential risk but still require least privilege.
+- Encryption does not replace authorization, secure application design or key protection.
+- A compliance dashboard is not proof that every control is effective.
+- A metric alert is not useful unless it leads to a clear action.
+self_check:
+- question: What principal is making the request, and what action/resource is being requested?
+  expected_answer_elements:
+  - identity
+  - action
+  - resource
+  - context
+- question: What is the difference between an explicit deny and an implicit deny?
+  expected_answer_elements:
+  - matching deny rule
+  - absence of an applicable allow
+- question: Why is workload identity preferable to a hard-coded static key?
+  expected_answer_elements:
+  - short-lived credentials
+  - reduced leakage surface
+  - scoped role
+- question: What evidence demonstrates that a secret was rotated successfully?
+  expected_answer_elements:
+  - version change
+  - automation/audit event
+  - consumer update
+  - validation
+- question: How do metrics, logs and traces complement one another?
+  expected_answer_elements:
+  - aggregate trends
+  - event detail
+  - request path
+exam_practice:
+  short_answer:
+  - Define least privilege and explain why it must be reviewed continuously.
+  - Differentiate identity-based and resource-based policies.
+  - Explain the purpose of a service control policy.
+  - Differentiate a cryptographic key from an application secret.
+  - Define SLI, SLO and error budget.
+  analytical:
+  - Analyze an AccessDenied request when identity policy allows the action but an organization guardrail denies
+    it.
+  - Design a workload identity flow for a containerized application.
+  - Propose an envelope-encryption architecture and explain key ownership.
+  - Map a compliance requirement to controls and auditable evidence.
+  - Evaluate an alerting design that pages operators on every CPU spike.
+  case_study: A production service suddenly cannot read a database secret. Determine the evidence to collect, policy
+    layers to inspect, likely rotation-related causes, safe remediation and validation tests.
+glossary:
+- term: IAM
+  definition: Identity and access management.
+- term: Principal
+  definition: Identity making an access request.
+- term: Federation
+  definition: Trust relationship that allows an external identity system to provide authentication assertions or
+    tokens.
+- term: SCP
+  definition: Organization-level policy that limits maximum permissions in supported account models.
+- term: KMS
+  definition: Key management service used to manage cryptographic keys and operations.
+- term: DEK
+  definition: Data encryption key used to encrypt data.
+- term: WAF
+  definition: Web application firewall that evaluates HTTP/HTTPS requests.
+- term: SLI
+  definition: Measured indicator of service behavior.
+- term: SLO
+  definition: Target for an SLI over a defined time window.
+- term: Trace
+  definition: Linked spans representing a request's path through services.

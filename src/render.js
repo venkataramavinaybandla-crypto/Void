@@ -526,8 +526,8 @@ export function renderValue(key = '', value) {
 
   const keyLower = String(key || '').toLowerCase();
 
-  // 1. Key matches code / snippet / command / hcl
-  if (key && /code|snippet|command|hcl/i.test(keyLower)) {
+  // 1. Key matches code / snippet / command / hcl (excluding course code metadata)
+  if (key && !/course[-_]?code/i.test(keyLower) && /code|snippet|command|hcl/i.test(keyLower)) {
     return renderCodePanel(value, formatKey(key));
   }
 
@@ -572,6 +572,16 @@ export function renderValue(key = '', value) {
     // Title / heading key
     if (key && /title|name|heading|concept_title/i.test(keyLower)) {
       return `<h3 class="font-headline-md text-headline-md text-primary tracking-tight mt-space-sm mb-space-xs border-b border-outline-variant/20 pb-1">${escapeHtml(value)}</h3>`;
+    }
+
+    // Course code identifier (plain value without code panel or copy button)
+    if (key && /course[-_]?code/i.test(keyLower)) {
+      return `
+        <div class="font-label-sm text-label-sm text-outline my-0.5">
+          <span class="uppercase tracking-wider">${escapeHtml(formatKey(key))}:</span>
+          <span class="font-mono text-primary-container font-bold">${escapeHtml(value)}</span>
+        </div>
+      `;
     }
 
     // Standard markdown paragraph
